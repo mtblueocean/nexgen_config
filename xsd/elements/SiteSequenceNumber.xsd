@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://www.aapt.com.au/FrontierLink/xsd"
+			xmlns="http://www.w3.org/2001/XMLSchema"
+			xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+    <xsd:simpleType name="SiteSequenceNumber">
+        <xsd:restriction base="xsd:int" >
+       	    <xsd:annotation>
+                <xsd:documentation xml:lang="en">Is a integer representation of the address. Starts with 1.</xsd:documentation>
+            </xsd:annotation>
+        	<xsd:minInclusive value="1"/>
+        </xsd:restriction>        
+    </xsd:simpleType>
+</xsd:schema>

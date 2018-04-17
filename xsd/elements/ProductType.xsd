@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://www.aapt.com.au/FrontierLink/xsd"
+            xmlns="http://www.w3.org/2001/XMLSchema"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+    <xsd:simpleType name="ProductType">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="National Wholesale Broadband" />
+            <xsd:enumeration value="RequestXpress" />
+            <xsd:enumeration value="Outbound Switched Voice" />
+            <xsd:enumeration value="Call Termination Service" />
+            <xsd:enumeration value="RezLine" />
+            <xsd:enumeration value="Hub Aggregation Circuit" />
+            <xsd:enumeration value="Home Broadband Bundle" />
+            <xsd:enumeration value="NBNPhone" />
+            <xsd:enumeration value="vPBX" />
+            <xsd:enumeration value="BizPhone User" />
+            <xsd:enumeration value="BizPhone Queue" />
+            <xsd:enumeration value="BizPhone Hunt Group" />
+            <xsd:enumeration value="BizPhone Auto Attendant" />
+            <xsd:enumeration value="Mobile" />
+            <xsd:enumeration value="Generic Layer 3 Link" />
+        </xsd:restriction>
+    </xsd:simpleType>
+</xsd:schema>

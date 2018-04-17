@@ -1,0 +1,106 @@
+<style>
+    @page {
+        sheet-size : A4;
+        margin: 4%;   
+        odd-footer-name: html_pagesFooter;
+    }           
+    
+    div.pages {
+        page: pages;
+    } 
+</style> 
+<link href = "assets/css/form.css" rel='stylesheet' type='text/css'>
+<div class="preview-{{index}}" ng-repeat="(index, item) in items['voice_solution_standard'] track by $index">
+    <div class ="pageBreaker">
+        <table style="width:100%">
+            <tr>
+                <td colspan="3"><img  width = 250 height = 70 src ="assets/images/logo.png" ></td>
+                <td colspan="3" class="cardTitle">NEXGEN VOICE RATE CARD</td>
+            </tr>
+            <tr>
+                <td colspan="6"> </td>
+            </tr>
+            <tr>
+                <td colspan="6" class="planTitle">NBS Standard (Business Standard)</td>  
+            </tr>
+            <tr class="plan-row">
+                <td colspan="5" class="planCategory">{{formData.comLocation['voice_solution_standard'][index]}},{{formData.comSuburb['voice_solution_standard'][index]}},{{postcode=formData.comZipCode['voice_solution_standard'][index]}}</td>
+            </tr>
+            <tr class="rate font-grey">
+                <td colspan='2'>Rate Plan per Month</td>
+                <td colspan='2' class="colorless normal form-data"><b>{{formData.voiceSolutionChannel[index]}} Channels</b></td>
+                 <td colspan='2'>${{voiceSolution.rate[formData.voiceSolutionChannel[index]]}}</td>
+            </tr>
+            <tr class="rate font-grey" ng-if="formData.voiceSolutionFaxToEmail[index]">
+                <td colspan='2'>Fax to Email</td>
+                <td colspan='2' class="colorless normal form-data"><b>Quantity : {{formData.voiceSolutionFaxQty[index]}}</b></td>
+                 <td colspan='2'>${{voiceSolution.sfToE}}  per month, per fax</td>
+            </tr>
+            <!-- <tr class="rate font-grey"  ng-if="formData.voiceSolutionMobility[index]">
+                <td colspan='2'>Mobility</td>
+                <td colspan='2' class="colorless normal form-data"><b>Users : {{formData.voiceSolutionMobQty[index]}}</b></td>
+                 <td colspan='2' class="form-data">${{voiceSolution.sMob}}  per month, per user</td>
+            </tr> -->
+            <tr ng-if="formData.voiceSolutionDID[index]" class="rate font-grey">
+                <td colspan='2'>Direct in Dials</td>
+                <td colspan='2' class="colorless normal form-data"><b>{{formData.voiceSolutionDID[index]}} X Direct in Dial numbers</b></td>
+                <td colspan='2' class="form-data">${{voiceSolution.sDID[formData.voiceSolutionDID[index]]}}  per month</td>
+            </tr>
+            <tr class="less-padding black">
+                <td class="title less-padding" colspan="2">Destination</td>
+                <td class="title less-padding" colspan="2"></td>
+                <td class="title less-padding" colspan="2">On-Net Rates</td>
+            </tr>
+            <tr class="desti-row">
+                <td class="destination-business grey" colspan="2">National Calls</td>
+                <td class='grey included' colspan='2'>$0.18 per minute</td>
+                <td class="included grey" colspan="2">$0.10 per minute</td>
+            </tr>
+            <tr class="desti-row">
+                <td class="destination-business " colspan="2">Calls to Mobiles</td>
+                <td class='included' colspan='2'>$0.35 per minute</td>
+                <td class="included " colspan="2">$0.20  per minute</td>
+            </tr>
+            <tr class="desti-row">
+                <td class="destination-business grey" colspan="2">Local Calls</td>
+                <td class='grey included' colspan='2'>$0.14 flat rate</td>
+                <td class="included grey" colspan="2">$0.10 flat rate</td>
+            </tr>
+            <tr class="desti-row">
+                <td class="destination-business " colspan="2">Flagfall</td>
+                <td class='included' colspan='2'>$0.20 flat rate</td>
+                <td class="included " colspan="2">$0.0 flat rate</td>
+            </tr>
+            <tr class="desti-row">
+                <td class="destination-business grey" colspan="2">International Calls</td>
+                <td class='included grey' colspan='4'>Full list available on request</td>
+            </tr>
+            <tr class="less-padding">
+                <td class="title less-padding" colspan="6"> Minimum Monthly Charges / Discounts
+                </td>
+            </tr>
+            <tr class="summary summary-midband">
+                <td  class="discountVoiceField" colspan="2">Monthly Rate Plan</td>
+                <td class="discountVoiceItem"><b>${{roundVal(voiceSolution.totalRate[index])}}</b></td>
+                <td class="discountVoiceField" colspan="2">Monthly Plan Discount</td>
+                <td class="discountVoiceItem"><b>${{formData.bFSolutionDiscount[index]}} Per Mth</b>
+                </td>
+            </tr>
+
+            <tr class="summary summary-midband">
+                    <td class="discountVoiceField" colspan="2">Term</td>
+                    <td class="discountVoiceItem" >
+                        &nbsp;&nbsp;<b>{{formData.aBillingTerm}} Months</b></td>
+                    <td class="discountVoiceField" colspan="2">Monthly Call Discount</td>
+                    <td class="discountVoiceItem" >&nbsp;&nbsp;<b>${{formData.bFSolutionCallDiscount[index]}}</b></td>
+            </tr>
+        </table>
+        <p class="TAC">
+            <b>Focus Standard Terms and Conditions</b><br />
+            All Prices are exclusive of GST. Nexgen Business Solutions Plus plans(NBS) require a minimum of 3 channels. Any additional channels may be purchased for $10 per channel per month  up to a maximum of 30 channels.  Voice lines only will be ported to the NBS Plan. Analogue Devices such as alarm, eftpos and fax may not be able to port to the NBS plan. Existing Telephone lines  that need to be ported must be identified on the Nexgen Telephone Application. NBS SIP calls can utilise up to 100kbps of data per call. Calls to 13/1300 numbers are charged at $0.45 per call. Nexgen Business Solution  plus on-net rates  willl only apply once  the services have ported  to the NBS plan. The standard delivery time for  NBS service porting is  6-8 weeks  from the time of Telephone  system  installation. A maximum of  $100 Discount may be applied to the Nexgen Business Solution Plus plan fee.  Any Nexgen Business  Solution Tariff Discounts will only be applied upon settlement of your account. Discounts offered will expire at the end of the agreed  term.   On- Net Rates are only available on services that have been ported to Nexgen Business Solution network. All other services will be charged in accordance with the noted Off-Net Rates.  Any PSTN or ATA Adaptor  will be billed monthly at  $39.95 per month. Nexgen Business Solution has a mandatory Direct indial 10, charged at $14.95 per month. Line hunt is charged at $3.95 per channel per month. Off Net BRI and PRI using Telstra network  are charged  monthly at the following rates BRI  $99.85,  PRI10 $439.99,  PRI 20 $870, PRI 30 $1279.99. Cancellation of any service prior to the minimum term will incur Early Termination fees. Please refer to clause 15.5 of the Nexgen Application for Early Termination Calculations. Please refer to www.nexgen.com.au for full  terms and conditions.
+        </p>
+        <htmlpagefooter name='pagesFooter'>
+             <ng-include src="'templates/forms/card_footer.html'" ng-init="location=formData.comLocation['voice_solution_standard'][index];suburb=formData.comSuburb['voice_solution_standard'][index];postcode=formData.comZipCode['voice_solution_standard'][index]"></ng-include>
+        </htmlpagefooter>
+    </div>
+</div>

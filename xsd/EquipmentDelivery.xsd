@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://www.aapt.com.au/FrontierLink/xsd"
+            xmlns="http://www.w3.org/2001/XMLSchema"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:wsg="http://www.aapt.com.au/FrontierLink/xsd"
+            elementFormDefault="qualified">
+
+    <xsd:include schemaLocation="DeliveryLocation.xsd" />
+    <xsd:include schemaLocation="DeliveryLocationList.xsd" />
+    <xsd:include schemaLocation="NoInput.xsd" />
+
+    <xsd:include schemaLocation="elements/YesNo.xsd" />
+
+    <xsd:complexType name="EquipmentDelivery">
+        <xsd:sequence>
+        	<xsd:choice>
+	            <xsd:element name="singleLocation" type="wsg:DeliveryLocation" />
+	            <xsd:element name="multipleLocations" type="wsg:DeliveryLocationList"/>
+	            <xsd:element name="warehousePickUp" type="wsg:NoInput"/>
+            </xsd:choice>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>

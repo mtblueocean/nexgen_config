@@ -1,0 +1,62 @@
+<style>
+    input[type="number"]::-webkit-outer-spin-button,
+    input[type="number"]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+    input[type="number"] {
+        -moz-appearance: textfield;
+    }
+</style>
+
+
+ <form class="form-horizontal" id="fields" role ="form">
+<div class="row" ng-show="formData.type.131300 == 'true'">
+    <h2>13 1300 Rate Card</h2>
+    <div class="col-md-6">
+       
+            <div class="form-group">
+               <label for="1800Qty" class="control-label col-sm-4">1800 Quantity</label>
+                <div class="col-sm-4">
+                    <input type="number" class="form-control" id="1800Qty" ng-model="formData.131300.1800">               
+                </div>           
+            </div>
+            <div class="form-group">
+                <label for="1300Qty" class="control-label col-sm-4">1300 Quantity</label>
+                 <div class="col-sm-4">
+                     <input type="number" class="form-control" id="1300Qty" ng-model="formData.131300.1300">               
+                 </div>           
+            </div>
+            <div class="form-group">
+                <label for="13Qty" class="control-label col-sm-4">13 Quantity</label>
+                 <div class="col-sm-4">
+                     <input type="number" class="form-control" id="13Qty" ng-model="formData.131300.13">               
+                 </div>           
+            </div>
+            <div class="form-group">
+                <label for="term" class="control-label col-sm-4">Term</label>
+                 <div class="col-sm-4">
+                     <select ng-model="formData.131300.term" >
+                         <option ng-selected="true" value ="60">60 Months</option>
+                         <option value ="48">48 Months</option>
+                         <option value ="36">36 Months</option>
+                         <option value ="24">24 Months</option>                         
+                     </select>  
+                  
+                 </div>           
+            </div>
+            
+          
+    </div>
+   
+</div>
+     <div class="row" ng-show="formData.type.rental == 'true'">
+         Form Test Data./!
+         
+     </div>
+  <div class= "form-group">
+                <div class ="col-sm-10 pull-right">
+                    <button class="btn btn-success" type ="submit" id="save"  ng-click="load(formData)">Load</button>          
+                </div>
+            </div>
+        </form>

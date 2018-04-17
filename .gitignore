@@ -1,0 +1,7 @@
+public_html/assets/files
+composer.lock
+nexgen_config/vendor/*
+public_html/public_html.zip
+nexgen_config/app/config/database.php
+logs/*
+public_html/assets/.DS_Store

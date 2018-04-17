@@ -1,0 +1,113 @@
+<style>
+    @page {
+        sheet-size : A4;
+        margin: 4%;   
+        odd-footer-name: html_pagesFooter;
+    }           
+    
+    div.pages {
+        page: pages;
+    } 
+</style> 
+<link href = "assets/css/form.css" rel='stylesheet' type='text/css'>
+<div class="preview-{{index}}" ng-repeat="(index, item) in items['voice_cap'] track by $index">
+    <div class ="pageBreaker">
+        <table style="width:100%">
+            <tr>
+                <td colspan="3"><img  width = 250 height = 70 src ="assets/images/logo.png" ></td>
+                <td colspan="3" class="cardTitle">NEXGEN VOICE RATE CARD</td>
+            </tr>
+            <tr>
+                <td colspan="6"> </td>
+            </tr>
+            <tr>
+                <td colspan="6" class="planTitle">NBF Cap (Business Focus)</td>  
+            </tr>
+            <tr class="plan-row">
+                <td colspan="6" class="planCategory">{{formData.comLocation['voice_cap'][index]}},{{formData.comSuburb['voice_cap'][index]}},{{postcode=formData.comZipCode['voice_cap'][index]}}</td>
+            </tr>
+            <tr class="rate font-grey">
+                <td colspan='2' >NBF Cap {{voiceCap.cap[formData.voiceStd[index]]}}</td>
+                <td colspan='2' class="colorless normal form-data"><b>{{formData.voiceStd[index]}} Channels</b></td> 
+                 <td colspan='2' class="form-data">${{voiceCap.rate[formData.voiceStd[index]]}} international calls included per month</td>
+            </tr> 
+            <tr class="rate font-grey" ng-if="formData.voiceFaxToEmail[index]">
+                <td colspan='2'>Fax to Email</td>
+                <td colspan='2' class="colorless normal form-data"><b>Quantity : {{formData.voiceFaxQty[index]}}</b></td> 
+                <td colspan='2' class="form-data">${{voiceCap.fToE}}  per month, per fax</td>
+            </tr>
+            <!-- <tr class="rate font-grey"  ng-if="formData.voiceMobility[index]">
+                <td colspan='2'>Mobility</td>
+                <td colspan='2' class="colorless normal form-data"><b>Users : {{formData.voiceMobQty[index]}}</b></td> 
+                <td colspan='2' class="form-data">${{voiceCap.mob}}  per month, per user</td>
+            </tr> -->
+            <tr ng-if="formData.dID[index]" class="rate font-grey">
+                <td colspan='2'>Direct in Dials</td>
+                <td colspan='2' class="colorless normal form-data"><b>{{formData.dID[index]}} X Direct in Dial numbers</b></td> 
+                <td colspan='2'>${{voiceCap.dID[formData.dID[index]]}}  per month</td>
+            </tr>
+            <tr class="less-padding black">
+                <td class="title less-padding" colspan="2">Destination</td>
+                <td class="title less-padding" colspan="2"></td>
+                <td class="title less-padding" colspan="2">Call Rates</td>
+            </tr>
+            <tr class="desti-row">
+                <td class="destination-business grey" colspan="2">Line rental</td>
+                <td class='grey included' colspan='2'></td>
+                <td class="included grey" colspan="2">***INCLUDED***</td>
+            </tr>
+            <tr class="desti-row">
+                <td class="destination-business " colspan="2">Local Calls</td>
+                <td class='included' colspan='2'></td>
+                <td class="included " colspan="2">***INCLUDED***</td>
+            </tr>
+            <tr class="desti-row">
+                <td class="destination-business grey" colspan="2">National Calls</td>
+                <td class='grey included' colspan='2'></td>
+                <td class="included grey" colspan="2">***INCLUDED***</td>
+            </tr>
+            <tr class="desti-row">
+                <td class="destination-business " colspan="2">Calls to Australian Mobiles</td>
+                <td class='included' colspan='2'></td>
+                <td class="included " colspan="2">***INCLUDED***</td>
+            </tr>
+            <tr class="desti-row">
+                <td class="destination-business grey" colspan="2">Calls to 1300</td>
+                <td class='grey included' colspan='2'></td>
+                <td class="included grey" colspan="2">***INCLUDED***</td>
+            </tr>
+            <tr class="desti-row">
+                <td class="destination-business " colspan="2">International Calls</td>
+                <td class='included' colspan='2'></td>
+                <td class="included " colspan="2">Full list available on request</td>
+            </tr>
+            <tr class="less-padding">
+                <td class="planTitle" colspan="6"> Minimum Monthly Charges / Discounts 
+                </td>
+            </tr>
+            <tr class="summary summary-midband">
+                <td class="discountVoiceField" >Monthly Rate Plan</td>
+                <td class="discountVoiceItem"><b>
+                    ${{roundVal(voiceCap.total[index])}} Per Mth</b>
+                </td>
+                <td class="discountVoiceField" >Monthly Plan Discount</td>
+                <td class="discountVoiceItem"><b>${{formData.bFCapDiscount[index]}} Per Mth</b></td>
+                <td class="discountVoiceField" >Term</td>
+                <td class="termItem">
+                    &nbsp;&nbsp;<b>{{formData.aBillingTerm}} Months</b>
+                </td>  
+            </tr>
+        </table>
+        <p class="TAC">
+            <b>Focus Cap Terms and Conditions</b><br />
+            All Prices are exclusive of GST. Nexgen <b>Business Focus (NBF) Call inclusions : Local; national calls ; mobile calls ; 13/1300 calls ; </b>Nexgen Business Focus Cap rates only apply once we have ported your services onto the Nexgen Business Network. Prior to the porting of your services you will be charged standard Off Net Rates. Delivery of our Nexgen Business Focus product has a standard delivery timeframe of 6-8 weeks commencing after completion of phone system installation. Nexgen offnet calls are charged in <b>30 second increments.</b> Flag fall of 20 cents applies only to the off-net lines attached to the accounts, excluding local calls. <b>All other services will be charged in accordance with the standard Nexgen Australia Off -Net Rates; Local calls are charged a flat $0.14. National calls $0.18, calls to Mobile $0.35, Calls to 13/ 1300 are charged at $0.45 per call. Voice lines only will be ported to NBF. Analogue Devices such as alarm, eftpos may not be able to be ported.</b> The Nexgen Business Focus plan is not for use by <b>outbound call centres.</b> Nexgen Business Network has a minimum 5 channel requirement. Maximum Plan discount is $50 per channel per month. Nexgen will only apply
+            any plan fee discounts upon settlement of your account .<b> All discounts expire at the end of the term.</b> Existing Telephone lines that need to be ported must be identified on the Nexgen Telephone Application. Monthly rate plan Discounts will only apply once services have been ported to Nexgen Business Focus Network. All other services will be charged in accordance with the our Off-Net Rates. Any PSTN or Analogue service that do not port to Nexgen Busin ess Network will be billed at $39.95.<b> Nexgen BRI is charged at $99.85 per month, Nexgen PRI 10 is charged $439.99 per month, PRI 20 is $870.00 per month, PRI 30 is $1279.99 per month ex GST.</b> Nexgen Business Network Cap plans have a <b>mandatory Direct in dial of 10 numbers which is charged at $9.99.</b> Line hunt will be charged at <b>$3.95 per channel per month</b> . We may withdraw your Nexgen Cap plan at any time by giving you at least 30 days notice in writing. Relocation of service(s) or Cancellation of any service prior to the minimum term will incur Early Te rmination fees.
+            Please refer to clause 15.5 of the Nexgen Application for Early Termination Calculation. ADSL 2+ and IP Midband s available in selected coverage areas only. ADSL 2+ Lite & Midband unlimited may be terminated if Nexgen deems your downloads to be excessive, abusive and / or unlawful. ADSL 2+ and Midband speeds advertised above are an<b> Up to speed.</b> These speeds may vary due to a number of factors; Eg: distance from the local telephone exchange. Professional Installation charge, if selected will be added to the phone bill . Nexgen provides 5 emails at $0. Any additional emails supplied can be purchased at $10 per month per 5 users. This can only be purchased in 5 user blocks. Nexgen Australia will provide a Mail box space of a 100MB.
+            Ex cess Usage on the Nexgen Office Broadband plans is charged at 7c per MB. Nexgen static IP defaults at one per client. Additional static IP's are charged at $8 per IP. Nexgen Australia will d eliver the service to the site only. Your IT person is required to complete the connection
+            of the broadband service at your site, and the customer is liable for all and any charges associated with the use of their IT person. ADSL 2+ Lite & Midband minimum term is 36 months. Early Termination Fees apply. Please refer to clause 15.5 of the Nexgen Application and for full Terms and Conditions .<b> Delivery of all the above services is dependant on, capacity and infrastructure availability and dependant on the available copper pairs on your lead in. It is the customers responsibility t o have enough copper pairs from your MDF to your comms room to deliver Midband and Nexgen Business Focus services .</b> Please refer to nexgen.com.au for full terms and conditions.
+        </p>
+        <htmlpagefooter name='pagesFooter'>   
+            <ng-include src="'templates/forms/card_footer.html'" ng-init="location=formData.comLocation['voice_cap'][index];suburb=formData.comSuburb['voice_cap'][index];postcode=formData.comZipCode['voice_cap'][index]"></ng-include>
+        </htmlpagefooter>
+    </div>
+</div>

@@ -1,0 +1,1662 @@
+
+<style>
+    input[type="number"]::-webkit-outer-spin-button,
+    input[type="number"]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+    input[type="number"] {
+        -moz-appearance: textfield;
+    }
+
+    #errorType {
+            display:none;
+            color:red;
+    }
+
+    .group-headers {
+        color : red;
+        margin-top: 20px;
+    }
+    .voicePlans {
+      //  border-right : 1px  groove #676A6C;
+
+    }
+</style>
+
+
+<div class="ibox">
+    <div>
+       <h2 class="text-white">Form Wizard</h2>
+        <form class = "form-horizontal wizard-big" id = "formData">
+            <h1>Forms</h1>
+            <fieldset>
+                   <p id ="errorType">*Please select one form</p>     
+                
+                <div class="row">
+                    <h3> Finance Application</h3>
+                    <div class="form-group col-md-5">
+                        <div class="col-sm-4">
+                            <label>Rental Application</label>
+                        </div>
+                        <div class="col-sm-8">
+                            <div class="onoffswitch tick">                          
+                                 <input type="checkbox" name="formTypes" class="finance onoffswitch-checkbox" 
+                                        ng-model="formData.type.rental" ng-checked="formData.type.rental==true"
+                                       ng-true-value="true" ng-false-value="false" ng-click="showSchedule(formData.type.rental,formData.type.leasing)" id = "rental">                       
+                                 <label class="onoffswitch-label" for="rental">
+                                         <span class="onoffswitch-inner"></span>
+                                         <span class="onoffswitch-switch tickswitch-switch"></span>
+                                 </label>
+                             </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-7">
+                        <div class="col-sm-3">
+                            <label>Leasing Application</label>
+                        </div><div class="col-sm-2">
+                            <div class="onoffswitch tick">
+                                <input type="checkbox" name="formTypes" class="finance onoffswitch-checkbox" 
+                                       ng-model="formData.type.leasing" ng-checked="formData.type.leasing==true" 
+                                       ng-true-value="true" ng-false-value="false" ng-click="showSchedule(formData.type.leasing,formData.type.rental)" id = "leasing">                          
+                                <label class="onoffswitch-label" for="leasing">
+                                         <span class="onoffswitch-inner"></span>
+                                         <span class="onoffswitch-switch tickswitch-switch"></span>
+                                 </label>
+                             </div>
+                        </div>
+                    </div>
+                </div>
+                 
+                   <div class="row col-md-12" ng-if="showSch" style="margin-bottom:20px;">                        
+                        <h3>Schedule of goods</h3>
+                        <div class="row rentalGoods">
+                            <div class="col-md-2">
+                                    <div class="form-group">
+                                        <div class="col-xs-6">
+                                            <label class="control-label">Quantity</label>
+                                        </div>                                            
+                                        <div class ="col-xs-6">
+                                            <input type="number" class ="qunatity form-control">
+                                        </div>
+                                    </div>           
+                            </div>
+                              <div class="col-md-4">
+                                    <div class="form-group">
+                                        <div class="col-xs-4">
+                                            <label class="control-label">Description</label>
+                                        </div>
+                                        <div class ="col-xs-8">
+                                            <input type="text" class ="desc form-control">
+                                        </div>
+                                    </div>           
+                            </div>
+                             <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label class="control-label col-xs-4">Item Number</label>
+                                        <div class ="col-xs-8">
+                                            <input type="number" class ="itemNo form-control">
+                                        </div>
+                                    </div>           
+                            </div>
+                             <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label class="control-label col-xs-4">Serial no.</label>
+                                        <div class ="col-xs-8">
+                                            <input type="number" class ="serNo form-control">
+                                        </div>
+                                    </div>           
+                            </div>                             
+                        </div>
+                         <div class="col-md-4">
+                                <button class="btn btn-primary addGoodsRental" ng-click="addRentalGoods()">Add + </button> 
+                         </div>
+                </div>
+                 <div class="row">
+                    <h3> Order Spec</h3>
+                    <div class="form-group col-md-4">
+                        <div class="col-sm-8">
+                        <label>Single Order Spec</label>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="onoffswitch tick">
+                                <input type="checkbox" name="formTypes" ng-model="formData.type.singleOrder"
+                                       ng-true-value="true" ng-false-value="false" 
+                                       ng-checked="formData.type.singleOrder==true"
+                                       class="orderSpec onoffswitch-checkbox"
+                                       id = "singleOrder">
+                                <label class="onoffswitch-label" for="singleOrder">
+                                         <span class="onoffswitch-inner"></span>
+                                         <span class="onoffswitch-switch tickswitch-switch"></span>
+                                 </label>
+                            </div>
+                        </div>
+                    </div>
+                <!--    <div class="form-group col-md-4">
+                        <label for="multiOrder" class="control-label">Multi Site Order Spec</label>
+                        <div class="onoffswitch tick">
+                                <input type="checkbox" name="formTypes" ng-checked="formData.type.multiOrder"
+                                       class="orderSpec onoffswitch-checkbox"
+                                       id = "multiOrder">
+                                <label class="onoffswitch-label" for="multiOrder">
+                                     <span class="onoffswitch-inner"></span>
+                                     <span class="onoffswitch-switch tickswitch-switch"></span>
+                                </label>
+                        </div>                         
+                    </div>
+                -->
+
+                </div>
+                
+             <!--   
+                <div class="row">
+                    <h3> Rate Cards</h3>
+                  
+                        <div class="form-group col-md-4">
+                             <input type="checkbox" name="formTypes"  id = "nbfStandard">
+                             <label for="nbfStandard" class="control-label">NBF - Standard</label>
+                        </div>
+                        <div class="form-group col-md-4">  
+                             <input type="checkbox"  name="formTypes"  id = "nbfUntim5">
+                             <label for="nbfUntim5" class="control-label">NBF - Untimed 5-12</label>
+                        </div>
+                        <div class="form-group col-md-4">   
+                             <input type="checkbox" name="formTypes" id = "nbfUntim12">
+                             <label for="nbfUntimed12" class="control-label">NBF - Untimed 14-25</label>
+                        </div>
+                        <div class="form-group col-md-4">  
+                             <input type="checkbox" name="formTypes"  id = "nbsStandard">
+                             <label for="nbsStandard" class="control-label">NBS - Standard</label>
+                        </div>
+                        <div class="form-group col-md-4">     
+                             <input type="checkbox" name="formTypes"  id = "nbsUntimed">
+                             <label for="nbsUntimed" class="control-label">NBS - Unlimited</label>
+                        </div>
+                    
+                        <div class="form-group col-md-4">
+                            <input type="checkbox" name="formTypes"   id = "office">
+                            <label for ="office" class="control-label">Nexgen Office</label>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <input type="checkbox" name="formTypes" class="rateCards" id = "131300">
+                            <label for ="131300" class="control-label">13, 1300 & 1800 Rate Card</label>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <input type="checkbox" name="formTypes" class="rateCards" id = "131300D">
+                            <label for ="131300D" class="control-label">13, 1300 & 1800 Discounts Rate Card</label>
+                        </div>
+                                    
+                </div>
+                <div class="row">
+                    <h3>Broadband Rate Cards </h3>
+                    <div class="form-group col-md-4">
+                        <input type="checkbox" name ="formTypes" ng-model="formData.type.broadband" ng-true-value="true" ng-false-value="false" id ="broadband">
+                        <label for="broadband" class="control-label">Broadband</label>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <input type="checkbox" name ="formTypes" ng-model="formData.type.midband" ng-true-value="true" ng-false-value="false" id ="midband">
+                        <label for="midband" class="control-label">Midband</label>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <input type="checkbox" name ="formTypes" ng-model="formData.type.airtime" ng-true-value="true" ng-false-value="false" id ="airtime">
+                        <label for="airtime" class="control-label">Airtime Only</label>
+                    </div>                    
+                </div>     
+              -->  
+            <!--    <div class="row">
+                    <h3>Mobile Rate Cards</h3>
+                    <div class="form-group col-md-4">
+                        <label  >Mobile Mega Rate Card</label>
+                        <div class="onoffswitch tick"> 
+                            <input type="checkbox" name ="formTypes"
+                                   class="onoffswitch-checkbox"  ng-model="formData.type.mobileMega"
+                                   ng-true-value="true" ng-false-value="false"
+                                   ng-checked="formData.type.mobileMega==true"
+                                   id ="mobileMega">
+                          
+                            <label class="onoffswitch-label" for="mobileMega">
+                                     <span class="onoffswitch-inner"></span>
+                                     <span class="onoffswitch-switch tickswitch-switch"></span>
+                            </label>
+                         </div>                        
+                    </div>
+                    
+                    <div class="form-group col-md-4">
+                         <label>Mobile Unlimited Rate Card</label>
+                        <div class="onoffswitch tick">
+                            <input type="checkbox" name ="formTypes"
+                                   class = "onoffswitch-checkbox" 
+                                   ng-model="formData.type.mobileUnl" ng-true-value="true"
+                                   ng-checked="formData.type.mobileUnl==true"
+                                   ng-false-value="false" id ="mobileUnl">
+                       
+                            <label class="onoffswitch-label" for="mobileUnl">
+                                     <span class="onoffswitch-inner"></span>
+                                     <span class="onoffswitch-switch tickswitch-switch"></span>
+                                </label>
+                        </div>                       
+                    </div>
+                </div>
+            -->
+                <div class="row">
+                    <h3>Voice Rate Cards</h3>
+                    <div class="col-md-4">
+                        <div class="form-group">     
+                            <div class="col-sm-8">
+                                <label >Business Focus Cap Plan</label>
+                            </div><div class="col-sm-4">
+                                <div class="onoffswitch tick">
+                                  <input type="checkbox" name ="formTypes" ng-model="formData.type.voiceCap"
+                                         class = "onoffswitch-checkbox" ng-checked="formData.type.voiceCap==true"
+                                         ng-true-value="true" ng-false-value="false"
+                                         id ="voiceCap">
+                                  <label class="onoffswitch-label" for="voiceCap">
+                                           <span class="onoffswitch-inner"></span>
+                                           <span class="onoffswitch-switch tickswitch-switch"></span>
+                                  </label>
+                                </div>
+                            </div>
+                       </div>
+                      <div class="row voicePlans" ng-if="formData.type.voiceCap">  
+                        <div class="form-group"><b>Business Focus cap plan options</b></div>
+                        <div class="form-group">
+                            <div class="col-xs-3">
+                                <label for="voiceChannel" class="control-label">Channel</label>  
+                            </div>
+                            <div class="col-xs-5">
+                                 <select class ="reAssign from-control" id="voiceChannel" ng-model="formData.voiceStd">
+                                  <option value ="3" ng-selected='true' required>3 Channels $50 International Calls</option>
+                                  <option value ="5">5 Channels $150 International Calls</option>
+                                  <option value ="6">6 Channels $170 International Calls</option>
+                                  <option value ="8">8 Channels $210 International Calls</option>
+                                  <option value ="10">10 Channels $300 International Calls</option>
+                                  <option value ="12">12 Channels $350 International Calls</option>
+                                  <option value ="14">14 Channels $400 International Calls</option>
+                                  <option value ="16">16 Channels $450 International Calls</option>
+                                  <option value ="18">18 Channels $500 International Calls</option>
+                                  <option value ="20">20 Channels $600 International Calls</option>
+                                   <option value ="25">25 Channels $800 International Calls</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-2">
+                                <label >Fax to Email</label> 
+                            </div>
+                            <div class="col-xs-3">
+                                   <div class="onoffswitch tick">
+                                    <input type="checkbox" name ="voiceCap" 
+                                        ng-model= "formData.voiceFaxToEmail"
+                                        ng-checked="formData.voiceFaxToEmail==true"
+                                        ng-true-value=true ng-false-value=false 
+                                        class = "onoffswitch-checkbox" id ="voiceFaxToEmail">
+                                    <label class="onoffswitch-label" for ="voiceFaxToEmail">
+                                        <span class="onoffswitch-inner"></span>
+                                        <span class="onoffswitch-switch tickswitch-switch"></span>
+                                    </label>
+                                   </div>                                
+                             </div>
+                            <span ng-if="formData.voiceFaxToEmail">
+                              <div class="col-xs-2">
+                                <label for ="voiceFaxQty" class="control-label"> Qty</label>
+                              </div>
+                                <div class=" col-xs-3">
+                                    <input type="number" size="4" id="voiceFaxQty" class ="form-control"
+                                       ng-model="formData.voiceFaxQty" ng-checked="formData.voiceFaxQty==true">
+                                </div>
+                            </span>
+                        </div>
+                        <div class="form-group">
+                                <div class="col-xs-2">                                    
+                                   <label>Mobility</label>
+                                </div>
+                                <div class="col-xs-3">
+                                   <div class="onoffswitch tick">
+                                        <input type="checkbox" name ="voiceCap" 
+                                               ng-model= "formData.voiceMobility"
+                                               ng-checked="formData.voiceMobility==true"
+                                               ng-true-value=true ng-false-value=false
+                                               class = "onoffswitch-checkbox" id ="voiceMobility">
+                                        <label class="onoffswitch-label" for ="voiceMobility">
+                                            <span class="onoffswitch-inner"></span>
+                                            <span class="onoffswitch-switch tickswitch-switch"></span>
+                                        </label>
+                                   </div>
+                                    
+                                </div>
+                              <span ng-if="formData.voiceMobility">
+                                    <div class="col-xs-2">
+                                        <label for ="voiceMobQty" class="control-label">Users</label>
+                                    </div>
+                                    <div class=" col-xs-3">
+                                        <input type="number" size="4" id="voiceMobQty" class ="form-control"
+                                               ng-model="formData.voiceMobQty">
+                                    </div>
+                              </span>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-5">
+                              <label for="voiceChannel" class="control-label">Direct in Dials</label>  
+                            </div>
+                            <div class="col-xs-5">
+                                 <select class ="reAssign pull-right from-control" id="dID" ng-model="formData.dID">
+                                    <option value ="10" ng-selected='true' required>10 x Direct in dial numbers</option>
+                                    <option value ="20">20 x Direct in dial numbers</option>
+                                    <option value ="50">50 x Direct in dial numbers</option>
+                                    <option value ="100">100 X Direct in dial numbers</option>                                  
+                                </select>
+                            </div>                            
+                        </div>
+                    </div>
+                    </div>
+                    <div class="col-md-4"> 
+                        <div class="form-group">
+                            <div class="col-sm-8">
+                                <label>Business Focus Standard</label>
+                            </div><div class="col-sm-4">
+                                <div class="onoffswitch tick">
+                                    <input type="checkbox" name ="formTypes"
+                                           class = "onoffswitch-checkbox" 
+                                           ng-model="formData.type.focusStandard" 
+                                           ng-checked="formData.type.focusStandard==true" 
+                                           ng-true-value="true" ng-false-value="false"
+                                           id ="focusStandard">
+
+                                    <label class="onoffswitch-label" for="focusStandard">
+                                             <span class="onoffswitch-inner"></span>
+                                             <span class="onoffswitch-switch tickswitch-switch"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row voicePlans" ng-if="formData.type.focusStandard">    
+                            <div class="form-group"><b>Business Focus Standard plan options</b></div>
+                            <div class="form-group">
+                                <div class="col-xs-4">
+                                    <label for="voiceStdChannel" class="control-label">Channel</label>  
+                                </div>
+                                <div class="col-xs-6">
+                                     <select class ="reAssign from-control pull-right" id="voiceStdChannel" ng-model="formData.voiceStdChannel">
+                                      <option value ="3" ng-selected='true' required>3 Channels $149</option>
+                                      <option value ="5">5 Channels $99</option>
+                                      <option value ="6">6 Channels $219</option>
+                                      <option value ="10">8 Channels $249</option>                                
+                                      <option value ="20">20 Channels $299</option>
+                                       <option value ="30">25 Channels $349</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-xs-2"> 
+                                        <label>Fax to Email</label>
+                                </div>
+                                <div class="col-xs-3">
+                                    <div class="onoffswitch tick">
+                                        <input type="checkbox" name ="voiceStd" 
+                                               ng-model="formData.voiceStdFaxToEmail" 
+                                               ng-checked="formData.voiceStdFaxToEmail==true"
+                                               ng-true-value="true" ng-false-value="false"
+                                               class = "onoffswitch-checkbox" id ="voiceStdFaxToEmail">
+                                        <label class="onoffswitch-label" for ="voiceStdFaxToEmail">
+                                            <span class="onoffswitch-inner"></span>
+                                            <span class="onoffswitch-switch tickswitch-switch"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                                 <span ng-if="formData.voiceStdFaxToEmail">
+                                    <div class="col-xs-2">
+                                       <label for ="voiceStdFaxQty" class="control-label"> Qty</label>
+                                     </div>
+                                   <div class=" col-xs-3">
+                                       <input type="number" size="4" id="voiceStdFaxQty" class ="form-control"
+                                              ng-model="formData.voiceStdFaxQty">
+                                   </div>
+                                 </span>
+
+                            </div>
+                            <div class="form-group">
+                                <div class="col-xs-2">
+                                    <label>Mobility</label>
+                                </div>
+                                <div class="col-xs-3">
+                                 <div class="onoffswitch tick">
+                                    <input type="checkbox" name ="voiceStd" 
+                                           ng-model="formData.voiceStdMobility"
+                                           ng-checked="formData.voiceStdMobility==true"
+                                           ng-true-value="true" ng-false-value="false" 
+                                           class = "onoffswitch-checkbox" id ="voiceStdMobility">
+                                     <label class="onoffswitch-label" for ="voiceStdMobility">
+                                        <span class="onoffswitch-inner"></span>
+                                        <span class="onoffswitch-switch tickswitch-switch"></span>
+                                    </label>
+                                 </div>                                    
+                                </div>
+                                  <span ng-if="formData.voiceStdMobility">
+                                    <div class="col-xs-2">
+                                            <label for ="voiceStdMobQty" class="control-label">Users</label>
+                                    </div>
+                                    <div class=" col-xs-3">
+                                            <input type="number" size="4" id="voiceStdMobQty" class ="form-control"
+                                                   ng-model="formData.voiceStdMobQty">
+                                    </div>
+                                  </span>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-xs-4">
+                                  <label for="voiceChannel" class="control-label">Direct in Dials</label>  
+                                </div>
+                                <div class="col-xs-6">
+                                     <select class ="reAssign from-control pull-right"
+                                             id="voiceStdDID" ng-model="formData.voiceStdDID">
+                                        <option value ="10" ng-selected='true' required>10 x Direct in dial numbers</option>
+                                        <option value ="20">20 x Direct in dial numbers</option>
+                                        <option value ="50">50 x Direct in dial numbers</option>
+                                        <option value ="100">100 X Direct in dial numbers</option>                                  
+                                    </select>  
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <div class="col-sm-8">
+                                <label>Complete Office </label>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="onoffswitch tick">
+                                    <input type="checkbox" name ="formTypes" ng-model="formData.type.completeOffice"
+                                           ng-checked="formData.type.completeOffice==true"
+                                           class = "onoffswitch-checkbox" ng-true-value="true"
+                                           ng-false-value="false" id ="completeOffice">
+                                    <label class="onoffswitch-label" for="completeOffice">
+                                             <span class="onoffswitch-inner"></span>
+                                             <span class="onoffswitch-switch tickswitch-switch"></span>
+                                    </label>                               
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" ng-if="formData.type.completeOffice">   
+                            <div class="form-group"><b>Complete office options</b></div>
+                            <div class="form-group">
+                                <div class="col-xs-7">
+                                    <label for="voiceCompAnalouge">Nexgen Office Analogue  $39.95 p/ mth</label></div>
+                                <div class="col-xs-3">
+                                    <input type="number" class="form-control" size ="4" ng-model="formData.voiceCompAnalouge" id ="voiceCompAnalouge"></div>
+                            </div>
+                            <div class="form-group">  
+                                <div class="col-xs-7"><label for="voiceCompBri">Nexgen Office BRI $99.85 p/ mth</label></div>
+                                <div class="col-xs-3"><input type="number" class="form-control" size ="4" ng-model="formData.voiceCompBri" id ="voiceCompBri"></div>
+                            </div>
+                            <div class="form-group">      
+                                  <div class="col-xs-7"><label for="voiceCompPri">Nexgen Office PRI</label></div>
+                                <div class="col-xs-3"><input type="number" class="form-control" size ="4" ng-model="formData.voiceCompPri" id ="voiceCompPri"></div>
+                            </div>     
+
+                            <div class="form-group">
+                                 <div class="col-xs-2">  
+                                    <label >Fax to Email</label>
+                                 </div>
+                                 <div class="col-xs-3">
+                                        <div class="onoffswitch tick">
+                                              <input type="checkbox" name ="voiceComp" 
+                                                     ng-model="formData.voiceCompFaxToEmail" 
+                                                     ng-checked="formData.voiceCompFaxToEmail==true"
+                                                     ng-true-value="true" ng-false-value="false"
+                                                     class = "onoffswitch-checkbox" id ="voiceCompFaxToEmail">
+                                              <label class="onoffswitch-label" for ="voiceCompFaxToEmail">
+                                                  <span class="onoffswitch-inner"></span>
+                                                  <span class="onoffswitch-switch tickswitch-switch"></span>
+                                              </label>                                          
+                                        </div>
+                                  </div>
+                                <span ng-if="formData.voiceCompFaxToEmail">
+                                    <div class="col-xs-2">
+                                        <label for ="voiceCompFaxQty" class="control-label"> Qty</label>
+                                      </div>
+                                    <div class=" col-xs-3">
+                                        <input type="number" size="4" id="voiceCompFaxQty" class ="form-control"
+                                               ng-model="formData.voiceCompFaxQty">
+                                    </div>
+                                </span>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-xs-2"> 
+                                 <label>Mobility</label>
+                                </div>
+                                <div class="col-xs-3">
+                                  <div class="onoffswitch tick">
+                                    <input type="checkbox" name ="voiceStd"
+                                           ng-model="formData.voiceCompMobility"
+                                           ng-checked="formData.voiceCompMobility==true"
+                                           ng-true-value="true" ng-false-value="false" 
+                                           class = "onoffswitch-checkbox" id ="voiceCompMobility">
+                                     <label class="onoffswitch-label" for ="voiceCompMobility">
+                                        <span class="onoffswitch-inner"></span>
+                                        <span class="onoffswitch-switch tickswitch-switch"></span>
+                                     </label>                                    
+                                  </div>
+                                </div>
+                                <span ng-if="formData.voiceCompMobility">
+                                    <div class="col-xs-2">
+                                        <label for ="voiceCompMobQty" class="control-label"> Qty</label>
+                                      </div>
+                                    <div class=" col-xs-3">
+                                        <input type="number" size="4" id="voiceCompMobQty" class ="form-control"
+                                               ng-model="formData.voiceCompMobQty">
+                                    </div>
+                                </span>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-xs-5">
+                                  <label for="voiceCompDID" class="control-label">Direct in Dials</label>  
+                                </div>
+                                <div class="col-xs-3">
+                                     <select class ="reAssign from-control" id="voiceCompDID" ng-model="formData.voiceCompDID">
+                                        <option value ="10" ng-selected='true' required>10 x Direct in dial numbers</option>
+                                        <option value ="20">20 x Direct in dial numbers</option>
+                                        <option value ="50">50 x Direct in dial numbers</option>
+                                        <option value ="100">100 X Direct in dial numbers</option>                                  
+                                    </select> 
+                                </div>
+                            </div>
+                        </div> 
+                    </div>                   
+                </div>
+                <div class="row">
+                    <h3>Data Rate Cards</h3>
+                    <div class= "col-md-4">
+                        
+                        <div class="form-group">
+                            <div class="col-sm-8">
+                                <label>ADSL @+ Monthly Plans</label>
+                            </div><div class="col-sm-4">
+                                <div class="onoffswitch tick">
+                                 <input type="checkbox" name ="formTypes"
+                                        ng-model="formData.type.adsl2" 
+                                        ng-checked="formData.type.adsl2==true"
+                                        ng-true-value="true"
+                                        class = "onoffswitch-checkbox" 
+                                        ng-false-value="false" id ="adsl2">
+                                  <label class="onoffswitch-label" for="adsl2">
+                                           <span class="onoffswitch-inner"></span>
+                                           <span class="onoffswitch-switch tickswitch-switch"></span>
+                                  </label>                          
+                                </div>
+                            </div>
+                       </div>
+                        <div class="row" ng-if="formData.type.adsl2">
+                            <div class="form-group">
+                                <label for="adsl2Plans" class="control-label">ADSL2+ Monthly Plans</label> 
+                                    <select class ="reAssign from-control" id="adsl2Plans" ng-model="formData.adsl2Plans">
+                                        <option value ="lite" ng-selected='true' required>ADSL 2 + LITE $79</option>
+                                        <option value ="businessUnlimited" ng-selected='true' required>ADSL 2 + BUSINESS GRADE unlimited $109 </option>
+                                        <option value ="business100" ng-selected='true' required>ADSL 2 + BUSINESS GRADE 100GB $109 </option>
+                                        <option value ="business200" ng-selected='true' required>ADSL 2 + BUSINESS GRADE 200GB $129</option>                                                                     
+                                   </select> 
+                            </div>
+                        </div>
+                            
+                    </div>
+                     <div class="col-md-4">
+                        <div class="form-group">
+                            <div class="col-sm-8">
+                                <label >IP Midband Monthly Plans</label>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="onoffswitch tick">
+                                  <input type="checkbox" name ="formTypes"
+                                         ng-model="formData.type.ipMidband" 
+                                           ng-checked="formData.type.ipMidband==true"
+                                         ng-true-value="true" ng-false-value="false"
+                                         class = "onoffswitch-checkbox" id ="ipMidband">
+                                   <label class="onoffswitch-label" for="ipMidband">
+                                           <span class="onoffswitch-inner"></span>
+                                           <span class="onoffswitch-switch tickswitch-switch"></span>
+                                   </label>                           
+                                </div>
+                            </div>
+                        </div>
+                         <div class="row" ng-if="formData.type.ipMidband">
+                            <div class="form-group">
+                                <label for="ipMidbandPlans" class="control-label">Ip Midband Monthly Plans</label> 
+                                    <select class ="reAssign from-control" id="ipMidbandPlans" ng-model="formData.ipMidbandPlans">
+                                        <option value ="10" ng-selected='true' required>Up to 10/10 Mbps**    TPG</option>
+                                        <option value ="T20" ng-selected='true' required>Up to 20/20 Mbps**   TPG   </option>
+                                        <option value ="400" ng-selected='true' required>Up to 400/400 Mbps**   TPG  </option>
+                                        <option value ="4" ng-selected='true' required>4Mbps/4Mbps*</option>     
+                                        <option value ="8" ng-selected='true' required>8Mbps/8Mbps*</option> 
+                                        <option value ="18" ng-selected='true' required>18Mbps/18Mbps*</option> 
+                                        <option value ="20" ng-selected='true' required>20Mbps/20Mbps*</option> 
+                                        <option value ="30" ng-selected='true' required>30Mbps/30Mbps*</option> 
+                                        <option value ="40" ng-selected='true' required>40Mbps/40Mbps*</option> 
+                                                  
+                                   </select> 
+                            </div>
+                             <div class="form-group">
+                                <label for="ipMidbandDownload" class="control-label">Download Allowance</label> 
+                                    <select class ="reAssign from-control" id="ipMidbandDownload" ng-model="formData.ipMidbandDownload">
+                                        <option value ="50" ng-selected='true' required>50GB</option>
+                                        <option value ="100" ng-selected='true' required>100GB</option>
+                                        <option value ="200" ng-selected='true' required>200GB</option>
+                                        <option value ="300" ng-selected='true' required>300GB</option>     
+                                        <option value ="500" ng-selected='true' required>500GB</option> 
+                                        <option value ="1000" ng-selected='true' required>1000GB</option> 
+                                        <option value ="unlimited" ng-selected='true' required>Unlimited**</option>    
+                                   </select> 
+                            </div>
+                        </div>
+                     </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <div class="col-sm-8">
+                                <label>NBN Monthly Plans</label>
+                            </div><div class="col-sm-4">
+                                <div class="onoffswitch tick">
+                                  <input type="checkbox" name ="formTypes"
+                                         ng-model="formData.type.nbnMonthly"
+                                         ng-checked="formData.type.nbnMonthly==true" 
+                                         class = "onoffswitch-checkbox" 
+                                         ng-true-value="true" ng-false-value="false" id ="nbnMonthly">
+                                   <label class="onoffswitch-label"  for="nbnMonthly">
+                                           <span class="onoffswitch-inner"></span>
+                                           <span class="onoffswitch-switch tickswitch-switch"></span>
+                                   </label>
+                                </div>  
+                            </div>
+                          <div class="row" ng-if="formData.type.nbnMonthly">
+                                <div class="form-group">
+                                    <label for="nbnPlans" class="control-label">NBN Monthly Plans</label> 
+                                        <select class ="reAssign from-control" id="nbnPlans" ng-model="formData.nbnPlans">
+                                            <option value ="255" ng-selected='true' required>NBN 25Mbps/5Mbps*</option>
+                                            <option value ="2510" ng-selected='true' required>NBN 25Mbps/10Mbps*</option>
+                                            <option value ="5020" ng-selected='true' required>NBN 50Mbps/20Mbps*</option>
+                                            <option value ="10040" ng-selected='true' required>NBN 100Mbps/40Mbps*</option>                                            
+                                       </select> 
+                                </div>
+                                 <div class="form-group">
+                                    <label for="nbnDownload" class="control-label">Download Allowance</label> 
+                                        <select class ="reAssign from-control" id="nbnDownload" ng-model="formData.nbnDownload">
+                                            <option value ="100" ng-selected='true' required>100GB</option>
+                                            <option value ="200" ng-selected='true' required>200GB</option>
+                                            <option value ="300" ng-selected='true' required>300GB</option>     
+                                            <option value ="500" ng-selected='true' required>500GB</option> 
+                                            <option value ="1000" ng-selected='true' required>1000GB</option> 
+                                       </select> 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                   
+                </div>
+             
+                
+                        
+                        
+             
+                
+                
+            </fieldset>
+            
+            <h1>Company Details</h1>
+            <fieldset>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class= "form-group">
+                            <label for ="cName" class="control-label col-xs-4">Company Name</label>
+                            <div class ="col-xs-8">
+                                <input type="text" required class ="form-control" id="cName" ng-model="formData.cName"  pattern ="[a-zA-Z]{3,}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                       <div class= "form-group">                          
+                                <label for="dateVal"  class="control-label col-xs-4">Date</label>
+                                <div class="col-xs-8">
+                                    <div class="input-group date">
+                                        <input class="form-control ng-pristine ng-valid valid" required id="dateVal" type="text">
+                                            <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-calendar"></span>
+                                            </span>
+                                    </div>
+                                </div>
+                                
+                           
+                        </div>
+                    </div>
+                </div>
+                
+                 <div class="row">
+                    <div class="col-md-6">
+                        <div class= "form-group">
+                            <label for ="cAbn" class="control-label col-xs-4">ABN</label>
+                            <div class ="col-xs-8">
+                                <input type="number" minlength ="9" required class ="form-control" id="cAbn" ng-model="formData.cAbn">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="cTrading" class="control-label col-xs-4">Trading Name</label>
+                            <div class="col-xs-8">
+                                <input type="text" required class ="form-control" id="cTrading" ng-model="formData.cTrading">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class= "form-group">
+                            <label for ="dName" class="control-label col-xs-4">Authority Name</label>
+                            <div class ="col-xs-8">
+                                <input type="text" required class =" onlyAlpha reAssign form-control" id="dName" ng-model="formData.dName"  >
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="cPosition" class="control-label col-xs-4">Position</label>
+                            <div class="col-xs-8">
+                                 <select class ="reAssign form-control" id="cPosition" ng-model="formData.cPosition">
+                                    <option value ="Director" ng-selected='true' required>Director</option>
+                                    <option value ="Partner">Partner</option>
+                                    <option value ="Owner">Owner</option>
+                                    <option value ="Sec. Manager">Sec. Manager</option>                                    
+                                </select>
+                            </div>
+                        </div>
+                    </div>                   
+                </div>
+                 <div class="row">
+                    <div class="col-md-6">
+                        <div class= "form-group">
+                            <label for ="dSName" class="control-label col-xs-4">Second Authority Name</label>
+                            <div class ="col-xs-8">
+                                <input type="text" class =" onlyAlpha reAssign form-control" id="dSName" ng-model="formData.dSName"  >
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="cSPosition" class="control-label col-xs-4">Position</label>
+                            <div class="col-xs-8">
+                                 <select class ="reAssign form-control" id="cSPosition" ng-model="formData.cSPosition">
+                                     <option></option>
+                                    <option value ="Director">Director</option>
+                                    <option value ="Partner">Partner</option>
+                                    <option value ="Owner">Owner</option>
+                                    <option value ="Sec. Manager">Sec. Manager</option>                                    
+                                </select>
+                            </div>
+                        </div>
+                    </div>                   
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class= "form-group">
+                            <label for ="cTel" class="control-label col-xs-4">Telephone</label>
+                            <div class ="col-xs-8">
+                                <input type="tel"  required minlength="9" class ="reAssign tel form-control" id="cTel" ng-model="formData.cTel"  >
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="cFax" class="control-label col-xs-4">Fax</label>
+                            <div class="col-xs-8">
+                                <input type="tel" required minlength="9" class="reAssign tel form-control" id="cFax" ng-model="formData.cFax">
+                            </div>
+                        </div>
+                    </div>                   
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class= "form-group">
+                            <label for ="cContact" class="control-label col-xs-4">Contact Person</label>
+                            <div class ="col-xs-8">
+                                <input type="text" required  class ="onlyAlpha reAssign form-control" id="cContact" ng-model="formData.cContact"  >
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="cMobile" class="control-label col-xs-4">Mobile</label>
+                            <div class="col-xs-8">
+                                <input type="tel" required minlength="9" class="reAssign tel form-control" id="cMobile" ng-model="formData.cMobile">
+                            </div>
+                        </div>
+                    </div>                   
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class= "form-group">
+                            <label for ="cEmail" class="control-label col-xs-4">Email</label>
+                            <div class ="col-xs-8">
+                                <input type="email" required class ="form-control" id="cEmail" ng-model="formData.cEmail"  >
+                                *Proposal will be sent to this address.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="cWebsite" class="control-label col-xs-4">Website</label>
+                            <div class="col-xs-8">
+                                <input type="url" class="validUrl reAssign form-control" id="cWebsite" ng-model="formData.cWebsite">
+                            </div>
+                        </div>
+                    </div>                   
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class= "form-group">
+                            <label for ="cAddress" class="control-label col-xs-4">Address</label>
+                            <div class ="col-xs-8">
+                                <input type="text" class ="form-control" required id="cAddress" ng-model="formData.cAddress"  >
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="cSuburb" class="control-label col-xs-4">Suburb</label>
+                            <div class="col-xs-8">
+                                <input type="text" required class="form-control" id="cSuburb" ng-model="formData.cSuburb">
+                            </div>
+                        </div>
+                    </div>                   
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class= "form-group">
+                            <label for ="cState" class="control-label col-xs-4">State</label>
+                            <div class ="col-xs-8">
+                               
+                                <select class ="form-control" id="cState" ng-model="formData.cState">
+                                    <option value ="ACT" >ACT</option>
+                                    <option value ="NSW" ng-selected='true' required>NSW</option>
+                                    <option value ="NT">NT</option>
+                                    <option value ="QLD">QLD</option>
+                                    <option value ="TAS">TAS</option>
+                                    <option value ="VIC">VIC</option>
+                                    <option value ="WA">WA</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="cPostCode" class="control-label col-xs-4">Post Code</label>
+                            <div class="col-xs-8">
+                                <input type="number" required maxlength="4" class="form-control" id="cPostCode" ng-model="formData.cPostCode">
+                            </div>
+                        </div>
+                    </div>                   
+                </div>
+                
+                   <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label col-xs-4">Installation Address</label>
+                                 
+                            <div class="col-xs-6">
+                                <label>Same as Company</label>
+                                <div class="onoffswitch tick">
+                                    <input type="checkbox" id="sameAddress"                                  
+                                   class = "onoffswitch-checkbox">
+                                   <label class="onoffswitch-label"  for="sameAddress">
+                                     <span class="onoffswitch-inner"></span>
+                                     <span class="onoffswitch-switch tickswitch-switch"></span>
+                                   </label>
+                                </div>     
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class= "form-group">
+                            <label for ="pIAddress" class="control-label col-xs-4">Address</label>
+                            <div class ="col-xs-8">
+                                <input type="text" class ="form-control" id="pIAddress" ng-model="formData.pIAddress"  >
+                            </div>                            
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="pISuburb" class="control-label col-xs-4">Suburb</label>
+                            <div class="col-xs-8">
+                                <input type="text" class="form-control" id="pISuburb" ng-model="formData.pISuburb">
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class= "form-group">                            
+                            <label for ="pIState" class="control-label col-xs-4">State</label>
+                            <div class ="col-xs-8">                                
+                                <select class ="form-control" id="pIState" ng-model="formData.pIState">
+                                    <option value ="ACT">ACT</option>
+                                    <option value ="NSW" ng-selected='true' required>NSW</option>
+                                    <option value ="NT">NT</option>
+                                    <option value ="QLD">QLD</option>
+                                    <option value ="TAS">TAS</option>
+                                    <option value ="VIC">VIC</option>
+                                    <option value ="WA">WA</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="pIPostcode" class="control-label col-xs-4">Post Code</label>
+                            <div class="col-xs-8">
+                                <input type="number" maxlength="4" class="form-control" id="pIPostcode" ng-model="formData.pIPostcode">
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                        <div class= "form-group">
+                           <label for ="wName" class="control-label col-xs-4">Witness Name</label>
+                           <div class ="col-xs-8">
+                               <input type="text" required class ="onlyAlpha form-control" id="wName"  ng-model="formData.wName">
+                           </div>
+                       </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class= "form-group">
+                           <label for ="wPosition" class="control-label col-xs-4">Witness Position</label>
+                           <div class ="col-xs-8">
+                               <input type="text" required class ="onlyAlpha reAssign form-control" id="wPosition"  ng-model="formData.wPosition">
+                           </div>
+                       </div>
+                    </div>
+                  </div>
+                
+            </fieldset>
+            <h1>Personal Information</h1>
+            <fieldset>
+                 
+                   <div class="row">                        
+                    <div class="col-md-6">
+                        <div class= "form-group">
+                            <label for ="pName" class="control-label col-xs-4">Full Name</label>
+                            <div class ="col-xs-8">
+                                <input type="text" class ="onlyAlpha  reAssign form-control" id="pName" ng-model="formData.pName"  >
+                            </div>
+                        </div>
+                    </div>                    
+                   </div>                     
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="pAddress" class="control-label col-xs-4">Residential Address</label>
+                                <div class="col-xs-8">
+                                    <input type="text" class="form-control" id="pAddress" ng-model="formData.pAddress">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                        <div class= "form-group">
+                            <label for ="pSuburb" class="control-label col-xs-4">Suburb</label>
+                            <div class ="col-xs-8">
+                                <input type="text" class ="form-control" id="pSuburb" ng-model="formData.pSuburb"  >
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+               
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class= "form-group">
+                            <label for ="pState" class="control-label col-xs-4">State</label>
+                            <div class ="col-xs-8">                                
+                                <select class ="form-control reAssign" id="pState" ng-model="formData.pState">
+                                    <option value ="ACT">ACT</option>
+                                    <option value ="NSW" ng-selected='true' required>NSW</option>
+                                    <option value ="NT">NT</option>
+                                    <option value ="QLD">QLD</option>
+                                    <option value ="TAS">TAS</option>
+                                    <option value ="VIC">VIC</option>
+                                    <option value ="WA">WA</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="pPostcode" class="control-label col-xs-4">Post Code</label>
+                            <div class="col-xs-8">
+                                <input type="number" maxlength="4" class="form-control" id="pPostcode" ng-model="formData.pPostcode">
+                            </div>
+                        </div>
+                    </div>                   
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class= "form-group">
+                            <label for ="pPhone" class="control-label col-xs-4">Phone</label>
+                            <div class ="col-xs-8">
+                                <input type="tel" minLength="10" class ="tel form-control" id="pPhone" ng-model="formData.pPhone"  >
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class= "form-group">                          
+                                <label for="pBirth" class="control-label col-xs-4">Date of Birth</label>
+                                <div class="col-xs-8">
+                                    <div class="input-group date">
+                                            <input class="form-control ng-pristine ng-valid valid" id="pBirth" required type="text">
+                                            <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-calendar"></span>
+                                            </span>
+                                    </div>
+                                </div>
+                           
+                        </div>
+                    </div>
+                </div>
+                   <div class= "row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="pLicense" class="control-label col-xs-4">Drivers licence number</label>
+                            <div class="col-xs-8">
+                                <input type="text" class="form-control" id="pLicense" ng-model="formData.pLicense">
+                            </div>
+                        </div>
+                    </div>         
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="pExpiry" class="control-label col-xs-4">Drivers license Expiry</label>
+                            <div class="col-xs-8">
+                               <div class="input-group date">                                            
+                                           <input class="form-control ng-pristine reAssign ng-valid valid" id="pExpiry" required type="text">
+                                            <span class="input-group-addon">
+                                               <span class="glyphicon glyphicon-calendar"></span>
+                                           </span>
+                                   </div>
+                            </div>
+                        </div>
+                    </div>                   
+                </div>
+                <div class='row'>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="pLicState" class="control-label col-xs-4">State of Issue</label>
+                              <div class ="col-xs-8">                                
+                                <select class ="form-control reAssign" id="pLicState" ng-model="formData.pLicState">
+                                    <option value ="ACT">ACT</option>
+                                    <option value ="NSW" ng-selected="true" selected>NSW</option>
+                                    <option value ="NT">NT</option>
+                                    <option value ="QLD">QLD</option>
+                                    <option value ="TAS">TAS</option>
+                                    <option value ="VIC">VIC</option>
+                                    <option value ="WA">WA</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>       
+                </div>
+                    
+                <div class="row">                  
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label col-xs-4"> Home Owned</label>                            
+                             
+                            <div class="col-xs-8">
+                                   <div class="onoffswitch tick">
+                                    <input type="checkbox" name="howned" class="onoffswitch-checkbox" 
+                                           ng-model="formData.pOwned" ng-checked="formData.pOwned==true"
+                                           ng-true-value="true" ng-false-value="false" id ="howned">                          
+                                    <label class="onoffswitch-label" for="howned">
+                                             <span class="onoffswitch-inner"></span>
+                                             <span class="onoffswitch-switch tickswitch-switch"></span>
+                                     </label>
+                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                     <div class="col-md-6">
+                        <div class= "form-group">
+                            <label for ="pValue" class="control-label col-xs-4">Value</label>
+                            <div class ="col-xs-8">
+                                <input type="text" class ="dollarSign reAssign form-control" id="pValue" ng-model="formData.pValue"  >
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="pMortgage" class="control-label col-xs-4">Mortgage</label>
+                            <div class="col-xs-8">
+                                <input type="text" class="dollarSign reAssign form-control" id="pMortgage" ng-model="formData.pMortgage">
+                            </div>
+                        </div>
+                    </div> 
+                </div>  
+                
+                      <div class="row">    <h3>Second Guarantor Information </h3></div>
+                   <div class="row">                     
+                    <div class="col-md-6">
+                        <div class= "form-group">
+                            <label for ="g2Name" class="control-label col-xs-4">Full Name</label>
+                            <div class ="col-xs-8">
+                                <input type="text" class ="onlyAlpha  reAssign form-control" id="g2Name" ng-model="formData.g2Name"  >
+                            </div>
+                        </div>
+                    </div>     
+                    <div class="col-md-6">
+                        <div class= "form-group">
+                            <label for ="g2ABN" class="control-label col-xs-4">ABN</label>
+                            <div class ="col-xs-8">
+                                <input type="number" minlength="9" class ="form-control" id="g2ABN" ng-model="formData.g2ABN"  >
+                            </div>
+                        </div>
+                    </div>  
+                   </div>                     
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="g2Address" class="control-label col-xs-4">Address</label>
+                                <div class="col-xs-8">
+                                    <input type="text" class="form-control" id="g2Address" ng-model="formData.g2Address">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                        <div class= "form-group">
+                            <label for ="g2Suburb" class="control-label col-xs-4">Suburb</label>
+                            <div class ="col-xs-8">
+                                <input type="text" class ="form-control" id="g2Suburb" ng-model="formData.g2Suburb"  >
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+               
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class= "form-group">
+                            <label for ="g2State" class="control-label col-xs-4">State</label>
+                            <div class ="col-xs-8">                                
+                                <select class ="reAssign form-control" id="g2State" ng-model="formData.g2State">
+                                    <option value ="ACT">ACT</option>
+                                    <option value ="NSW"  selected  ng-selected="true">NSW</option>
+                                    <option value ="NT">NT</option>
+                                    <option value ="QLD">QLD</option>
+                                    <option value ="TAS">TAS</option>
+                                    <option value ="VIC">VIC</option>
+                                    <option value ="WA">WA</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="g2Postcode" class="control-label col-xs-4">Post Code</label>
+                            <div class="col-xs-8">
+                                <input type="number" minlength="4" maxlength="5" class="form-control" id="g2Postcode" ng-model="formData.g2Postcode">
+                            </div>
+                        </div>
+                    </div>                   
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class= "form-group">                          
+                                <label for="g2Birth" class="control-label col-xs-4">Date of Birth</label>
+                                <div class="col-xs-8">
+                                    <div class="input-group date">
+                                            <input class="form-control ng-pristine reAssign ng-valid valid" id="g2Birth" required type="text">
+                                            <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-calendar"></span>
+                                            </span>
+                                    </div>
+                                </div>
+                           
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="g2License" class="control-label col-xs-4">Drivers license number</label>
+                            <div class="col-xs-8">
+                                <input type="text" class="form-control" id="g2License" ng-model="formData.g2License">
+                            </div>
+                        </div>
+                    </div>                   
+                </div>
+                 <div class="row">
+                    <div class="col-md-6">
+                        <div class= "form-group">
+                            <label for ="g2Phone" class="control-label col-xs-4">Phone</label>
+                            <div class ="col-xs-8">
+                                <input type="tel" maxlength="10" class ="tel form-control" id="g2Phone" ng-model="formData.g2Phone"  >
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="g2Expiry" class="control-label col-xs-4">Expiry</label>
+                            <div class="col-xs-8">
+                                <div class="input-group date">                                            
+                                           <input class="form-control ng-pristine reAssign ng-valid valid" id="g2Expiry" required type="text">
+                                            <span class="input-group-addon">
+                                               <span class="glyphicon glyphicon-calendar"></span>
+                                           </span>
+                                   </div>
+                             
+                            </div>
+                        </div>
+                    </div>                   
+                </div>
+                <div class="row">
+                    <div class="col-md-6">                         
+                        <div class="form-group">
+                            <label class="control-label col-xs-4">Home Owned</label>
+                            <div class="col-xs-8">
+                                <div class="onoffswitch tick">
+                                    <input type="checkbox" name="hownedg2" class="onoffswitch-checkbox" 
+                                           ng-model="formData.g2Owned" ng-checked="formData.g2Owned"
+                                           ng-true-value="true" ng-false-value="false" id ="hownedg2">                          
+                                    <label class="onoffswitch-label" for="hownedg2">
+                                             <span class="onoffswitch-inner"></span>
+                                             <span class="onoffswitch-switch tickswitch-switch"></span>
+                                     </label>
+                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                     <div class="col-md-6">
+                        <div class= "form-group">
+                            <label for ="g2Value" class="control-label col-xs-4">Value</label>
+                            <div class ="col-xs-8">
+                                <input type="text" class ="dollarSign reAssign form-control" id="g2Value" ng-model="formData.g2Value"  >
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="g2Mortgage" class="control-label col-xs-4">Mortgage</label>
+                            <div class="col-xs-8">
+                                <input type="text" class="dollarSign reAssign form-control" id="g2Mortgage" ng-model="formData.g2Mortgage">
+                            </div>
+                        </div>
+                    </div> 
+                
+            </fieldset>
+            <h1>Account Information</h1>
+            <fieldset>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class= "form-group">
+                            <label for ="aIndustry" class="control-label col-xs-4">Industry</label>
+                            <div class ="col-xs-8">
+                                 <select class ="reAssign form-control" id="aIndustry" ng-model="formData.aIndustry">
+                                    <option value ="AUTOMOTIVE" ng-selected='true' required>AUTOMOTIVE</option>
+                                    <option value ="CONSTRUCTION">CONSTRUCTION </option>
+                                    <option value ="EDUCATION">EDUCATION</option>
+                                    <option value ="GOVERNMENT">GOVERNMENT</option>
+                                    <option value ="HOSPITALITY">HOSPITALITY</option>
+                                    <option value ="MANUFACTURING">MANUFACTURING</option>
+                                    <option value ="NGO">NGO</option>
+                                    <option value ="PROFESSIONAL OFFICE">PROFESSIONAL OFFICE</option>
+                                    <option value ="RETAIL">RETAIL</option>
+                                    <option value ="SERVICE">SERVICE</option>
+                                    <option value ="WHOLESALE">WHOLESALE</option>
+                                    <option value ="OTHER">OTHER</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="aAccountant" class="control-label col-xs-4">Accountant</label>
+                            <div class="col-xs-8">
+                                <input type="text" class="onlyAlpha reAssign form-control" id="aAccountant" ng-model="formData.aAccountant">
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class= "form-group">
+                            <label for ="aTradeRef" class="control-label col-xs-4">Trade Reference</label>
+                            <div class ="col-xs-8">
+                                <input type="text" class ="form-control" id="aTradeRef" ng-model="formData.aTradeRef"  >
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="aTel" class="control-label col-xs-4">Telephone</label>
+                            <div class="col-xs-8">
+                                <input type="tel" maxlength="10" class="tel reAssign form-control" id="aTel" ng-model="formData.aTel">
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+                 <div class="row">
+                    <div class="col-md-6">
+                        <div class= "form-group">
+                            <label for ="aCPerson" class="control-label col-xs-4">Trade Reference Contact</label>
+                            <div class ="col-xs-8">
+                                <input type="text" class ="onlyAlpha  reAssign form-control" id="aCPerson" ng-model="formData.aCPerson"  >
+                            </div>
+                        </div>
+                    </div>
+                     <div class="col-md-6">
+                        <div class= "form-group">
+                            <label for ="aYear" class="control-label col-xs-4">Years Established</label>
+                            <div class ="col-xs-8">
+                                  <select class ="form-control reAssign" id="aYear" ng-model="formData.aYear">
+                                    <option value ="1" ng-selected='true' required>1</option>
+                                    <option value ="2">2</option>
+                                    <option value ="3">3</option>
+                                    <option value ="4">4</option>     
+                                    <option value ="5">5</option>
+                                    <option value ="6+">6+</option>  
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                 </div>
+                <div class="row">
+                    
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="aNemp" class="control-label col-xs-4">Number of Employees</label>
+                            <div class="col-xs-8">
+                                <input type="number" class="form-control" id="aNemp" ng-model="formData.aNemp">
+                            </div>
+                        </div>
+                    </div>     <div class="col-md-6">
+                       <div class= "form-group">                          
+                                <label for="aCommenceDate"  class="control-label col-xs-4">Commencement Date</label>
+                                <div class="col-xs-8">
+                                    <div class="input-group date">
+                                        <input class="form-control reAssign ng-pristine ng-valid valid" required id="aCommenceDate" ng-model="formData.aCommenceDate" type="text">
+                                            <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-calendar"></span>
+                                            </span>
+                                    </div>
+                                </div>
+                                
+                           
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class= "form-group">
+                            <label for ="aInsurer" class="control-label col-xs-4">Insurer</label>
+                            <div class ="col-xs-8">
+                                <input type="text" class ="form-control" id="aInsurer" ng-model="formData.aInsurer"  >
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="aPolicy" class="control-label col-xs-4">Policy Number</label>
+                            <div class="col-xs-8">
+                                <input type="text" class="form-control" id="aPolicy" ng-model="formData.aPolicy">
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+                 <div class="row">
+                    <div class="col-md-6">
+                        <div class= "form-group">
+                            <label for ="aPayment" class="control-label col-xs-4">Rental Payment</label>
+                            <div class ="col-xs-8">
+                                <input type="text" class ="dollarSign reAssign form-control" id="aPayment" ng-model="formData.aPayment"  >
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="aTerm" class="control-label col-xs-4">Term</label>
+                            <div class="col-xs-8">
+                                <select ng-model="formData.aTerm" class='reAssign'  id='aTerm'>
+                                    <option ng-selected="true" selected value ="60">60 Months</option>
+                                    <option value ="48">48 Months</option>
+                                    <option value ="36">36 Months</option>
+                                    <option value ="24">24 Months</option>                         
+                                </select>  
+                  
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+                <div class="row">
+                     <div class="col-md-6">
+                        <div class= "form-group">
+                            <label for ="aTerm" class="control-label col-xs-4">Payment Period</label>
+                            <div class ="col-xs-8">
+                                <select ng-model="formData.aPeriod" class='reAssign' id='aPeriod'>
+                                    <option ng-selected="true" selected value ="Monthly">Monthly</option>
+                                    <option value ="Quarterly">Quarterly</option>
+                                    <option value ="Weekly">Weekly</option>                 
+                                </select>  
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class= "form-group">
+                            <label for ="aFinInst" class="control-label col-xs-4">Financial Institution</label>
+                            <div class ="col-xs-8">
+                                <input type="text" class ="form-control" id="aFinInst" ng-model="formData.aFinInst"  >
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class= "form-group">
+                            <label for ="aFinBranch" class="control-label col-xs-4">Branch</label>
+                            <div class ="col-xs-8">
+                                <input type="text" class ="form-control" id="aFinBranch" ng-model="formData.aFinBranch"  >
+                            </div>
+                        </div>
+                    </div>                   
+                </div>
+                <div class="row">
+                     <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="aAccName" class="control-label col-xs-4">Account Name</label>
+                            <div class="col-xs-8">
+                                <input type="text" class="form-control" id="aAccName" ng-model="formData.aAccName">
+                            </div>
+                        </div>
+                    </div> 
+                    <div class="col-md-6">
+                        <div class= "form-group">
+                            <label for ="aBsb" class="control-label col-xs-4">BSB</label>
+                            <div class ="col-xs-8">
+                                <input type="number" class ="form-control" id="aBsb" ng-model="formData.aBsb"  >
+                            </div>
+                        </div>
+                    </div>                    
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="aAccDetails" class="control-label col-xs-4">Account Number</label>
+                            <div class="col-xs-8">
+                                <input type="number" class="form-control" id="aAccDetails" ng-model="formData.aAccDetails">
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+                 <div class="row">                    
+                         <div class="col-md-6">
+                            <div class= "form-group">
+                                <label for ="aCardType" class="control-label col-xs-4">Card Type</label>
+                                <div class ="col-xs-8">
+                                    <select ng-model="formData.aCardType" class='reAssign' id='aCardType'>
+                                        <option ng-selected="true" selected value ="Bank Card">Bank Card</option>
+                                        <option value ="Mastercard">Mastercard</option>
+                                        <option value ="visa">visa</option>                 
+                                    </select>  
+                                </div>
+                            </div>
+                        </div>
+                     <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="aCardNumber" class="control-label col-xs-4">Credit Card Number</label>
+                            <div class="col-xs-8">
+                                <input type="text" maxlength="19" minlength="18" 
+                                       class="form-control ccNo" id="aCardNumber" ng-model="formData.aCardNumber">
+                            </div>
+                        </div>
+                    </div>                     
+                </div>
+                <div class="row">
+                     <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="aCardName" class="control-label col-xs-4">Name on Card</label>
+                            <div class="col-xs-8">
+                                <input type="text" class="form-control" id="aCardName" ng-model="formData.aCardName">
+                            </div>
+                        </div>
+                    </div>    
+                      <div class="col-md-6">
+                        <div class="form-group">
+                             <label for="aCardExpiry" class="control-label col-xs-4">Card Expiry</label>
+                                <div class="col-xs-8">
+                                    <div class="input-group date">
+                                            <input class="form-control reAssign ng-pristine ng-valid valid" id="aCardExpiry" required type="text">
+                                            <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-calendar"></span>
+                                            </span>
+                                    </div>
+                                </div>
+                        </div>
+                    </div> 
+                </div>
+            
+             <div class= "form-group">
+                <div class ="col-xs-10 pull-right">
+                    <button class="btn btn-success"  id="save" style="display:none" type="submit" ng-click="load(formData)">Load</button>
+                   <!-- <button class="btn btn-success" type="submit" ng-click="reset()">Reset</button> -->
+                </div>
+            </div>
+            </fieldset>
+           </form>
+         <br/>
+                   <br/>
+                   <br/> <br/>
+                   <br/>
+                   <br/> <br/>
+                  
+</div>
+               
+</div>
+<script>
+        $(document).ready(function() {
+            
+            
+           $("#wizard").steps();          
+            $("#formData").steps({
+                bodyTag: "fieldset",
+                onStepChanging: function (event, currentIndex, newIndex)
+                {
+                    if(currentIndex >= 0)
+                    {
+                      var nForms = $('input[name=formTypes]:checked').length;
+                      if ( nForms == 0) {
+                        $("#errorType").show();
+                        return false;
+                      } else {
+                          $("#errorType").hide();
+                          return true;
+                      }
+                        
+                    }
+                    // Always allow going backward even if the current step contains invalid fields!
+                    if (currentIndex > newIndex)
+                    {
+                        return true;
+                    }
+
+                    // Forbid suppressing "Warning" step if the user is to young
+                    if (newIndex === 4)
+                    {
+                        return false;
+                    }
+
+                    var form = $(this);
+
+                    // Clean up if user went backward before
+                    if (currentIndex < newIndex)
+                    {
+                        // To remove error styles
+                        $(".body:eq(" + newIndex + ") label.error", form).remove();
+                        $(".body:eq(" + newIndex + ") .error", form).removeClass("error");
+                    }
+
+                    // Disable validation on fields that are disabled or hidden.
+                    form.validate().settings.ignore = ":disabled,:hidden";
+
+                    // Start validation; Prevent going forward if false
+                    return form.valid();
+                },
+                onStepChanged: function (event, currentIndex, priorIndex)
+                {
+                    
+                    // Suppress (skip) "Warning" step if the user is old enough.
+                   /*
+                    if (currentIndex === 2)
+                    {
+                        $(this).steps("next");
+                    }
+
+                    // Suppress (skip) "Warning" step if the user is old enough and wants to the previous step.
+                    if ((currentIndex === 2 && priorIndex === 3) || (currentIndex === 3 && priorIndex === 4))
+                    {
+                        $(this).steps("previous");
+                    }
+                    */
+                },
+                onFinishing: function (event, currentIndex)
+                {
+                    var form = $(this);
+					
+					//$('#ProposalCtrl').scope().save();
+					//angular.element(document.getElementById('ProposalCtrl')).scope().$apply();
+					//angular.element('#ProposalCtrl').scope().save();
+					
+					$( "#buttomSaveNgh" ).click();
+					$("#save").click();
+
+                    // Disable validation on fields that are disabled.
+                    // At this point it's recommended to do an overall check (mean ignoring only disabled fields)
+                    form.validate().settings.ignore = ":disabled";
+
+                    // Start validation; Prevent form submission if false
+                    return form.valid();
+                },
+                onFinished: function (event, currentIndex)
+                {
+                    var form = $(this);
+
+                    // Submit form input
+                    //form.submit();
+                }
+            }).validate({
+                        errorPlacement: function (error, element)
+                        {
+                            element.before(error);
+                        },
+                        rules: {
+                            confirm: {
+                                equalTo: "#password"
+                            }
+                        }
+                    });
+       });
+    </script>

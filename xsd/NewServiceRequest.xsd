@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://www.aapt.com.au/FrontierLink/xsd"
+            xmlns="http://www.w3.org/2001/XMLSchema"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:wsg="http://www.aapt.com.au/FrontierLink/xsd"
+            elementFormDefault="qualified">
+
+    <xsd:include schemaLocation="elements/CustomerReference.xsd" />
+    <xsd:include schemaLocation="Contact.xsd" />
+    <xsd:include schemaLocation="ServiceDetailsList.xsd" />
+
+    <xsd:element name="NewServiceRequest" type="wsg:NewServiceRequest" />
+
+    <xsd:complexType name="NewServiceRequest">
+        <xsd:sequence>
+            <xsd:element name="orderContact" type="wsg:Contact">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en">A complex definition of details relating to Contact responsible for ownership of the Service. Mandatory details of Name and Phone Number are required.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="installationContact" type="wsg:Contact" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en">A complex definition of details relating to Contact responsible for installation and building access at the site. Mandatory details of Name and Phone Number are required. Installation Contact phone must be an Australian number.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="customerReference" type="wsg:CustomerReference">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en">A customer assigned unique identifier for each Service instance requested</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="serviceDetailsList" type="wsg:ServiceDetailsList">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en">A complex definition of details pertaining to the product</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>

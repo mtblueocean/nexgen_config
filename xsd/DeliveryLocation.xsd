@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://www.aapt.com.au/FrontierLink/xsd"
+            xmlns="http://www.w3.org/2001/XMLSchema"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:wsg="http://www.aapt.com.au/FrontierLink/xsd"
+            elementFormDefault="qualified">
+
+    <xsd:include schemaLocation="SiteAddress.xsd" />
+    
+    <xsd:include schemaLocation="elements/Attention.xsd" />
+    <xsd:include schemaLocation="elements/DeliveryInstructions.xsd" />
+    <xsd:include schemaLocation="elements/OrganisationName.xsd" />
+    <xsd:include schemaLocation="elements/SiteSequenceNumber.xsd" />
+    
+
+    <xsd:complexType name="DeliveryLocation">
+        <xsd:sequence>
+           	<xsd:element name="siteSequenceNumber" type="wsg:SiteSequenceNumber" />
+            <xsd:element name="attention" type="wsg:Attention" />
+            <xsd:element name="businessName" type="wsg:OrganisationName" />
+            <xsd:element name="deliveryInstructions" type="wsg:DeliveryInstructions" />
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>

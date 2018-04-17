@@ -1,0 +1,52 @@
+<table class="full-width fixed-width cap-plan-table">  
+    <tr class="dataRow">
+        <td class ="itemTitle">Company Name:</td>
+        <td class ="place-holder form-data"  id = "cmpyName">{{formData.cName}}</td>
+        <td></td>                         
+        <td class ="itemTitle">Date:</td>
+        <td class ="place-holder form-data" id ="date" >{{formData.dateVal}}</td>     
+    </tr>
+    <tr class="dataRow">
+        <td class ="itemTitle">Address:</td>
+        <td class ="place-holder form-data"  colspan=4 id = "iAddress">{{location}}</td>
+    </tr>
+    <tr class="dataRow">
+        <td class ="itemTitle">Suburb:</td>
+        <td class ="place-holder form-data" id = "iSuburb">{{suburb}}</td>
+        <td></td>
+        <td class ="itemTitle" >Postcode:</td>
+        <td class ="place-holder" id ="postCode">{{postcode}}</td>                               
+    </tr>
+    <tr class="dataRow">
+        <td class =" itemTitle" >Name:</td>
+        <td class =" place-holder form-data"  id = "name">{{formData.dName}}</td>
+        <td></td>
+        <td class =" itemTitle" >Witness Name:</td>
+        <td class =" place-holder form-data" id ="witnesName">{{formData.wName}}</td>  
+    </tr>
+    <tr class="dataRow">
+        <td class ="itemTitle">Signature:</td>
+        <td class ="signatureImg signItem" id ="voice-std-sg-{{index}}" ng-click='sign("voice-std-sg-" + index)'>
+            <b ng-if="isSigned('voice-std-sg')" class="greenText">{{ getSignedTime('voice-std-sg') }}</b>
+            <b ng-if="!isSigned('voice-std-sg') && (!isDraftMode())" class="greenText">Customer Signature here</b>
+        </td>
+        <td></td>
+        <td class ="itemTitle">Witness Signature:</td>
+        <td class="signatureImg signItem" id="voice-std-wt-{{index}}" ng-click='sign("voice-std-wt-" + index)' >
+            <img class='imported' ng-src="{{userSign}}" ng-if="userSign" height="36" height=36 ></img>
+            <div class='signTimeStamp' style='font-weight:300;font-size:8pt' ng-if="userSign">{{getCurrentDate()}}</div>
+            <span ng-if="!userSign">
+                <span ng-if='!isSigned("voice-std-wt-" + index) && !isDraftMode()'>Witness Signature here</span>
+            </span>
+        </td>    
+    </tr>
+    <tr>
+        <td colspan = "3" class ="company-info">
+            <ng-include src="'templates/forms/rate_card_footer.html'" ></ng-include>
+        </td>
+        <td colspan ="2" class="image-col" style="text-align:right;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <!-- <img class="btm-image" height = 50 width = 200 src = "assets/images/forms/people-working.png"> -->
+        </td>
+    </tr>
+</table>

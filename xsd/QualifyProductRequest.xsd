@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://www.aapt.com.au/FrontierLink/xsd"
+            xmlns="http://www.w3.org/2001/XMLSchema"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:wsg="http://www.aapt.com.au/FrontierLink/xsd"
+            elementFormDefault="qualified">
+
+    <xsd:include schemaLocation="QualifyNationalWholesaleBroadbandProductRequest.xsd" />
+    <xsd:include schemaLocation="QualifyRequestXpressProductRequest.xsd" />
+    <xsd:include schemaLocation="QualifyELanProductRequest.xsd" />
+    <xsd:include schemaLocation="QualifyELineProductRequest.xsd" />
+    <xsd:include schemaLocation="QualifyHomeBroadbandBundleProductRequest.xsd" />
+    <xsd:include schemaLocation="QualifyConsumerBroadbandProductRequest.xsd" />
+
+    <xsd:element name="QualifyProductRequest" type="wsg:QualifyProductRequest" />
+
+    <xsd:complexType name="QualifyProductRequest">
+        <xsd:sequence>
+            <xsd:choice>
+                <xsd:element name="qualifyNationalWholesaleBroadbandProductRequest" type="wsg:QualifyNationalWholesaleBroadbandProductRequest">
+                    <xsd:annotation>
+                        <xsd:documentation xml:lang="en">A complex type capturing required data for National Wholesale Broadband qualification</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
+                <xsd:element name="qualifyRequestXpressProductRequest" type="wsg:QualifyRequestXpressProductRequest">
+                    <xsd:annotation>
+                        <xsd:documentation xml:lang="en">A complex type capturing required data for RequestXpress qualification</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
+                <xsd:element name="qualifyELanProductRequest" type="wsg:QualifyELanProductRequest">
+                    <xsd:annotation>
+                        <xsd:documentation xml:lang="en">A complex type capturing required data for ELan qualification</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
+                <xsd:element name="qualifyELineProductRequest" type="wsg:QualifyELineProductRequest">
+                    <xsd:annotation>
+                        <xsd:documentation xml:lang="en">A complex type capturing required data for ELine qualification</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
+                <xsd:element name="qualifyHomeBroadbandBundleProductRequest" type="wsg:QualifyHomeBroadbandBundleProductRequest">
+                    <xsd:annotation>
+                        <xsd:documentation xml:lang="en">A complex type capturing required data for Home broadband qualification</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
+                <xsd:element name="qualifyConsumerBroadbandProductRequest" type="wsg:QualifyConsumerBroadbandProductRequest">
+                    <xsd:annotation>
+                        <xsd:documentation xml:lang="en">A complex type capturing required data for Consumer broadband qualification</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
+            </xsd:choice>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,119 @@
+<style>
+    @page {
+        sheet-size : A4;
+        margin: 4%;   
+        odd-footer-name: html_pagesFooter;
+    }           
+    
+    div.pages {
+        page: pages;
+    } 
+</style> 
+<link href = "assets/css/form.css" rel='stylesheet' type='text/css'>
+<div class="preview-{{index}}" ng-repeat="(index, item) in items['1300'] track by $index">
+    <div class ="pageBreaker">
+        <table style="width:100%">
+            <tr>
+                <td colspan="2"><img  width = 250 height = 70 src ="assets/images/logo.png" ></td>
+                <td colspan="2" class="cardTitle">NEXGEN DATA RATE CARD</td>
+            </tr>
+            <tr>
+                <td colspan="4" class="planTitle">NEXGEN 13 / 1300 / 1800 RATE CARD</td>  
+            </tr>
+            <tr class="plan-row">
+                <td colspan="4" class="planCategory">{{formData.comLocation['1300'][index]}},{{formData.comSuburb['1300'][index]}},{{postcode=formData.comZipCode['1300'][index]}}</td>
+            </tr>
+            <tr>
+                <th class ="title">Destination</th>
+                <th class ="title">1800</th>
+                <th class ="title">1300</th>
+                <th class ="title">13</th>
+            </tr>
+            <tr>
+                <td class = "destination">Local</td>
+                <td class ="price">$0.10 per minute</td>
+                <td class ="price">$0* <div class="smallText">For the first 10 minutes</div></td>
+                <td class ="price">$0*<div class="smallText">For the first 10 minutes</div></td>
+                
+            </tr>
+            <tr>
+                <td class = "destination">Community</td>
+                <td class ="price" >$0.10 per minute</td>
+                <td class ="price" >$0.10 per minute</td>
+                <td class ="price" >$0.10 per minute</td>
+            </tr>
+            <tr>
+                <td class = "destination">National</td>
+                <td class ="price" >$0.10 per minute</td>
+                <td class ="price" >$0.10 per minute</td>
+                <td class ="price" >$0.10 per minute</td>
+            </tr>
+            <tr>
+                <td class = "destination">Mobile to Fixed</td>
+                <td class ="price">$0.34 per minute</td>
+                <td class ="price">$0.24 per minute</td>
+                <td class ="price">$0.24 per minute</td>
+            </tr>
+            <tr>
+                <td class = "destination">Fixed to Mobile</td>
+                <td class ="price">$0.45 per minute</td>
+                <td class ="price">$0.45 per minute</td>
+                <td class ="price">$0.45 per minute</td>
+            </tr>
+            <tr>
+                <td class = "destination">Mobile to Mobile</td>
+                <td class ="price">$0.45 per minute</td>
+                <td class ="price">$0.45 per minute</td>
+                <td class ="price">$0.45 per minute</td>
+            </tr>
+            <tr>
+                <td class = "destination">Flag fall</td>
+                <td class ="price">$0.05 per call</td>
+                <td class ="price">$0.05 per call</td>
+                <td class ="price">$0.05 per call</td>
+            </tr>
+            <tr>
+                <td class = "destination">Monthly Access</td>
+                <td class ="price">$0* <div class="redText">FREE for 6 months</div></td>
+                <td class ="price">$0* <div class="redText">FREE for 6 months</div></td>
+                <td class ="price">$899.95 per month</td>
+            </tr>
+            <tr>
+                <td class = "destination">New or Existing</td>
+                <td class ="quantity">
+                    <span class="qty-text" ng-if="formData.qt1800new[index]">New</span>
+                    <span class="qty-text" ng-if="!formData.qt1800new[index]">Existing</span>
+                </td>
+                <td class ="quantity">
+                    <span class="qty-text" ng-if="formData.qt1300new[index]">New</span>
+                    <span class="qty-text" ng-if="!formData.qt1300new[index]">Existing</span>
+                </td>
+                <td class ="quantity">
+                    <span class="qty-text" ng-if="formData.qt13new[index]">New</span>
+                    <span class="qty-text" ng-if="!formData.qt13new[index]">Existing</span>
+                </td>
+            </tr>
+            <tr>
+                <td class = "destination">Quantity</td>
+                <td class ="quantity"><span class="qty-text form-data">{{formData.rate131300.qt1800[index]}}</span></td>
+                <td class ="quantity"><span class="qty-text form-data">{{formData.rate131300.qt1300[index]}}</span></td>
+                <td class ="quantity"><span class="qty-text form-data">{{formData.rate131300.qt13[index]}}</span></td>
+            </tr>
+            <tr><td colspan = "4" class ="title">Total Monthly Charges / Discounts</td></tr>
+            <tr>
+                <td colspan = "2"></td>
+                <td class="term">Term</td>
+                <td class="months">                        
+                    <span class="qty-text form-data">{{formData.aBillingTerm}}</span>&nbsp;&nbsp;Months
+                </td>
+            </tr>  
+        </table>
+        <p class="TAC">
+        <b>NEXGEN 13/1300/1800 Terms and Conditions</b><br />
+        All Prices exclude GST. Excluding 1800, 13/1300 Local calls are $0 for the first 10 minutes and then charge at $0.10 per 30 seconds. A flag fall of 5 cents applies, excluding local calls. Nexgen 1300/ 1800 Advantage is billed at $19.99 per month per service ex GST after the 6 months. 13 numbers have an establishment fee of $749. Minimum term of 24 months. Client is required to provide a wholesale account number for any existing 13 / 1300/ 1800 service(s) from the losing carrier prior to the churning of the service to Nexgen. International cost can be provided upon request. Please refer to clause 15.5 of the Nexgen Application for Early Termination Calculation and for full Terms and Conditions. 
+        </p>
+        <htmlpagefooter name='pagesFooter'>   
+            <ng-include src="'templates/forms/card_footer.html'" ng-init="location=formData.comLocation['1300'][index];suburb=formData.comSuburb['1300'][index];postcode=formData.comZipCode['1300'][index]"></ng-include>
+        </htmlpagefooter>
+    </div>
+</div>

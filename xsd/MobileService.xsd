@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://www.aapt.com.au/FrontierLink/xsd"
+            xmlns="http://www.w3.org/2001/XMLSchema"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:wsg="http://www.aapt.com.au/FrontierLink/xsd"
+            elementFormDefault="qualified">
+
+	
+    <xsd:include schemaLocation="PortInNumberMobile.xsd" />
+	<xsd:include schemaLocation="SimDelivery.xsd" />
+	<xsd:include schemaLocation="SiteAddress.xsd" />
+	<xsd:include schemaLocation="CallForwardOptions.xsd" />
+	<xsd:include schemaLocation="InternationalRoamingVoice.xsd" />
+
+    <xsd:include schemaLocation="elements/AccountNumber.xsd" />
+    <xsd:include schemaLocation="elements/AllocateNewNumber.xsd" />
+    <xsd:include schemaLocation="elements/MobileOffer.xsd" />
+    <xsd:include schemaLocation="elements/MobileTelephoneNumber.xsd" />
+    <xsd:include schemaLocation="elements/EnableDisable.xsd" />
+    <xsd:include schemaLocation="elements/InternationalRoamingAction.xsd" />
+    <xsd:include schemaLocation="elements/MobileSimSize.xsd" />
+
+
+    <xsd:complexType name="MobileService">
+        <xsd:sequence>
+            <xsd:element name="accountNumber" type="wsg:AccountNumber">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en">An AAPT assigned unique identifier for each customer</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="mobileOffer" type="wsg:MobileOffer">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en">Mobile offer for mobile service</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="simSize" type="wsg:MobileSimSize" >
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en">What sim size is to be delivered with the order</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="simDelivery" type="wsg:SimDelivery">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en">Delivery and contact details for sim card</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="serviceAddress" type="wsg:SiteAddress">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en">Address provided to emergency services for this service</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:choice>
+                <xsd:element name="mobileServiceNumber" type="wsg:MobileTelephoneNumber" >
+                    <xsd:annotation>
+                        <xsd:documentation xml:lang="en">A mobile telephone number already allocated from AAPT's inventory</xsd:documentation>
+                    </xsd:annotation>
+	            </xsd:element>
+	            <xsd:element name="portInNumberMobile" type="wsg:PortInNumberMobile" >
+                    <xsd:annotation>
+                        <xsd:documentation xml:lang="en">A mobile telephone number that is to be ported in</xsd:documentation>
+                    </xsd:annotation>
+	            </xsd:element>
+	        </xsd:choice>
+	        <xsd:element name="callForwardOptions" type="wsg:CallForwardOptions" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en">Numbers to be used for call forwarding options</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="premiumSMS" type="wsg:EnableDisable" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en">Specify if premium SMS is enabled or disabled - defaults to disabled</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="outGoingInternationalCalls" type="wsg:EnableDisable" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en">Specify if outgoing international calls are enabled or disabled - defaults to enabled"</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="premiumCalls" type="wsg:EnableDisable" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en">Specify if premium calls are enabled or disabled - defaults to disabled</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="incomingCallerID" type="wsg:EnableDisable" minOccurs="0"> 
+                <xsd:annotation> 
+                    <xsd:documentation xml:lang="en">Specify if incoming calls present caller id on handset - defaults to enabled</xsd:documentation> 
+                </xsd:annotation> 
+            </xsd:element> 
+            <xsd:element name="outgoingCallerID" type="wsg:EnableDisable" minOccurs="0"> 
+                <xsd:annotation> 
+                    <xsd:documentation xml:lang="en">Specify if caller ID is sent on outgoing calls - defaults to enabled</xsd:documentation> 
+                </xsd:annotation> 
+            </xsd:element> 
+            <xsd:element name="internationalRoamingVoice" type="wsg:InternationalRoamingVoice" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en">Specify if international roaming for voice is required on this service - defaults to disabled</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="internationalRoamingData" type="wsg:InternationalRoamingAction" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en">Specify if international roaming for data is required on this service - defaults to disabled</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>

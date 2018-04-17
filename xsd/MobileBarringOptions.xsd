@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://www.aapt.com.au/FrontierLink/xsd"
+            xmlns="http://www.w3.org/2001/XMLSchema"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:wsg="http://www.aapt.com.au/FrontierLink/xsd"
+            elementFormDefault="qualified">
+
+    <xsd:include schemaLocation="elements/BarUnbarType.xsd" />
+
+    <xsd:complexType name="MobileBarringOptions">
+        <xsd:sequence>
+            <xsd:element name="suspend" type="xsd:boolean">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en">Suspend customer's ability to override these barring options from handset</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="outGoingInternationalCalls" type="wsg:BarUnbarType" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en">Bar or un-bar outgoing international calls</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="premiumCalls" type="wsg:BarUnbarType" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en">Bar or un-bar premium calls calls</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="premiumSMS" type="wsg:BarUnbarType" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en">Bar or un-bar premium sms</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,611 @@
+
+<div id="ProposalCtrl" ng-controller="ProposalCtrl"></div>
+
+
+<div class="wrapper wrapper-content animated fadeInRight">
+
+<div class="row">
+    <div class="col-lg-12">
+		<div class="ibox">
+					
+			<div class="ibox-content">
+				<h2>
+					Proposal Wizard Form <flash-message></flash-message>
+				</h2>
+				
+
+				<form id="form" action="#" class="wizard-big">
+					<h1>Company</h1>
+					
+					
+					<fieldset>
+						
+						<div class="row">
+							<div class="col-lg-12">
+								<!-- company -->
+								<div class="row">
+									<div class="col-lg-12">
+										<label class="col-sm-3 control-label">Enter Company or Id</label>
+										<div class="col-sm-3">
+											<!-- search -->
+											    <div class="large-padded-row">
+													
+													<div class="padded-row">
+                                                        
+															 
+															 
+														<angucomplete-alt id="companies"
+															  placeholder="Search Companies"
+															  pause="400"
+															  selected-object="proposal.company"
+															  remote-url="http://nexgencorp.azurewebsites.net/api/Companies/"
+															  title-field="id,name"
+															  description-field="id,name"
+															  image-field="id"
+															  initial-value="{{searchStr}}"
+															  input-class="form-control form-control-small"/>	 
+													</div>
+													<div class="" ng-show="selectedPerson">
+														You selected <span class="bold-span">{{selectedPerson.originalObject.name}} {{selectedPerson.originalObject.contact}}</span>
+													</div>
+												</div>
+											<!-- search -->
+										</div>
+										<label class="col-sm-3 control-label">Company</label>
+										<div class="col-sm-3">
+											{{proposal.company.originalObject.name}}
+										</div>								
+									</div>
+								</div>
+								<!-- company -->
+								<div class="hr-line-dashed"></div>	
+								<!-- sales -->
+								<div class="row">	
+									<div class="col-lg-12">	
+										<div class="form-group">
+											<label class="col-sm-3 control-label">Sales Rep</label>
+											<div class="col-sm-3">
+												{{proposal.company.originalObject.sales}}
+											</div>
+											<label class="col-sm-3 control-label">Lead Source</label>
+											<div class="col-sm-3">
+												{{proposal.company.originalObject.leadsource}}
+											</div>
+										</div>	
+									</div>
+								</div>
+								<!-- sep -->
+                                <div class="hr-line-dashed"></div>
+                                <!-- sep -->
+								<div class="row">
+									<div class="col-lg-12">
+										<label class="col-sm-3 control-label">Telemarketers</label>
+										<div class="col-sm-3">
+											{{proposal.company.originalObject.telemarketer}}
+										</div>
+										<label class="col-sm-3 control-label">Winback</label>
+										<div class="col-sm-3">
+											{{proposal.company.originalObject.winback}}
+										</div>
+									</div>									
+								</div>	
+								<!-- sales -->
+                                <div class="hr-line-dashed"></div>
+                                <!-- Other -->
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label">Address</label>
+                                            <div class="col-sm-3">
+                                                {{selectedCompany.originalObject.address}}
+                                            </div>
+                                            <label class="col-sm-3 control-label">Email</label>
+                                            <div class="col-sm-3">
+                                                {{selectedCompany.originalObject.email}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- other -->
+							</div>
+							
+						</div>
+
+					</fieldset>
+					
+					<h1>Hardware</h1>
+					<fieldset>
+						<div class="row">
+							<div class="col-lg-12">
+
+
+								<textarea ng-model="proposal.situation" ></textarea>
+														
+							</div>
+							<div class="col-lg-12">
+									
+								<div class="ibox-title">
+									<h5>Hardware Config <!--{{proposal.sites|json}}--><br>
+									<!--br>
+									{{proposal.products|json}}--></h5>
+									<div class="ibox-tools">
+										<a class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Save" ng-click="addSite()">
+										<i class="fa fa-new"></i> + New Site </a>
+									</div>
+								</div>
+								<div class="ibox-content">
+								
+									
+								
+									<div class="form-group">
+										<!-- panel accordion1 -->
+										
+										
+										<div class="panel-group" id="accordion1">
+												<div class="panel panel-default" ng-repeat="site in proposal.sites" on-finish-render="ngRepeatFinished">
+													<div class="panel-heading">
+														<h5 class="panel-title">
+														<a class="collapsed" data-toggle="collapse" data-parent="#accordion1" href="/proposal/new#collapse{{$index}}">
+															
+														</a> <input type="text" class="form-control m-b" ng-model="site.name"  >
+														</h5>
+													</div>
+													<div id="collapse{{$index}}" class="panel-collapse collapse">
+														<div class="panel-body">
+															<div class="accordion-inner">
+																<!-- panel accordion2 -->
+																<div class="panel-group" id="accordion-{{$index}}">
+																	<div class="panel panel-default" ng-repeat="catf in categories | filter:{parent:1}">
+																		<div class="panel-heading">
+																			<h5 class="panel-title">
+																			<a class="collapsed" data-toggle="collapse" data-parent="#accordion-{{$parent.$index}}" href="/proposal/new#collapse{{catf.id}}{{$parent.$index}}">{{catf.name}}</a>
+																			</h5>
+																		</div>
+																		<div id="collapse{{catf.id}}{{$parent.$index}}" class="panel-collapse collapse">
+																			<div class="panel-body">
+																				<label class="radio-inline" ng-repeat="cats in categories | filter:{parent:catf.id}:true">
+																				<input type="radio" value="{{cats.id}}" ng-change="addRowCatRadio($parent.$index, catf.id, site[$parent.$parent.$index].catf[catf.id].cats.id, $parent.$index,catf.id,$index)" ng-model="site[$parent.$parent.$index].catf[catf.id].cats.id" > {{cats.name}} </label> <!-- confirmed-click="cleanPro($parent.$index+'-'+catf.id)" ng-confirm-click="Do you want to remove the items?" -->
+																				<!-- table -->
+																				<table datatable="ng" class="table table-striped table-bordered table-hover dataTables-example">
+																				<thead>
+																				<tr>
+																					<th>
+																						Category
+																					</th>
+																					<th>
+																						Name
+																					</th>
+																					<th>
+																						Qty
+																					</th>
+																					<th>
+																						Image
+																					</th>
+																					<th>
+																						Desc
+																					</th>
+																					<!--th>Rent(M)</th>
+																							<th>Rent(W)</th-->
+																					<th>
+																					</th>
+																				</tr>
+																				</thead>
+																				<tr class="gradeX" ng-repeat="item in proposal.products | filter:{scs:$parent.$index+'-'+catf.id}">
+																					<td class="col-sm-2">
+																						<select class="form-control m-b" name="account" ng-options="category.id as category.name for category in categories | filter:{parent:site[$parent.$parent.$index].catf[catf.id].cats.id}:true" ng-model="item.cat" >
+																						</select>
+																					</td>
+																					<td class="col-sm-2">
+																						<select class="form-control m-b" name="account" ng-options="prod.id as prod.code for prod in products | filter:{cat_id:item.cat}:true" ng-model="item.id" ng-change="updateProductRow(item.id,$parent.$parent.$index,catf.id,$index,item);">
+																						</select>
+																					</td>
+																					<td class="col-sm-1">
+																						<input type="text" class="form-control m-b" ng-model="item.qty" ng-change="updateQty(item.id,item)">
+																					</td>
+																					<td class="col-sm-1">
+																						<img ng-src="{{item.imaged || '//:0'}}" style="width:40px;"/>
+																					</td>
+																					<td class="col-sm-1">
+																						<span style="position: width: 120px; height: 50px; overflow: hidden; text-overflow: ellipsis">
+																						<div  class="first" ng-bind-html="item.desc | unsafe"  >{{item.desc}}</div>
+																						</span>
+																					
+																					 <input type="hidden" class="form-control m-b" ng-model="item.tax" readonly="">
+																					<input type="hidden" class="form-control m-b" ng-model="item.sell_price" readonly="">
+																					 <input type="hidden" class="form-control m-b" ng-model="item.rrp_tax" readonly="">
+																					<input type="hidden" class="form-control m-b" ng-model="item.monthly_rent" readonly="">
+																					<input type="hidden" class="form-control m-b" ng-model="item.weekly_rent" readonly="">
+																					<input type="hidden" class="form-control m-b" ng-model="item.pos" readonly="">
+																					</td>
+																					<td class="col-sm-1">
+																						<a class="control-label font-red" style="text-align:center" ng-click="remRow(item)"><i class="fa fa-remove"></i></a>
+																					</td>
+																				</td>
+																			</tr>
+																			</table>
+																			<div ng-repeat="bott in buttoms">
+																				<a class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Save" ng-show="checkButtom(site[$parent.$parent.$index].catf[catf.id].cats.id, site[$parent.$parent.$index].catf[catf.id].cats)" ng-click="addRowCat($parent.$parent.$index, catf.id)">
+																				<i class="fa fa-new"></i> + New Product </a>
+																			</div>
+																			<!-- table -->
+																		</div>
+																	</div>
+																</div>
+															</div>
+															<!-- panel accordion2 -->
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<!-- panel accordion1 -->
+									</div>
+								</div>
+							</div>
+						</div>
+					</fieldset>
+
+					<h1>Payment</h1>
+					<fieldset>
+						<div class="row">
+							<div class="col-lg-12">
+								<div class="row">
+									<div class="col-lg-12">
+										<div class="form-group">
+											<label class="col-sm-3 control-label">Purchase option</label>
+											<div class="col-sm-3">
+												<label class="radio-inline" ng-repeat="purchaseopt in purchaseopts">
+												<input data-required="true" type="radio" name="purchaseoption" value="{{purchaseopt.id}}" ng-model="proposal.purchaseopt" required="true" ng-change="updateRows()"> {{purchaseopt.title}} </label>
+											</div>
+											
+											<label ng-show="proposal.purchaseopt=='1'" class="col-sm-3 control-label">Type</label>
+											<div ng-show="proposal.purchaseopt=='1'" class="col-sm-3">
+												<select class="form-control m-b" name="account" ng-options="term.id as term.title for term in terms" ng-model="proposal.term" data-trigger="change" ng-change="updateRows()">
+												</select>
+											</div>
+										</div>
+									</div>
+								</div>	
+								<div class="hr-line-dashed">
+								</div>
+								<div class="row">
+									<div class="col-lg-12">
+										<div class="form-group">
+											<label ng-show="proposal.purchaseopt=='1'" class="col-sm-3 control-label">Month</label>
+											<div ng-show="proposal.purchaseopt=='1'" class="col-sm-3">
+												<!--label class="radio-inline" ng-repeat="month in months">
+												<input type="radio" name="type" value="{{month.id}}" ng-model="proposal.month" ng-change="updateRows()"> {{month.title}} </label-->
+												
+												<select class="form-control m-b" name="months" ng-options="month.id as month.title for month in months" ng-model="proposal.month" data-trigger="change" ng-change="updateRows()">
+												</select>
+											</div>
+											<!--label class="col-sm-1 control-label">Total Plan Fees</label-->
+											<input type="hidden" class="form-control m-b" ng-model="proposal.plan_fees">
+											<label class="col-sm-3 control-label">Hardware Discount</label>
+											<div class="col-sm-3">
+												<input type="text" class="form-control m-b" ng-change="updateRows()" ng-model="proposal.hardware_discount">
+												<input type="hidden" class="form-control m-b" ng-change="updateRows()" ng-model="proposal.call_discount">
+											</div>
+											<!--label class="col-sm-2 control-label" ng-show="proposal.term=='3'">Residual : {{proposal.residual}}</label>
+											<div class="col-sm-2 control-label" ng-show="proposal.term=='3'">
+												<!--input type="text" class="form-control m-b" ng-change="updateRows()" ng-show="proposal.term=='3'" ng-model="proposal.residual"--> 
+											<!--/div-->
+										</div>
+									</div>	
+								</div>
+							</div>
+						</div>
+						
+						<div class="ibox-content p-xl">
+								<div class="ibox-title">
+									<h5></h5>
+								</div>
+								<table class="table invoice-total">
+									<tbody>
+									
+									<tr>
+										<td><strong>Total {{level_weekly}} </strong></td>
+										<td>
+										 {{ grant_total | currency:"AUD $":0 }} 
+										</td>
+									</tr>
+									<tr ng-show="grant_totalwf!='0'">
+										<td><strong>Total :</strong></td>
+										<td>
+											{{ grant_totalwf | currency:"AUD $":0 }} 
+										</td>
+									</tr>
+									</tbody>
+								</table>
+								
+								<div class="form-group">
+									<div class="col-sm-3">
+										<!-- fields -->
+
+									</div>
+								</div>
+						</div>
+						
+					</fieldset>
+					
+					<h1>Network</h1>
+					<fieldset style="float: left;width: 100%;padding: 0;">
+						
+									
+										
+										<div class="row">	
+											<div class="col-lg-12">	
+												<div class="ibox float-e-margins">
+												
+													<div >
+														<div class="col-sm-12">
+															<label >Current Situation</label>
+														</div>
+														
+													</div>
+													<div  >
+														<div class="col-sm-12">
+															<textarea ng-model="proposal.implication" cols="114" rows="4"></textarea>
+														</div>
+													</div>
+													
+												</div>
+												
+											</div>
+										</div>
+										
+										<div class="hr-line-dashed"></div>
+
+										<div class="table-responsive m-t">
+											<table class="table invoice-table">
+												<thead>
+												<tr>
+													<th>Current Situation</th>
+													<th></th>
+													<th></th>
+													<th>Proposed</th>
+													<th>Montly Discount</th>
+												</tr>
+												</thead>
+												<tbody>
+												<tr>
+													<td><div><strong>Call Usage</strong></div>
+														<small></small></td>
+													<td class="nowrap"><span class="pull-right"><input type="text" class="form-control m-b" ng-model="proposal.csit1" real-time-currency></span></td>
+													<td></td>
+													<td class="nowrap"><span class="pull-right"><input type="text" class="form-control m-b" ng-model="proposal.prop1"real-time-currency></span></td>
+													<td class="nowrap"><span class="pull-right"><input type="text" class="form-control m-b" ng-model="proposal.mdis1"real-time-currency></span></td>
+												</tr>
+												<tr>
+													<td><div><strong>Voice Lines</strong></div>
+														<small>
+														</small></td>
+													<td class="nowrap"><span class="pull-right"><input type="text" class="form-control m-b" ng-model="proposal.csit2"real-time-currency></span></td>
+													<td></td>
+													<td class="nowrap"><span class="pull-right"><input type="text" class="form-control m-b" ng-model="proposal.prop2"real-time-currency></span></td>
+													<td class="nowrap"></td>
+												</tr>
+												<tr>
+													<td><div><strong>Dedicated Lines</strong></div>
+														<small>(Fax eftpos, alarm etc)</small></td>
+													<td class="nowrap"><span class="pull-right"><input type="text" class="form-control m-b" ng-model="proposal.csit3"real-time-currency></span></td>
+													<td></td>
+													<td class="nowrap"><span class="pull-right"><input type="text" class="form-control m-b" ng-model="proposal.prop3"real-time-currency></span></td>
+													<td class="nowrap"><span class="pull-right"><input type="text" class="form-control m-b" ng-model="proposal.mdis2"real-time-currency></span></td>
+												</tr>
+												
+												<tr>
+													<td><div><strong>Others</strong></div>
+														<small>(Line hant, CLID,DID).</small></td>
+													<td class="nowrap"><span class="pull-right"><input type="text" class="form-control m-b" ng-model="proposal.csit4"real-time-currency></span></td>
+													<td></td>
+													<td class="nowrap"><span class="pull-right"><input type="text" class="form-control m-b" ng-model="proposal.prop4"real-time-currency></span></td>
+													<td class="nowrap"><span class="pull-right"><input type="text" class="form-control m-b" ng-model="proposal.mdis3"real-time-currency></span></td>
+												</tr>
+												
+												<tr>
+													<td><div><strong>Misc Calls</strong></div>
+														<small>(13,300, Information Calls)</small></td>
+													<td class="nowrap"><span class="pull-right"><input type="text" class="form-control m-b" ng-model="proposal.csit5"real-time-currency></span></td>
+													<td></td>
+													<td class="nowrap"><span class="pull-right"><input type="text" class="form-control m-b" ng-model="proposal.prop5"real-time-currency></span></td>
+													<td class="nowrap"><span class="pull-right"><input type="text" class="form-control m-b" ng-model="proposal.mdis4"real-time-currency></span></td>
+												</tr>
+												
+												<tr>
+													<td><div><strong>Internet</strong></div>
+														<small></small></td>
+													<td class="nowrap"><span class="pull-right"><input type="text" class="form-control m-b" ng-model="proposal.csit6"real-time-currency></span></td>
+													<td></td>
+													<td class="nowrap"><span class="pull-right"><input type="text" class="form-control m-b" ng-model="proposal.prop6"real-time-currency></span></td>
+													<td class="nowrap"><span class="pull-right"><input type="text" class="form-control m-b" ng-model="proposal.mdis5"real-time-currency></span></td>
+												</tr>
+												
+												<tr>
+													<td><div><strong>Mobile Plans</strong></div>
+														<small></small></td>
+													<td class="nowrap"><span class="pull-right"><input type="text" class="form-control m-b" ng-model="proposal.csit7"real-time-currency></span></td>
+													<td></td>
+													<td class="nowrap"><span class="pull-right"><input type="text" class="form-control m-b" ng-model="proposal.prop7"real-time-currency></span></td>
+													<td class="nowrap"></td>
+												</tr>
+												
+												<tr>
+													<td><div><strong>Equipment Rental</strong></div>
+														<small></small></td>
+													<td class="nowrap"><span class="pull-right"><input type="text" class="form-control m-b" ng-model="proposal.csit8"real-time-currency></span></td>
+													<td></td>
+													<td class="nowrap"><span class="pull-right"><input type="text" class="form-control m-b" ng-model="proposal.prop8"real-time-currency></span></td>
+													<td class="nowrap"></td>
+												</tr>
+												
+												<tr>
+													<td><div><strong></strong></div>
+														<small></small></td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+												</tr>
+												
+												<tr>
+													<td><div><strong>Total</strong></div>
+														<small></small></td>
+													<td class="nowrap">$ {{ parseInt(proposal.csit1,10) + parseInt(proposal.csit2,10) + parseInt(proposal.csit3,10) + parseInt(proposal.csit4,10) + parseInt(proposal.csit5,10) + parseInt(proposal.csit6,10) + parseInt(proposal.csit7,10) + parseInt(proposal.csit8,10)}}</td>
+													<td></td>
+													<td class="nowrap">$ {{ parseInt(proposal.prop1,10) + parseInt(proposal.prop2,10) + parseInt(proposal.prop3,10) + parseInt(proposal.prop4,10) + parseInt(proposal.prop5,10) + parseInt(proposal.prop6,10) + parseInt(proposal.prop7,10) + parseInt(proposal.prop8,10) }}</td>
+													<td class="nowrap">$ {{ parseInt(proposal.mdis1,10) + parseInt(proposal.mdis2,10) + parseInt(proposal.mdis3,10) + parseInt(proposal.mdis4,10) + parseInt(proposal.mdis5,10)  }}</td>
+												</tr>
+												
+												<tr>
+													<td>
+														<div><strong>
+															Total Services :
+														</strong>
+														</div>
+													<small></small>
+													</td>
+													<td class="nowrap">
+													{{ parseInt(proposal.csit1,10) + parseInt(proposal.csit2,10) + parseInt(proposal.csit3,10) + parseInt(proposal.csit4,10) + parseInt(proposal.csit5,10) + parseInt(proposal.csit6,10) + parseInt(proposal.csit7,10) + parseInt(proposal.csit8,10) + parseInt(proposal.prop1,10) + parseInt(proposal.prop2,10) + parseInt(proposal.prop3,10) + parseInt(proposal.prop4,10) + parseInt(proposal.prop5,10) + parseInt(proposal.prop6,10) + parseInt(proposal.prop7,10) + parseInt(proposal.prop8,10) - parseInt(proposal.mdis1,10) - parseInt(proposal.mdis2,10) - parseInt(proposal.mdis3,10) - parseInt(proposal.mdis4,10) - parseInt(proposal.mdis5,10) | currency:"AUD $":0 }}
+													</td>
+													<td></td>
+													<td class="nowrap">Total Hardware {{level_weekly}} :</td>
+													<td class="nowrap">{{ grant_total | currency:"AUD $":0 }} </td>
+												</tr>
+
+												</tbody>
+											</table>
+										</div><!-- /table-responsive -->
+
+										<table class="table invoice-total">
+											<tbody>
+											<!--tr>
+												<td><strong>Sub Total :</strong></td>
+												<td>
+												
+												$1026.00</td>
+											</tr>
+											<tr>
+												<td><strong>TAX :</strong></td>
+												<td>$235.98</td>
+											</tr-->
+											<tr>
+												<td><strong></strong></td>
+												<td>
+												
+												
+													<br>
+													<a id="buttomSaveNgh" data-toggle="tooltip" data-placement="top" title="Save" ng-click="save()">
+													<i class="fa fa-new"></i> Save </a>	
+												</td>
+												
+											</tr>
+											<tr>
+												<td><strong></strong></td>
+												<td>
+													 
+												</td>
+											</tr>
+											</tbody>
+										</table>
+									
+									
+					</fieldset>
+
+				</form>
+			</div>
+			
+		</div>
+    </div>
+</div>
+
+</div>		
+
+<script>
+        $(document).ready(function(){
+				
+            $("#wizard").steps();
+            $("#form").steps({
+                bodyTag: "fieldset",
+                onStepChanging: function (event, currentIndex, newIndex)
+                {
+                    // Always allow going backward even if the current step contains invalid fields!
+                    if (currentIndex > newIndex)
+                    {
+                        return true;
+                    }
+
+                    // Forbid suppressing "Warning" step if the user is to young
+                    if (newIndex === 3 && Number($("#age").val()) < 18)
+                    {
+                        return false;
+                    }
+
+                    var form = $(this);
+
+                    // Clean up if user went backward before
+                    if (currentIndex < newIndex)
+                    {
+                        // To remove error styles
+                        $(".body:eq(" + newIndex + ") label.error", form).remove();
+                        $(".body:eq(" + newIndex + ") .error", form).removeClass("error");
+                    }
+
+                    // Disable validation on fields that are disabled or hidden.
+                    form.validate().settings.ignore = ":disabled,:hidden";
+
+                    // Start validation; Prevent going forward if false
+                    return form.valid();
+                },
+                onStepChanged: function (event, currentIndex, priorIndex)
+                {
+                    // Suppress (skip) "Warning" step if the user is old enough.
+                    if (currentIndex === 2 && Number($("#age").val()) >= 18)
+                    {
+                        $(this).steps("next");
+                    }
+
+                    // Suppress (skip) "Warning" step if the user is old enough and wants to the previous step.
+                    if (currentIndex === 2 && priorIndex === 3)
+                    {
+                        $(this).steps("previous");
+                    }
+                },
+                onFinishing: function (event, currentIndex)
+                {
+                    var form = $(this);
+					
+					//$('#ProposalCtrl').scope().save();
+					//angular.element(document.getElementById('ProposalCtrl')).scope().$apply();
+					//angular.element('#ProposalCtrl').scope().save();
+					
+					$( "#buttomSaveNgh" ).click();
+					
+
+                    // Disable validation on fields that are disabled.
+                    // At this point it's recommended to do an overall check (mean ignoring only disabled fields)
+                    form.validate().settings.ignore = ":disabled";
+
+                    // Start validation; Prevent form submission if false
+                    return form.valid();
+                },
+                onFinished: function (event, currentIndex)
+                {
+                    var form = $(this);
+
+                    // Submit form input
+                    //form.submit();
+                }
+            }).validate({
+                        errorPlacement: function (error, element)
+                        {
+                            element.before(error);
+                        },
+                        rules: {
+                            confirm: {
+                                equalTo: "#password"
+                            }
+                        }
+                    });
+       });
+    </script>

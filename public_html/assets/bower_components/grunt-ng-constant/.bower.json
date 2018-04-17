@@ -1,0 +1,15 @@
+{
+  "name": "grunt-ng-constant",
+  "homepage": "https://github.com/werk85/grunt-ng-constant",
+  "version": "1.0.0",
+  "_release": "1.0.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "v1.0.0",
+    "commit": "d5feac3b77a0ca536743463dde4a711ff6b28c29"
+  },
+  "_source": "https://github.com/werk85/grunt-ng-constant.git",
+  "_target": "^1.0.0",
+  "_originalSource": "werk85/grunt-ng-constant",
+  "_direct": true
+}

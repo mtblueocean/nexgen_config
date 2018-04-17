@@ -1,0 +1,7 @@
+<div class="alert {{flashMessage.bg}}" style="padding:5px;margin:10px" ng-if="flashMessage.header">
+        <h4 class="infobox-title">{{flashMessage.header}}
+        <a href="javascript:;" title="Close Message" ng-click="remove()" class="fa fa-remove {{flashMessage.bg}} pull-right"></a>
+        </h4>
+        <p>{{flashMessage.message}}</p>
+    </div>
+

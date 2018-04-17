@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://www.aapt.com.au/FrontierLink/xsd"
+            xmlns="http://www.w3.org/2001/XMLSchema"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+    <xsd:simpleType name="TicketStatus">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="New" />
+            <xsd:enumeration value="Delegated" />
+            <xsd:enumeration value="With AAPT" />
+            <xsd:enumeration value="With 3rd Party" />
+            <xsd:enumeration value="With Field Ops - External" />
+            <xsd:enumeration value="With Field Ops - AAPT" />
+            <xsd:enumeration value="With Vendor" />
+            <xsd:enumeration value="On-Hold Customer" />
+            <xsd:enumeration value="Restored Monitoring" />
+            <xsd:enumeration value="Restored Pending Closure" />
+            <xsd:enumeration value="Closed" />
+        </xsd:restriction>
+    </xsd:simpleType>
+</xsd:schema>

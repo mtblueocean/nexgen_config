@@ -1,0 +1,409 @@
+  <style>
+            @page {
+                sheet-size : A4;
+                margin: 0%;
+            }
+
+            @page cover {
+                 margin-top:10mm;
+                 margin-bottom: 5px;
+                 margin-left: 5px;
+                 margin-right:5px;
+                 odd-footer-name: html_pagesFooter;
+
+            }
+            div.cover {
+                page-break-before: right;
+                page: cover;
+            }
+            @page second {
+                odd-footer-name: html_secondPageFooter;
+                margin-top: 5%;
+                margin-bottom: 1%;
+                margin-right: 1%;
+                margin-left: 1%;
+            }
+
+            div.secondPage {
+
+                page:second
+            }
+            @page pages {
+                margin-top: 5%;
+                margin-bottom: 1%;
+                margin-right: 1%;
+                margin-left: 1%;
+            }
+            div.pages {
+                page: pages;
+            }
+  </style>
+  <link href = "assets/css/form.css" rel='stylesheet' type='text/css'>
+  <link href = "/assets/angular/font-awesome/css/font-awesome.css" rel='stylesheet' type='text/css'>
+  <div class="pages pageBreaker">
+    <table width="100%" style="background:#b1adae;margin-bottom:20px">
+      <tr>
+        <td class="logo-td">
+          <img src ="assets/images/logo.png" class="logo-item" />
+        </td>
+        <td class="logo-td">
+          <img src ="assets/images/fuji.png" class="logo-item" />
+        </td>
+         <td class="logo-td">
+          <img src ="assets/images/oki.png" class="logo-item" />
+        </td>
+         <td class="logo-td">
+          <img src ="assets/images/kyocera.png" class="logo-item" />
+        </td>
+      </tr>
+      <tr>
+        <td colspan="4" style="text-align:center;">
+          <h1 class="printer-title">ORDER SPECIFICATION</h1>
+          <h1 class="printer-title">&</h1>
+          <h1 class="printer-title">SERVICE MAINTENANCE</h1>
+          <h1 class="printer-title">AGREEMENT</h1>
+        </td>
+      </tr>
+    </table>
+    <table width="100%" style="margin-bottom:20px">
+      <tr>
+        <td width="45%" style="background:#36a5f7">
+        </td>
+        <td width="55%" style="padding-left:20px">
+          <img width="100%" src ="assets/images/singleSpecPrinter1.png"/>
+        </td>
+      </tr>
+    </table>
+    <table width="100%">
+      <tr>
+        <td rowspan="2"  style="padding-right:20px">
+          <img width="100%" src ="assets/images/singleSpecPrinter2.png"/>
+        </td>
+        <td style="padding-bottom:20px">
+          <img width="100%" src ="assets/images/singleSpecPrinter3.png"/>
+        </td>
+      </tr>
+      <tr>
+        <td style="height:100%;background: #d92531"></td>
+      </tr>
+    </table>
+  </div>
+  <pagebreak>
+  <div class="pages pageBreaker">
+    <table  class="top-40 full-width spec-table cap-plan-table">
+      <tr>
+        <td colspan="6" class="redText spec-center"><h3>CUSTOMER INFORMATION</h3></td>
+      </tr>
+      <tr class="dataRow tall form-data">
+          <td class ="itemTitle">Company Name:</td>
+          <td  colspan="3" id = "cmpyName"><b>{{formData.cName}}</b></td>
+          <td class ="itemTitle" >Contact:</td>
+          <td  id ="witnesName" ><b>{{formData.cContact}}</b></td>
+      </tr>
+      <tr class="dataRow tall form-data">
+        <td class =" itemTitle" >Address:</td>
+        <td colspan="3" id = "name"><b>{{formData.cAddress}}, {{formData.cSuburb}}, {{formData.cState}}, {{formData.cPostCode}}</b></td>
+        <td class ="itemTitle">Representative:</td>
+        <td  ><b>{{formData.wName}}</b></td>
+      </tr>
+      <tr class="dataRow tall form-data">
+        <td class ="spec-itemTitle" style="width:20%" >Telephone:</td>
+        <td style="width:20%"><b>{{formData.cTel}}</b></td>
+        <td class ="spec-itemTitle" style="width:10%">Fax:</td>
+        <td  style="width:20%"><b>{{formData.cFax}}</b></td>
+        <td class="spec-itemTitle"  style="width:10%">Mobile:</td>
+        <td  style="width:20%"><b>{{formData.cMobile}}</b></td>
+      </tr>
+    </table>
+    <table  class="top-40 full-width spec-table cap-plan-table">
+      <tr>
+        <td colspan="4" class="redText spec-center"><h3>MAINTENANCE INFORMATION</h3></td>
+      </tr>
+      <tr class="dataRow tall form-data">
+          <th class="printerItem"><b>Product Model</b></th>
+          <th class="printerItem"><b>Quantity</b></th>
+          <th class="printerItem"><b>Cost per A4 Impression Black and White</b></th>
+          <th class="printerItem"><b>Cost per A4 Impression Coloured</b></th>
+      </tr>
+      <tbody ng-repeat="(index, printers) in formData.printers track by $index">
+        <tr>
+            <td colspan="4" class="form-data printerItem" style="padding-left: 0px"><b>Installation Address # {{index + 1}} - {{formData.comLocation['schedule_of_goods'][index]}} {{formData.comSuburb['schedule_of_goods'][index]}} {{formData.comZipCode['schedule_of_goods'][index]}}</b></td>
+        </tr>
+        <tr ng-repeat="printer in printers">
+            <td class="printerItem">{{printer.group}} - {{printer.model}}</td>
+            <td class="printerItem">{{printer.qty}}</td>
+            <td class="printerItem">{{printer.cpiBwAmt}} cents</td>
+            <td class="printerItem">{{printer.cpiColourAmt}} cents</td>
+        </tr>
+      </tbody>
+    </table>
+    <table  class="top-40 full-width spec-table cap-plan-table">
+      <tr class="dataRow tall form-data">
+        <td><b>Minimum Monthly Service Charge </b></td>
+        <td><b>$ 15 (ex. gst)</b></td>
+      </tr>
+      <tr class="dataRow tall form-data">
+        <td colspan="2"><b>* Note that any A3 Prints are charged at the rate of A4 X 2</b></td>
+      </tr>
+    </table>
+    <table class="top-40 full-width spec-table cap-plan-table">
+        <tr class="dataRow">
+          <td class =" itemTitle" >Name:</td>
+          <td class =" place-holder form-data"  id = "name">{{formData.dName}}</td>
+          <td></td>
+          <td class =" itemTitle" >Witness Name:</td>
+          <td class =" place-holder form-data" id ="witnesName">{{formData.wName}}</td>  
+      </tr>
+      <tr class="dataRow">
+          <td class ="itemTitle">Signature:</td>
+          <td class ="signatureImg signItem" id ="voice-std-sg-{{index}}" ng-click='sign("voice-std-sg-" + index)'>
+              <b ng-if="isSigned('voice-std-sg')" class="greenText">{{ getSignedTime('voice-std-sg') }}</b>
+              <b ng-if="!isSigned('voice-std-sg') && (!isDraftMode())" class="greenText">Customer Signature here</b>
+          </td>
+          <td></td>
+          <td class ="itemTitle">Witness Signature:</td>
+          <td class="signatureImg signItem" id="voice-std-wt-{{index}}" ng-click='sign("voice-std-wt-" + index)' >
+              <img class='imported' ng-src="{{userSign}}" ng-if="userSign" height="36" height=36 ></img>
+              <div class='signTimeStamp' style='font-weight:300;font-size:8pt' ng-if="userSign">{{getCurrentDate()}}</div>
+              <span ng-if="!userSign">
+                  <span ng-if='!isSigned("voice-std-wt-" + index) && !isDraftMode()'>Witness Signature here</span>
+              </span>
+          </td>    
+      </tr>
+      <tr class="dataRow tall">
+           <td colspan="6"></td>
+       </tr>
+    </table>
+  </div>
+  <pagebreak>
+  <div class="pages pageBreaker">
+    <table class="termsTable spec-terms">
+     <tr>
+       <td>
+         <p class="details-spec">
+        <b>NEXGEN TERMS AND CONDITIONS OF SALE AND AGREEMENT</b><br />
+        1 DEFINITIONS<br />
+        1.1 In these terms and conditions: <br />
+        (1) “Buyer” means the entity purchasing the goods and services upon these terms and conditions;<br />
+        (2) “EULA” has the meaning given in clause 4.1;<br />
+        (3) “Copy Plan Agreement” means the agreement by that name between the parties relating to the goods and services supplied under these terms and conditions;<br />
+        (4) “Insolvency Event” means any of the following:<br />
+        (a) insolvency;<br />
+        (b) the Buyer indicating that it does not have the resources to perform its obligations under these terms and conditions;<br />
+        (c) an application for winding up is made and not stayed within 14 days, or a resolution for winding up is passed;<br />
+        (d) a winding up order is made;<br />
+        (e) a controller, administrator, receiver and/or manager, statutory manager, provisional liquidator or liquidator is appointed;<br />
+        (f) a mortgagee enters the possession of any of the Buyer’s property;<br />
+        (g) notice is given of a meeting of creditors for the purposes of a deed or scheme of arrangement; or<br />
+        (h) any actions of a similar effect to those set out above are taken;<br />
+        (5) “Lease Agreement” means the agreement by that name between the parties relating to the goods and services supplied under these terms and conditions;<br />
+        (6) “Rental Agreement” means the agreement by that name between the parties relating to the goods and services supplied under these terms and conditions;<br />
+        (7) “Seller” means NEXGEN ABN 96 994 759 728 and any related body corporate of the Seller within the meaning of section 50 of the Corporations Act 2001;<br />
+        (8) “Software” means software or software as a service as described in the table above under the heading of “Description of goods (including software) and services”;<br />
+        (9) “SOW” means the statement of work(s) agreed and signed by the parties’ authorised representatives in relation to these terms and conditions, as amended from time to time in accordance with its terms; and<br />
+        (10) reference to “in writing” includes facsimile, email or any other form of electronic communication agreed to by the parties.<br />
+        2 BINDING TERMS AND CONDITIONS<br />
+        2.1 The only terms which are binding upon the Seller are:<br />
+        (1) those set out in these terms and conditions or otherwise agreed to in writing by the Seller; and<br />
+        (2) those, if any, which are imposed by law and which cannot be excluded.<br />
+        2.2 These terms and conditions apply to each supply of goods and services made by the Seller to the Buyer.<br />
+        2.3 The Buyer and Seller agree that these terms and conditions apply to the goods and services described in the table above and to every order for other goods and services by the Buyer which is accepted by the Seller, to the exclusion of the Buyer’s terms and conditions of purchase or any other document.<br />
+        3 ORDERS<br />
+        3.1 Orders must be submitted by telephone or in writing.<br />
+        3.2 The Seller accepts orders for goods and services by delivery of the goods and services.<br />
+        3.3 The Seller must supply the goods and services at the price agreed between the Buyer and the Seller.<br />
+        3.4 The prices shown in any price list are subject to alteration without notice, unless otherwise set out in this document.<br />
+        3.5 Without the prior approval of the Seller, the Buyer must not allow the balance of its account to exceed any approved credit limit.<br />
+        3.6 The Seller may vary or withdraw the approved credit limit of the Buyer at any time in its absolute discretion.<br />
+        4 GOODS THAT INCLUDE SOFTWARE<br />
+        4.1 Where the goods include Software, the Buyer acknowledges and agrees that the Software is owned by a third party and licensed directly or indirectly to the Buyer under separate terms and conditions which may include an end user licence agreement (together, the “EULA”) and that title in the Software at all times remains with the owner of the Software unless expressly indicated otherwise in the description of the Software.<br />
+        4.2 If requested by the Seller, the Buyer must promptly accept or authorise the acceptance on the Buyer’s behalf of any EULA associated with the acquisition, implementation or use of the Software. To the extent necessary for the Seller to fulfil its obligations under these terms and conditions the Buyer hereby authorises the Seller to act as the Buyer’s agent to acquire the Software and to accept on behalf of the Buyer any EULA associated with the acquisition, implementation and use of the Software.<br />
+        4.3 The Buyer must use the Software strictly in accordance with and comply with the EULA.<br />
+        4.4 The Buyer indemnifies and holds the Seller harmless against all liability, loss, damage and cost and expenses (including legal costs on a full indemnity basis) in relation to any claim arising out of or in connection with any breach of or failure to comply with clause 4.3 or any act or omission of the Buyer in relation to the Software which infringes the intellectual property rights of the owner or head licensor of the Software.<br />
+        5 DELIVERY AND INSTALLATION OF GOODS<br />
+        5.1 Unless otherwise agreed by the parties, the Buyer must pay the Seller’s charge for transportation of the goods to the place of delivery.<br />
+        5.2 If a delivery date is specified, that date is an estimate only and the Seller is not liable for any delay in delivery. The Seller will not be liable for penalties or damages (direct or indirect) or compensation for late delivery.<br />
+        5.3 The Seller is deemed to have delivered the goods when they are made available for unloading at the delivery location specified in an accepted order.<br />
+        5.4 The supply of goods is subject to availability. If the Seller is unable to supply the Buyer’s total order the Seller may accept the order in part or deliver the order in instalments and these terms and conditions continue to apply to the goods supplied.<br />
+        5.5 The Seller must install the goods during normal working hours at the place of delivery or such other times as agreed between the parties. The Buyer must prepare the site to meet the Seller’s installation or other specification.<br />
+        6 CONSULTANCY, INSTALLATION, IMPLEMENTATION AND TRAINING SERVICES<br />
+        6.1 The Seller must provide consultancy, installation, implementation and/or training services generally described above and more specifically detailed and agreed in the SOW.<br />
+        6.2 The Buyer agrees to promptly provide the Seller with all information, instructions and/or access to premises or persons within the Buyer’s control as the Seller reasonably requires to perform the services. The Buyer agrees it is responsible for the completeness and accuracy of all information supplied to the Seller which may be (but not always) referred to or incorporated in the SOW and the Seller may rely on all such information to perform the services including but not limited to making any recommendations in relation to the Software.<br />
+        6.3 The Buyer agrees it is solely responsible for determining the acceptability of the Software (including but not limited to its functionality and operational capability) for its purposes and the Seller relies on the Buyer’s determination to perform the services.<br />
+        6.4 The Buyer agrees to ensure the Seller is permitted to use any third party information or intellectual property rights the Buyer requires the Seller to use to perform any of the services including but not limited to implementation of the Software.<br />
+        6.5 The Seller’s performance depends on the Buyer also performing its obligations. The Buyer agrees the Seller is not liable for any default or loss or damage suffered or likely to be suffered by the Buyer because the Buyer does not fulfil its obligations or because information supplied is inaccurate or incomplete.
+        6.6 The Buyer acknowledges the installation and implementation of any software including the Software is an iterative process which is subject to multiple stages of testing and reconfiguration as may be described in the SOW.<br />
+        6.7 If a delivery date, installation date or other date is specified in these terms and conditions or the SOW, that date is an estimate only and the Seller is not liable for any delay. The Seller will not be liable for penalties or damages (direct or indirect) or compensation for the delay.<br />
+        6.8 The Seller is deemed to have completed the services when the services are provided in accordance with the phases or steps set out in the SOW.<br />
+        </p>
+        </td>
+        <td>
+         <p class="details-spec">
+        6.9 The Seller may, at its discretion, require the Buyer to approve each phase or step upon completion of the services for a phase or step. Where the Buyer has approved a phase or step, such approval will be considered by the Seller as irrevocable acceptance by the Buyer of the completion of that phase or step.<br />
+        6.10 After acceptance of a phase or step, if the Buyer requires any further work including any changes to be undertaken in relation to a completed phase or step, such work will be treated, at the discretion of the Seller, as additional services and charged in accordance with the rates given in the table above or the SOW or as otherwise agreed in writing by the parties, or as a variation of these terms and conditions.<br />
+        6.11 The supply of services is subject to availability of resources. If the unavailability of resources will adversely impact any of the phases or steps, the Seller will advise the Buyer of any such impact and the phases or steps in the SOW will deemed to be amended in accordance with any such advice.<br />
+        6.12 The Seller must provide the services during normal working hours or such other times as agreed between the parties. The Buyer must provide adequate and safe facilities for the Seller if the Seller is to provide any of the services at the Buyer’s premises.<br />
+        6.13 The Seller may use subcontractors to perform or assist the Seller to perform any part of the services.<br />
+      7 NOTIFICATION OF CLAIMS<br />
+      7.1 The Buyer must inspect the goods immediately upon delivery and/or conduct such tests necessary to check or verify the functionality or operability of the goods upon completion of the installation and implementation services.<br />
+      7.2 Any claim that the goods or services are not in accordance with these terms and conditions or the SOWs (including if they are damaged during delivery, short delivered or not working, functioning or operable) must be made in writing to the Buyer within 7 days of delivery, installation, implementation or provision of the goods and/or the services (as applicable).<br />
+      7.3 If the Buyer fails to make such claim within 7 days of delivery of the goods and/or the services (as applicable), then to the extent permitted by law, the goods and/or services are deemed to have been accepted by the Buyer and the Buyer must pay for the goods and/or services in accordance with the provisions of these terms and conditions.<br />
+      8 PAYMENT<br />
+      8.1 Subject to clauses 8.2 to 8.4, payment for goods sold by the Seller to the Buyer must be cash on delivery (“COD”).<br />
+      8.2 If the Seller has accepted and approved an application for commercial credit made by the Buyer and granted the Buyer an approved credit limit, the Buyer must make each payment for the goods and services within 30 days of the date of invoice (or such other period as agreed by the parties in writing).<br />
+      8.3 If the Seller has accepted and approved an application for finance from the Buyer, the Buyer must make payment for the goods and services in accordance with the terms and conditions applicable to the financing arrangement in the form of a Rental Agreement, Lease Agreement or Copy Plan Agreement.<br />
+      8.4 If the Seller has agreed to payment by credit card, the Buyer must make payment for the goods and services immediately upon receipt of invoice.<br />
+      8.5 Invoices must be paid in full without set-off or deduction.<br />
+      8.6 Time is of the essence in respect of the Buyer’s obligation to make payment for the goods and services.<br />
+      8.7 Notwithstanding that the Seller may have granted the Buyer an approved credit limit or finance, upon the occurrence of any of the following events, all amounts owing by the Buyer (including any amounts owing but not yet due) will become immediately due and payable:<br />
+      (1) a breach of these terms and conditions by the Buyer;<br />
+      (2) an Insolvency Event occurs in relation to the Buyer; or<br />
+      (3) any event occurs which in the reasonable opinion of the Seller is likely to adversely affect the ability of the Buyer to perform its obligations under these terms and conditions.<br />
+      8.8 Upon the occurrence of any of the events in clause 8.7, the Seller may also in its absolute discretion:<br />
+      (1) vary or withdraw any approved credit limit;<br />
+      (2) cancel any unfilled orders; and<br />
+      (3) require the Buyer to reimburse the Seller for all collection costs including legal costs incurred by the Seller on a full indemnity basis in connection with the default and/or to institute such recovery process as the Seller in its discretion decides.<br />
+      8.9 Any payment by the Buyer to the Seller may be applied by the Seller against monies owing by the Buyer in such manner as the Seller sees fit.<br />
+      9 GOODS AND SERVICES TAX<br />
+      9.1 In these terms and conditions “GST” means GST as defined in the A New Tax System (Goods and Services Tax) Act 1999 as amended from time to time (“GST Act”) or any replacement or other relevant legislation and regulations.<br />
+      9.2 Unless GST is expressly included, the price payable for any supply made under or in connection with these terms and conditions does not include GST.<br />
+      9.3 To the extent that any supply is a taxable supply, the GST exclusive consideration otherwise payable for that supply is increased by the amount of any GST payable in respect of that taxable supply, and that amount is payable at the same time as the GST exclusive consideration.<br />
+      9.4 Each party agrees to do all things, including providing tax invoices and other documentation, that may be necessary to enable the other party to claim any input tax credit, adjustment or refund in relation to any amount of GST paid or payable.<br />
+      10 INTEREST<br />
+      10.1 The Seller may charge the Buyer interest on overdue accounts issued under these terms and conditions at the reference rate for its Australian trading bank on unsecured overdraft facilities.
+      10.2 Interest is charged from the date the payment was due until the date payment is made.<br />
+      11 RISK AND INSURANCE<br />
+      11.1 Goods supplied by the Seller to the Buyer are at the Buyer’s risk immediately on delivery to the Buyer.<br />
+      11.2 The Buyer must insure the goods at its cost from the time of delivery of the goods until they are paid for in full against such risks as it reasonably thinks appropriate and must note the interest of the Seller on the policy and produce a certificate to this effect to the Seller on request.<br />
+      12 RETENTION OF TITLE <br />
+      The following provisions do not apply to the goods to the extent a Rental Agreement, Lease Agreement or Copy Plan Agreement also applies to those goods. Relevant provisions pertaining to the PPSA in relation to those goods are contained within each of those agreements.<br />
+      12.1 In this clause 12:<br />
+      (1) PPSA means Personal Property Securities Act 2009 (Cth); and<br />
+      (2) a term that is used in italics in this clause 12 has the same meaning as in the PPSA.<br />
+      12.2 Subject to clause 4.1 and the preservation of the Seller’s rights under the PPSA in respect of the Software, property in the goods supplied by the Seller to the Buyer under these terms and conditions does not pass to the Buyer until those goods, and any goods previously supplied, have been paid for in full. The Buyer in the meantime takes custody of the goods and retains them as the fiduciary agent and bailee of the Seller. 12.3 Until the goods have been paid for in full, the Buyer must:<br />
+      (1) store the goods in such manner as to show clearly that they are the property of the Seller;<br />
+      (2) keep the goods fully insured at the Buyer’s cost and hold the proceeds of any insurance claim in respect of the goods (to the extent of the Buyer’s debt to the Seller) in trust for the Seller;<br />
+      (3) not sell or sub-licence the goods other than in the ordinary course of its business, in which case the Buyer grants to the Seller a security interest in every payment to the Buyer for the goods (both as proceeds of the goods and as original collateral); and<br />
+      (4) not sell, sub-licence, assign, charge or otherwise encumber the goods or grant any interest over any debts and other obligations which any third party may owe to the Buyer as a result of the use or resale of the goods.<br />
+      12.4 The Buyer irrevocably authorises the Seller at any time, to enter any premises:<br />
+      (1) upon which the Seller’s goods are stored to enable the Seller:<br />
+      (a) to inspect the goods; and/or<br />
+      (b) if the Buyer has breached these terms and conditions or suffered an Insolvency Event, to reclaim possession of the goods (even if mixed with other goods); and<br />
+      (2) upon which the Buyer’s records pertaining to the goods are held, to inspect and copy the records.<br />
+      12.5 The Buyer indemnifies the Seller against any liability to any person in connection with the entry or reclamation.<br />
+      </p>
+      </td>
+      </tr>
+    </table>
+  </div>
+  <div class="pages pageBreaker">
+    <table class="termsTable spec-terms">
+     <tr>
+       <td>
+      <p class="details-spec">
+      12.6 The Seller may commence legal action against the Buyer if the goods are not paid for within the applicable credit terms or any separate arrangement for credit made by the Seller with the Buyer although property in the goods has not passed to the Buyer.<br />
+      12.7 The Buyer acknowledges and agrees that:<br />
+      (1) this clause 12 creates a security interest in all present and after acquired goods (including any Software, for the avoidance of doubt) and any proceeds as security for the Buyer’s obligations to the Seller;<br />
+      (2) the Seller is a secured party in relation to the goods and any proceeds of the goods, and is entitled to register its interest on the register as:
+      (a) a security interest; and<br />
+      (b) if applicable, a purchase money security interest ;<br />
+      (3) the Seller may, by notice to the Buyer, require the Buyer to take all steps requested by the Seller to ensure its security interest in the goods and the proceeds is enforceable, and to perfect, or better secure the position of the Seller and the Buyer must comply with that notice; and<br />
+      (4) the Seller is not obliged to give any notice, document or information under the PPSA, unless the provision of the notice, document or information is required by the PPSA and cannot be excluded.<br />
+      12.8 Until the goods have been paid for in full and any other money owing by the Buyer to the Seller has been repaid, every payment by the Buyer to the Seller must be taken to be a payment:
+      (1) firstly, of any amount owed by the Buyer to the Seller that is not subject to a security interest ;<br />
+      (2) secondly, of any amount owed by the Buyer to the Seller that is subject to a security interest , to the extent that the security interest is not a purchase money security interest ; and
+      (3) thirdly, of any amount owned by the Buyer to the Seller that is subject to a security interest , to the extent that it is a purchase money security interest.<br />
+      12.9 An ordinary acknowledgement by the Seller to the Buyer that an invoice has been paid is not, and must not be treated as, an agreement by the Seller to amend the order of priority set out in this clause.<br />
+      12.10 The parties may not disclose any information of a kind referred to in section 275(1) of the PPSA that is not in the public domain.<br />
+      12.11 The Seller is not obliged to give any notice or provide copies of any documents or information under the PPSA, including, but not limited to under sections 95, 118, 130, 132(3)(d), 132(4), 135 or 157 of the PPSA, unless the notice, document or information is required by the PPSA and cannot be excluded.<br />
+      12.12 The Buyer consents to the waiver of the right to receive notice, copies of documents or information under clause 12.11.<br />
+      12.13 To the extent that Chapter 4 of the PPSA would otherwise apply to enforcement by the Seller of any security interest in the goods, the parties agree that the following provisions of the PPSA are excluded;<br />
+      (1) To the extent section 115(1) of the PPSA allows them to be excluded; sections 125, 132(3)(d), 132(4), 135, 142 and 143 of the PPSA; and<br />
+      (2) To the extent section 115(7) of the PPSA allows them to be excluded: sections 129(2) and (3), 132, 133(1)(b) (as it relates to the Seller’s security interest ), 134(2), 135, 136(3)(4) and (5) of the PPSA.<br />
+      12.14 The Buyer consents to the waiver of the requirement for notice under any other provision of the PPSA that the Seller may notify to the Buyer after the date of this document and the Buyer waives any right it has to receive that notice.<br />
+      13 MAINTENANCE SERVICES AND COPY COSTS<br />
+      13.1 The provision of any agreed maintenance services by the Seller to the Buyer is to be in accordance with this clause 13.<br />
+      13.2 The Seller will provide maintenance services for the goods to ensure the goods are in proper working order within a reasonable period of receiving a request for services from the Buyer. Services will be provided at the Buyer’s premises during normal business hours (being 8:30am -5:00 pm Monday to Friday, excluding local and public holidays) or such other times as agreed between the parties.<br />
+      13.3 The provision of maintenance services by the Seller to the Buyer is for a term of 5 years unless terminated sooner by either party on 30 days’ written notice expiring on each anniversary of the commencement date of the maintenance services.<br />
+      13.4 Maintenance services will be subject to maintenance charges specified by the Seller from time to time. The Seller reserves the right to alter maintenance charges without notice. The Buyer will pay the minimum monthly service fee of $38.00 exclusive of GST for the maintenance services.<br />
+      13.5 The Buyer must pay the copycost calculated initially on the basis of the applicable rates set out as B&W Copycost and Colour copycost respectively under the heading Maintenance Agreement above, or as varied by the Seller from time to time in accordance with these terms and conditions, or as otherwise agreed in any applicable Copy Plan Agreement.<br />
+      13.6 The Seller may at any time without notice to the Buyer increase the copy cost to an amount which the Seller at its discretion considers appropriate to cover any increase costs or expenses, in which case these terms and conditions are deemed to be varied.<br />
+      13.7 The Buyer must continue to pay the copy costs notwithstanding any defect in, breakdown of, or accident or damage to, or seizure or loss of the goods, and allow the Seller access during normal business hours to the goods for the purpose of reading the meters on the goods.<br />
+      13.8 Copy charges and payment for maintenance services must be made by the Buyer in the manner that the Seller may from time to time nominate, and otherwise in accordance with clause 8. The Seller may require that payments be made by direct debit or other electronic means.<br />
+      13.9 The Buyer must only use paper and such other consumable items in the goods that have received the prior approval of the Seller.<br />
+      13.10 Subject to clause 13.9, the Seller will provide at its cost all parts required to maintain the goods.<br />
+      13.11 The Seller will not be responsible for providing maintenance services or parts where they are required as a consequence of the misuse or negligence of the Buyer.<br />
+      13.12 The Buyer must, if required by the Seller, appoint an operator to be responsible for the use and routine care of the goods, who will be trained by the Seller.<br />
+      13.13 The Seller may terminate the provision of maintenance services immediately upon written notice to the Buyer, if:<br />
+      (1) the Buyer breaches these terms and conditions;<br />
+      (2) the goods are sold or located at premises not approved by the Buyer;<br />
+      (3) the goods are serviced by persons other than the Seller or its appointed agent; or<br />
+      (4) non-approved consumable items or parts are used in the goods.<br />
+      14 WARRANTIES, EXCLUSIONS AND LIMITATIONS<br />
+      14.1 The Seller warrants in accordance with the provisions of any warranty card issued by the Seller in relation to specific goods excluding the Software.<br />
+      14.2 The Seller warrants it is an authorised reseller of the Software and to the best of its knowledge, the licensor of the relevant Software is the owner or authorised licensee of the Software.<br />
+      14.3 Subject to clauses 14.1, 14.2 and 14.4 and to the maximum extent permitted by law, these terms and conditions exclude all other conditions, warranties, liabilities or representations in relation to the goods and services.<br />
+      14.4 Where legislation implies in these terms and conditions any condition or guarantee which cannot be excluded or modified, the condition or guarantee is deemed to be included in these terms and conditions.<br />
+      14.5 To the maximum extent permitted under the Competition and Consumer Act 2010 (Cth), the liability of the Seller for a breach of any non-excludable condition or guarantee about the goods or services is, at the option of the Seller, limited to any one or more of the following:<br />
+      (1) in the case of the goods:<br />
+      (a) the replacement of the goods or the supply of equivalent goods;<br />
+      (b) the payment of the cost of replacing the goods or of acquiring equivalent goods, by credit to the Buyer’s account, in cash or by cheque at the Seller’s discretion;<br />
+      (c) repayment of any part of the purchase price of the goods which has been paid by the Buyer, by credit to the Buyer’s account, in cash or by cheque at the Seller’s absolute discretion; and<br />
+      (2) in the case of the services, the supply of the services again or the payment for the cost of supply of the services again by credit to the Buyer’s account, in cash or by cheque at the Seller’s discretion.<br />
+      14.6 To the maximum extent permitted by law, the Seller has no liability for any loss or damage of any kind whatsoever, including without limitation, for any indirect or consequential loss (including, without limitation, loss of profits, income, business opportunity, goodwill, anticipated savings or benefits, economic loss or loss or corruption of data), even if due to the negligence of the Seller arising out of or in connection with the supply of the goods or services.<br />
+      14.7 Where the Seller is unable to limit its liability as set out above, to the maximum extent permitted by law, the Seller’s aggregate liability for all claims connected directly or indirectly with the goods and services (including claims of negligence) is limited to an amount equal to the amount paid by the Buyer for the goods and services.
+      15 INDEMNITY<br />
+      15.1 To the maximum extent permitted by law, the Buyer indemnifies the Seller, regardless of any negligence on the part of the Seller, against:<br />
+      (1) all losses incurred by the Seller;<br /><br />
+      (2) all liabilities incurred by the Seller; and<br />
+      (3) all costs actually payable to its legal representatives and other expenses in connection with a demand, action, arbitration or other proceeding, arising directly or indirectly as a result of or in connection with:<br />
+      (a) the supply of goods or services by the Seller to the Buyer;<br />
+      (b) the trade-in or storage of equipment or used goods by the Seller for the Buyer (including in connection with any third party claims arising from such trade-in or storage); and<br />
+      (c) any breach of these terms and conditions by the Buyer, unless caused by wilful misconduct on the part of the Seller.<br />
+         </p>
+     </td>
+     <td>
+      <p class="details-spec">
+      16 TERMINATION OF SOFTWARE LICENCE<br />
+      16.1 The Seller may suspend or terminate, or cause to be suspended or terminated, any Software licence without any liability by written notice with immediate effect if the Buyer fails to perform any of its obligations under these terms and conditions, including but not limited to failure to make any payments by the due date or failure to comply with a EULA.<br />
+      16.2 Upon the suspension or termination of any Software licence, the Buyer must immediately cease using the Software and do all such things requested by the Seller to uninstall or otherwise remove the Software from the Buyer’s computer systems or network. The Buyer irrevocably authorises the Seller to enter any premises owned or controlled by the Buyer at any time to enable the Seller to verify or audit the Buyer’s compliance with its obligations under this clause. If required by the Seller, the Buyer must provide all such evidence required by the Seller to prove to the satisfaction of the Seller the Buyer’s compliance with its obligations under this clause.<br />
+      17 SUSPENSION OR RECALL<br />
+      17.1 If the Buyer is directed to assist in any suspension of supply or recall of goods for any reason by the Seller or any government authority, the Buyer must co-operate and comply with all such reasonable directions to ensure the most effective response to the suspension or recall.<br />
+      17.2 The sole cost and expense of such suspension or recall will be borne by:<br />
+      (1) the Seller to the extent the costs and expenses are reasonable and necessary, where the reason for the suspension or recall is fault in the manufacture of the goods; and<br />
+      (2) the Buyer for any other reason.<br />
+      18 PRIVACY<br />
+      18.1 Where goods are supplied to the Buyer on credit the Buyer agrees that any Buyer who is an individual or any individual who will be a guarantor of the credit provided to the Buyer (whether or not an individual) are subject to the Seller’s Privacy Policy and Credit Reporting Policy and the individual Buyer or individual guarantor will be required by the Seller to provide the relevant consents for compliance with the Privacy Act 1988 (Cth). The Buyer acknowledges that the Seller’s Privacy Policy and Credit Reporting Policy are available on the Seller’s website at www.sharpcolour.com.au.<br />
+      19 NOTICES<br />
+      19.1 A notice or other communication connected with these terms and conditions has no legal effect unless it is in writing.<br />
+      20 FORCE MAJEURE<br />
+      20.1 If a party is prevented from or delayed in complying with an obligation (other than to pay money) by an event beyond its reasonable control, performance by it of that obligation is suspended during the time, but only to the extent that compliance is prevented or delayed.<br />
+      21 WAIVER<br />
+      21.1 A party’s failure or delay to exercise a power or right does not operate as a waiver of that power or right.<br />
+      21.2 A waiver is not effective unless it is in writing.<br />
+      22 ENTIRE UNDERSTANDING<br />
+      22.1 These terms and conditions and any ancillary agreements including but not limited to the SOWs and financing agreement entered into in writing and signed by the parties in relation to the goods and services:<br />
+      (1) are the entire agreement and understanding between the Seller and the Buyer on everything connected with the supply of the goods and services; and<br />
+      (2) supersede any prior agreement or understanding on anything connected with that subject matter.<br />
+      22.2 Unless expressly provided otherwise, where there is any inconsistency in the terms between these terms and conditions and any ancillary agreements, to the extent of the inconsistency, the order of priority in applying the terms will be as follows, commencing from the highest order of priority:<br />
+      (1) these terms and conditions;<br />
+      (2) the financing agreement, being either the Rental Agreement, Copy Plan Agreement or Lease Agreement;<br />
+      (3) the Guarantee and Indemnity;<br />
+      (4) the SOW; and<br />
+      (5) other ancillary agreements.<br />
+      22.3 In the event of any inconsistency the Buyer and the Seller undertakes to each other to do all things within their control to make the ancillary agreements consistent with these terms and conditions applying the order of priority stated in clause 22.2.<br />
+      22.4 The Seller and the Buyer have entered into these terms and conditions without relying on any representation by the other or any person purporting to represent the other.<br />
+      23 INTERDEPENDENCE<br />
+      23.1 These terms and conditions and all agreements relating to it are mutually interdependent and a breach of any covenant, term or condition of any of these terms and conditions or of any one (1) or more of those agreements will constitute a default under these terms and conditions and under each of those agreements.<br />
+      24 SEVERABILITY<br />
+      24.1 Any term of these terms and conditions which is wholly or partially void or unenforceable is severed to the extent that it is void or unenforceable. The validity or enforceability of the remainder of these terms and conditions is not affected.<br />
+      25 VARIATION OF TERMS AND CONDITIONS<br />
+      25.1 Any amendment or variation to these terms and conditions is not effective unless it is in writing and signed by the parties.<br />
+      26 GOVERNING LAW AND JURISDICTION<br />
+      26.1 The law of New South Wales governs these terms and conditions.<br />
+      26.2 The parties submit to the non-exclusive jurisdiction of the courts of New South Wales and of the Commonwealth of Australia.<br />
+    </p>
+    </td>
+    </tr>
+    </table>
+  </div>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://www.aapt.com.au/FrontierLink/xsd" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsg="http://www.aapt.com.au/FrontierLink/xsd" elementFormDefault="qualified">
+
+    <xsd:include schemaLocation="SimDelivery.xsd" />
+    <xsd:include schemaLocation="elements/MobileSimSize.xsd" />
+
+    <xsd:complexType name="ReplaceMobileSim">
+        <xsd:sequence>
+            <xsd:element name="simDelivery" type="wsg:SimDelivery">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en">Delivery and contact details for sim card</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="simSize" type="wsg:MobileSimSize">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en">Sim type to be delivered</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>

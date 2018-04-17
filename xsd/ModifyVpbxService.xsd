@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" 
+        xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+        xmlns:wsg="http://www.aapt.com.au/FrontierLink/xsd" 
+        targetNamespace="http://www.aapt.com.au/FrontierLink/xsd" 
+        elementFormDefault="qualified">
+    
+	<xsd:include schemaLocation="AddGroupFeatures.xsd"/>
+	<xsd:include schemaLocation="AddUsers.xsd"/>
+	<xsd:include schemaLocation="EquipmentDelivery.xsd" />
+	<xsd:include schemaLocation="ManageNumbersList.xsd"/>
+	<xsd:include schemaLocation="NumberRangeList.xsd" />
+	<xsd:include schemaLocation="PortNumberList.xsd" />
+	<xsd:include schemaLocation="SiteDetailsList.xsd" />
+	
+	<xsd:include schemaLocation="elements/ContractTermMonths.xsd" />
+    <xsd:include schemaLocation="elements/CustomerReference.xsd" />
+    <xsd:include schemaLocation="elements/DirectoryUsageCode.xsd" />
+    <xsd:include schemaLocation="elements/OnSiteInstallationAndTraining.xsd" />
+    <xsd:include schemaLocation="elements/ServiceID.xsd" />
+	
+    <xsd:complexType name="ModifyVpbxService">
+ 		<xsd:sequence>
+	     	<xsd:element name="serviceOrderID" type="wsg:ServiceID">
+	        <xsd:annotation>
+                    <xsd:documentation xml:lang="en">An AAPT assigned unique identifier for each service order</xsd:documentation>
+	            </xsd:annotation>
+	        </xsd:element>
+	        <xsd:element name="customerReference" type="wsg:CustomerReference">
+	            <xsd:annotation>
+	                <xsd:documentation xml:lang="en">A customer assigned unique identifier for each Service instance requested</xsd:documentation>
+	            </xsd:annotation>
+	        </xsd:element>
+	        <xsd:element name="contractTerm" type="wsg:ContractTermMonths">
+	            <xsd:annotation>
+	                <xsd:documentation xml:lang="en">The AAPT contract term for the service</xsd:documentation>
+	            </xsd:annotation>
+	        </xsd:element>
+	        <xsd:element name="siteDetailsList" type="wsg:SiteDetailsList" >
+	            <xsd:annotation>
+	               <xsd:documentation xml:lang="en">Unique ID for the customer site</xsd:documentation>
+	            </xsd:annotation>
+	        </xsd:element>
+	        <xsd:element name="numberRangeList" type="wsg:NumberRangeList" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en">Add number ranges.This is required for Manager numbers.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="equipmentDelivery" type="wsg:EquipmentDelivery" minOccurs="0">
+              	<xsd:annotation>
+                    <xsd:documentation xml:lang="en">Equipment delivery options</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="onSiteInstallationAndTraining" type="wsg:OnSiteInstallationAndTraining" />
+	        <xsd:element name="directoryUsageCode" type="wsg:DirectoryUsageCode" />
+	       	<xsd:choice>
+	            <xsd:element name="addGroupFeatures" type="wsg:AddGroupFeatures">
+	                <xsd:annotation>
+	                    <xsd:documentation xml:lang="en">Add Group Features</xsd:documentation>
+	                </xsd:annotation>
+	            </xsd:element>
+	            <xsd:element name="addUsers" type="wsg:AddUsers">
+	                <xsd:annotation>
+	                    <xsd:documentation xml:lang="en">Add Users</xsd:documentation>
+	                </xsd:annotation>
+	            </xsd:element>
+	            <xsd:element name="manageNumbers" type="wsg:ManageNumbersList">
+	                <xsd:annotation>
+	                    <xsd:documentation xml:lang="en">Manage Numbers</xsd:documentation>
+	                </xsd:annotation>
+	            </xsd:element>
+	            <xsd:element name="portNumbers" type="wsg:PortNumberList">
+	                <xsd:annotation>
+	                    <xsd:documentation xml:lang="en">Port Numbers</xsd:documentation>
+	                </xsd:annotation>
+	            </xsd:element>
+	        </xsd:choice>  
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>

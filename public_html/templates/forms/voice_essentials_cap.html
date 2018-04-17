@@ -1,0 +1,129 @@
+<style>
+    @page {
+        sheet-size : A4;
+        margin: 4%;   
+        odd-footer-name: html_pagesFooter;
+    }           
+    
+    div.pages {
+        page: pages;
+    } 
+</style> 
+<link href = "assets/css/form.css" rel='stylesheet' type='text/css'>
+<div class="preview-{{index}}" ng-repeat="(index, item) in items['voice_essentials_cap'] track by $index">
+    <div class ="pageBreaker">
+        <table style="width:100%">
+            <tr>
+                <td colspan="3"><img  width = 250 height = 70 src ="assets/images/logo.png" ></td>
+                <td colspan="3" class="cardTitle">NEXGEN VOICE RATE CARD</td>
+            </tr>
+            <tr>
+                <td colspan="6"> </td>
+            </tr>
+            <tr>
+                <td colspan="6" class="planTitle">BUSINESS ESSENTIAL CAP</td>  
+            </tr>
+            <tr class="plan-row">
+                <td colspan="6" class="planCategory">{{formData.comLocation['voice_essentials_cap'][index]}},{{formData.comSuburb['voice_essentials_cap'][index]}},{{postcode=formData.comZipCode['voice_essentials_cap'][index]}}</td>
+            </tr>
+            <tr class="rate font-grey">
+                <td colspan='2' ><b class="redText"> Business Essential $49 per Channel</b></td>
+                <td colspan='2' class="colorless normal form-data">
+                    <b>{{formData.voiceEssentialChannel[index]}} Channels</b>
+                </td> 
+                 <td colspan='2' class="form-data">${{voiceEssential.rate[formData.voiceEssentialChannel[index]]}}</td>
+            </tr> 
+            <tr ng-if="formData.voiceEssentialDID[index]" class="rate font-grey">
+                <td colspan='2'>Direct in Dials</td>
+                <td colspan='2' class="colorless normal form-data"><b>{{formData.voiceEssentialDID[index]}} X Direct in Dial numbers</b></td> 
+                <td colspan='2' class="form-data">${{voiceEssential.eDID[formData.voiceEssentialDID[index]]}}  per month</td>
+            </tr>
+            <tr class="rate font-grey">
+                <td colspan='2'>Midband Plan</td>
+                <td colspan='2' class="colorless normal form-data"><b>{{voiceEssential.plan[index].description}}</b></td>               
+                <td colspan='2' class="form-data"><b>${{voiceEssential.plan[index].price}}</b></td>
+            </tr>
+            <tr class="rate font-grey" ng-if='voiceEssential.download[index]'>
+                <td colspan="2"> Download Allowance</td>
+                <td colspan='2' class="colorless normal form-data"><b>{{voiceEssential.download[index].description}}</b></td>               
+                <td colspan='2' class="form-data"><b>${{voiceEssential.download[index].price}}</b></td>
+            </tr> 
+            <tr class="less-padding black">
+                <td class="title less-padding" colspan="2">Destination</td>
+                <td class="title less-padding" colspan="2"></td>
+                <td class="title less-padding" colspan="2">Call Rates</td>
+            </tr>
+            <tr class="desti-row">
+                <td class="destination-business grey" colspan="2">Line rental</td>
+                <td class='grey included' colspan='2'></td>
+                <td class="included grey" colspan="2">***INCLUDED***</td>
+            </tr>
+            <tr class="desti-row">
+                <td class="destination-business " colspan="2">Local Calls</td>
+                <td class='included' colspan='2'></td>
+                <td class="included " colspan="2">***INCLUDED***</td>
+            </tr>
+            <tr class="desti-row">
+                <td class="destination-business grey" colspan="2">National Calls</td>
+                <td class='grey included' colspan='2'></td>
+                <td class="included grey" colspan="2">***INCLUDED***</td>
+            </tr>
+            <tr class="desti-row">
+                <td class="destination-business " colspan="2">Calls to Australian Mobiles</td>
+                <td class='included' colspan='2'></td>
+                <td class="included" colspan="2">***INCLUDED***</td>
+            </tr>
+            <tr class="desti-row">
+                <td class="destination-business grey" colspan="2">Calls to 1300</td>
+                <td class='grey included' colspan='2'></td>
+                <td class="included grey" colspan="2">$0.45 per call</td>
+            </tr>
+            <tr class="desti-row">
+                <td class="destination-business" colspan="2">International Calls</td>
+                <td class='included' colspan='2'></td>
+                <td class="included " colspan="2">Full list available on request</td>
+            </tr>
+            <tr class="less-padding">
+                <td class="title less-padding" colspan="6"> Minimum Monthly Charges / Discounts 
+                </td>
+            </tr>
+            <tr class="summary summary-midband">
+                <td  class="term" >
+                    Monthly Rate Plan<br/>
+                    IP Midband Monthly Rate<br />
+                    <b>Total Monthly Plan</b>
+                </td>
+                <td class="term-details pull-right" colspan ="2">
+                    ${{roundVal(voiceEssential.totalRate[index])}} Per Mth<br />
+                    ${{roundVal(voiceEssential.ipTotalRate[index])}} Per Mth<br />
+                    <b>${{roundVal(voiceEssential.totalRate[index] + voiceEssential.ipTotalRate[index])}} Per Mth</b>
+                </td>
+                <td class="term" colspan ="2">
+                    Monthly Plan Discount<br />
+                    IP Midband Plan Discount<br />
+                    <b>Total Discount</b>
+                </td>
+                <td class="term-details pull-right">
+                    ${{formData.bECapDiscount[index]}} Per Mth<br />
+                    ${{formData.ipMidbandDis[index]}} Per Mth<br />
+                    <b>${{voiceEssential.totalDiscount[index]}} Per Mth</b>
+                </td>
+            </tr>
+           
+            <tr class="summary summary-midband">
+                    <td  class="term" >Term</td>
+                    <td colspan="4"></td>
+                    <td class="term-details form-data pull-right">
+                        &nbsp;&nbsp;<b>{{formData.aBillingTerm}} Months</b>
+                    </td>                   
+            </tr>    
+        </table>
+        <p class="TAC">
+            <b>BUSINESS ESSENTIAL CAP Terms and Conditions</b><br />
+            All Prices are exclusive of GST. Nexgen Business Essential (NBE) Call inclusions: Local; national calls; Calls to Australian mobiles. <b>Flag fall of 20 cents applies</b> only to the off‐net lines attached to the accounts, excluding local calls.<b> All other services will be charged in accordance with the standard Nexgen Australia Off‐Net Rates; Local calls are charged a flat $0.14 per call, National calls $0.18 per minute, calls to Australian Mobiles  $0.35 per minute, Calls to 13/ 1300 are charged at $0.45 per call. Voice lines only will be ported to NBE.</b> Nexgen off‐net calls are charged in <b>30 second increments.</b> Nexgen Business Essential Cap rates only apply once we have ported your services onto the Nexgen Business Network. Prior to the porting of your services you will be charged standard Off‐Net Rates. Delivery of the Nexgen Business Essential product has a standard delivery timeframe of 6‐8 weeks commencing after completion of phone system installation. Analogue Devices such as alarms, eftpos may not be able to be ported. The Nexgen Business Essential plan is not for use by outbound call centres. <b>Nexgen Business Essential</b> has a minimum 4 channel requirement. Maximum Plan discount is 50% per channel per month. Nexgen will only apply any plan fee discounts upon settlement of your account. All discounts expire at the end of the term. Existing Telephone lines that need to be ported must be identified on the Nexgen Telephone Application. Monthly rate plan Discounts will only apply once services have been ported to Nexgen Business Essential Network. Any PSTN or Analogue service that does not port to <b>Nexgen Business Essential</b> Network will be billed at $39.95. Nexgen BRI is charged at $99.85 per month, Nexgen PRI 10 is charged $439.99 per month, PRI 20 is $870.00 per mont and PRI 30 is $1279.99 per month ex GST. Nexgen Business Essential Cap plans have a mandatory Direct in dial of 10 numbers which is charged at $9.99. Line hunt will be charged at $3.95 per channel per month. We may withdraw your Nexgen Cap plan at any time by giving you at least 30 day's notice in writing. Relocation of service(s) or Cancellation of any service prior to the minimum term will incur Early Termination fees. Please refer to clause 15.5 of the Nexgen Application for Early Termination Calculation. IP Midband is available in selected coverage areas only. Midband speeds advertised above are an Up to speed. These speeds may vary due to a number of factors; Eg: distance from the local telephone exchange. Professional Installation charge, if selected will be added to the phone bill. Nexgen provides 5 emails at $0. Any additional emails supplied can be purchased at $10 per month per user per month. Email addresses can only be purchased in 5 user blocks. Nexgen Australia will provide a Mail box space of a 100MB. Excess Usage on Nexgen Broadband plans is charged at 7c per MB. Nexgen static IP defaults at one per client. Additional static IP's are charged at $8 per IP per month. Nexgen Australia will deliver the service to the customers site only. The customers IT person is required to complete the connection of the broadband service at the site, the customer is liable for all and any charges associated with the use of their IT person. NBE & Midband minimum term is 36 months. Early Termination Fees apply. Please refer to clause 15.5 of the Nexgen Application for full Terms and Conditions. Delivery of all the above service is dependent on capacity and infrastructure availability and dependant on the available copper pairs on the customers lead in. It is the customers responsibility to have enough copper pairs from your MDF to their  comms room to deliver Midband and <b>Nexgen Business Essential</b> services. Please refer to nexgen.com.au for full terms and conditions. 
+        </p>
+        <htmlpagefooter name='pagesFooter'>  
+          <ng-include src="'templates/forms/card_footer.html'" ng-init="location=formData.comLocation['voice_essentials_cap'][index];suburb=formData.comSuburb['voice_essentials_cap'][index];postcode=formData.comZipCode['voice_essentials_cap'][index]"></ng-include>
+        </htmlpagefooter>
+    </div>
+</div>

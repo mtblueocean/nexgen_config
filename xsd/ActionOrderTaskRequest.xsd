@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://www.aapt.com.au/FrontierLink/xsd"
+            xmlns="http://www.w3.org/2001/XMLSchema"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:wsg="http://www.aapt.com.au/FrontierLink/xsd"
+            elementFormDefault="qualified">
+
+    <xsd:include schemaLocation="elements/CaseID.xsd" />
+    <xsd:include schemaLocation="TaskAction.xsd" />
+
+    <xsd:element name="ActionOrderTaskRequest" type="wsg:ActionOrderTaskRequest" />
+
+    <xsd:complexType name="ActionOrderTaskRequest">
+        <xsd:sequence>
+            <xsd:element name="taskId" type="wsg:CaseID">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en">Identifier for an order task</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="action" type="wsg:TaskAction">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en">An action for a task</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>

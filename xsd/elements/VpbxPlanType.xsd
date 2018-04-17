@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://www.aapt.com.au/FrontierLink/xsd"
+            xmlns="http://www.w3.org/2001/XMLSchema"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+    <xsd:simpleType name="VpbxPlanType">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="SoftPhone" />
+            <xsd:enumeration value="Premium" />
+            <xsd:enumeration value="PremiumPlus" />
+            <xsd:enumeration value="Standard" />
+            <xsd:enumeration value="Cordless" />
+            <xsd:enumeration value="Conference" />
+            <xsd:enumeration value="ConferencePlus" />
+            <xsd:enumeration value="Line ATA" />
+        </xsd:restriction>
+    </xsd:simpleType>
+</xsd:schema>

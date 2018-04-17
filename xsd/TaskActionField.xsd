@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://www.aapt.com.au/FrontierLink/xsd"
+            xmlns="http://www.w3.org/2001/XMLSchema"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:wsg="http://www.aapt.com.au/FrontierLink/xsd"
+            elementFormDefault="qualified">
+
+    <xsd:include schemaLocation="elements/TaskActionFieldLabel.xsd" />
+    <xsd:include schemaLocation="elements/TaskActionFieldValue.xsd" />
+
+    <xsd:complexType name="TaskActionField">
+        <xsd:sequence>
+            <xsd:element name="fieldLabel" type="wsg:TaskActionFieldLabel" >
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en">Description of value to be supplied</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="fieldValue" type="wsg:TaskActionFieldValue" minOccurs="0" >
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en">Value to be supplied, can supply a suggested value when used within GetOrderTasksResponse</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>

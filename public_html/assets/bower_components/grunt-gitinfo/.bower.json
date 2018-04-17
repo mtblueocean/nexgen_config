@@ -1,0 +1,15 @@
+{
+  "name": "grunt-gitinfo",
+  "homepage": "https://github.com/damkraw/grunt-gitinfo",
+  "version": "0.1.8",
+  "_release": "0.1.8",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.1.8",
+    "commit": "b385be956f88cf880c292dec1fb7c6f54e494bfe"
+  },
+  "_source": "https://github.com/damkraw/grunt-gitinfo.git",
+  "_target": "^0.1.8",
+  "_originalSource": "damkraw/grunt-gitinfo",
+  "_direct": true
+}

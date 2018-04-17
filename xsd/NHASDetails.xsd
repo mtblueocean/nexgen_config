@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://www.aapt.com.au/FrontierLink/xsd"
+            xmlns="http://www.w3.org/2001/XMLSchema"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:wsg="http://www.aapt.com.au/FrontierLink/xsd"
+            elementFormDefault="qualified">
+
+    <xsd:include schemaLocation="elements/DeliveryInstructions.xsd" />
+    <xsd:include schemaLocation="NBNDelivery.xsd" />
+    
+    <xsd:complexType name="NHASDetails">
+      	<xsd:sequence>
+	      	<xsd:element name="professionalInstallation" type="xsd:boolean" />
+	      	<xsd:element name="nbnDelivery" type="wsg:NBNDelivery" minOccurs="0" >
+	      		 <xsd:annotation>
+                    <xsd:documentation xml:lang="en">NBN delivery should be provided if professional Installation is false and serviceability class is 23 and 24</xsd:documentation>
+                </xsd:annotation>
+	      	</xsd:element>
+      	</xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,77 @@
+<style>
+    @page {
+        sheet-size : A4;
+        margin: 4%;   
+        odd-footer-name: html_pagesFooter;
+    }           
+    
+    div.pages {
+        page: pages;
+    } 
+</style> 
+<link href = "assets/css/form.css" rel='stylesheet' type='text/css'>
+<div class ="pageBreaker">
+    <table style="width:100%">
+        <tr>
+            <td colspan="3"><img  width = 250 height = 70 src ="assets/images/logo.png" ></td>
+            <td colspan="3" class="cardTitle">NEXGEN MOBILE RATE CARD</td>
+        </tr>
+        <tr>
+            <td colspan="6"> </td>
+        </tr>
+        <tr>
+            <td colspan="6" class="planTitle">Mobile Mega Cap Plan</td>  
+        </tr>
+        <tr class="plan-row" ng-repeat="(index,item) in mobileMegaPlans track by $index" ng-if="item">
+            <td colspan="4" class="planItem"><b>Mobile Mega {{mobile_mega_plans[index].description}}</b><br />{{mobile_mega_plans[index].inclusions}}</td>
+            <td class="planPrice"><b>{{item}} Mobile</b></td>
+            <td class="planPrice"><b>$ {{mobile_mega_plans[index].price.toFixed(2)}} per Mobile</b></td>
+        </tr> 
+        <tr class="less-padding black">
+            <td class="title less-padding" colspan="3">Destination</td>                
+            <td class="title less-padding" colspan="3">Rate</td>
+        </tr>
+        <tr class="desti-row">
+            <td class="destination-business grey" colspan="3">Mobile to Mobile</td>                
+            <td class="included grey" colspan="3">$0.90 Cents Per min</td>
+        </tr>
+        <tr class="desti-row">
+            <td class="destination-business " colspan="3">Mobile to Fixed</td>                
+            <td class="included " colspan="3">$0.90 Cents Per min</td>
+        </tr>
+        <tr class="desti-row">
+            <td class="destination-business grey" colspan="3">SMS Messages</td>                
+            <td class="included grey" colspan="3">$0.25 Per Outgoing SMS</td>
+        </tr>
+        <tr class="desti-row">
+            <td class="destination-business " colspan="3">MMS Messages</td>
+            <td class="included " colspan="3">$0.45 Per Outgoing SMS</td>
+        </tr>  
+          <tr class="desti-row">
+            <td class="destination-business " colspan="3">International Calls</td>
+            <td class="included " colspan="3">Available on request</td>
+        </tr> 
+        <tr class="desti-row">
+            <td class="destination-business " colspan="3">Flagfall</td>
+            <td class="included " colspan="3">$0.35 per call</td>
+        </tr> 
+        <tr class="less-padding">
+            <td class="title less-padding" colspan="6"> Minimum Monthly Charges / Discounts</td>
+        </tr>
+        <tr class="summary summary-midband">
+            <td  class="term" >Monthly Mobile Plan Fee</td>
+            <td class="term-details pull-right form-data" ><b>$ {{roundVal(mobileCap.totalFee)}} Per Mth</b></td>
+            <td class="term">Monthly Mobile Plan Discount</td>
+            <td class="term-details pull-right form-data"><b>$ {{roundVal(mobileCap.discount)}} Per Mth</b></td>
+            <td  class="term" >Term</td>
+            <td class="term-details pull-right form-data">&nbsp;&nbsp;<b>{{formData.aBillingTerm}} Months</b></td>    
+        </tr> 
+    </table>
+    <p class="TAC">
+        <b>Mobile Mega Cap Terms and Conditions</b><br />
+        All rates and charges are exclusive of GST. Timed voice calls are billed in <b>60 second increments</b>. The stated Monthly Plan fee is the minimum amount required to pay each month, regardless of the usage. Monthly plan fees are charged in advance. The monthly included call usage is the maximum credit included in the monthly plan fee. Monthly included call usage on mobile caps includes calls to landlines and mobiles within Australia;  voice deposit and call forwarding. Calls to 13/1300 and 1800 numbers are  not included in the monthly included call usage. <b>If SMS/MMS are to be included as part of the Included Call Usage, a monthly fee of $8.95 is charged in addition to the monthly plan fee per service. </b> International calls, International roaming Calls to special numbers (1900), premium SMS, Optus Zoo services, and Horizon content are not included in the monthly call usage. Voicemail retrievals are charged as standard mobile calls; Voicemail deposits do not incur a charge. International roaming is charged at a rate levied by the overseas carrier plus a roaming charge. All incoming calls whilst roaming will incur roaming charges. Standard rates apply after the monthly call usage is exceeded. <b>The monthly included call usage expires at the end of each billing period. Blackberry Data is charged at $29.95 per month and includes unlimited Usage.</b> Included data usage is limited to GPRS usage. Excess GPRS download charges are 30 cents per MB after the monthly Usage is exceeded. The monthly Included Data Usage expires at the end of each billing period. Included Calls are not transferable between different mobiles. <b>Minimum Term 24months contract. Early Termination Fee will apply if cancelled or ported away prior to end of specified term. </b>Early Termination Fee is calculated as the Plan Fee x Remaining months from ported date.
+    </p>
+    <htmlpagefooter name='pagesFooter'>   
+       <ng-include src="'templates/forms/card_footer.html'" ng-init="location=formData.comLocation['mobile_mega'][index];suburb=formData.comSuburb['mobile_mega'][index];postcode=formData.comZipCode['mobile_mega'][index]"></ng-include>
+    </htmlpagefooter>
+</div>

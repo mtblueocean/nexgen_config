@@ -1,0 +1,111 @@
+<style>
+    @page {
+        sheet-size : A4;
+        margin: 4%;   
+        odd-footer-name: html_pagesFooter;
+    }           
+    
+    div.pages {
+        page: pages;
+    } 
+</style>  
+<link href = "assets/css/form.css" rel='stylesheet' type='text/css'>
+<div class="preview-{{index}}" ng-repeat="(index, item) in items['nbn'] track by $index">
+    <div class="row space60"></div>
+    <table style="width:100%">
+        <tr>
+            <td rowspan="2"><img  width = 250 height = 70 src ="assets/images/logo.png" ></td>
+          
+            <td class="form-title"> NEXGEN DATA RATE CARD</td>
+        </tr>
+    </table>
+    <table class ="table-bordered rate-table cap-plan-table">
+        <tr>
+            <th  class ="title pull-center less-padding " colspan="6">
+               NBN Monthly Plan
+            </th>
+        </tr>     
+        <tr class="black less-padding">
+            <td class="title" colspan="6">{{formData.comLocation['nbn'][index]}}</td>
+        </tr>
+        <tr class="rate font-grey">
+            <td colspan='4' class="form-data"><b>{{nbn.plan[index].desc}}</b>
+            </td>               
+            <td colspan='2' class="form-data"><b>${{nbn.plan[index].rate}}</b></td>
+        </tr>
+        <tr class="rate font-grey" ng-if="formData.voiceCompAnalougeNBNMonthly[index]!=0">
+            <td colspan='4' class="form-data"><b>Nexgen Office Analogue <i>({{formData.voiceCompAnalougeNBNMonthly[index]}} line(s) @ 39.95 p/mnth per line)</i>
+                            </b>
+            </td>
+            <td colspan='2' class="form-data"><b>${{roundVal(nbn.analoguePrice[index])}}</b></td>
+        </tr>
+        <tr class="less-padding">
+            <td class="title less-padding " colspan="6"> Download Allowance 
+            </td>
+        </tr>
+        <tr class="rate font-grey">
+            <td colspan='4' class="form-data"><b>{{nbn.download[index].plan}}</b>
+            </td>               
+            <td colspan='2' class="form-data"><b>${{nbn.download[index].rate}}</b></td>
+        </tr> 
+        <tr class="less-padding">
+            <td class="title less-padding " colspan="6"> Minimum Monthly Charges / Discounts 
+            </td>
+        </tr>
+        <tr class="summary summary-midband padding20">
+            <td class="data-charges bottom-align"><label>Total Plan Fees</label></td>
+            <td class="data-charges text-right bottom-align"><label>${{roundVal(nbn.totalFee[index])}}</label></td>
+            <td class="data-charges bottom-align">
+                <label ng-if="formData.voiceCompAnalougeDisNBNMonthly[index]!=0">Analogue Discount</label><br ng-if="formData.voiceCompAnalougeDisNBNMonthly[index]!=0"/>
+                <label ng-if="formData.nbnDis[index]!=0">Plan Discount</label><br ng-if="formData.nbnDis[index]!=0"/>
+                <label><b>Total Discount</b></label>
+            </td>
+            <td class="data-charges text-right bottom-align">
+                <label ng-if="formData.voiceCompAnalougeDisNBNMonthly[index]!=0">${{roundVal(formData.voiceCompAnalougeDisNBNMonthly[index])}}</label><br ng-if="formData.voiceCompAnalougeDisNBNMonthly[index]!=0"/>
+                <label ng-if="formData.nbnDis[index]!=0">${{roundVal(formData.nbnDis[index])}}</label><br ng-if="formData.nbnDis[index]!=0"/>
+                <label><b>${{roundVal(nbn.discount[index])}}</b></label>
+            </td>
+            <td class="data-charges bottom-align" ><label>Term</label></td>
+            <td class="data-charges text-right bottom-align"><label><b>{{formData.aBillingTerm}}  Months</b></label></td>
+        </tr>
+    </table>
+    <table class="table-content">
+        <tr><td colspan="6" class="space90"></td></tr>
+        <tr>
+            <td colspan = "6" class="info-text info-text-small space-line">
+                <h3>NBN Terms and conditions.</h3><br/>
+                All Prices exclude GST.<b>The monthly NBN broadband plan fee is a
+                total of speed plan and the data download Plan.</b> Plans are billled
+                monthly. <b>Minimum term on all Broadband plans listed above is 36months.
+                </b>Internal cabling from the NBN unit to your internal devices such as
+                Alarm, Eftpos and Modem's e.t.c, is the responsibilty of the end user.
+                Routers will need to be compatible wit hthe NBN service. Modifcation 
+                of services after the installation may incur additional fees. Nexgen 
+                deems one (1) Gigabyte to be equivalent to 1024 Mega bytes. Relocation 
+                of service(s) is dependent on coverage availability. NBN is available 
+                in selected coverage areas only and is dependent on the access technology. 
+                Nexgen will not charge for the upload data unless your total uploaded 
+                data usage in a calendar month exceeds the total downloaded usage in
+                the same month by more than 2.5 times.  In this case, Nexgen will charge
+                you for each additional Megabyte or Gigabyte of traffic you upload in that
+                month in excess of the 2.5:1 ratio at the rate of $2.50/Gigabyte. NBN speeds
+                advertised above are an <b>Up to speed.</b> These speeds may vary due to a number
+                of factors;  Eg: distance from the local telephone exchange. Professional 
+                Installation charge, if selected will be added to the phone bill . Nexgen
+                provides 5 emails at $0. Any additional emails supplied can be purchased 
+                at $10 per month per 5 users. This can only be purchased in 5 user blocks.
+                Nexgen Australia will provide a Mail box space of a 100MB. Excess Usage 
+                on the Nexgen Office Broadband plans is charged at 15c per MB. Nexgen static
+                IP defaults at one per client. Additional static IP's are charged at $8 per 
+                IP. Nexgen Australia will deliver the service to the site only. Your IT person 
+                is required to complete the connection of the broadband service at your site,
+                and the customer is liable for all and any charges associated with the use of 
+                their IT person. Early Termination Fees apply. Please refer to clause 15.5 of the
+                Nexgen Application and for full Terms and Conditions. 
+            </td>
+        </tr>
+    </table>
+    <htmlpagefooter name='pagesFooter'>   
+        <ng-include src="'templates/forms/card_footer.html'" ng-init="location=formData.comLocation['nbn'][index];suburb=formData.comSuburb['nbn'][index];postcode=formData.comZipCode['nbn'][index]"></ng-include>
+    </htmlpageFooter>
+</div>

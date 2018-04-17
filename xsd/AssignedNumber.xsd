@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://www.aapt.com.au/FrontierLink/xsd"
+            xmlns="http://www.w3.org/2001/XMLSchema"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:wsg="http://www.aapt.com.au/FrontierLink/xsd"
+            elementFormDefault="qualified">
+
+    <xsd:include schemaLocation="elements/FixedTelephoneNumber.xsd" />
+    
+    <xsd:complexType name="AssignedNumber">
+        <xsd:sequence>
+        	<xsd:annotation>
+        		<xsd:documentation>Enter portedInNumber or numberFromNewBlock. If neither entered, it will be 'New Number'</xsd:documentation>
+        	</xsd:annotation>
+			<xsd:choice>
+                <xsd:element name="portedInNumber" type="wsg:FixedTelephoneNumber" />
+            	 <xsd:sequence>
+            		<xsd:element name="numberOfTheNewBlock" type="xsd:int" >
+             		<xsd:annotation>
+                        <xsd:documentation xml:lang="en">Starts from 1</xsd:documentation>
+                    </xsd:annotation>
+                   </xsd:element>
+            		<xsd:element name="numberFromNewBlock" type="xsd:int">
+            		 	<xsd:annotation>
+                        <xsd:documentation xml:lang="en">Starts from 1</xsd:documentation>
+                   	</xsd:annotation>
+                   </xsd:element>
+            	 </xsd:sequence>
+             </xsd:choice>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>

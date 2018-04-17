@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://www.aapt.com.au/FrontierLink/xsd"
+            xmlns="http://www.w3.org/2001/XMLSchema"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+    <xsd:simpleType name="AccessType">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="SSS" />
+            <xsd:enumeration value="DSL-L2" />
+            <xsd:enumeration value="IULL" />
+            <xsd:enumeration value="VULL" />
+            <xsd:enumeration value="NFAS" />
+            <xsd:enumeration value="NWAS" />
+            <xsd:enumeration value="NCAS" />
+            <xsd:enumeration value="NHAS" />
+            <xsd:enumeration value="NSAS" />
+        </xsd:restriction>
+    </xsd:simpleType>
+</xsd:schema>

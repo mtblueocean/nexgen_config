@@ -1,0 +1,107 @@
+
+  <div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>Forms</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="index.html">Home</a>
+            </li>
+            <li class="active">
+                <strong>View-Forms</strong>
+                </li>
+            </ol>
+    </div>  
+  </div>
+
+  <flash-message></flash-message>
+
+  <div class="wrapper wrapper-content animated fadeInRight">
+   <div class="row">
+    <div class="col-lg-12">
+     <div class="ibox float-e-margins">
+        <div class="ibox-title">
+            <h5>Form List</h5>
+        </div>
+        <div class="ibox-content">
+            <div class="row">
+                <div class="col-md-6 col-sm-6 col-xs-6">
+                    <form class="form-inline">
+                        <div class="form-group">
+                            <label >Search</label>
+                            <input type="text" ng-model="search" class="form-control" placeholder="Search">
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-6">
+                    <div class="pull-right">
+                        <span class='clickables' ng-click="filterForms('draft')">Drafts | </span>
+                        <span class='clickables' ng-click="filterForms('Completed')">Completed | </span>                        
+                        <span class='clickables' ng-click="filterForms('')">All</span>
+                    </div>
+                </div>             
+            </div>
+            <table datatable="ng" class="table table-striped table-bordered table-hover dataTables-example">
+            <thead>
+            <tr>
+                <th><a href="javascript:;" ng-click="sortKey = 'creator_name'; reverse = !reverse">
+                    User
+                    <span ng-show="sortKey == 'creator_name' && !reverse" class="fa fa-caret-down"></span>
+                    <span ng-show="sortKey == 'creator_name' && reverse" class="fa fa-caret-up"></span>
+                    </a>
+                </th>
+                <th><a href="javascript:;" ng-click="sortKey = 'data.cName'; reverse = !reverse">
+                    Company
+                    <span ng-show="sortKey == 'data.cName' && !reverse" class="fa fa-caret-down"></span>
+                    <span ng-show="sortKey == 'data.cName' && reverse" class="fa fa-caret-up"></span>
+                    </a>
+                </th>
+                <th><a href="javascript:;" ng-click="sortKey = 'created_at'; reverse = !reverse">
+                    Created Date
+                    <span ng-show="sortKey == 'created_at' && !reverse" class="fa fa-caret-down"></span>
+                    <span ng-show="sortKey == 'created_at' && reverse" class="fa fa-caret-up"></span>
+                    </a>
+                </th>
+                <th><a href="javascript:;" ng-click="sortKey = 'types'; reverse = !reverse">
+                    type of forms
+                    <span ng-show="sortKey == 'types' && !reverse" class="fa fa-caret-down"></span>
+                    <span ng-show="sortKey == 'types' && reverse" class="fa fa-caret-up"></span>
+                    </a>
+                </th>
+                <th><a href="javascript:;" ng-click="sortKey = 'status'; reverse = !reverse">
+                    Status
+                    <span ng-show="sortKey == 'status' && !reverse" class="fa fa-caret-down"></span>
+                    <span ng-show="sortKey == 'status' && reverse" class="fa fa-caret-up"></span>
+                    </a>
+                </th>
+                <th></th>
+            </tr>
+            </thead>        
+                <tbody>
+                    <tr class="gradeX" ng-repeat="form in forms | orderBy:sortKey:reverse |filter:search | filter:{status:status} | limitTo:userStatus">
+                        <td style="width :20%"><b>Sales Rep:-</b> {{form.creator_name}}</td> 
+                        <td style="width :20%">{{form.data.cName}}</td>
+                        <td style="width :10%">{{form.created_at}}</td>
+                        <td style="width :35%">{{form.types}}</td>
+                        <td style="width :5%">{{form.status}}</td>
+                        
+                        <td style="width :10%"> 
+                            <div class="ibox-tools dropdown form-tools">
+                                 <a ng-if="form.status=='Completed'" ng-click="downloadForms(form.id)"><i class="fa fa-download fa-2x"></i></a>
+                                <a  ng-click="edit(form.id)"><i class="fa fa-pencil fa-2x"></i></a>
+                                <a ng-click="delete(form.id)"><i class="fa fa-trash-o fa-2x"></i></a>                               
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+                 <tfoot>
+                 
+                      
+                     
+                </tfoot>
+            </table>
+             
+        </div>
+     </div> 
+    </div>
+   </div>
+  </div>

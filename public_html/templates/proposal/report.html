@@ -1,0 +1,317 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+	<div class="col-lg-10">
+		<h2>Users</h2>
+		<ol class="breadcrumb">
+			<li>
+			<a href="index.html">Home</a>
+			</li>
+			<li>
+			<a ui-sref="finance_rates">Flexi Rent</a>
+			</li>
+		</ol>
+	</div>
+	<div class="col-lg-2">
+	</div>
+</div>
+<flash-message></flash-message>
+<form method="get" class="form-horizontal" id="products_form">
+	<!-- company -->
+	<div class="wrapper animated fadeInRight">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="ibox float-e-margins">
+					<div class="ibox-title">
+						<h5>Company Details</h5>
+					</div>
+					<div class="ibox-content">
+						<div class="form-group">
+							<label class="col-sm-3 control-label">Search</label>
+							<div class="col-sm-3">
+								<input type="text" class="form-control m-b">
+							</div>
+							<label class="col-sm-3 control-label">Company</label>
+							<div class="col-sm-3">
+								<select class="form-control m-b" name="account" ng-options="company.id as company.name for company in companies" ng-model="proposal.company" data-required="true" data-trigger="change">
+								</select>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- company -->
+	<!-- sales -->
+	<div class="wrapper animated fadeInRight">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="ibox float-e-margins">
+					<div class="ibox-title">
+						<h5>Seller Details</h5>
+					</div>
+					<div class="ibox-content">
+						<div class="form-group">
+							<label class="col-sm-1 control-label">Sales Rep</label>
+							<div class="col-sm-2">
+								<select class="form-control m-b" name="account" ng-options="salesrep.id as salesrep.name for salesrep in salesreps" ng-model="proposal.salesrep" data-required="true" data-trigger="change">
+								</select>
+							</div>
+							<label class="col-sm-2 control-label">Lead Source</label>
+							<div class="col-sm-2">
+								<select class="form-control m-b" name="account" ng-options="leadsource.id as leadsource.name for leadsource in leadsources" ng-model="proposal.leadsource" data-required="true" data-trigger="change">
+								</select>
+							</div>
+							<label class="col-sm-2 control-label">Telemarketers</label>
+							<div class="col-sm-2">
+								<select class="form-control m-b" name="account" ng-options="telemarketer.id as telemarketer.name for telemarketer in telemarketers" ng-model="proposal.telemarketer" data-required="true" data-trigger="change">
+								</select>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- sales -->
+	<!-- options -->
+	<div class="wrapper animated fadeInRight">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="ibox float-e-margins">
+					<div class="ibox-title">
+						<h5>Options</h5>
+					</div>
+					<div class="ibox-content">
+						<div class="form-group">
+							<label class="col-sm-1 control-label">Purchase option</label>
+							<div class="col-sm-3">
+								<label class="radio-inline" ng-repeat="purchaseopt in purchaseopts">
+								<input type="radio" name="purchaseoption" value="{{purchaseopt.id}}" ng-model="proposal.purchaseopt" required="true" ng-change="updateRows()"> {{purchaseopt.title}} </label>
+							</div>
+							<label class="col-sm-1 control-label">Winback</label>
+							<div class="col-sm-2">
+								<select class="form-control m-b" name="account" ng-options="winback.id as winback.name for winback in winbacks" ng-model="proposal.winback" data-required="true" data-trigger="change">
+								</select>
+							</div>
+							<label ng-show="proposal.purchaseopt=='1'" class="col-sm-2 control-label">Term</label>
+							<div ng-show="proposal.purchaseopt=='1'" class="col-sm-2">
+								<select class="form-control m-b" name="account" ng-options="term.id as term.title for term in terms" ng-model="proposal.term" data-required="true" data-trigger="change" ng-change="updateRows()">
+								</select>
+							</div>
+						</div>
+						<div class="hr-line-dashed">
+						</div>
+						<div class="form-group">
+							<label ng-show="proposal.purchaseopt=='1'" class="col-sm-1 control-label">Month</label>
+							<div ng-show="proposal.purchaseopt=='1'" class="col-sm-3">
+								<label class="radio-inline" ng-repeat="month in months">
+								<input type="radio" name="type" value="{{month.id}}" ng-model="proposal.month" required="true" ng-change="updateRows()"> {{month.title}} </label>
+							</div>
+							<!--label class="col-sm-1 control-label">Total Plan Fees</label-->
+							<input type="hidden" class="form-control m-b" ng-model="proposal.plan_fees">
+							<label class="col-sm-2 control-label">Hardware Discount</label>
+							<div class="col-sm-2">
+								<input type="text" class="form-control m-b" ng-change="updateRows()" ng-model="proposal.hardware_discount">
+								<input type="hidden" class="form-control m-b" ng-change="updateRows()" ng-model="proposal.call_discount">
+							</div>
+							
+							<label class="col-sm-2 control-label">Residual</label>
+							<div class="col-sm-2">
+								<input type="text" class="form-control m-b" ng-change="updateRows()" ng-model="proposal.residual">
+							</div>
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- options -->
+	<!-- Sites -->
+	<div class="wrapper animated fadeInRight">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="ibox float-e-margins">
+					<div class="ibox-title">
+						<h5>Sites <!--{{proposal.sites|json}}--><br>
+						<!--br>
+						{{proposal.products|json}}--></h5>
+						<div class="ibox-tools">
+							<a class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Save" ng-click="addSite()">
+							<i class="fa fa-new"></i> + New Site </a>
+						</div>
+					</div>
+					<div class="ibox-content">
+						<div class="form-group">
+							<!-- panel accordion1 -->
+							<div class="panel-group" id="accordion1">
+								<div class="panel panel-default" ng-repeat="site in proposal.sites">
+									<div class="panel-heading">
+										<h5 class="panel-title">
+										<a data-toggle="collapse" data-parent="#accordion1" href="/proposal/new#collapse{{$index}}">Site {{$index}}</a>
+										</h5>
+									</div>
+									<div id="collapse{{$index}}" class="panel-collapse collapse">
+										<div class="panel-body">
+											<div class="accordion-inner">
+												<!-- panel accordion2 -->
+												<div class="panel-group" id="accordion-{{$index}}">
+													<div class="panel panel-default" ng-repeat="catf in categories | filter:{parent:1}">
+														<div class="panel-heading">
+															<h5 class="panel-title">
+															<a data-toggle="collapse" data-parent="#accordion-{{$parent.$index}}" href="/proposal/new#collapse{{catf.id}}{{$parent.$index}}">{{catf.name}}</a>
+															</h5>
+														</div>
+														<div id="collapse{{catf.id}}{{$parent.$index}}" class="panel-collapse collapse">
+															<div class="panel-body">
+																<label class="radio-inline" ng-repeat="cats in categories | filter:{parent:catf.id}">
+																<input type="radio" value="{{cats.id}}" ng-model="site[$parent.$parent.$index].catf[catf.id].cats.id" required="true" confirmed-click="cleanPro($parent.$index+'-'+catf.id)" ng-confirm-click="Do you want to remove the items?"> {{cats.name}} </label>
+																<!-- table -->
+																<table datatable="ng" class="table table-striped table-bordered table-hover dataTables-example">
+																<thead>
+																<tr>
+																	<th>
+																		Category
+																	</th>
+																	<th>
+																		Name
+																	</th>
+																	<th>
+																		Qty
+																	</th>
+																	<th>
+																		Image
+																	</th>
+																	<th>
+																		Desc
+																	</th>
+																	<!--th>Rent(M)</th>
+																			<th>Rent(W)</th-->
+																	<th>
+																	</th>
+																</tr>
+																</thead>
+																<tr class="gradeX" ng-repeat="item in proposal.products | filter:{scs:$parent.$index+'-'+catf.id}">
+																	<td class="col-sm-2">
+																		<select class="form-control m-b" name="account" ng-options="category.id as category.name for category in categories | filter:{parent:site[$parent.$parent.$index].catf[catf.id].cats.id}" ng-model="item.cat" >
+																		</select>
+																	</td>
+																	<td class="col-sm-2">
+																		<select class="form-control m-b" name="account" ng-options="prod.id as prod.code for prod in products | filter:{cat_id:item.cat}" ng-model="item.id" ng-change="updateProductRow(item.id,$parent.$parent.$index,catf.id,$index,item);">
+																		</select>
+																	</td>
+																	<td class="col-sm-1">
+																		<input type="text" class="form-control m-b" ng-model="item.qty" ng-change="updateQty2(item.id,item)">
+																	</td>
+																	<td class="col-sm-1">
+																		<img ng-src="{{item.imaged || '//:0'}}" style="width:20px;"/>
+																	</td>
+																	<td class="col-sm-1">
+																		<span style="position: width: 120px; height: 50px; overflow: hidden; text-overflow: ellipsis">{{item.desc}}</span>
+																	
+																	 <input type="hidden" class="form-control m-b" ng-model="item.tax" readonly="">
+																	<input type="hidden" class="form-control m-b" ng-model="item.sell_price" readonly="">
+																	 <input type="hidden" class="form-control m-b" ng-model="item.rrp_tax" readonly="">
+																	<input type="hidden" class="form-control m-b" ng-model="item.monthly_rent" readonly="">
+																	<input type="hidden" class="form-control m-b" ng-model="item.weekly_rent" readonly="">
+																	<input type="hidden" class="form-control m-b" ng-model="item.pos" readonly="">
+																	</td>
+																	<td class="col-sm-1">
+																		<a class="control-label font-red" style="text-align:center" ng-click="remRow(item)"><i class="fa fa-remove"></i></a>
+																	</td>
+																</td>
+															</tr>
+															</table>
+															<div ng-repeat="bott in buttoms">
+																<a class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Save" ng-show="checkButtom(site[$parent.$parent.$index].catf[catf.id].cats.id, site[$parent.$parent.$index].catf[catf.id].cats)" ng-click="addRowCat($parent.$parent.$index, catf.id)">
+																<i class="fa fa-new"></i> + New Product </a>
+															</div>
+															<!-- table -->
+														</div>
+													</div>
+												</div>
+											</div>
+											<!-- panel accordion2 -->
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- panel accordion1 -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- Sites -->
+
+<!-- Services -->
+	<div class="wrapper animated fadeInRight">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="ibox float-e-margins">
+					<div class="ibox-title">
+						<h5>Services</h5>
+					</div>
+					<div class="ibox-content">
+						
+						<div class="form-group">
+							<label class="col-sm-1 control-label">Situation</label>
+							<div class="col-sm-5">
+								<textarea ng-model="proposal.situation" cols="40" rows="7"></textarea>
+							</div>
+							<label class="col-sm-1 control-label">Problems</label>
+							<div class="col-sm-5">
+								<textarea ng-model="proposal.problems" cols="40" rows="7"></textarea>
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label class="col-sm-1 control-label">Implication</label>
+							<div class="col-sm-5">
+								<textarea ng-model="proposal.implication" cols="40" rows="7"></textarea>
+							</div>
+							<label class="col-sm-1 control-label">Needs Payoff</label>
+							<div class="col-sm-5">
+								<textarea ng-model="proposal.needspayoff" cols="40" rows="7"></textarea>
+							</div>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+<!-- Services -->
+
+<div class="wrapper wrapper-content animated fadeInRight">
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="ibox float-e-margins">
+				<div class="ibox-content">
+					<div class="ibox-title">
+						<h5></h5>
+					</div>
+						
+					<div class="form-group pull-right">
+						<label class="col-sm-4 control-label">Total {{level_weekly}} </label>
+						<div class="col-sm-4">
+							<input type="text" style="width: 70px;" class="form-control m-b" ng-model="grant_total" readonly="">
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-3">
+							<a class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Save" ng-click="save()">
+							<i class="fa fa-new"></i> Save </a>
+							<a class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Save">
+							<i class="fa fa-new"></i> Cancel </a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+</form>

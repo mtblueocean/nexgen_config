@@ -1,0 +1,277 @@
+<style>
+    @page {
+        sheet-size : A4;
+        margin: 0%;
+    }
+    @page cover {
+         margin-header:0mm;
+
+    }
+    div.cover {
+        page-break-before: right;
+        page: cover;
+    }
+    @page pages {
+        odd-footer-name: html_pagesFooter;
+        even-footer-name: html_pagesFooter;
+        margin-top: 1%;
+        margin-bottom: 2%;
+        margin-right: 3%;
+        margin-left: 3%;
+        margin-footer: 3mm;
+        font-family: san-serif;
+
+    }
+    div.pages {
+        page: pages;
+         font-family: sans-serif;
+    }
+</style>
+<link href = "assets/css/form.css" rel='stylesheet' type='text/css'>
+<link href = "/assets/angular/font-awesome/css/font-awesome.css" rel='stylesheet' type='text/css'>
+<div class="pages text-grey pageBreaker">
+<!--     <h4 class="redText text-center" style="padding-top: 20px; margin-bottom: 0;">Alarm Monitoring Service Agreement</h4>
+    <h4 class="text-center">Advanced Monitoring Solution</h4> -->
+    <table class="full-width config-table">
+         <tr>
+            <td  class="redText spec-center">Alarm Monitoring Service Agreement</td>
+        </tr>
+        <tr>
+            <td  class="redText spec-center">Alarm Monitoring Solution</td>
+        </tr>
+        <tr>
+            <td>
+                <span><b>Transaction Details</b> -  Commercial Premises</span>
+                <img alt="tick image" src="/assets/images/forms/check-sign.png" height="20">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span><b>Monitored Services</b> - Burglary</span>
+                <img alt="tick image" src="/assets/images/forms/check-sign.png" height="20">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span><p>Hardware Installed</p> - MPM (multi path monitoring device)</span>
+                <img alt="tick image" src="/assets/images/forms/check-sign.png" height="20">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span><p>Existing Panel Type - {{formData.panelType}}</p></span>
+                <img alt="tick image" src="/assets/images/forms/check-sign.png" height="20">
+            </td>
+        </tr>
+    </table>
+
+    <table class="full-width config-table text-grey table-border-outside">
+        <tbody>
+            <tr>
+                <td colspan="2" class="redText">RECURRING SERVICES CHARGES</td>
+            </tr>
+            <tr>
+                <td>Monitoring center connect 24 hours(Including NBN/ 3G Wireless Unit)</td>
+                <td class="form-data">$59 per month</td>
+            </tr>
+            <tr>
+                <td>Agreement Term</td>
+                <td class="form-data">36 Months</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table class="full-width config-table text-grey table-border-outside">
+        <tbody>
+            <tr>
+                <td class="redText" colspan="2">Service</td>
+            </tr>
+            <tr>
+                <td>Monitoring Center including hourly test calls</td>
+                <td class="form-data">Included</td>
+            </tr>
+            <tr>
+                <td>Professional Technician installation of MPM device</td>
+                <td class="form-data">Included</td>
+            </tr>
+            <tr>
+                <td>Access to remote Activate/Deactivate alarm</td>
+                <td class="form-data">Included</td>
+            </tr>
+            <tr>
+                <td>Communications Network Charges</td>
+                <td class="form-data">Included</td>
+            </tr>
+            <tr>
+                <td rowspan="2" valign="middle">Patrol Response*</td>
+                <td class="form-data">$ 75 for first 20 Minutes</td>
+            </tr>
+            <tr>
+                <td class="form-data">$ 15 for each subsequent 15 minutes</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- <table class="full-width config-table text-grey table-border-outside">
+        <tbody>
+            <tr>
+                <td colspan="2">SALE / INSTALLATION CHARGES</td>
+            </tr>
+            <tr>
+                <td>NBN/ 3G Wireless Unit, including installation RRP $899 (ex GST)</td>
+                <td class="form-data">Included</td>
+            </tr>
+        </tbody>
+    </table> -->
+
+    <table class="full-width text-grey config-table">
+        <tr>
+            <td colspan="4" class="redText">ASIAL MEMBER</td>
+        </tr>
+        <tr>
+            <td>Nexgen Authorized Representative</td>
+            <td class="form-data">{{formData.wName}}</td>
+            <td>Nexgen Representative Signature</td>
+            <td id="configWitnessSd1" class="greenText signature signatureImg signItem" ng-click="sign('configWitnessSd1')">
+                <img class='imported' ng-src="{{userSign}}" ng-if="userSign" height="36" height=36 ></img>
+                <div class='signTimeStamp' style='font-weight:300;font-size:8pt' ng-if="userSign">{{getCurrentDate()}}</div>
+                <span ng-if="!userSign">
+                    <span ng-if="!isSigned('configWitnessSd1') && !isDraftMode()">Witness Signature here</span>
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td>Position</td>
+            <td class="form-data">{{formData.cPosition}}</td>
+            <td>Date</td>
+            <td class="form-data">{{formData.dateVal}}</td>
+        </tr>
+        <tr>
+            <td>Security License No:</td>
+            <td class="form-data">{{formData.g2License}}</td>
+        </tr>
+    </table>
+    <table class="full-width text-grey config-table">
+    <tr>
+      <td><b>CUSTOMER ACCEPTANCE: </b>I am authorized to sign this Agreement on behalf of the Customer: (a) I have read and accepted the standard Terms and Conditions of the Alarm Monitoring Service Agreement (b) have received statements/notices as prescribed by the law; (c) promise that the Customer and Payment details disclosed are correct;(d) authorize the collection, use and disclosure of any information obtained in connection with this Agreement for commercial purposes; (e) agree that the ASIAL Member may subcontract the Monitoring Service to another Firm Licensee; (f) agree that a commission may be paid to any person who introduces the Customer. The Australian Security Industry Association Limited ABN 91 000 813 365 (“ASIAL”) is not a party to this Agreement. I/We acknowledges that ASIAL is under no obligation to provide any service to Customer. ASIAL is not responsible for any act or omission of an ASIAL member. This Agreement is subject to the laws of Australia. All pricing noted excludes GST.
+      </td>
+    </tr>
+    </table>
+
+    <table class="full-width text-grey config-table">
+        <tr>
+            <td>Name of Authorized Customer Representative:</td>
+            <td class="form-data">{{formData.dName}}</td>
+            <td>Signature:</td>
+            <td class="item-text signature signatureImg signItem"
+                id ="billing-cus-sg" ng-click='sign("billing-cus-sg")'>
+                 <b class='greenText'>
+                     <span ng-if="isSigned('billing-cus-sg')" ng-bind="getSignTime('billing-cus-sg')"></span>
+                     <span ng-if="!isSigned('billing-cus-sg')">Customer Signature here</span>
+                 </b>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4">I have read and accepted the standard Terms and Conditions of the Alarm Monitoring Service Agreement.</td>
+        </tr>
+        <tr>
+            <td>Position:</td>
+            <td class="form-data">{{formData.cSPosition}}</td>
+            <td>Date:</td>
+            <td class="form-data">{{formData.dateVal}}</td>
+        </tr>
+        <tr>
+            <td colspan="4">PRIVACY CLAUSE: Personal Information is collected for the primary purpose of processing orders and providing the Monitoring Service. It is never sold or rented. Customer may withdraw consent at any time in writing. If a written Privacy Policy is required by law, a copy of the policy may be obtained by contacting the Monitoring Company.</td>
+        </tr>
+    </table>
+</div>
+<pagebreak>
+<div class="pages text-grey pageBreaker" style="padding: 10px;">
+    <p class="config-large-text" style="margin-bottom: 0;">Alarm monitoring Terms and conditions</p>
+    <p class="details-small" style="width: 80%; line-height: 10px;">This document is the copyright of ASIAL and may only be used by current ASIAL Members. It may not be reproduced and/or amended in any format without written permission of ASIAL. ©2013</p>
+
+    <p>
+        <b>1.DEFINITIONS & INTERPRETATION</b>
+        “Alarm” means the alarm system installed in the alarmed premises described in the Commissioning Sheet.
+        <br>
+        “Commissioning Sheet” means the written instructions from Customer to the ASIAL Member detailing equipment response procedures and Customer’s voice codes or passwords.
+        <br>
+        “Monitoring Service” means around-the- clock monitoring of the Alarm for alarm signals and, if selected by the Customer, opening and closing signals and/or other security services. “Term” means the period selected by the Customer overleaf commencing from the day the Monitoring Service is first provided after the expiration of the cooling-off period.
+        <br>
+        This Agreement will be interpreted so as to be consistent with the law and should any provisions of the Agreement be inconsistent with the law, then the same shall be severed so as to permit the balance of the Agreement to operate to the fullest extent permitted by law.
+    </p>
+
+    <p>
+        <b>2. MONITORING SERVICE</b>
+        The Member agrees to use due care and skill or use due care and skill to choose a
+        subcontractor to provide the Monitoring Service during the Term for alarm signals and/or other recurring services selected by the Customer.
+        <br>
+        The Customer acknowledges that the Member does not warrant that the Monitoring Service will render the alarmed premises or any occupant of the alarmed premises secure.
+        <br>
+        The Member will action alarm signals emanating from the Alarm in accordance with the Commissioning Sheet.
+        <br>
+        The Member will use its best endeavours to engage a patrol response contractor to provide a timely response to actionable alarm signals, however, makes no warranty that patrol response will be available at any time, if at all. The Member will not be liable for any loss or damage the Customer may suffer in connection with any response or the absence of any Alarm response.
+        <br>
+        The Customer acknowledges that independent contractors, where available, may provide patrol response. Accordingly, patrol response fees may vary from area to area and during the course of the Term. The Customer agrees to promptly pay or reimburse the Member for patrol response fees, which may include an administration fee. The Member will advise the Customer of applicable patrol response fees upon request by the Customer.
+        The Customer agrees that the Monitoring Service provider may record all telephone conversations or other communications with the monitoring centre. The Member discloses that any providers of a monitoring service may receive a rebate from the telephone service provider.
+    </p>
+
+    <p>
+        <b>3. CUSTOMERS’ RESPONSIBILITIES</b>
+        The Customer will immediately advise the Member, in writing, of any changes to the Commissioning Sheet.
+        <br>
+        The Customer will at their cost maintain the Alarm in good working order in accordance with manufacturer’s requirements, including recharging or replacing batteries on a timely basis. The obligations of the Member to provide the Monitoring Service and to action alarm signals are conditional upon the Alarm being operational, in accordance with the manufacturer’s requirements, to the satisfaction of the Member.
+        <br>
+        The Customer will ensure that all voice codes, passwords, radio keys and other security devices are kept secure and provided only to those persons who reasonably require access to the alarmed premises.
+        <br>
+        The Customer cannot transfer or try to transfer the right to receive the Monitoring Service or any other right under this Agreement to anyone else. The Member may transfer any of its rights under this Agreement.
+    </p>
+
+    <p>
+        <b>4. MONITORING SERVICE CHARGES</b>
+        The Customer will pay the Member the monitoring fees by the method selected by the Customer overleaf. The Member will not process the payment of the first period’s monitoring fee until after the expiration of any applicable cooling-off period.
+        <br>
+        Where payment by credit card is selected, the Member will arrange for the credit card provider to debit the Customer’s account as instructed by the Customer overleaf.
+        <br>
+        Where payment by invoice is selected, the Customer will pay invoiced amount within 14 days of the date of the invoice.
+        <br>
+        Where the Monitoring Service has been subcontracted, the ASIAL Member shall provide the Customer with particulars of the subcontractor required by any relevant legislation.
+        <br>
+        The monitoring fee may increase at any
+        time providing the Customer receives three– (3)
+        months’ written notice.
+        The Customer will pay on demand any goods and services tax (“GST” or “other”) payable in respect of any services provided to the Customer pursuant to this Agreement.
+        <br>
+        The Customer will pay on demand a fee of
+        $25.00, to cover bank and/or administration charges, whenever a monitoring fee is not paid as and when due. The Member may collect this fee directly from the Customer or may act with the Customer’s credit card provider or Financial Institution to collect the fee.
+    </p>
+
+    <p>
+        <b>5. TERMINATION</b>
+        Upon expiration of the Term, this Agreement will continue on a month-to-month basis subject to termination by either party with one month’s written notice.
+        <br>
+        The Member, at its discretion, may immediately suspend the Monitoring Service or terminate this Agreement where the Customer does not pay any fee or other money payable by the Customer when due, or otherwise breaches any of the Customer’s obligations under this Agreement.
+        <br>
+        On termination of this Agreement by the Member, the Customer’s right to receive the Monitoring Service will cease and:
+        The Customer will immediately pay to the Member all amounts due by the Customer for the Term; and
+        The Member may recover from the Customer the amount of any direct loss or damage sustained as a result of the termination.
+        <br>
+        On termination of the Monitoring Service, it is the Customer’s responsibility to ensure that an alternative service is arranged if required, and the panel is deprogrammed to stop reporting to the Member thus ensuring all communication costs are cancelled. Any signals received after the termination of the
+        Monitoring Service will not be treated as critical and would not be actioned by the Member.
+    </p>
+
+    <p>
+        <b>6. INDEMNITIES AND LIMITATION OF ANY LIABILITY ACKNOWLEDGEMENT</b>
+        The Member or its subcontractor shall not be liable for any indirect or consequential loss or damage which the Customer may suffer, whether arising from the Member’s or Subcontractor’s negligence or otherwise resulting from:
+        <br>
+        Any cause whatever, including provision of or failure to provide the Monitoring Service; or
+        <br>
+        The Customer’s use of or reliance upon the Monitoring Service including patrol response.
+        <br>
+        The liability of the Member (if any) in connection with this Agreement (including liability for negligence) is limited to the cost of supplying the Monitoring Service again.
+        <br>
+        The Member or any subcontractor is not liable for any loss or damage the Customer may suffer if the Member cannot do what it has promised because of events beyond its reasonable control.
+        <br>
+        Clause 6 survives termination of this Agreement.
+    </p>
+</div>

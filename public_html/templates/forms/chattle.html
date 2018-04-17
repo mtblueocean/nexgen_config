@@ -1,0 +1,1203 @@
+<!--new form -->
+
+        <style>
+            @page {
+                sheet-size : A4;
+                margin: 0%;
+            }
+            @page cover {
+                 margin-header:0mm;
+
+            }
+            div.cover {
+                page-break-before: right;
+                page: cover;
+                background:url("assets/images/forms/chattle_cover.png");
+            }
+            @page pages {
+                odd-footer-name: html_pagesFooter;
+                even-footer-name: html_pagesFooter;
+                margin-top: 1%;
+                margin-bottom: 2%;
+                margin-right: 3%;
+                margin-left: 3%;
+                margin-footer: 3mm;
+            }
+            div.pages {
+                page: pages;
+            }
+        </style>
+        <link href = "assets/css/form.css" rel='stylesheet' type='text/css'>
+     <div class="cover">
+
+         <div class="row space60"></div>
+         <div class="first-page">
+             <img src="assets/images/forms/rental-logo.png">
+         </div>
+         <div class="row space750"></div>
+
+         <div class="row">
+            <div class="chattle-title">Chattel <br>Agreement</div>
+         </div>
+          <div class="row space60"></div>
+          <div class="row space60"></div>
+    </div>
+     <div class='pages chattle'>
+        <h3 class="blue-text center">Chattel Mortgage</h3>
+         <p class="info-text blue-text">
+                 Nexgen Capital Pty Ltd ABN 32 606 252 957 of Level 2 460 Church
+                 St North Parramatta trading as Nexgen Equipment Rentals (“Nexgen
+                 Equipment Rental”) offers to make the Loan described below to the
+                 customer named in this Schedule (“you” or “the Grantor”), and the
+                 Grantor agrees to grant a mortgage in favour of Nexgen Equipment
+                 Rental, in each case on the terms and conditions of this Chattel
+                 Mortgage, which is made up of this Schedule and the Chattel Mortgage
+                 Terms and Conditions.
+         </p>
+         <table class="full-width">
+             <tr>
+                 <td>
+                     <h5 class="blue-text">Nexgen Equipment Rental Contract Reference No:</h5>
+                 </td>
+                 <td class="blue-text">
+                     {{}}
+                 </td>
+                 <td>
+                      <h5 class="blue-text">Date of this Agreement: </h5>
+                 </td>
+                 <td class="blue-text">
+                     {{formData.dateVal}}
+                 </td>
+             </tr>
+         </table>
+         <table class="full-width border-collapse">
+             <tr>
+                 <td colspan="2" class="blue-background black-border">
+                     Grantor details
+                 </td>
+             </tr>
+             <tr>
+                 <td class="blue-text black-border pull-right" style="width:30%">
+                     Legal name:
+                 </td>
+                 <td class="blue-text black-border">
+                     {{formData.cName}}
+                 </td>
+             </tr>
+             <tr>
+                 <td class="blue-text black-border pull-right">
+                    Trading name:
+                 </td>
+                 <td class="blue-text black-border">
+                     {{formData.cTrading}}
+                 </td>
+             </tr>
+              <tr>
+                 <td class="blue-text black-border pull-right">
+                    ACN/ABN:
+                 </td>
+                 <td class="blue-text black-border">
+                     {{formData.cAbn}}
+                 </td>
+             </tr>
+              <tr>
+                 <td class="blue-text black-border pull-right">
+                   Address:
+                 </td>
+                 <td class="blue-text black-border">
+                    {{formData.cAddress}},{{formData.cSuburb}},{{formData.cAddressSpace}}
+                 </td>
+             </tr>
+              <tr>
+                 <td class="blue-text black-border pull-right">
+                  Phone:
+                 </td>
+                 <td class="blue-text black-border">
+                     {{formData.cTel}}
+                 </td>
+             </tr>
+              <tr>
+                 <td class="blue-text black-border pull-right">
+                   Fax:
+                 </td>
+                 <td class="blue-text black-border">
+                     {{formData.cFax}}
+                 </td>
+             </tr>
+              <tr>
+                 <td class="blue-text black-border pull-right">
+                  Email:
+                 </td>
+                 <td class="blue-text black-border">
+                     {{formData.cEmail}}
+                 </td>
+             </tr>
+              <tr>
+                 <td colspan="2" class="blue-background black-border">
+                    Guarantor 1 details
+                 </td>
+             </tr>
+             <tr>
+                 <td class="blue-text black-border pull-right">
+                    Name:
+                 </td>
+                 <td class="blue-text black-border">
+                     {{formData.pName}}
+                 </td>
+             </tr>
+              <tr>
+                 <td class="blue-text black-border pull-right">
+                    ACN/ABN:
+                 </td>
+                 <td class="blue-text black-border">
+                     {{formData.pABN}}
+                 </td>
+             </tr>
+              <tr>
+                 <td class="blue-text black-border pull-right">
+                   Address:
+                 </td>
+                 <td class="blue-text black-border">
+                     {{formData.pAddress}}, {{formData.pSuburb}}, {{formData.pState}},{{formData.pPostcode}}
+                 </td>
+             </tr>
+              <tr>
+                 <td class="blue-text black-border pull-right">
+                  Phone:
+                 </td>
+                 <td class="blue-text black-border">
+                     {{formData.pPhone}}
+                 </td>
+             </tr>
+              <tr>
+                 <td class="blue-text black-border pull-right" style="width:50%">
+                   Fax:
+                 </td>
+                 <td class="blue-text black-border">
+
+                 </td>
+             </tr>
+              <tr>
+                 <td class="blue-text black-border pull-right" style="width:50%">
+                  Email:
+                 </td>
+                 <td class="blue-text black-border">
+
+                 </td>
+             </tr>
+              <tr>
+                 <td colspan="2" class="blue-background black-border">
+                    Guarantor 2 details
+                 </td>
+             </tr>
+             <tr>
+                 <td class="blue-text black-border pull-right" style="width:50%">
+                    Name:
+                 </td>
+                 <td class="blue-text black-border">
+                     {{formData.g2Name}}
+                 </td>
+             </tr>
+              <tr>
+                 <td class="blue-text black-border pull-right" style="width:50%">
+                    ACN/ABN:
+                 </td>
+                 <td class="blue-text black-border">
+                     {{formData.g2ABN}}
+                 </td>
+             </tr>
+              <tr>
+                 <td class="blue-text black-border pull-right" style="width:50%">
+                   Address:
+                 </td>
+                 <td class="blue-text black-border">
+                     {{formData.g2Address}}, {{formData.g2Suburb}}, {{formData.g2State}}, {{formData.g2Postcode}}
+                 </td>
+             </tr>
+              <tr>
+                 <td class="blue-text black-border pull-right" style="width:50%">
+                  Phone:
+                 </td>
+                 <td class="blue-text black-border">
+                     {{formData.g2Phone}}
+                 </td>
+             </tr>
+              <tr>
+                 <td class="blue-text black-border pull-right" style="width:50%">
+                   Fax:
+                 </td>
+                 <td class="blue-text black-border">
+
+                 </td>
+             </tr>
+              <tr>
+                 <td class="blue-text black-border pull-right" style="width:50%">
+                  Email:
+                 </td>
+                 <td class="blue-text black-border">
+
+                 </td>
+             </tr>
+             <tr>
+                 <td colspan="2" class="blue-background black-border">
+                    Goods
+                 </td>
+             </tr>
+              <tr class="grey no-border" >
+                 <td class="blue-text  center bold-text" style="width:50%">
+                  Model/Description
+                 </td>
+                 <td class="blue-text  center bold-text">
+                     Serial number
+                 </td>
+             </tr>
+              <tr>
+                 <td colspan="2" class="blue-text black-border">
+                    Usual location of goods (the Premises): {{formData.cAddress}}, {{formData.cSuburb}},{{formData.cAddressSpace}},{{formData.cState}}, {{formData.cPostCode}}
+                 </td>
+             </tr>
+              <tr>
+                 <td colspan="2" class="blue-text black-border">
+                    Delivery date:
+                 </td>
+             </tr>
+         </table>
+         <pagebreak />
+         <table class="full-width table-small border-collapse">
+             <tr>
+                 <td colspan="2" class="blue-background black-border">Loan details</td>
+
+             </tr>
+             <tr>
+                 <td class="blue-text black-border" style="width:40%">
+                  Loan Amount:
+                 </td>
+                 <td class="blue-text black-border">
+                 </td>
+             </tr>
+             <tr>
+                 <td class="blue-text black-border" style="width:40%">
+                  Availability Period:
+                 </td>
+                 <td class="blue-text black-border">
+                 </td>
+             </tr>
+             <tr>
+                 <td class="blue-text black-border" style="width:40%">
+                  Number of instalments:
+                 </td>
+                 <td class="blue-text black-border">
+                 </td>
+             </tr>
+             <tr>
+                 <td class="blue-text black-border" style="width:40%">
+                  Payment frequency:
+                 </td>
+                 <td class="blue-text black-border">
+                 </td>
+             </tr><tr>
+                 <td class="blue-text black-border" style="width:40%">
+                  Repayment Instalment Amount:
+                 </td>
+                 <td class="blue-text black-border">
+                 </td>
+             </tr>
+             <tr>
+                 <td class="blue-text black-border" style="width:40%">
+                  First payment date:
+                 </td>
+                 <td class="blue-text black-border">
+                 </td>
+             </tr><tr>
+                 <td class="blue-text black-border" style="width:40%">
+                  Repayment Instalment Date:
+                 </td>
+                 <td class="blue-text black-border">
+                 </td>
+             </tr>
+             <tr>
+                 <td class="blue-text black-border" style="width:40%">
+                  Final Payment Amount:
+                 </td>
+                 <td class="blue-text black-border">
+                 </td>
+             </tr><tr>
+                 <td class="blue-text black-border" style="width:40%">
+                  Fees and charges:
+                 </td>
+                 <td class="blue-text black-border">
+                 </td>
+             </tr>
+             <tr>
+                 <td class="blue-text black-border" style="width:40%">
+                  Stamp Duty (NSW only):
+                 </td>
+                 <td class="blue-text black-border">
+                 </td>
+             </tr>
+             <tr>
+                 <td colspan="2" class="blue-background black-border">Loan details</td>
+
+             </tr>
+              <tr>
+                  <td colspan="2" class="blue-text black-border">
+                      In addition to the Conditions Precedent in clause 9 of the Terms and Conditions, the following:
+                  </td>
+
+             </tr> <tr>
+                 <td colspan="2" class="blue-background black-border">Special conditions</td>
+
+             </tr> <tr>
+                 <td colspan="2" class="blue-text black-border">
+                     The following special conditions apply notwithstanding any of the Terms and Conditions.
+                 </td>
+
+             </tr>
+         </table>
+         <table class="full-width table-small border-collapse">
+             <tr>
+                 <td colspan="2" class="blue-background black-border">
+                     Grantor signature (individual or partnership)
+                 </td>
+             </tr>
+             <tr>
+                 <td colspan="2" class="blue-text black-border">
+                     I/We declare that the credit to be provided to me/us by the
+                     credit provider is to be applied wholly or predominantly for:
+                     <ul>
+                         <li>business purposes; or</li>
+                         <li>investment purposes other than investment in residential property.</li>
+                     </ul>
+
+                 </td>
+             </tr>
+         </table>
+           <table class="full-width table-small border-collapse">
+                <tr>
+                    <td colspan="2" class="blue-text black-border">
+                        <b> IMPORTANT</b><br>
+                        You Should <b>only</b> sign this declaration if this loan is wholly or predominantly for:
+                        <ul>
+                            <li>business purposes; or</li>
+                            <li>investment purposes other than investment in residential property.</li>
+                        </ul>
+                        By signing this declaration you may lose your protection under the National Credit Code.
+                    </td>
+                </tr>
+         </table>
+          <table class="full-width table-small border-collapse">
+                <tr>
+                    <td class="signature black-border red-text signItem" ng-click="sign('signChattel1')" id="signChattel1" style="width:25%">
+                        <span ng-if="isSigned('signChattel1')">{{ getSignedTime('signChattel1') }}</span>
+                        <span ng-if="!isSigned('signChattel1') && (!isDraftMode())">Sign Here</span>
+                    </td>
+                    <td class="black-border blue-text"  style="width:25%"> {{formData.dName}}</td>
+                    <td class="signature black-border red-text signItem" ng-click="sign('signChattel2')" id="signChattel2" style="width:25%">
+                        <img class='imported' ng-src="{{userSign}}" ng-if="userSign" height="36" height=36 ></img>
+                        <div class='signTimeStamp' style='font-weight:300;font-size:8pt' ng-if="userSign">{{getCurrentDate()}}</div>
+                        <span ng-if="!userSign">
+                            <span ng-if="!isSigned('signChattel2') && (!isDraftMode())">Sign Here</span>
+                        </span>
+                    </td>
+                    <td class="black-border blue-text" style="width:25%">{{formData.wName}}</td>
+                </tr>
+                <tr class="no-border">
+                     <td class="blue-text">Signature</td>
+                    <td class="blue-text">Print Name</td>
+                    <td class="blue-text">Signature of witness</td>
+                    <td class="blue-text">Name of witness</td>
+                </tr>
+                <tr>
+                    <td class="signature black-border red-text signItem" ng-click="sign('signChattel3')" id ="signChattel3" style="width:25%">
+                        <span ng-if="isSigned('signChattel3')">{{ getSignedTime('signChattel3') }}</span>
+                        <span ng-if="!isSigned('signChattel3') && (!isDraftMode())">Sign Here</span>
+                    </td>
+                    <td class="black-border blue-text"  style="width:25%"> {{formData.dName}}</td>
+                    <td class="signature black-border red-text signItem" ng-click="sign('signChattel4')" id ="signChattel4" style="width:25%">
+                        <img class='imported' ng-src="{{userSign}}" ng-if="userSign" height="36" height=36 ></img>
+                        <div class='signTimeStamp' style='font-weight:300;font-size:8pt' ng-if="userSign">{{getCurrentDate()}}</div>
+                        <span ng-if="!userSign">
+                            <span ng-if="!isSigned('signChattel4') && !isDraftMode()">Sign Here</span>
+                        </span>
+                    </td>
+                    <td class="black-border blue-text" style="width:25%">{{formData.wName}}</td>
+                </tr>
+                <tr class="no-border">
+                     <td class="blue-text">Signature</td>
+                    <td class="blue-text">Print Name</td>
+                    <td class="blue-text">Signature of witness</td>
+                    <td class="blue-text">Name of witness</td>
+                </tr>
+         </table>
+         <table class="full-width table-small border-collapse">
+              <tr>
+                 <td colspan="2" class="blue-background black-border">Grantor signature (company)</td>
+
+             </tr>
+              <tr>
+                  <td colspan="2" class="blue-text black-border">
+                      Executed in accordance with section 127 of the Corporations Act by authority of the director(s)
+                  </td>
+
+             </tr>
+         </table>
+
+          <table class="full-width table-small border-collapse">
+                <tr>
+                    <td class="signature black-border red-text signItem" ng-click="sign('signChattel5')" id ="signChattel5" style="width:25%">
+                        <span ng-if="isSigned('signChattel5')" ng-bind="getSignedTime('signChattel5')"></span>
+                        <span ng-if="!isSigned('signChattel5') && (!isDraftMode())">Sign Here</span>
+                    </td>
+                    <td class="black-border blue-text"  style="width:50%"> {{formData.dName}}</td>
+                    <td class="black-border blue-text" style="width:25%">{{formData.wName}}</td>
+                </tr>
+                <tr class="no-border">
+                     <td class="blue-text">Signature</td>
+                    <td class="blue-text">Print Name</td>
+                    <td class="blue-text">Name of witness</td>
+                </tr>
+                <tr>
+                    <td class="signature black-border red-text signItem" ng-click="sign('signChattel6')" id ="signChattel6" style="width:25%">
+                        <span ng-if="isSigned('signChattel6')" ng-bind="getSignedTime('signChattel6')"></span>
+                        <span ng-if="!isSigned('signChattel6') && (!isDraftMode())">Sign Here</span>
+                    </td>
+                    <td class="black-border blue-text"  style="width:50%"> {{formData.dName}}</td>
+                    <td class="black-border blue-text" style="width:25%">{{formData.wName}}</td>
+                </tr>
+                <tr class="no-border">
+                     <td class="blue-text">Signature</td>
+                    <td class="blue-text">Print Name</td>
+                    <td class="blue-text">Name of witness</td>
+                </tr>
+         </table>
+
+           <table class="full-width table-small border-collapse">
+              <tr>
+                 <td colspan="2" class="blue-background black-border">Guarantor signature (individual or partnership)</td>
+
+             </tr>
+              <tr>
+                  <td colspan="2" class="blue-text black-border">
+                     By signing you become responsible for the Grantor’s obligations to Nexgen Equipment Rental under this agreement. If the Grantor does not pay
+the repayment or other money when due, you must pay that money. You should see your own solicitor and financial adviser for advice before
+signing.
+                  </td>
+
+             </tr>
+         </table>
+
+         <table class="full-width table-small border-collapse">
+                <tr>
+                    <td class="signature black-border red-text signItem" ng-click="sign('signChattel7')" id ="signChattel7" style="width:25%">
+                        <span ng-if="isSigned('signChattel7')" ng-bind="getSignedTime('signChattel7')"></span>
+                        <span ng-if="!isSigned('signChattel7') && (!isDraftMode())">Sign Here</span>
+                    </td>
+                    <td class="black-border blue-text"  style="width:25%">{{formData.pName}}</td>
+                    <td class="signature black-border red-text signItem" ng-click="sign('signChattel8')" id ="signChattel8" style="width:25%">
+                        <img class='imported' ng-src="{{userSign}}" ng-if="userSign" height="36" height=36 ></img>
+                        <div class='signTimeStamp' style='font-weight:300;font-size:8pt' ng-if="userSign">{{getCurrentDate()}}</div>
+                        <span ng-if="!userSign">
+                            <span ng-if="!isSigned('signChattel8') && !isDraftMode()">Sign Here</span>
+                        </span>
+                    </td>
+                    <td class="black-border blue-text" style="width:25%">{{formData.wName}}</td>
+                </tr>
+                <tr class="no-border">
+                     <td class="blue-text">Signature</td>
+                    <td class="blue-text">Print Name</td>
+                    <td class="blue-text">Signature of witness</td>
+                    <td class="blue-text">Name of witness</td>
+                </tr>
+                 <tr>
+                    <td class="signature black-border red-text signItem" ng-click="sign('signChattel9')" id ="signChattel9" style="width:25%">
+                        <span ng-if="isSigned('signChattel9')" ng-bind="getSignedTime('signChattel9')"></span>
+                        <span ng-if="!isSigned('signChattel9') && (!isDraftMode())">Sign Here</span>
+                    </td>
+                    <td class="black-border blue-text"  style="width:25%">{{formData.g2Name}}</td>
+                    <td class="signature black-border red-text signItem" ng-click="sign('signChattel10')" id ="signChattel10" style="width:25%">
+                        <img class='imported' ng-src="{{userSign}}" ng-if="userSign" height="36" height=36 ></img>
+                        <div class='signTimeStamp' style='font-weight:300;font-size:8pt' ng-if="userSign">{{getCurrentDate()}}</div>
+                        <span ng-if="!userSign">
+                            <span ng-if="!isSigned('signChattel10') && !isDraftMode()">Sign Here</span>
+                        </span>
+                    </td>
+                    <td class="black-border blue-text" style="width:25%">{{formData.wName}}</td>
+                </tr>
+                <tr class="no-border">
+                     <td class="blue-text">Signature</td>
+                    <td class="blue-text">Print Name</td>
+                    <td class="blue-text">Signature of witness</td>
+                    <td class="blue-text">Name of witness</td>
+                </tr>
+         </table>
+
+        <table class="full-width table-small border-collapse">
+              <tr>
+                 <td colspan="2" class="blue-background black-border">
+                     Guarantor signature (company)</td>
+
+              </tr>
+              <tr>
+                  <td colspan="2" class="blue-text black-border">
+                    Executed in accordance with section 127 of the Corporations Act by authority of the director(s). By signing you become responsible for the
+Grantor’s obligations to Nexgen Equipment Rental under this agreement. If the Grantor does not pay the repayments or other money when due,
+you must pay that money. You should see your own solicitor and financial adviser for advice before signing.
+                  </td>
+
+             </tr>
+        </table>
+
+          <table class="full-width table-small border-collapse">
+                <tr>
+                    <td class="signature black-border red-text signItem" ng-click="sign('signChattel11')" id ="signChattel11" style="width:25%">
+                        <span ng-if="isSigned('signChattel11')" ng-bind="getSignedTime('signChattel11')"></span>
+                        <span ng-if="!isSigned('signChattel11') && (!isDraftMode())">Sign Here</span>
+                    </td>
+                    <td class="black-border blue-text"  style="width:50%"></td>
+                    <td class="black-border blue-text" style="width:25%">{{formData.wName}}</td>
+                </tr>
+                <tr class="no-border">
+                     <td class="blue-text">Signature</td>
+                    <td class="blue-text">Print Name</td>
+                    <td class="blue-text">Name of witness</td>
+                </tr>
+                <tr>
+                    <td class="signature black-border red-text signItem" ng-click="sign('signChattel12')" id ="signChattel12" style="width:25%">
+                        <span ng-if="isSigned('signChattel12')" ng-bind="getSignedTime('signChattel12')"></span>
+                        <span ng-if="!isSigned('signChattel12') && (!isDraftMode())">Sign Here</span>
+                    </td>
+                    <td class="black-border blue-text"  style="width:50%"></td>
+                    <td class="black-border blue-text" style="width:25%">{{formData.wName}}</td>
+                </tr>
+                <tr class="no-border">
+                     <td class="blue-text">Signature</td>
+                    <td class="blue-text">Print Name</td>
+                    <td class="blue-text">Name of witness</td>
+                </tr>
+         </table>
+              <table class="full-width table-small border-collapse">
+              <tr>
+                 <td colspan="2" class="blue-background black-border">
+                     Marketing communications opt out</td>
+
+              </tr>
+              <tr>
+                  <td colspan="2" class="blue-text black-border">
+                    Marketing communications opt out Tick below if you do not wish to be sent direct marketing communications from Nexgen Equipment Rental.
+                  </td>
+
+             </tr>
+        </table>
+        <table class="full-width table-small border-collapse">
+              <tr>
+                 <td colspan="2" class="blue-background black-border">
+                     Acceptance by Nexgen Equipment Rental</td>
+
+              </tr>
+        </table>
+           <table class="full-width table-small border-collapse">
+                <tr>
+                    <td class="signature black-border red-text signItem" ng-click="sign('signChattel13')" id ="signChattel13" style="width:25%">
+                        <span ng-if="isSigned('signChattel13')" ng-bind="getSignedTime('signChattel13')"></span>
+                        <span ng-if="!isSigned('signChattel13') && (!isDraftMode())">Sign Here</span>
+                    </td>
+                    <td class="black-border blue-text"  style="width:25%"></td>
+                    <td class="signature blue-text"></td>
+                    <td class="black-border blue-text" style="width:25%"></td>
+                </tr>
+                <tr class="no-border">
+                     <td class="blue-text">Signature</td>
+                    <td class="blue-text">Print Name</td>
+                    <td class="blue-text">Nexgen Equipment Rental
+                                            employee code</td>
+                    <td class="blue-text">Date</td>
+                </tr>
+           </table>
+
+     </div>
+        <pagebreak/>
+         <table class="termsTable">
+             <tr>
+             <td>
+                 <p class="details-spec blue-text">
+                     <b>Please note that a larger print size of these Terms
+                       and Conditions can be made available to the guarantor if required.</b>
+                       This Agreement comprises the Schedule and these Terms and Conditions
+made on the date in the Schedule between Nexgen Equipment Rental, you and
+any Guarantor named in the Schedule. By signing the Schedule you agree to
+the terms and conditions of this Agreement.</br>
+<b>1.
+    LOAN</b><br/>
+Nexgen Equipment Rental will make the Loan to the Grantor during the
+Availability Period of a principal amount not at any time exceeding the
+Loan Amount, subject to the fulfilment or waiver of provisions of this
+Agreement and in reliance upon the representations and warranties
+made in clause 10.<br/>
+
+<b>2.
+    PURPOSE</b><br/>
+
+The Grantor must apply the proceeds of the Loan for the sole purpose
+of the purchase of the Goods.<br/>
+
+<b>3.
+    DRAWDOWN</b><br/>
+
+The Grantor must request the Loan by giving a Drawdown Notice to
+Nexgen Equipment Rental to be received not later than 11 a.m.
+(Sydney time) three Business Days, or any shorter period agreed by
+Nexgen Equipment Rental, prior to the proposed Drawdown Date. The
+Drawdown Notice must be signed by an Authorised Officer on behalf of
+the Grantor, if a corporate party, specify the Drawdown Date, which
+must be a Business Day, and specify in dollars the principal amount of
+the Loan to be drawn. The Drawdown Notice is effective on receipt by
+Nexgen Equipment Rental and when given is irrevocable.<br/>
+
+<b>4.
+    INTEREST</b><br/>
+
+The Grantor must pay interest on the outstanding Loan. Each
+Repayment Instalment Amount includes a component of interest.
+Interest accrues on the outstanding principal amount of the Loan from
+day to day and for the actual number of days elapsed and must be
+computed on the basis of a year of 365 days. The Grantor will pay all
+accrued interest in arrears on each Repayment Instalment Date and on
+the date of repayment or prepayment of the Loan or of the applicable
+part of the Loan, in the event of partial repayment or prepayment.<br/>
+
+<b>5.
+    REPAYMENT</b><br/>
+
+The Grantor must repay to Nexgen Equipment Rental in full the
+principal amount of the Loan on the Final Repayment Date, together
+with all other Secured Moneys. The Grantor must repay the Loan by
+instalments prior to final repayment by repaying to Nexgen Equipment
+Rental the Repayment Instalment Amount of the Loan on each
+Repayment Instalment Date.<br/>
+
+<b>6.
+    PREPAYMENT</b></br>
+    The Grantor may prepay all or any part of any
+outstanding Loan, following prior notice to Nexgen Equipment
+Rental of not less than three Business Days. A prepayment
+notice is irrevocable and the Grantor must prepay in
+compliance with that notice. Prepayment of a Loan must be
+made together with all accrued interest but without premium or 9.2
+penalty. Any amount prepaid may not be redrawn under this
+Agreement. If partial prepayment of the Loan is made, the Loan
+Amount is reduced by the amount prepaid. If full prepayment of
+all outstanding Loans is made, the Loan Amount is reduced to
+zero.<br/>
+
+<b>7.PAYMENTS</b><br/>
+ The Grantor must make any payment to Nexgen
+Equipment Rental required under this Agreement in dollars, not
+later than 11 a.m. (Sydney time) on the due date for payment
+by bank cheque or in other immediately available funds to the
+account or place notified at any time by Nexgen Equipment
+Rental to the Grantor. Any payment by the Grantor required
+under this Agreement falling due on a day which is not a
+Business Day must be made on the immediately preceding
+Business Day in the same calendar month with appropriate
+adjustment for interest. The Grantor must make any payment
+required under this Agreement without any set-off, counterclaim
+or other deduction or withholding whether on account of taxes
+or otherwise, except for any tax deduction or withholding
+compelled by law. The Grantor must indemnify Nexgen
+Equipment Rental upon demand for any tax deduction or
+withholding required or made from any payment due under this
+Agreement.<br/>
+
+<b>8.CHARGE</b><br>
+The Grantor charges by way of specific equitable
+mortgage the Collateral to Nexgen Equipment Rental as a
+continuing security for payment by the Grantor of the Secured
+Moneys. This Agreement shall rank first in point of priority in
+relation to the Collateral as against every other security interest
+created at any time in relation to the Collateral, except for any
+Permitted Security.<br/>
+
+<b>9.CONDITIONS PRECEDENT</b><br/>
+
+<b>9.1Conditions Precedent</b> Except as waived by Nexgen Equipment
+Rental, the right of the Grantor to the Loan, and any liability of Nexgen
+Equipment Rental under this Agreement, is subject to:</br>
+(a)
+the receipt by Nexgen Equipment Rental, in a form and
+substance satisfactory to Nexgen Equipment Rental, on or
+before the proposed Drawdown Date, of the following:</br>
+(i)
+a certified copy of any constitution documents of each
+Transaction Party;</br>
+(ii)
+a certified copy of each corporate board or shareholder
+approval or consent of each Transaction Party being
+necessary or desirable for the execution, performance,
+validity, enforceability or priority effectiveness of this
+Agreement;<br/>
+(iii)
+a certified copy of any governmental consent or
+approval or contractual consent for this Agreement,
+being necessary or desirable for the execution,
+performance, validity, enforceability or priority
+effectiveness of this Agreement;<br/>
+(iv)
+a duly executed counterpart copy of this Agreement,
+and where this Agreement is liable to duty, evidence
+that it has been duly stamped or that proper
+arrangements have been made, with the prior written
+consent of Nexgen Equipment Rental, for due payment
+or prompt refund of duty relative to this Agreement;<br/>
+(v)
+where this Agreement or the security interest under this
+Agreement may or must be registered to perfect or
+preserve the priority of the security interest of Nexgen
+Equipment Rental, evidence that proper arrangements
+have been made, with the prior written consent of
+Nexgen Equipment Rental, for the prompt registration
+of this Agreement or the security interest under the
+applicable legislation without any impediment to
+Nexgen Equipment Rental obtaining the priority
+intended by this Agreement, including satisfactory
+update searches and results of and replies to
+requisitions and inquiries; and<br/>
+(vi)
+evidence that each Transaction Party has performed
+any current liability in relation to insurances in
+compliance with this Agreement; and<br/>
+(b)
+the representations and warranties made by the Grantor in
+clause 10 being accurate on and as at that Drawdown Date as
+if made at that date in relation to the facts then subsisting,
+except where previously disclosed to and waived by Nexgen
+Equipment Rental;<br/>
+(c)
+there being no Continuing Default as at the Drawdown Date
+and no Default Event will result from or occur at the time of the
+advance of the Loan; and<br/>
+(d)
+any additional Condition Precedent specified in the Schedule.<br/>
+                 </p>
+             </td>
+              <td>
+                 <p class="details-small">
+                     <b> Certification</b></br>
+Any certification required under this clause 9 must be made by an
+Authorised Officer as at a date not earlier than 10 days before the
+proposed Drawdown Date.</br>
+<b>REPRESENTATIONS AND WARRANTIES</b></br>
+The Grantor represents and warrants to Nexgen Equipment Rental that
+at any time during the continuance of this Agreement:</br>
+(a)
+<b>(power)</b>: the Grantor has full power, and has procured all
+corporate consents, for the execution and performance of this
+Agreement, which has been executed in compliance with its
+constitution documents;</br>
+(b)
+<b>(general consents)</b>: each Transaction Party has procured, and
+delivered to Nexgen Equipment Rental, a certified copy of any
+governmental consent or approval or contractual consent for
+the execution and performance of, or action to be performed in
+connection with, this Agreement;</br>
+(c)
+<b>(document validity)</b>: this Agreement has been executed in
+compliance with its constitution and constitutes an
+unconditional, valid and enforceable legal liability of the Grantor
+in compliance with its provisions, and the execution or
+performance of this Agreement does not contravene any
+provision of:</br>
+(i)
+any agreement;</br>
+(ii)
+any law;</br>
+(iii)
+any governmental consent binding on the Grantor or its
+assets;</br>
+(d)
+<b>(information)</b>: all facts and information specified in any letter,
+memorandum, report or other document given to Nexgen
+Equipment Rental at any time by or on behalf of any
+Transaction Party in connection with that Transaction Party or
+this Agreement are true, accurate complete and up-to-date in
+all respects;</br>
+(e)
+<b>(beneficial ownership)</b>: each Transaction Party holds the full,
+absolute and entire legal and beneficial right, title and interest
+in all its assets, and not as trustee or fiduciary for any third
+party, except in the case of a Trustee in relation to the assets of
+the Trust;</br>
+                 </p>
+             </td>
+             </tr>
+         </table>
+ <pagebreak/>
+ <img src="assets/images/forms/rental-logo.png" height="40"></br>
+ <table class="full-width">
+     <tr class="black">
+         <td style="color:white; font-family: sans-serif; text-align:center; font-size: 12px;">
+             <b>PRIVACY NOTICE AND CONSENT</b>
+         </td>
+     </tr>
+ </table>
+ <table class="termsTable" >
+     <tr class="chattle-terms">
+           <td style="padding-right: 10px">
+
+
+                 <li><b>Meaning of words:</b> In this document:</br>
+
+             <ul>
+                 <li>“we”, “us” and “our” refers to Nexgen Capital Pty Ltd ABN 32
+                    606 252 957, trading as Nexgen Equipment Rentals (“NER”)
+                    (and includes any principal financier if NER is acting as agent
+                    for a principal financier) Australian Credit Licence 383003 and
+                    its related bodies corporate, and also includes any credit</li>
+                    provider that we act for as agent;
+                 <li> “you” refers to the persons who are applying for credit from us
+                    or proposing to act as a guarantor, or who are directors of a
+                    company that is applying for credit from us; and</li>
+                 <li> words defined in the Privacy Act 1988 (Cth) have the same
+                    meaning.
+                 </li>
+             </ul><br/></li>
+                 <li> <b>Our contact details:</b> You can contact us as follows: Level 2, 460
+                     Church St Parramatta NSW</li>
+                 <li><b>Your acknowledgements and consents:</b> By signing this
+                        document you acknowledge and agree to the statements in this
+                        document.
+                 </li>
+                 <li> <b>Why we collect personal information</b>: We may collect personal
+                     information about you for the following purposes:</br>
+
+                     <ul>
+                         <li>to answer an enquiry from you;</li>
+                         <li>to provide you with the service you requested;</li>
+                        <li>to enable us to develop, administer and manage our services
+                            and businesses;</li>
+                        <li>   to customise services to better meet your needs and
+                            preferences;</li><li>
+                            to assess your application and manage your account with us;
+                            to compile a customer profile about you to serve you better;
+                            to engage a credit reporting body to conduct a credit and
+                            reference check;</li><li>
+                            to assess your creditworthiness;</li><li>
+                            billing purposes and collection of debts;</li><li>
+                            statistical purposes;</li><li>
+                            future promotional and marketing purposes including direct
+                            marketing purposes, and to inform you of special offers,
+                            promotions and competitions;</li><li>
+                            for research purposes to better improve our website, products
+                            or services;</li><li>
+                            any other customer support purposes;</li><li>
+                            to notify credit providers of a default by you of your
+                            agreement with us;</li><li>
+                            to deal with complaints; and</li><li>
+                            to enforce our rights when you are in breach.</li>
+                    </ul>
+</li>
+                 <li>
+                     <b>Collection required by law</b>: Collection of some personal
+                        information about you may also be required or authorised by or
+                        under an Australian law. These laws include:
+                        <ul>
+                        <li>the Anti-Money Laundering and Counter-Terrorism Financing
+                        Act 2006 (Cth), which requires us to collect personal
+                        information about you when verifying your identity;</li>
+                        <li>the National Consumer Credit Protection Act 2009 (Cth),
+                        which requires us to make inquiries about you when
+                        assessing an application for credit by you; and</li>
+                        <li>the Personal Property Securities Act 2009 (Cth), under which
+                        we may need to collect personal information about you to
+                        record a security interest on the Personal Property Securities
+                        Register.</li>
+                        </ul>
+                 </li>
+                 <li>
+                     <b> If you do not provide personal information:</b> The main
+                            consequences for you if all or some of the personal information is
+                            not collected by us are that we may not be able to provide
+                            services to you, or be able to provide them to the same standard.
+                            In the case of a credit application, we may not be able to make a
+                            decision whether to provide credit to you if you do not give us the
+                            information we request.
+                 </li>
+
+                 <li><b> Collecting information about you from someone else:</b> We
+                            may collect personal information about you from someone else,
+                            such as from a credit reporting body or another credit provider
+             </li>
+
+
+         </td>
+         <td style="width:50%">
+             when we are assessing your credit application or collecting a debt
+             you owe.
+            <li>
+                <b> Disclosure of personal information:</b> We usually disclose
+                personal information of the kind collected by us to<br>
+                <ul>
+                    <li>
+                        related companies of ours;
+                    </li>
+                    <li>
+                        distributors and introducers of our products and services;
+                    </li>
+                    <li>
+                        credit reporting bodies;
+                    </li>
+                    <li>
+                        other credit providers and insurers;
+                    </li>
+                    <li>
+                        service providers including mailhouses, printers, call centres,
+                        marketing companies, and technology providers;
+                    </li>
+                    <li>
+                        government bodies;
+                    </li>
+                    <li>
+                        persons who act as your guarantor or who provide security
+                        for credit to you;
+                    </li>
+                    <li>
+                        debt collectors and assignees of your debts;
+                    </li>
+                    <li>
+                        a recognised external dispute resolution scheme of which we
+                        are a member; and
+                    </li>
+                    <li>
+                        our professional advisors, including our lawyers, auditors and
+                        accountants.
+                    </li>
+                </ul>
+            </li>
+            You agree that we may disclose personal information about you
+            to these persons for the purposes for which we collect it where
+            permitted by law, including the Privacy Act. You acknowledge that
+            we may provide your personal information to these persons when
+            required by law.
+            <li>
+                <b> Overseas recipients</b>: We are likely to disclose personal
+                information about you to overseas recipients who provide
+                services for us that do not have an Australian link. Those
+                recipients are likely to be located in the Philippines. If you consent
+                to us disclosing your personal information to them, we are not
+                required to take reasonable steps to ensure that the overseas
+                recipient does not breach the Australian Privacy Principles. You
+                agree to us disclosing your personal information to those
+                overseas service providers.
+            </li>
+            <li>
+                <b>Credit reporting bodies</b>: The credit reporting bodies that we are
+                likely to disclose your personal information to are:</br></br>
+                <b>Veda Advantage</b></br>
+                Veda - Customer Resolutions</br>
+                PO Box 964 North Sydney NSW 2059</br>
+                1300 762 207</br>
+                corrections@veda.com.au</br></br>
+
+                <b>Dun & Bradstreet</b></br>
+                Attn: Public Access Centre</br>
+                PO Box 7405 St Kilda VIC 3004</br>
+                1300 734 806</br>
+                pac.austral@dnb.com.au</br></br>
+            </li>
+            <li>
+                <b> Disclosure to us for commercial credit and guarantees</b>: A
+                credit reporting body may disclose credit reporting information
+                about you to us if we request the information:<br>
+                <ul>
+                    <li>
+                    to assess an application for commercial credit made by you to
+                    us;</li>
+                    <li>
+                    to collect overdue payments in relation to commercial credit
+                    provided by us to you;
+                    </li>
+                    <li>
+                    to assess whether to accept you as a guarantor in relation to
+                    credit provided by us to another person or credit for which an
+                    application has been made to us by another person.
+                    </li>
+                </ul>
+            </li>
+            <li>
+                Disclosure to us for permitted purpose: A credit reporting body
+may also disclose credit reporting information about you to us for
+a purpose permitted by the Privacy Act. This includes assessing
+an application for consumer credit by you.
+            </li>
+            <li>
+                Disclosure by us to other credit providers: We may disclose
+                credit eligibility information about you to another credit provider
+                with an Australian link for any of the following purposes:
+                <ul>
+                    <li>
+                        to assess an application for credit by you;
+                    </li>
+                     <li>
+                        to assess you becoming a guarantor;
+                    </li>
+                </ul>
+            </li>
+         </td>
+     </tr>
+ </table>
+ <table class="termsTable" >
+     <tr class="chattle-terms">
+         <td>
+              <ul>
+                    <li>
+                       to assess your credit worthiness;
+                    </li>
+                     <li>
+                        to notify credit providers of a default by you of your
+                        agreement with us; or
+                    </li>
+                    <li>
+                        to advise credit providers of the status of your agreement with
+                        us, where you are in default with credit providers.
+                    </li>
+              </ul>
+     <li>
+         <b> Disclosure by us to a guarantor or security provider:</b> We may
+disclose credit eligibility information about you if we have
+provided credit to you or you have applied to us for credit, and the
+disclosure is to a person with an Australian link for the purpose of
+that person considering whether to offer to act as a guarantor or
+to offer property as security for the credit. We may also disclose
+this information to a person with an Australian link who is a
+guarantor in relation to credit provided by us to you, or who has
+provided property as security for such credit.
+
+     </li>
+     <li>
+         <b> Personal information you give us about another person:</b> If
+there is another person named in an application for credit, you
+may need to provide their personal information to us. You warrant
+that the other person has consented to the collection of their
+personal information by us for the reasons it is being collected.
+     </li>
+     <li>
+         <b>Privacy policy</b>: Our privacy policy has information about how you
+may access personal information about you that we hold and
+seek the correction of such information, and how you may
+complain about a breach of the Australian Privacy Principles or
+any registered privacy code that may bind us. Our privacy policy
+also explains how we will deal with such a complaint. You can get
+a copy of our privacy policy online at
+www.nexgen.com.au/privacypolicy You can request us to provide
+you with a copy of the policy in an alternative form such as a hard
+copy.
+     </li>
+     <li><b>Credit reporting policy</b>: Our credit reporting policy includes
+         information about credit reporting, including:<br>
+         <ul>
+             <li>
+                 the credit reporting bodies to which we are likely to disclose
+                    your credit information;
+             </li>
+              <li>
+                 how credit reporting information is used and your rights in
+                 relation to credit reporting information;
+             </li>
+              <li>
+                 information about how you can access credit eligibility
+                 information about you held by us
+             </li>
+              <li>
+                information about how you may seek the correction of credit
+                information or credit eligibility information held by us; and
+             </li>
+              <li>
+                 how you may complain about a failure by us to comply with
+                 Part IIIA of the Privacy Act or the Credit Reporting Privacy
+                 Code, and how we will deal with such a complaint.
+             </li>
+         </ul>
+                You can get a copy of our credit reporting information policy
+                online at</br>
+                http://www.tnexgenequipmentrentals.com.au/privacy policy You
+                can request us to provide you with a copy of the policy in an
+                alternative form such as a hard copy.
+     </li>
+     <li>
+         <b>Direct marketing</b>: You consent to receiving direct marketing
+communications from us, or if you do not want to receive them,
+please tick the box under your name when signing below.
+     </li>
+         </td>
+ <td>
+     <table  class="full-width">
+        <tr class="black">
+            <td colspan="2" style="color:white; font-family: sans-serif;  font-size: 12px;">
+                <b>Customer/s to sign</b>
+            </td>
+        </tr>
+        <tr style="margin-top:20px">
+            <td colspan="2" class="signature black-border"></td>
+        </tr>
+        <tr>
+            <td  colspan="2">Customer Signature</td>
+        </tr>
+        <tr>
+            <td class="signature black-border"></td>
+            <td class="signature black-border">{{formData.dateVal}}</td>
+        </tr>
+        <tr>
+            <td>Print name</td><td>Date</td>
+        </tr>
+
+     </table>
+ </td>
+     </tr>
+
+ </table>
+ <pagebreak/>
+ <table class="full-width chattle-terms">
+     <tr>
+         <td style="width:60%"><img src="assets/images/forms/rental-logo.png" ></td>
+         <td>Nexgen Capital Pty Ltd Trading as</br>
+             Nexgen Equipment Rentals<br>
+             Level 2, 460 Church St Parramatta, NSW 2151<br/>
+             Ph : 1300 763 738<br/>
+             ABN : 32 606 252 957 <br/>
+             wwww.nexgenequipmentrentals.com.au<br/>
+         </td>
+     </tr>
+     <tr>
+         <td>Customer Name</td>
+         <td>Customer Address</td>
+     </tr>
+ </table>
+     <h3 style="text-align:center">DIRECT DEBIT REQUEST</h3>
+     <table class="full-width">
+
+         <tr>
+             <td>
+         <li><b>To take advantage of this service, complete the direct debit authority which authorises Nexgen Equipment Rentals
+                (NER) to debit your selected account each Payment Date (or at any time an amount is owing under this contract) and
+                return the form to your nearrest store or with your next payment or mail it to the following address:</br>
+                PO BOX 67, Noth Parramatta, NSW 1750
+                </li>
+                 <li>
+                     You will always know in advance the amount to be regularly transferred from your Bank/Financial Institution.
+                </li>
+             </td>
+         </tr>
+         <tr>
+         <p>Bank Account Authority Continuing Automatic Deduction Authority for Rental Payments</p>
+         <table class="full-width">
+             <tr><td>Name of Bank or Financial Institution</td><td></td></tr>
+             <tr><td>Branch Name and Address</td><td></td></tr>
+             <tr><td>Account Holders Name</td><td></td></tr>
+             <tr><td>BSB</td><td>Bank Acc No: </td></tr>
+         </table>
+         <table class="full-width">
+             <tr><td>Account Holders Signature</td><td></td><td>Date</td><td></td>
+         </table>
+         </tr>
+
+     </table>
+ </table>

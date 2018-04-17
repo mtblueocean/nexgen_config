@@ -1,0 +1,60 @@
+<style>
+    @page {
+        sheet-size : A4;
+        margin: 4%;   
+        odd-footer-name: html_pagesFooter;
+    }           
+    
+    div.pages {
+        page: pages;
+    } 
+</style> 
+<link href = "assets/css/form.css" rel='stylesheet' type='text/css'>
+<div class="preview-{{index}}" ng-repeat="(index, item) in items['mobile_wireless'] track by $index">
+    <div class ="pageBreaker">
+        <table style="width:100%">
+            <tr>
+                <td colspan="3"><img  width = 250 height = 70 src ="assets/images/logo.png" ></td>
+                <td colspan="3" class="cardTitle">NEXGEN MOBILE RATE CARD</td>
+            </tr>
+            <tr>
+                <td colspan="6"> </td>
+            </tr>
+            <tr>
+                <td colspan="6" class="planTitle">Mobile Wireles Plan</td>  
+            </tr>
+            <tr class="plan-row">
+                <td colspan="6" class="planCategory">{{formData.comLocation['mobile_ut'][index]}},{{formData.comSuburb['mobile_ut'][index]}},{{postcode=formData.comZipCode['mobile_ut'][index]}}</td>
+            </tr>
+            <tr class="rate font-grey">   
+                <td colspan='3' ><b class="redText form-data">{{formData.mobileWirelessPlans[index].description}}</b></td>
+                <td colspan='3' class="colorless normal form-data">
+                    
+                    <b>${{formData.mobileWirelessPlans[index].price}} </b>
+                </td> 
+            </tr> 
+            <tr class="less-padding">
+                <td class="title less-padding" colspan="6"> Minimum Monthly Charges / Discounts 
+                </td>
+            </tr>
+            <tr class="summary summary-midband">
+                <td  class="term" >Monthly Mobile Plan Fee</td>
+                <td class="term-details pull-right form-data"><b>
+                                    ${{formData.mobileWirelessPlans[index].price}} Per Mth</b></td>
+                <td class="term" >Monthly Mobile Plan Discount</td>
+                <td class="term-details pull-right form-data"><b>${{formData.mobileWirelessDis[index]}} Per Mth</b></td>
+                <td  class="term" >Term</td>
+                <td class="term-details pull-right form-data">
+                    &nbsp;&nbsp;<b>{{formData.aBillingTerm}} </b>
+                </td>     
+            </tr>    
+        </table>
+        <p class="TAC">
+            <b>Mobile Wireless Plan Terms and Conditions</b><br />
+            All prices quoted (including plan ‘Allowances’) are exclusive of GST. Timed voice calls are billed in 60 second increments. 1 National Calls Allowance: Includes National Voice Calls (some exclusions apply), Calls to 13/1300 Numbers, National Call Forwarding and National Voicemail Retrievals. 2 SMS & MMS Allowance: Includes National SMS/MMS and International SMS/MMS. Excludes Premium SMS/MMS. 3 International Calls Allowance (from Australia to OS destination ): Includes International Call Minutes to 58 selected countries: American Samoa, Argentina, Austria, Bangladesh, Belgium, Bermuda, Brazil, Brunei, Bulgaria, Cambodia, Canada, Chile, China, Colombia, Cyprus, Denmark, Finland, France, Germany, Greece, Guam, Hong Kong, Hungary, Iceland, India, Indonesia, Ireland, Israel, Italy, Japan, Korea South, Kuwait, Lithuania, Macau, Malaysia, Malta, Mariana Is., Martinique, Mexico, Mongolia, Netherlands, New Zealand, , Norway, Pakistan, Peru, Poland, Portugal, Puerto Rico, Romania, Singapore, South Africa, Spain, Sweden, Taiwan, Thailand, United Kingdom, US Virgin Is., United States of America. International Call Access is barred by default upon service activation. 4 Data Allowance: Includes use for National Data usage only. Any excess data on GSM or wireless will be charged at $0.020 per MB. Both downloads and uploads are counted towards the Data Allowance calculation each billing cycle. Excludes use for International Mobile Data Roaming. When overseas, International Mobile Data Roaming usage charges apply. Data usage includes (but is not limited to) access to email, WAP services, Applications and Internet browsing directly from a mobile device or by using the mobile device as a tethered modem (via WiFi,Bluetooth, cable etc.). Any downloaded content, such as ringtones or logos, may incur additional charges from the provider of the content (which will be rebilled to you by Nexgen Australia). Data usage is billed in 1KB increments. 1GB = 1000MB. 1MB = 1024KB. 5 Contract Term & Early Termination Charges: Early Termination Charges do apply, Minimum 24 months term. 6 National Voice Calls: National Voice Calls are National Direct Dialled (NDD) voice calls from mobile services, connected on the Optus mobile network in Australia, to a fixed line service or mobile service connected to an Australian network (excluding calls to fixed lines or mobiles provided overseas, calls to Premium Service numbers, calls to 13/1300/1800 numbers, calls to satellite phones and such other call types as Nexgen Australia specifies from time to time). 7 Call Forwarding: The diversion of an incoming call to another fixed or mobile number within Australia. Call Forwarding is also referred to as ’Diversion Mobile to Fixed’ and ‘Diversion Mobile to Mobile’. 8 Service Provider Charges: Network Carriers and the providers of 3rd party services may impose additional charges which will be rebilled to you by Nexgen Australia. 9 SMS: SMS are text messages to mobile and landline services within Australia (National SMS) or overseas (International SMS). The fixed charge applies to up to 160 characters per message per recipient. Additional text will be charged at the same rate per message. SMS is charged upon origination of a message, regardless of whether delivery is successful or not. All prices and price terms and conditions are subject to changewith 30 days’ notice, with the exception of International Calls and International Roaming charges which are subject to change without notice. Any usage types not specified are not eligible for Allowance credits and are charged at the applicable rate. Allowances apply per individual service and are not aggregated across multiple services. Unused Allowance expires at the end of each billing cycle and is not refundable or transferable. References to Australia exclude external territories. The Monthly Access Fee is charged one month in advance and is the minimum amount the service will be charged per billing cycle, regardless of the usage. Monthly Access Fees and Allowances are pro-rated in the first and last billing cycle that a service is active on a particular plan. If a plan is changed mid billing cycle, charges will be adjusted on a pro-rata basis, with the new plan’s Monthly Access Fee charged one month in advance. Please note: Allowance credits are also adjusted on a pro-rata basis. In accordance with the Nexgen Australia Fair Usage Policy or other fair use or acceptable use policy published by Nexgen Australia in respect of the relevant mobile services from time to time. 4G coverage refers to the Optus 4G Plus Network (LTE 700/1800/2100/2300/2600 MHz). Access to the Optus 4G Plus Network is available when the end-user is in an Optus 4G coverage area with a network compatible device and SIM card connected to a 4G mobile plan. Outside 4G coverage areas, Optus 3G Network service may be available with a UMTS 900/2100 MHz compatible device. 3G coverage refers to the Optus 3G Network (UMTS 900/2100 MHz). Access to the Optus 3G Network is available when the end-user is in an Optus 3G coverage area with a network compatible device and SIM card. Outside 3G coverage areas, Optus 2G Network service may be available with a GSM 900 MHz compatible device. Coverage can be checked at http://www.optus.com.au. For further information or clarification about these plans, please contact Nexgen Australia.
+        </p>
+        <htmlpagefooter name='pagesFooter'>   
+            <ng-include src="'templates/forms/card_footer.html'" ng-init="location=formData.comLocation['mobile_wireless'][index];suburb=formData.comSuburb['mobile_wireless'][index];postcode=formData.comZipCode['mobile_wireless'][index]"></ng-include>
+        </htmlpagefooter>
+    </div>
+</div>        

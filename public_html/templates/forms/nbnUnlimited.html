@@ -1,0 +1,82 @@
+<style>
+    @page {
+        sheet-size : A4;
+        margin: 4%;   
+        odd-footer-name: html_pagesFooter;
+    }           
+    
+    div.pages {
+        page: pages;
+    } 
+</style> 
+<link href = "assets/css/form.css" rel='stylesheet' type='text/css'>
+<div class="preview-{{index}}" ng-repeat="(index, item) in items['nbnUnlimited'] track by $index">
+    <div class ="pageBreaker">
+        <table style="width:100%">
+            <tr>
+                <td colspan="2"><img  width = 250 height = 70 src ="assets/images/logo.png" ></td>
+                <td colspan="3" class="cardTitle">NEXGEN DATA RATE CARD</td>
+            </tr>
+            <tr>
+                <td colspan="5"> </td>
+            </tr>
+            <tr>
+                <td colspan="5" class="planTitle">NBN Unlimited Plan</td>  
+            </tr>
+            <tr class="plan-row">
+                <td colspan="5" class="planCategory">{{formData.comLocation['nbnUnlimited'][index]}},{{formData.comSuburb['nbnUnlimited'][index]}},{{postcode=formData.comZipCode['nbnUnlimited'][index]}}</td>
+            </tr>
+            <tr class="plan-row">
+                <td colspan="4" class="planItem"><b>{{formData.UnlimitedPlans[index].description}}</b></td>
+                <td colspan="1" class="planItem"><b>${{roundVal(formData.UnlimitedPlans[index].price)}}</b></td>
+            </tr>
+            <tr class="plan-row">
+                <td colspan='4' class="planItem">
+                    <b>Static IP Address<br />(Block of 2)</b>
+                </td>               
+                <td colspan='1' class="planItem">
+                    <b>INCLUDED</b>
+                </td>
+            </tr>   
+            <tr class="plan-row" ng-if="nbnUnlimitedPlans.analoguePrice[index]!=0">
+                <td colspan='4' class="planItem">
+                    <b>Analogue ATA Line <br />($39.95 p/mnth per line)</b>
+                </td>               
+                <td colspan='1' class="planItem">
+                    <b>${{roundVal(nbnUnlimitedPlans.analoguePrice[index])}}</b>
+                </td>
+            </tr>   
+            <tr>
+                <td colspan="5" class="planTitle">Minimum Monthly Charges / Discounts</td>  
+            </tr>
+            <tr>
+                <td class="discountField">NBN Unlimited Plan Fee</td>
+                <td class="discountItem"><b>${{roundVal(formData.UnlimitedPlans[index].price)}}</b></td>
+                <td class="discountField">Plan Discount</td>
+                <td class="discountItem"><b>${{roundVal(formData.nbnUnlimitedDis[index])}}</b></td>
+                <td class="discountField" style="text-align:center;border : 1px solid white;border-bottom: 1px solid black">Term</td>
+            </tr> 
+            <tr ng-if="nbnUnlimitedPlans.analoguePrice[index]!=0">
+                <td class="discountField">Analogue ATA Line Fee</td>
+                <td class="discountItem"><b>${{roundVal(nbnUnlimitedPlans.analoguePrice[index])}}</b></td>
+                <td class="discountField">Analogue Discount</td>
+                <td class="discountItem"><b>${{roundVal(formData.voiceCompAnalougeDisNBNUnli[index])}}</b></td>
+                <td class="discountField"></td>
+            </tr>   
+            <tr>
+                <td class="discountField">Total Plan Fees</td>
+                <td class="discountItem"><b>${{roundVal(nbnUnlimitedPlans.totalFee[index])}}</b></td>
+                <td class="discountField">Total Discount</td>
+                <td class="discountItem"><b>${{roundVal(nbnUnlimitedPlans.discount[index])}}</b></td>
+                <td class="discountField" style="text-align:center;border : 1px solid white;border-top: 1px solid black">{{formData.aBillingTerm}} months</td>
+            </tr>        
+        </table>
+        <p class="TAC">
+            <b>NBN Unlimited Terms and Conditions.</b><br />
+            All Prices exclude GST. <b>Minimum term on all Broadband plans listed above is 36 months. NBN Plans connection fee is $49. Mandatory 4 Static IPs is charged at $10 per month.</b> Additional static IP's are charged in blocks of 4 at $10 per month. <b>NBN Speed change fee is $29.95. For Greenfields sites an NBN installation fee per service of $299 is applicable (This excludes router installation). Delivery of the above services is all Subject to capacity and available infrastructure. All Plan discounts expire at the end of the term.</b> NBN plans advertised above are an <b>Up to speed.</b> These speeds may vary due to a number of factors; E.g: distance from the Node. Nexgen provides 5 emails at $0. Any additional emails  supplied can be purchased at $10 per month per 5 users. Nexgen Australia will provide a Mail box space of a 100MB. Nexgen Australia will deliver the service to the site only. It is the customers’ responsibility to have their IT person to complete the connection of the NBN service at your site, and the customer is liable for all and any charges associated with the use of their IT person.  It is the customers’ responsibility for all internal cabling. Nexgen are not responsible for the management of the modem/router on site and is the customers responsibility. Early Termination Fees apply. Please refer to clause 15.5 of the Nexgen Application. Please visit www.nexgen.com.au for full Terms and Conditions. All Analogue lines delivered  via ATA or UNI V will be charged at <b>$39.95 per month. These services are charged at the following  call rates; 10 cents fixed per Local call, 25 cents per minute for calls to Australian Mobiles, 12 cents per minute for National calls. Note that International calls, National calls and calls to Australian mobiles attract a 10 cent flag fall per call. Calls to 13/1300 services are charged at $0.45 per call. </b>
+        </p>
+        <htmlpagefooter name='pagesFooter'>   
+            <ng-include src="'templates/forms/card_footer.html'" ng-init="location=formData.comLocation['nbnUnlimited'][index];suburb=formData.comSuburb['nbnUnlimited'][index];postcode=formData.comZipCode['nbnUnlimited'][index]"></ng-include>
+        </htmlpagefooter>
+    </div>
+</div>

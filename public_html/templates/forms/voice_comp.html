@@ -1,0 +1,142 @@
+<style>
+    @page {
+        sheet-size : A4;
+        margin: 4%;   
+        odd-footer-name: html_pagesFooter;
+    }           
+    
+    div.pages {
+        page: pages;
+    } 
+</style> 
+<link href = "assets/css/form.css" rel='stylesheet' type='text/css'>
+<div class="preview-{{index}}" ng-repeat="(index, item) in items['voice_comp'] track by $index">
+    <div class ="pageBreaker">
+        <table style="width:100%">
+            <tr>
+                <td colspan="3"><img  width = 250 height = 70 src ="assets/images/logo.png" ></td>
+                <td colspan="3" class="cardTitle">NEXGEN VOICE RATE CARD</td>
+            </tr>
+            <tr>
+                <td colspan="6"> </td>
+            </tr>
+            <tr>
+                <td colspan="6" class="planTitle">COMPLETE OFFICE</td>  
+            </tr>
+            <tr class="plan-row">
+                <td colspan="6" class="planCategory">{{formData.comLocation['voice_comp'][index]}},{{formData.comSuburb['voice_comp'][index]}},{{postcode=formData.comZipCode['voice_comp'][index]}}</td>
+            </tr>
+            <tr class="rate font-grey" ng-if="formData.voiceCompAnalouge[index]">
+                <td colspan='2'>Nexgen Office Analogue</td>
+                <td colspan='2' class="colorless normal form-data"><b>Quantity : {{formData.voiceCompAnalouge[index]}}</b></td> 
+                <td colspan='2'>$39.95 p/ mth, per line</td>
+            </tr>
+            <tr class="rate font-grey" ng-if="formData.voiceCompBri[index]">
+                <td colspan='2'>Nexgen Office BRI</td>
+                <td colspan='2' class="colorless normal form-data"><b>Quantity : {{formData.voiceCompBri[index]}}</b></td> 
+                <td colspan='2'>$99.85 p/ mth, per ISDN 2</td>
+            </tr>
+              <tr class="rate font-grey" ng-if="formData.voiceCompPri[index]">
+                <td colspan='2'>Nexgen Office PRI</td>
+                <td colspan='2' class="colorless normal form-data"><b>Quantity : {{formData.voiceCompPri[index]}}</b></td> 
+                <td colspan='2'>Minimum  increments of 10,20 & 30</td>
+            </tr>
+            <tr class="rate font-grey" ng-if="formData.voiceCompFaxToEmail[index]">
+                <td colspan='2'>Fax to Email</td>
+                <td colspan='2' class="colorless normal form-data"><b>Quantity : {{formData.voiceCompFaxQty[index]}}</b></td> 
+                 <td colspan='2'>${{voiceComp.cfToE}}  per month, per fax</td>
+            </tr>
+            <!-- <tr class="rate font-grey"  ng-if="formData.voiceCompMobility[index]">
+                <td colspan='2'>Mobility</td>
+                <td colspan='2' class="colorless normal form-data"><b>Users : {{formData.voiceCompMobQty[index]}}</b></td> 
+                 <td colspan='2' class="form-data">${{voiceComp.cMob}}  per month, per user</td>
+            </tr> -->
+            <tr ng-if ="formData.voiceCompDID[index]" class="rate font-grey">
+                <td colspan='2'>Direct in Dials</td>
+                <td colspan='2' class="colorless normal form-data"><b>{{formData.voiceCompDID[index]}} X Direct in Dial numbers</b></td> 
+                <td colspan='2' class="form-data">${{voiceComp.cDID[formData.voiceCompDID[index]]}}  per month</td>
+            </tr>
+            <tr class="less-padding black">
+                <td class="title less-padding" colspan="2">Destination</td>
+                <td class="title less-padding" colspan="2"></td>
+                <td class="title less-padding" colspan="2">On-Net Rates</td>
+            </tr>
+            <tr class="desti-row">
+                <td class="destination-business grey" colspan="2">National Calls</td>
+                <td class='grey included' colspan='2'></td>
+                <td class="included grey" colspan="2">$0.10 per minute</td>
+            </tr>
+            <tr class="desti-row">
+                <td class="destination-business " colspan="2">Calls to Mobiles</td>
+                <td class='included' colspan='2'></td>
+                <td class="included " colspan="2">$0.25  per minute</td>
+            </tr>
+            <tr class="desti-row">
+                <td class="destination-business grey" colspan="2">Local Calls</td>
+                <td class='grey included' colspan='2'></td>
+                <td class="included grey" colspan="2">$0.12 flat rate</td>
+            </tr>
+            <tr class="desti-row">
+                <td class="destination-business " colspan="2">Flagfall</td>
+                <td class='included' colspan='2'></td>
+                <td class="included " colspan="2">$0.10 flat rate</td>
+            </tr>           
+            <tr class="desti-row">
+                <td class="destination-business " colspan="2">International Calls</td>
+                <td class='included' colspan='4'>Full list available on request</td>        
+            </tr>
+            <tr class="less-padding">
+                <td class="title less-padding" colspan="6"> Minimum Monthly Charges / Discounts</td>
+            </tr>
+        </table>
+        <table style="width:100%">
+            <tr class="summary summary-midband">
+                <td class="term" colspan="2">Nexgen Office Analogue Plan Fee</td>
+                <td class="term-details pull-right form-data">
+                    <b>${{voiceComp.analogueFee[index].toFixed(2)}} Per Mth</b>
+                </td>
+                <td class="term" colspan="2">Nexgen Office Analogue Discount</td>
+                <td class="term-details pull-right form-data">
+                    <b>${{formData.voiceCompAnalougeDis[index]}} Per Mth</b>
+                </td>
+            </tr>
+            <tr class="summary summary-midband">
+                <td class="term" colspan="2">Nexgen Office BRI Plan Fee</td>
+                <td class="term-details pull-right form-data">
+                    <b>${{voiceComp.briFee[index]}} Per Mth</b>
+                </td>
+                <td class="term" colspan="2">Nexgen Office BRI Discount</td>
+                <td class="term-details pull-right form-data">
+                    <b>${{formData.voiceCompBriDis[index]}} Per Mth</b>
+                </td>
+            </tr>
+            <tr class="summary summary-midband">
+                <td class="term" colspan="2">Nexgen Office PRI Plan Fee</td>
+                <td class="term-details pull-right form-data">
+                    <b>${{voiceComp.priFee[index]}} Per Mth</b>
+                </td>
+                <td class="term" colspan="2">Nexgen Office PRI Discount</td>
+                <td class="term-details pull-right form-data">
+                    <b>${{formData.voiceCompPriDis[index]}} Per Mth</b>
+                </td>
+            </tr>
+            <tr class="summary summary-midband">
+                <td class="term" colspan="2">Term (Min Term 36 Months)</td>
+                <td class="term-details pull-right form-data">
+                    <b>{{formData.aBillingTerm}} months</b>
+                </td>
+                <td class="term" colspan="2">Monthly Call Discounts</td>
+                <td class="term-details pull-right form-data">
+                    <b>${{formData.voiceCompCallDis[index]}} Per Mth</b>
+                </td>
+            </tr>
+        </table>
+        <p class="TAC">
+            <b>Complete Office Terms and Conditions</b><br />
+            All Prices exclude GST.<b> Line hunt is charged at $5.95 Plus GST per line per month. A flag fall of 10 cents applies to all calls,</b> excluding local calls. Call to 13/1300 is charged at $0.45. Nexgen Office Analogue Line Rental is <b>$39.95 per line per month ex GST. Nexgen Office BRI is charged at $99.85 per month, Nexgen Office PRI 10 is charged $299.85 per month, PRI 20 is $499.85 per month, PRI 30 is $699.85 per month ex GST.</b> Nexgen Office BRI (ISDN2) requires a minimum 2 Channels. Nexgen Office PRI (ISDN10+) requires a minimum 10 Channels. <b>Nexgen call discounts only apply to Local, National, Calls to mobile and international calls.</b> Discounts offered will expire at the end of the agreed term. Nexgen will only apply Landline Tariff Discounts upon settlement of your account. Existing Telephone lines that need to be churned to Nexgen must be identified on the Nexgen Telephone Application. Monthly line rental discounts applies to the individual service or line. If the line is disconnected or cancelled from the contract the discount is also cancelled. <b>If PRI is selected a minimum of 100 Direct Indials is mandatory. Direct Indials are $49.95 per 100 block.</b> Relocation of service(s) is dependant on coverage availability. Relocation of service(s) or Cancellation of any service prior to the minimum term will incur Early Termination fees. Please refer to clause 15.5 of the Nexgen Application for Early Termination Calculation. ADSL 2+ and IP Midbands available in selected coverage areas only. ADSL 2+ Lite & Midband unlimited data may be terminated if Nexgen deems your downloads to be excessive, abusive and / or unlawful. ADSL 2+ and Midband speeds advertised above are an <b>Up to speed.</b> These speeds may vary due to a number of factors; Eg: distance from the local telephone exchange. Professional Installation charge, if s elected will be added to the phone bill . Nexgen provides 5 emails at $0. Any additional emails supplied can be purchased at $10 per month per 5 users. This can only be purchased in 5 user blocks. Nexgen Australia will provide a Mail box space of a 100MB. Excess Usage on the Nexgen Office Broadband plans is charged at 15c per MB. Nexgen static IP defaults at one per client. Additional static IP's are charged at $8 per IP. Nexgen Australia will deliver the service to the site only. Your IT person is required to complete the connection of the broadband service at your site, and the customer is liable for all and any charges associated with the use of their IT person. <b>Nexgen Office Advantage, BRI, PRI and Broadband and IP minimum term is 36 months.</b> Early Termination Fees apply. Please refer to clause 15.5 of the Nexgen Application and for full Terms and Conditions. Delivery of all the above services is subject to capacity and available infrastructure and also available copper pairs on your lead in. It is the customers responsibility to have enough copper pairs from your MDF to your comms room. For full terms and conditions please refer to www.nexgen.com.au 
+        </p>
+        <htmlpagefooter name='pagesFooter'>   
+           <ng-include src="'templates/forms/card_footer.html'" ng-init="location=formData.comLocation['voice_comp'][index];suburb=formData.comSuburb['voice_comp'][index];postcode=formData.comZipCode['voice_comp'][index]"></ng-include>
+        </htmlpageFooter>
+    </div>
+</div>

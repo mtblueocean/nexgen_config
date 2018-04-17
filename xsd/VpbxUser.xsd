@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://www.aapt.com.au/FrontierLink/xsd"
+            xmlns="http://www.w3.org/2001/XMLSchema"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:wsg="http://www.aapt.com.au/FrontierLink/xsd"
+            elementFormDefault="qualified">
+
+
+	
+	<xsd:include schemaLocation="AssignedNumber.xsd" />
+	<xsd:include schemaLocation="AdditionalFeaturesList.xsd" />
+	<xsd:include schemaLocation="IndividualContact.xsd" />
+	<xsd:include schemaLocation="ListingDetails.xsd" />
+
+	<xsd:include schemaLocation="elements/BackupNumber.xsd" />
+	<xsd:include schemaLocation="elements/EmailAddress.xsd" />
+	<xsd:include schemaLocation="elements/FirstName.xsd" />
+    <xsd:include schemaLocation="elements/LastName.xsd" />
+	<xsd:include schemaLocation="elements/OrganisationName.xsd" />
+	<xsd:include schemaLocation="elements/VpbxPlanType.xsd" />
+		
+    <xsd:complexType name="VpbxUser">
+        <xsd:sequence>
+             <xsd:element name="firstName" type="wsg:FirstName" />
+             <xsd:element name="lastName" type="wsg:LastName" />
+             <xsd:element name="vpbxPlanType" type="wsg:VpbxPlanType" />
+             <xsd:element name="additionalFeaturesList" type="wsg:AdditionalFeaturesList" minOccurs="0" />
+             <xsd:element name="emailAddress" type="wsg:EmailAddress" />
+             <xsd:element name="backupNumber" type="wsg:BackupNumber" minOccurs="0"/>
+             <xsd:element name="assignedNumber" type="wsg:AssignedNumber" minOccurs="0"/>
+             <xsd:element name="listingDetails" type="wsg:ListingDetails" />
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>

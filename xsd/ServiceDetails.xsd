@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://www.aapt.com.au/FrontierLink/xsd"
+            xmlns="http://www.w3.org/2001/XMLSchema"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:wsg="http://www.aapt.com.au/FrontierLink/xsd"
+            elementFormDefault="qualified">
+
+    <xsd:include schemaLocation="CallTerminationService.xsd" />
+    <xsd:include schemaLocation="NationalWholesaleBroadbandService.xsd" />
+    <xsd:include schemaLocation="OutboundSwitchedVoiceService.xsd" />
+    <xsd:include schemaLocation="RequestXpressService.xsd" />
+    <xsd:include schemaLocation="RezLineService.xsd" />
+    <xsd:include schemaLocation="HubAggregationCircuitService.xsd" />
+    <xsd:include schemaLocation="HomeBroadbandBundleService.xsd" />
+    <xsd:include schemaLocation="MobileService.xsd" />
+    <xsd:include schemaLocation="NBNPhoneService.xsd" />
+    <xsd:include schemaLocation="VpbxService.xsd" />
+    <xsd:include schemaLocation="GenericLayer3LinkService.xsd" />
+
+    <xsd:complexType name="ServiceDetails">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en">A complex definition of details relating to an AAPT Product to be activated at a Site. One and only one Product Type is valid.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:choice>
+                <xsd:element name="callTerminationService" type="wsg:CallTerminationService">
+                    <xsd:annotation>
+                        <xsd:documentation xml:lang="en"> A complex definition of details relating to the Call Termination Service Product Type.</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
+                <xsd:element name="nationalWholesaleBroadbandService" type="wsg:NationalWholesaleBroadbandService">
+                    <xsd:annotation>
+                        <xsd:documentation xml:lang="en"> A complex definition of details relating to the National Wholesale Broadband Product Type.</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
+                <xsd:element name="outboundSwitchedVoiceService" type="wsg:OutboundSwitchedVoiceService">
+                    <xsd:annotation>
+                        <xsd:documentation xml:lang="en"> A complex definition of details relating to the Outbound Switched Voice Product Type.</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
+                <xsd:element name="requestXpressService" type="wsg:RequestXpressService">
+                    <xsd:annotation>
+                        <xsd:documentation xml:lang="en"> A complex definition of details relating to the RequestXpress Product Type.</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
+                <xsd:element name="rezLineService" type="wsg:RezLineService">
+                    <xsd:annotation>
+                        <xsd:documentation xml:lang="en"> A complex definition of details relating to the Rezline Product Type.</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
+                <xsd:element name="hubAggregationCircuitService" type="wsg:HubAggregationCircuitService">
+                    <xsd:annotation>
+                        <xsd:documentation xml:lang="en"> A complex definition of details relating to the Hub Aggregation Service for Layer 2 FTTB Product Type</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
+                <xsd:element name="homeBroadbandBundleService" type="wsg:HomeBroadbandBundleService">
+                    <xsd:annotation>
+                        <xsd:documentation xml:lang="en"> A complex definition of details relating to the Home broadband bundle Product Type.</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
+                <xsd:element name="mobileService" type="wsg:MobileService">
+                    <xsd:annotation>
+                        <xsd:documentation xml:lang="en"> A complex definition of details relating to the Mobile Product Type.</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
+                <xsd:element name="nbnPhoneService" type="wsg:NBNPhoneService">
+                    <xsd:annotation>
+                        <xsd:documentation xml:lang="en"> A complex definition of details relating to the NBN Phone Product Type.</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
+                <xsd:element name="vpbxService" type="wsg:VpbxService">
+                    <xsd:annotation>
+                        <xsd:documentation xml:lang="en"> A complex definition of details relating to the vPbx Product Type.</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
+                <xsd:element name="genericLayer3LinkService" type="wsg:GenericLayer3LinkService">
+                    <xsd:annotation>
+                        <xsd:documentation xml:lang="en"> A complex definition of details relating to the Generic Layer 3 Link Product Type.</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
+            </xsd:choice>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>

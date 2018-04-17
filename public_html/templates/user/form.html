@@ -1,0 +1,167 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>Users</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="/">Home</a>
+            </li>
+            <li ng-class="{'hide': profile.type!='admin'}">
+                <a ui-sref="users">Users</a>
+            </li>
+            <li class="active" ng-if="!user.id">
+                <strong>New User</strong>
+            </li>
+            <li class="active" ng-if="user.id">
+                <strong>Edit User</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-2">
+
+    </div>
+</div>
+
+    <flash-message></flash-message>
+
+<div class="wrapper wrapper-content animated fadeInRight">
+
+<div class="row">
+<div class="col-lg-12">
+<div class="ibox float-e-margins">
+<div class="ibox-title" ng-if="!user.id">
+    <h5>Add a New User</h5>
+    <div ibox-tools></div>
+</div>
+<div class="ibox-title" ng-if="user.id">
+    <h5>Edit User id</h5>
+    <div ibox-tools></div>
+</div>
+<div class="ibox-content">
+    <form method="get" class="form-horizontal" id="user_form" data-parsely-validate>
+
+
+        <div class="form-group"><label class="col-sm-2 control-label">Name</label>
+            <div class="col-sm-3">
+                <input type="text" class="form-control" ng-model="user.name" ng-readonly="readonly" data-required="true">
+            </div>
+        </div>
+        <div class="hr-line-dashed"></div>
+
+        <div class="form-group"><label class="col-sm-2 control-label">User Name</label>
+
+            <div class="col-sm-3">
+                <input type="text" class="form-control" ng-model="user.username" data-parsley-required="true"  ng-readonly="readonly">
+            </div>
+        </div>        
+        <div ng-if="user.id">
+            <div class="hr-line-dashed"></div>
+            <div class="form-group"><label class="col-sm-2 control-label">Change Password</label>
+
+                <div class="col-sm-3">
+                    <input type="password" id="password" class="form-control" ng-model="user.password">
+                </div>
+            </div>        
+            <div class="hr-line-dashed"></div>
+
+
+            <div class="form-group"><label class="col-sm-2 control-label">Confirm Password</label>
+
+                <div class="col-sm-3">
+                    <input type="password" class="form-control" id="cpassword"  ng-model="user.cpassword" data-parsley-trigger="keyup" data-parsley-equalto="#password" data-parsley-equalto-message="Please enter same password.">
+                </div>
+            </div>
+        </div>
+        <div ng-if="!user.id">
+            <div class="hr-line-dashed"></div>
+            <div class="form-group"><label class="col-sm-2 control-label">Password</label>
+
+                <div class="col-sm-3">
+                    <input type="password" id="password" class="form-control" ng-model="user.password"  data-parsley-required="true">
+                </div>
+            </div>        
+            <div class="hr-line-dashed"></div>
+
+
+            <div class="form-group"><label class="col-sm-2 control-label">Confirm Password</label>
+
+                <div class="col-sm-3">
+                    <input type="password" class="form-control" id="cpassword"  ng-model="user.cpassword" data-parsley-trigger="keyup" data-parsley-required="true" data-parsley-equalto="#password" data-parsley-equalto-message="Please enter same password.">
+                </div>
+            </div>
+        </div>
+        <div class="hr-line-dashed"></div>
+
+
+       <div class="form-group"><label class="col-sm-2 control-label">Phone</label>
+                <div class="col-sm-3">
+                    <input type="text" class="form-control" ng-model="user.phone" data-required="true" ng-readonly="readonly">
+                </div>
+        </div>
+        <div class="hr-line-dashed"></div>
+
+
+       <div class="form-group"><label class="col-sm-2 control-label">Email</label>
+
+            <div class="col-sm-3">
+                <input type="text" class="form-control" ng-model="user.email" data-required="true" ng-readonly="readonly">
+            </div>
+        </div>
+        <div class="hr-line-dashed"></div>
+        
+         <div class="form-group"><label class="col-sm-2 control-label">Manager Email</label>
+
+            <div class="col-sm-3">
+                <input type="text" class="form-control" ng-model="user.manageremail" data-required="false" ng-readonly="readonly">
+            </div>
+        </div>
+        <div class="hr-line-dashed" ng-class="{'hide': profile.type!='admin'}"></div>
+        
+         <div class="form-group" ng-class="{'hide': profile.type!='admin'}"><label class="col-sm-2 control-label" style="padding-top: 3px;">Finance only</label>
+
+            <div class="col-sm-3">
+                <input type="checkbox" name="financeonly" class="form-control" ng-model="user.financeonly" ng-readonly="readonly" style="opacity: 1; cursor: default;" ng-checked="user.financeonly == 1 ? true : false">
+            </div>
+        </div>
+
+        <div class="hr-line-dashed" ng-if="!readonly"></div>
+
+        <div ng-if="!readonly">
+            <div class="form-group"><label class="col-sm-2 control-label">Type</label>
+
+            <div class="col-sm-3">
+
+            <label class="radio-inline" ng-class="type" ng-repeat="type in ['user','admin']">
+                <input type="radio" name="type"  value="{{type}}"  ng-model="user.type" required="true" style="opacity: 1"> {{type|capitalizefirstletter}}
+            </label>
+
+          </div>
+        </div>
+        </div>
+
+        <div class="hr-line-dashed"></div>
+         <div class="form-group"><label class="col-sm-2 control-label">Signature</label>
+            <div class="col-sm-3">     
+               <div><i class='fa fa-refresh' ng-click="clearSg()"></i></div>
+               <img src="{{user.sign}}" ng-show="!noSign">
+               <div id='userSign' ng-show="noSign"></div>                        
+            </div> 
+         </div>        
+        <div class="hr-line-dashed"></div>
+
+        <div class="form-group"><label class="col-sm-2 control-label"></label>
+
+            <div class="col-sm-3">
+                <a class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Save"  ng-click="save()">
+                    <i class="fa fa-new"></i> Save
+                </a>
+                <a ng-href="{{profile.type=='admin' ? '#/users' : '#/forms'}}" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Cancel">
+                    <i class="fa fa-new"></i> Cancel
+                </a>
+            </div>
+        </div>
+    </form>
+</div>
+</div>
+</div>
+</div>
+</div>

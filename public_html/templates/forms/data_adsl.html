@@ -1,0 +1,74 @@
+<style>
+    @page {
+        sheet-size : A4;
+        margin: 4%;   
+        odd-footer-name: html_pagesFooter;
+    }           
+    
+    div.pages {
+        page: pages;
+    } 
+</style> 
+<link href = "assets/css/form.css" rel='stylesheet' type='text/css'>
+<div class="preview-{{index}}" ng-repeat="(index, item) in items['data_adsl'] track by $index">
+    <div class ="pageBreaker">
+        <table style="width:100%">
+            <tr>
+                <td colspan="2"><img  width = 250 height = 70 src ="assets/images/logo.png" ></td>
+                <td colspan="3" class="cardTitle">NEXGEN DATA RATE CARD</td>
+            </tr>
+            <tr>
+                <td colspan="5"> </td>
+            </tr>
+            <tr>
+                <td colspan="5" class="planTitle">ADSL2 + Monthly Plans</td>  
+            </tr>
+            <tr class="plan-row">
+                <td colspan="5" class="planCategory">{{formData.comLocation['data_adsl'][index]}},{{formData.comSuburb['data_adsl'][index]}},{{postcode=formData.comZipCode['data_adsl'][index]}}</td>
+            </tr>
+            <tr class="plan-row">
+                <td colspan="4" class="planItem"><b>{{formData.adsl2Plans[index].description}}<br>{{formData.adsl2Plans[index].details}}</b></td>
+                <td colspan="1" class="planItem"><b>${{roundVal(formData.adsl2Plans[index].price)}}</b></td>
+            </tr> 
+            <tr class="plan-row" ng-if="dataAdsl.analoguePrice[index]!=0">
+                <td colspan='4' class="planItem">
+                    <b>Nexgen Office Analogue <br />($39.95 p/mnth per line)</b>
+                </td>               
+                <td colspan='1' class="planItem">
+                    <b>${{roundVal(dataAdsl.analoguePrice[index])}}</b>
+                </td>
+            </tr>   
+            <tr>
+                <td colspan="5" class="planTitle">Minimum Monthly Charges / Discounts</td>  
+            </tr>
+            <tr>
+                <td class="discountField">ADSL 2 + Plan Fee</td>
+                <td class="discountItem"><b>${{roundVal(formData.adsl2Plans[index].price)}}</b></td>
+                <td class="discountField">Plan Discount</td>
+                <td class="discountItem"><b>${{roundVal(formData.adsl2Dis[index])}}</b></td>
+                <td class="discountField" style="text-align:center;border : 1px solid white;border-bottom: 1px solid black">Term</td>
+            </tr> 
+            <tr ng-if="dataAdsl.analoguePrice[index]!=0">
+                <td class="discountField">Analogue Line Fee</td>
+                <td class="discountItem"><b>${{roundVal(dataAdsl.analoguePrice[index])}}</b></td>
+                <td class="discountField">Analogue Discount</td>
+                <td class="discountItem"><b>${{roundVal(formData.voiceCompAnalougeDisDSL[index])}}</b></td>
+                <td class="discountField"></td>                
+            </tr>   
+            <tr>
+                <td class="discountField">Total Plan Fees</td>
+                <td class="discountItem"><b>${{roundVal(dataAdsl.totalFee[index])}}</b></td>
+                <td class="discountField">Total Discount</td>
+                <td class="discountItem"><b>${{roundVal(dataAdsl.discount[index])}}</b></td>
+                <td class="discountField" style="text-align:center;border: 1px solid white;border-top: 1px solid black">{{formData.aBillingTerm}} months</td>
+            </tr>    
+        </table>
+        <p class="TAC">
+            <b>ADSL2+ Terms and Conditions.</b><br />
+            All Prices exclude GST. ADSL 2+ is available in selected coverage areas only. ADSL 2+ Lite unlimited may be terminated if excessive or abusive download's are discovered. ADSL 2+ speeds advertised above are an <b>"Up to speed".</b> These speeds may vary due to a number of factors; Eg: distance from the local telephone exchange. Minimum term on all Broadband plans listed above is 36 months. Nexgen deems one (1) Gigabyte to be equivalent to 1024 Megabytes. Relocation of service(s) is dependent on coverage availability. Nexgen will not charge for the upload data unless your total uploaded data usage in a calendar month exceeds the total downloaded usage in the same month by more than 2.5 times. In this case, Nexgen will charge you for each additional Megabyte or Gigabyte of traffic you upload in that month in excess of the 2.5:1 ratio at the rate of $2.50/Gigabyte. Nexgen provides 5 emails at $0. Any additional emails supplied can be purchased at $10 per month per 5 users. This can only be purchased in 5 user blocks. Nexgen Australia will provide a mailbox space of a 100MB. <b>Excess Usage on the Nexgen Office Broadband plans is charged at $0.005 per MB.</b> Nexgen static IP defaults at one per client. and are not available on the ADSL LITE product. Additional static IP's where applicable are charged at $8 per IP address per month. Nexgen Australia will deliver the service to the site only unless otherwise specified. The customers' IT person is required to complete the connection of the broadband service at site, and the customer is liable for all and any charges associated with the use of their IT person. Nexgen are not responsible for the management of the modem/router on site and is the customers responsibilityEarly Termination Fees apply. Delivery of all the above services is suject to infrastructure and network capacity. Nexgen is not responsible for internal cabling from the MDF to the customers end point. Calls made from <b>Analogue lines are charged at the following rates; 10 cents fixed per Local call, 25 cents per minute for calls to Australian Mobiles, 12 cents per minute for National calls. Note that International calls, National calls and calls to Australian mobiles attract a 10 cent flag fall per call. Calls to 13/1300 services are charged at $0.45 per call.</b> Please refer to clause 15.5 of the Nexgen Application or visit www.nexgen.com.au for full Terms and Conditions.
+        </p>
+        <htmlpagefooter name='pagesFooter'>   
+            <ng-include src="'templates/forms/card_footer.html'" ng-init="location=formData.comLocation['data_adsl'][index];suburb=formData.comSuburb['data_adsl'][index];postcode=formData.comZipCode['data_adsl'][index]"></ng-include>
+        </htmlpagefooter>
+    </div>
+</div>

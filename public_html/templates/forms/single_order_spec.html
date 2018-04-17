@@ -1,0 +1,1061 @@
+  <style>
+            @page {
+                sheet-size : A4;
+                margin: 0%;
+            }
+
+            @page cover {
+                 margin-top:10mm;
+                 margin-bottom: 5px;
+                 margin-left: 5px;
+                 margin-right:5px;
+                 odd-footer-name: html_pagesFooter;
+
+            }
+            div.cover {
+                page-break-before: right;
+                page: cover;
+            }
+            @page second {
+                odd-footer-name: html_secondPageFooter;
+                margin-top: 5%;
+                margin-bottom: 1%;
+                margin-right: 1%;
+                margin-left: 1%;
+            }
+
+            div.secondPage {
+
+                page:second
+            }
+            @page pages {
+                margin-top: 5%;
+                margin-bottom: 1%;
+                margin-right: 1%;
+                margin-left: 1%;
+            }
+            div.pages {
+                page: pages;
+            }
+  </style>
+  <link href = "assets/css/form.css" rel='stylesheet' type='text/css'>
+  <link href = "/assets/angular/font-awesome/css/font-awesome.css" rel='stylesheet' type='text/css'>
+  <div class="cover pageBreaker">
+    <div class="row space60"></div>
+        <table  style="width:100%" class="no-border">
+            <tr class="tall">
+                <td class="spec-center"  colspan="6" >
+                        <img width = 250 height = 70 src ="assets/images/logo.png" >
+                </td>
+            </tr>
+            <tr class="tall">
+                <td class="spec-center"  colspan="6">
+                    <img src="assets/images/singleSpec1.png">
+                </td>
+            </tr>
+            <tr class="tall">
+                <td colspan="6" class="spec-cover-large"><h3>Hardware Order Specifications & Tax Invoice</h3></td>
+            </tr>
+            <tr class="tall">
+                <td class="spec-center"  colspan="6"><img src="assets/images/singleSpec2.png"></td>
+            </tr>
+        </table>
+        <table  class="top-40 full-width spec-table cap-plan-table">
+                <tr class="dataRow tall form-data">
+                    <td class ="itemTitle">Company Name:</td>
+                    <td  colspan="3" id = "cmpyName"><b>{{formData.cName}}</b></td>
+                    <td class ="itemTitle" >Contact:</td>
+                    <td  id ="witnesName" ><b>{{formData.cContact}}</b></td>
+                </tr>
+
+                <tr class="dataRow tall form-data">
+                   <td class =" itemTitle" >Address:</td>
+                   <td colspan="3" id = "name"><b>{{formData.cAddress}}, {{formData.cSuburb}}, {{formData.cState}}, {{formData.cPostCode}}</b></td>
+                   <td class ="itemTitle">Representative:</td>
+                   <td  ><b>{{formData.wName}}</b></td>
+               </tr>
+
+               <tr class="dataRow tall form-data">
+                   <td class ="spec-itemTitle" style="width:20%" >Telephone:</td>
+                   <td style="width:20%"><b>{{formData.cTel}}</b></td>
+                   <td class ="spec-itemTitle" style="width:10%">Fax:</td>
+                   <td  style="width:20%"><b>{{formData.cFax}}</b></td>
+                   <td class="spec-itemTitle"  style="width:10%">Mobile:</td>
+                   <td  style="width:20%"><b>{{formData.cMobile}}</b></td>
+               </tr>
+
+               <tr class="dataRow tall form-data">
+                   <td class="spec-itemTitle" colspan="3">Address #1 Location of Equipment:</td>
+                   <td colspan="3"><b>{{formData.pIAddress}}, {{formData.pISuburb}}, {{formData.pIState}}, {{formData.pIPostcode}}</b></td>
+               <tr class="dataRow tall" ng-if="formData.specAddress2">
+                   <td class="spec-itemTitle" colspan="3">Address #2 Location of Equipment:</td>
+                   <td colspan="3"><b>{{formData.specAddress2}}, {{formData.specSuburb2}}, {{formData.specState2}}, {{formData.specPostCode2}}</b> </td>
+               </tr>
+               <tr class="dataRow tall">
+                   <td colspan="6"></td>
+               </tr>
+
+
+        </table>
+    <htmlpagefooter name='pagesFooter' style='display:none'>
+        <table  class="rate-table top-40 full-width spec-table cap-plan-table">
+             <tr>
+                        <td colspan = "4" class="spec-terms">
+                            <b>SYDNEY</b>: Level 2, 71 York Street Sydney, NSW 2000<br />
+                            <b>MELBOURNE</b>: Level 6, 606 St Kilda Rd Melbourne, VIC 3004<br />
+                            <b>BRISBANE</b>: Level 2/5 Cribb St Milton QLD 4064 <br />
+                            Tel: 1300 02 04 02 | Fax: 1300 02 88 78 | support@nexgen.com.au | www.nexgen.com.au
+                        </td>
+                        <td colspan ="2" class="image-col spec-right">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <!-- <img class="btm-image" height = 50 width = 200 src = "assets/images/forms/people-working.png"> -->
+                        </td>
+                    </tr>
+        </table>
+    </htmlpagefooter>
+  </div>
+
+ <div class="secondPage pageBreaker">
+   <div class="row space60"></div>
+    <table style="width:100%; color :#585858;">
+        <tr>
+            <td rowspan="2" class="spec-right">
+                <img class="header" width = 156 height = 43 src = "assets/images/logo.png">
+            </td>
+        </tr>
+    </table>
+    <label style="font-size:24px">Site Type : <span style="color:black;font-weight: bolder;">{{formData.siteType}}</span></label>
+    <div>
+             <table class ="table-bordered rate-table cap-plan-table">
+                 <tr>
+                  <td  class ="title-spec pull-center less-padding" colspan="8">
+                     <b>EQUIPMENT</b>
+                  </td>
+                </tr>
+                <tr>
+                     <td  class="spec-grey" colspan="1">Quantity:</td>
+                     <td  class="spec-grey" colspan="4">Description:</td>
+                     <td  class="spec-grey" colspan="1">Item no:</td>
+                     <td  class="spec-grey" colspan="2">Serial no:</td>
+                </tr>
+                <tbody ng-repeat="(index, item) in items['schedule_of_goods'] track by $index">
+                  <tr>
+                    <td colspan="8" style="font-size:16px">Installation Address # {{index+1}} : <span style="color:black;font-weight:bolder;">{{formData.comLocation['schedule_of_goods'][index]}} {{formData.comSuburb['schedule_of_goods'][index]}} {{formData.comZipCode['schedule_of_goods'][index]}}</span></td>
+                  </tr>
+                  <tr data-ng-repeat='schItem in formData.schItems[index]'>
+                      <td colspan="1"><span style="color:black;font-weight:bolder;">{{formData.schQty[index][schItem.count]}}</span></td>
+                      <td colspan="4"><span style="color:black;font-weight:bolder;">{{formData.schOption[index][schItem.count].item}}</span></td>
+                      <td colspan="1"><span style="color:black;font-weight:bolder;"></span></td>
+                      <td colspan="2"><b></b></td>
+                  </tr>
+                  <tr data-ng-repeat='schAddItem in formData.schAddItems[index]'>
+                      <td colspan="1"><span style="color:black;font-weight:bolder;">{{formData.schAddOptionQty[index][schAddItem.count]}}</span></td>
+                      <td colspan="4"><span style="color:black;font-weight:bolder;">{{formData.schAddOption[index][schAddItem.count]}}</span></td>
+                      <td colspan="1"><span style="color:black;font-weight:bolder;"></span></td>
+                      <td colspan="2"><span style="color:black;font-weight:bolder;"></span></td>
+                  </tr>
+                </tbody>
+
+                <!-- <tr ng-repeat="schedule in formData.scheduleOptions"  class="font-black form-data">
+                    <td colspan="1"><b>{{schedule.qty}}</b></td>
+                    <td colspan="4"><b>{{schedule.desc}}</b></td>
+                    <td colspan="1"><b>{{schedule.itemNo}}</b></td>
+                    <td colspan="2"><b>{{schedule.serNo}}</b></td>
+                </tr>
+
+                <tr ng-repeat="schedule in formData.schedule" class="font-black form-data">
+                    <td colspan="1"><b>{{schedule.qty}}</b></td>
+                    <td colspan="4"><b>{{schedule.desc}}</b></td>
+                    <td colspan="1"><b>{{schedule.itemNo}}</b></td>
+                    <td colspan="2"><b>{{schedule.serNo}}</b></td>
+                </tr> -->
+             </table>
+          <table class ="table-bordered spec-table cap-plan-table">
+
+             <tr>
+                <td class ="title-spec pull-center" colspan="8">
+                   PAYOUT
+                </td>
+            </tr>
+            <tr>
+                <td colspan="8" class="info-text-small" style="font-size: 8px">
+                    If a payout is included, it must be noted below and signed. A Tax Invoice is to be provided by the client prior to settlement as well as a copy of an invoice from the Finance Company/
+Telephone Company. Payouts will be made by Nexgen Australia PTY LTD after settlement of the rental agreement and only after receipt of, above documentation. Where such
+documentation is not provided, Nexgen Australia PTY LTD accepts no liability for any payout whatsoever. If the proof of debt from the Finance Company, Telephone Company is a
+lesser amount, Nexgen Australia PTY LTD will pay the lesser amount and shall have no further liability in this regard. Nexgen Australia PTY LTD will not accept liability for any payouts, early
+termination fees, or other charges relating to an existing service contract with your previous supplier except as noted below. Nexgen Australia PTY LTD accepts no responsibility for the
+payout amount being correct and is not liable for any amount payable in excess of what is listed below. Customer is responsible for giving appropriate notice to the finance company;
+customer is responsible for packaging and return of equipment back to the finance company; Nexgen Australia PTY LTD will not be held liable for any penalties or defaults once payment
+has been made.
+                </td>
+            </tr>
+            <tr class="dataRow tall-noborder ">
+               <td colspan="8"></td>
+            </tr>
+            <tr class="font-grey form-data form-data"  >
+                <td colspan="4">
+                    Payout: <b class="font-black">{{formData.aPayout}}</b> Inc. GST
+                </td>
+                <td colspan="4" class='place-holder greenText signatureImg signItem' id="spec-sg" style="color:green !important;" ng-click="sign('spec-sg')" >
+                    <span ng-if="isSigned('spec-sg')" ng-bind="getSignedTime('spec-sg')"></span>
+                    <span ng-if="!isSigned('spec-sg') && (!isDraftMode())">Signature</span>
+                </td>
+             <!--   <td colspan="4">
+                     <span><input type="checkbox"><b>Finance</b> </span>
+                     <span><input type="checkbox"><b>Telephony</b></span>
+                     <span><input type="checkbox"><b>Copier</b></span>
+                     <span><input type="checkbox"><b>Other</b></span>
+                </td> -->
+            </tr>
+            <tr class="dataRow tall-noborder">
+               <td colspan="8"></td>
+            </tr>
+            <tr>
+                <td class ="title-spec pull-center " colspan="8">
+                   PAYMENT OPTIONS
+                </td>
+            </tr>
+
+              <tr ng-if="formData.type.rental || formData.type.leasing">
+                    <td class="spec-grey form-data" colspan="2">Monthly
+                        <span ng-if="formData.type.rental"><b class="font-black">Rental</b></span>
+                        <span ng-if="formData.type.leasing"><b class="font-black">Lease</b></span>
+
+                    </td>
+                    <td class ="form-data" colspan="1">
+                        <b class="font-black">{{formData.aPayment}}</b> Ex. GST
+                        <!-- add in aTerm data here for 3MF deal  -->
+
+                    </td>
+                    <td class ="form-data" colspan="2">
+                        Term : <b class="font-black">{{formData.aTermNew}}</b> <span ng-if="formData.aTermNew != 'Outright'">Months</span>
+                      <span ng-if="formData.aTerm == '48promoted' || formData.aTerm == '60promoted'"> (3 Months Promo)</span></td>
+                    <td colspan="3" class="">Total Finance Amount $
+                    <span ng-if="(formData.aTerm == '48promoted' || formData.aTerm == '60promoted') && formData.type.rental"><b class="font-black">{{singleOrder.rentofferAmount}}</span>
+                    <span ng-if="formData.type.rental && !(formData.aTerm == '48promoted' || formData.aTerm == '60promoted')"><b class="font-black">{{singleOrder.financeAmount}}</span>
+                    <span ng-if="formData.type.leasing && !(formData.aTerm == '48promoted' || formData.aTerm == '60promoted')"><b class="font-black">{{singleOrder.leaseAmount}}</span>
+                    </b> Ex. GST</td>
+              </tr>
+               <tr>
+                    <td class="spec-grey" colspan="2">Phone System Maintenance Monthly Payment</td>
+                    <td colspan="1" class=" form-data"><b class="font-black">{{formData.specMaintenance}}</b></td>
+                    <td colspan="2" class=" form-data"> </td>
+                    <td colspan="3" class=" form-data"><span ng-if='formData.type.leasing'>Residual Amount <b class="font-black">{{formData.aResidual}}</b></span></td>
+               </tr>
+               <tr ng-if="formdData.type.rental || formData.type.leasing">
+                    <td class="spec-grey" colspan="3">NEXGEN AUSTRALIA PTY LTD to arrange Finance</td>
+                    <td colspan="4" class="text-grey">
+                        <b><span ng-if="formData.type.rental"><b class="font-black">Rental</b></span></b>
+                        <b><span ng-if="formData.type.rental"><b class="font-black">Lease</b></span></b>
+                    </td>
+                    <td></td>
+               </tr>
+               <tr ng-if="formData.type.rental || formData.type.leasing">
+                    <td class="spec-grey" colspan="3">Other Finance (please specify details)</td>
+                    <td colspan="2" class="text-grey form-data"> Finance Institution : </td>
+                    <td colspan="2" class="text-grey"> Name Contact</td>
+                    <td colspan="1" class="text-grey">Ph</td>
+               </tr>
+               <tr ng-if="formData.type.outright">
+                    <td class="spec-grey" colspan="3">Outright Purchase Price</td>
+                    <td colspan="2" style="width:10%" class=" form-data">
+                        <b class="font-black">{{formData.aPayment}} ex. GST</b>
+                    </td>
+                    <td colspan="3" class="text-grey">
+                        <span class="red">50% deposit </span> is required upon signing this order specification.
+                        Install will only proceed once funds have been cleared.
+                                                        </td>
+               </tr>
+               <tr>
+                    <td colspan="8" class="info-text-s-small space-line">
+                        Please supply and install the above telephone equipment and deliver any other equipment which is included in the agreed rental. I agree to the installation and sales of equipment Terms
+    and Conditions and the Service Agreement/maintenance Terms and Agreement. I acknowledge that I have the authority to enter this Agreement. I acknowledge that the Rental Agreement
+    and maintenance monthly payment will be settled on delivery of the equipment and not delayed by the provisioning and supply of telephone services.
+                    </td>
+                </tr>
+            <tr ng-if="formData.specInstruction">
+                <td class ="title-spec pull-center less-padding" colspan="8">
+                    Special Instructions/ Equipment details
+                </td>
+             </tr>
+             <tr ng-if="formData.specInstruction">
+                <td class ="dataRow form-data tall" colspan="8">
+                  <pre>{{formData.specInstruction}}</pre>
+                </td>
+             </tr>
+              <tr  ng-if="!formData.specInstruction" class="dataRow  tall-noborder">
+               <td colspan="8" ></td>
+            </tr>
+              <tr class="dataRow  tall-noborder">
+               <td colspan="8" ></td>
+            </tr>
+          </table>
+
+        <htmlpagefooter name='secondPageFooter' style="display:none" class="page-footer-order-spec" >
+            <table class ="table-bordered rate-table cap-plan-table">
+
+              <tr>
+                    <td class="spec-grey" colspan="3">Authorised on behalf of the Customer - Signature</td>
+                    <td colspan="4" class=" place-holder signatureImg signItem" id="spec-sg-cus" ng-click="sign('spec-sg-cus')">
+                        <b class="greenText">
+                            <span ng-if="isSigned('spec-sg-cus')" ng-bind="getSignedTime('spec-sg-cus')"></span>
+                            <span ng-if="!isSigned('spec-sg-cus') && (!isDraftMode())">Customer - Signature Here</span>
+                        </b>
+                    </td>
+                    <td colspan="1" class=" form-data">Title: <b class="font-black">{{formData.cPosition}}</b></td>
+               </tr>
+               <tr>
+                    <td class="spec-grey form-data" colspan="3">Name</td>
+                    <td colspan="4" class=" form-data"><b class="font-black">{{formData.dName}}</b></td>
+                    <td colspan="1" class=" form-data">Date: <b class="font-black">{{formData.dateVal}}</b></td>
+               </tr>
+                <tr>
+                    <td class="spec-grey" colspan="3">Nexgen Consultant Name & Signature</td>
+                    <td colspan="2" class=" form-data"><b class="font-black">{{formData.wName}}</b></td>
+                    <td colspan="2" class=" place-holder signatureImg signItem" id="spec-sg-wt" ng-click="sign('spec-sg-wt')">
+                         <img class='imported' ng-src="{{userSign}}" ng-if="userSign" height="36" height=36 ></img>
+                          <div class='signTimeStamp' style='font-weight:300;font-size:8pt' ng-if="userSign">{{getCurrentDate()}}</div>
+                          <span ng-if="!userSign">
+                              <span ng-if="!isSigned('spec-sg-wt') && !isDraftMode()">Witness Signature here</span>
+                          </span>
+                    </td>
+                    <td colspan="1" class="form-data">Date: <b class="font-black">{{formData.dateVal}}</b></td>
+               </tr>
+            </table>
+</htmlpagefooter>
+
+
+    </div>
+</div>
+
+<div class="pages pageBreaker">
+     <table class="termsTable spec-terms">
+         <tr>
+             <td>
+                 <p class="details-spec"><b>Terms and Conditions Installation and Sale of Equipment:</b> <br/><br/>
+                 1.1 We will provide you with the Equipment as detailed in the Nexgen Australia Order
+                    specification.<br/>
+                    1.2 We agree that:<br/>
+                    a) We will deliver the Equipment in accordance with the delivery conditions set out below;
+                    b) on the later of: i) Acceptance or ii) payment of the Equipment Purchase Price and the
+                    Installation Price to us, we will transfer title and ownership of the Equipment to you free
+                    from any mortgage, charge, lien, pledge or other encumbrance;<br/>
+                    c) You accept that all responsibility and risk in the Equipment passes from us to you on
+                    Delivery;<br/>
+                    d) we reserve the right to repossess the Equipment or suspend any services you are also
+                    receiving from us (and reconnection fees may apply) if you do not pay the Equipment
+                    Purchase Price or the Installation Price in full in accordance with this Agreement; and<br/>
+                    e) You grant us an irrevocable licence for our employees, agents or contractors to enter
+                    the Sites or other premises where the Equipment is located with reasonable notice (and
+                    you must obtain permission for us to enter such premises) in order to repossess that
+                    Equipment pursuant to clause 1.2 d).<br/>
+                    1.3 You agree to pay us the Equipment Purchase Price and Installation Price within 7 days
+                    of the date of a tax invoice or Delivery, whichever is later.<br/>
+                    1.4 You acknowledge that if we required you to pay part of the Equipment Purchase Price
+                    and Installation Price prior to the Start Date, you have paid that amount.<br/> If so, the invoice
+                    in 1.3 will be the remainder of the Equipment Purchase Price and the Installation Price.<br/>
+                    1.5 Unless specified otherwise, if the Service Schedules allow us to impose extra charges
+                    for services, we will only perform such services after obtaining your agreement to pay the
+                    extra charges. You must pay any extra charges properly incurred.<br/>
+                    1.6 If you cancel an order for Equipment after we have ordered it for you but before
+                    Delivery (unless you are terminating the Agreement, or Service Schedule for our material
+                    breach), in addition to any other rights we may have, we may, at our sole discretion,
+                    require you to pay for the Equipment that has been ordered for you or the reasonable
+                    expenses we have incurred up to the date that you cancel your order. If we require you to
+                    pay for the Equipment that has been ordered, you will be entitled to keep the equipment
+                    that you have paid for.<br/><br/>
+                    <b>LEASE OR RENT OF EQUIPMENT AND INSTALLATION COSTS</b><br/>
+                    2.1 We acknowledge that you may enter into financing or leasing arrangements with
+                    respect to the Equipment Purchase Price and Installation Price.<br/>
+                    2.2 In connection with any financing or leasing arrangements made by you, you can
+                    procure the financier to pay us the Equipment Purchase Price and Installation Price for
+                    equipment you acquire from us, and we agree to accept such payment from your financier.
+                    If the financier fails to pay us, you agree to pay any amount not paid.<br/><br/>
+                    <b>DELIVERY AND INSTALLATION</b>
+                    3.1 Delivery you acknowledge that the supply of the Equipment is subject to availability
+                    from the Supplier.</br>
+                    a. We will use all reasonable endeavours to deliver the Equipment to you within a
+                    reasonable timeframe and inform you of any delays in the delivery and installation of the
+                    Equipment.</br>
+                    b. You may request special delivery or Installation of the Equipment, and we will use our
+                    reasonable endeavours to comply with any such requests which may incur extra costs that
+                    we will advise you of.</br>
+                    c. You must ensure the working environment is safe for us.</br>
+                    3.2 Preparation for Installation</br>
+                    a. Prior to the Installation of any Equipment, you must provide or ensure that your employees,
+                    contractors, or agents provide (where relevant): i) information necessary for us to configure
+                    the Equipment; and ii) a clean, dry operating environment for the Equipment within 3 metres of
+                    240VAC General Purpose Outlet.<br/>
+                    b. You are responsible for preparing the Site for Installation of the Equipment. If you have not
+                    done that work by the time we come to install (on a date that is agreed with you) you agree that
+                    you will be charged a visit fee and installation will be re-scheduled.<br/>
+                    c. You are responsible for getting any council or other approval needed for that work or the
+                    Installation work.<br/>
+                    d. We may cancel this Agreement by written notice to you if you have not enabled Installation of the
+                    Equipment to take place within 60 days of the Start Date. In that event you will pay us damages for
+                    our reasonable storage, handling, re-scheduling and other administration costs as determined by us.</br>
+                    3.3 Timing of Installation</br>
+                    a) We will endeavour to install the Equipment within a reasonable timeframe.</br>
+                    b) We will only install the Equipment during Business Hours. If you want us to install
+                    at another time, there will be extra charges that we will advise you of.</br>
+
+                    c) You acknowledge that the Installation of the Equipment is subject to provisioning of your carriage
+                    telecommunications services. If such service provision is delayed, the installation of the Equipment
+                    may also be delayed.</br>
+                    3.4 Installation of the Equipment Standard Installation covers (where relevant): i) the installation
+                    and mounting of the Main Equipment at the Site and connection of the Main Equipment to a General Purpose
+                    Outlet; ii) the programming, acceptance testing and commissioning of the Main Equipment; iii) patching of
+                    Equipment to the existing cabling infrastructure; iv) connection of Equipment handsets to existing cabling;
+                    and v) connecting telecommunications services within the same room as the Main Equipment.<br/>
+                    a. Non-Standard Installation of the Equipment includes but is not limited to: i) any additional cabling of the Equipment;
+                    ii) any variation to the standard configuration; iii) installation involving a heritage Site; iv) installation of Equipment
+                    rack; v) electrical power installation.</br>
+                    b. If the installation of your Equipment is a Non-Standard Installation, we reserve the right to charge additional
+                    fees to the Installation Price. Such additional charges will be the standard charges for such services at that time
+                    as advised to you at the time by us. We will tell you what these charges are before providing the Service to you.</br>
+                    c. We are not responsible for any problem during an installation unless we caused the problem or the problem is in the
+                    Equipment. If a problem occurs which we did not cause, and we have to fix it, there may be extra charges which we will
+                    advise you of.</br>
+
+
+
+                 </p>
+             </td>
+             <td>
+                 <p class="details-spec">
+                     d. It may be necessary to change the Equipment because of a problem which we did not
+                    cause. In that case, the Installation Price may also change which we will advise you of.<br/>
+                    3.5 At the completion of the Installation of the Equipment, you must sign a Delivery
+                    acknowledgement certificate which will constitute your Acceptance.</br></br>
+                    <b>OUR WARRANTIES</b></br>
+                    4.1 In addition to any warranties implied by law as referred to in clause 5.4 of the Agreement
+                    terms, we also warrant that the Equipment will perform in accordance with the Supplier's
+                    Specifications for 12 months from the date of Acceptance. This warranty won’t apply if the
+                    Equipment has:</br>
+                    a) Been altered, repaired or maintained by a person other than us;</br>
+                    b) Not been operated in a suitable environment in accordance with its specifications; or
+                    been subjected to abnormal physical or electrical stress, misuse, negligence or accident.</br>
+                    4.2 Other than the warranty in clause and warranties implied by law as referred to in clause
+                    5.4 of the Agreement terms, we make no additional warranties or representations in relation
+                    to the Equipment including warranties or representations as to performance, fitness for
+                    purpose and the ability of the Equipment to operate with other items of equipment.</br>
+                    4.3 In addition to any warranties implied by law, we will warrant the performance of
+                    Additional Equipment to the same extent as set out in the Supplier's Warranties for that
+                    Additional Equipment</br></br>
+                    <b>WARRANTY AND USE OF THE EQUIPMENT</b></br>
+                    5.1 You represent and warrant to us that you have full power to own property and have the
+                    power to enter into and perform this Agreement and have obtained all necessary consents
+                    to enable you to do so.</br>
+                    5.2 You are solely responsible for any use of the Equipment on your premises, or any
+                    Services connected to the Equipment, by you or any third party, whether authorised or not.</br></br>
+                    <b>6. TERMS OF AGREEMENT</b></br>
+                    6.1 This Agreement comes into effect on the Commencement Date and shall continue for
+                    the period specified in the Schedule.</br>
+                    6.2 At the expiration of the term, this Agreement will, unless written notice of termination
+                    is given by one party to the other continue subject to the terms and conditions contained
+                    herein for further successive terms of 12 month intervals until terminated by either party
+                    giving to the other, 60 days prior written notice of its intention and desire to terminate
+                    the Agreement.</br></br>
+                    <b>7. MAINTENANCE SERVICE</b></br>
+                    7.1 Subject to, and in consideration for, payment of the maintenance charge specified in
+                    Clause 5 hereof, NEXGEN AUSTRALIA shall, during the Maintenance Period, perform the
+                    maintenance service outlined in clause 3.2.</br>
+                    7.2 NEXGEN AUSTRALIA will provide maintenance service for the Equipment based upon
+                    the service option selected by the Customer as described in the Schedule. NEXGEN
+                    AUSTRALIA's minimum maintenance service pursuant to this Agreement is as follows:</br>
+                    7.3 NEXGEN AUSTRALIA shall supply parts, materials and service necessary to maintain the
+                    Equipment according to its specifications;</br>
+                    7.4 NEXGEN AUSTRALIA shall dispatch service personnel to the site to perform any
+                    necessary repairs to allow the Service personnel to arrive at the site within the Response
+                    Time, unless NEXGEN AUSTRALIA is able to perform the repairs by remote access.</br>
+                    8. NEXGEN AUSTRALIA’S maintenance service does not include the following items:</br>
+                    a) Services connected with relocation of the Equipment, the addition or removal of accessories, attachments and other devices;
+                    b) Repair of any equipment not specified in the Schedule;</br>
+                    c) Repair or replacement of any battery backup associated with the Equipment;</br>
+                    d) Repair of any malfunction or damage whatsoever caused, in NEXGEN AUSTRALIA’S opinion, by incorrect
+                    operation or installation of the Equipment or from the Customer’s (or its servants or agents) misuse
+                     of the Equipment or failure to observe and operate the Equipment in accordance with the Manufacturer's
+                     published written instructions, or by the customer's failure to perform its obligations pursuant to Clause 6 hereof.</br>
+                    e) Repair of any malfunction or damage whatsoever caused to the Equipment by war, fire, flood or any Act of God.</br>
+                    f) Repair of any part which has become worn due to other than fair wear and tear.</br>
+                    g) Taking responsibility for lines or network terminations on the Equipment, as this is your network
+                    provider's responsibility unless the work is performed by us (i.e, cabling)</br>
+                    h) Travel and expenses where on-site support is required at a Site located more than 50km
+                    from our point-of-presence, which are payable by you as extra charges.</br>
+                    9. FEES:</br>
+                    9.1 In consideration for the maintenance service provided hereunder, the Customer shall pay to NEXGEN AUSTRALIA
+                    the maintenance fee specified in the Schedule and as varied from time to time, in advance, on an annual basis
+                    ("annual fees") as specified in the Schedule.</br>
+                    9.2 The customer agrees to pay NEXGEN AUSTRALIA the additional fees as specified in the Schedule
+                    and as varied from time to time, for any maintenance service provided by NEXGEN AUSTRALIA at the
+                    customer’s request outside the Maintenance Period.</br>
+                    9.3 On the Commencement Date the customer will be invoiced by the Nexgen Australia's bill monthly.</br>
+                    9.4 All fees payable to NEXGEN AUSTRALIA by the Customer pursuant to this Agreement shall be paid
+                    within the due date of the phone bill of NEXGEN AUSTRALIA’S invoice. If the Customer defaults in
+                    payment by the due date, NEXGEN AUSTRALIA shall, in addition to any other right NEXGEN AUSTRALIA
+                    may have at law or in equity, have the right to suspend its obligations to provide maintenance
+                    service pursuant to this Agreement.</br>
+                    NEXGEN AUSTRALIA will also be entitled to charge interest at the rates specified in the Schedule
+                    in respect of all outstanding money payable by the Customer to NEXGEN AUSTRALIA which interest shall
+                    be calculated daily from the date the money becomes due and payable until the monies are paid in full to NEXGEN AUSTRALIA.
+
+                 </p>
+             </td>
+         </tr>
+     </table>
+</div>
+    <pagebreak/>
+
+<div class="pages pageBreaker">
+    <table class="termsTable spec-terms">
+         <tr>
+             <td>
+                 <p class="details-spec">9.5 The Customer acknowledges that NEXGEN AUSTRALIA shall be entitled to vary the fees
+                    for maintenance service by giving the Customer 30 days prior written notice of the
+                    proposed increase, which increase will then apply from the next due date for payment of
+                    the annual charge.<br/>
+                    9.6 NEXGEN AUSTRALIA will charge, and the Customer agrees to pay, travel and living
+                    expenses for maintenance service carried out on Equipment installed at a Site more than
+                    40 kilometres from the nearest State Capital GPO or the nearest NEXGEN AUSTRALIA
+                    Customer Service Centre at the rate per kilometre referred to in the Schedule.<br/>
+                    9.7 Any other costs, charges or fees payable to NEXGEN AUSTRALIA by the Consumer
+                    pursuant to this Agreement shall be invoiced by NEXGEN AUSTRALIA to the Customer, and
+                    the Customer shall pay within 30 days of the date of the invoice.<br/>
+                    9.8 The obligations of the Customer pursuant to this Clause 5 which arise prior to the date
+                    of termination shall remain in full force and effect after the termination of this Agreement
+                    and shall not be deemed to have been waived, merged or extinguished upon such
+                    termination.<br/></br>
+                    <b>10. CUSTOMER'S RESPONSIBILITIES</b> During the Agreement, the Customer shall:
+                    a) Allow NEXGEN AUSTRALIA, its servants and agents, full, free and safe access to the<br/>
+                    Equipment and all relevant documentation to permit NEXGEN AUSTRALIA to fulfil its
+                    obligations pursuant to this Agreement.<br/>
+                    b) Immediately notify NEXGEN AUSTRALIA of any malfunction of the Equipment.<br/>
+                    c) Operate the Equipment in the manner for which it is designed and maintain, to the best
+                    of its ability, the appropriate operational conditions as specified by the Manufacturer for
+                    the Equipment.<br/>
+                    d) Provide adequate onsite facilities and assistance to enable NEXGEN AUSTRALIA to fulfil
+                    its obligations pursuant to this Agreement.<br/>
+                    e) Not without prior written consent of NEXGEN AUSTRALIA allow any adjustments,
+                    modifications, alterations, repairs or servicing to the Equipment to be carried out by
+                    persons other than authorized NEXGEN AUSTRALIA personnel.<br/>
+                    f) Not, without the prior written consent of NEXGEN AUSTRALIA, move, alter, modify, add
+                    to, detach from or attach to the Equipment any other items. The Customer acknowledges
+                    that if NEXGEN AUSTRALIA's consent is given pursuant to this sub-clause, NEXGEN
+                    AUSTRALIA is entitled to revise the maintenance fee as a pre-requisite of giving its
+                    consent.<br/><br/>
+                    <b>10. TERMINATION</b><br/>
+                    10.1 If either party ceases to perform or fails to comply with any of the terms and
+                    conditions of this Agreement, and such failure is not remedied within 30 days of receipt of
+                    written notice thereof, then the other party shall have the right to terminate this
+                    Agreement without further liability to the other party.<br/>
+                    10.2 NEXGEN AUSTRALIA may terminate this Agreement at any time upon giving the
+                    Customer 30 days written notice if NEXGEN AUSTRALIA is of the opinion that the
+                    Equipment cannot be maintained in proper working order and has so advised the
+                    Customer in writing.<br/><br/>
+                    <b>11 LIABILITY OF NEXGEN AUSTRALIA</b><br/>
+                    11.1 NEXGEN AUSTRALIA shall not be liable to the Customer for any loss, damage or
+                    expense suffered by the Customer which is occasioned by NEXGEN AUSTRALIA's failure to
+                    observe the terms and conditions of this Agreement, or for any delay or failure on the part
+                    of NEXGEN AUSTRALIA to perform its obligations, if such failure or delay is occasioned by
+                    any cause beyond NEXGEN AUSTRALIA's reasonable control and without limiting the
+                    generality of the foregoing; such causes include wars, fires, floods, strikes, lock outs,
+                    delays in transport, breakdowns in machinery, restrictions or prohibitions by any
+                    Government or semi-Government authorities or embargos.<br/>
+                    11.2 NEXGEN AUSTRALIA shall be liable for, and shall indemnify the Customer against any
+                    legal liability, loss, claim or proceeding in respect of direct physical injury or direct physical
+                    damage to persons or property to the extent that such injury or damage is due to the
+                    negligence of NEXGEN AUSTRALIA, its servants or agents.<br/>
+                    11.3 Except as expressly provided to the contrary in this Agreement, all terms, conditions,
+                    warranties, undertakings, inducement or representations, whether express, implied,
+                    statutory or otherwise relating in any way to this Agreement are excluded. Without
+                    limiting the generality of the preceding sentence, NEXGEN AUSTRALIA shall not be under
+                    any liability to the Customer in respect of any loss or damage (including consequential loss
+                    or damage) however caused, which may be suffered or incurred, or which may arise
+                    directly or indirectly, in respect of the failure or omission on the part of NEXGEN
+                    AUSTRALIA to comply with its obligations under this Agreement.<br/>
+                    11.4 Where any Act of Parliament implies in this Agreement any term, condition or
+                    warranty and such Act avoids or prohibits provisions in an agreement excluding or
+                    modifying the application of, or exercise of, or liability under such term, condition or
+                    warranty, such term, condition or warranty shall be deemed to be included in this
+                    Agreement. However, the liability of NEXGEN AUSTRALIA for any breach of such term,
+                    condition or warranty shall be limited, at the option of NEXGEN AUSTRALIA to any one or
+                    more of the following: If the breach relates to goods supplied: a) The replacement of the
+                    goods; or b) The supply of equivalent goods; or c) Payment of the cost of replacing such
+                    goods; or d) Payment of the cost of acquiring equivalent goods; or e) The repair of the
+                    goods; or f) Payment of the cost of having the goods repaired.<br/>
+                    If the breach relates to services supplied: a) The supplying of such services again; or b) The
+                    payment of the cost of having such services supplied again.<br/><br/>
+                    <b>12. ASSIGNMENT</b><br/>
+                    12.1 The Customer shall not assign, transfer or otherwise dispose of its rights or
+                    obligations under this Agreement to any other person, firm or company other than with
+                    the prior written consent of NEXGEN AUSTRALIA.<br/>
+                    13. WAIVER<br/>
+                    13.1 Any failure by NEXGEN AUSTRALIA to require strict performance by the Customer or
+                    any waiver by NEXGEN AUSTRALIA of any provision herein shall not be construed as a
+                    consent or waiver of any other breach of the same or of any other provision.<br/>
+                    14. SEVERABILITY<br/>
+                    14.1 If any provision of this Agreement is held invalid, unenforceable or illegal for any
+                    reason, but is capable of being read down, it shall be read down to the extent necessary to render it binding and enforceable.
+                 </p>
+             </td>
+             <td style="vertical-align:top">
+                 <p class="details-spec">
+                   If it is not capable of being so read down, then such
+                    word or words, or if required, the whole provision shall thereupon be severed, and the
+                    remainder of this Agreement shall otherwise remain in full force and effect.<br/><br/>
+                    <b>15. ENTIRE AGREEMENT</b><br/>
+                    15.1 This Agreement and the Schedule incorporated herein constitutes the whole of the
+                    Agreement and understanding between NEXGEN AUSTRALIA and the Customer. Any
+                    additions or modifications hereto shall be made in writing and shall only be effective if
+                    signed by the duly authorized signatories of the parties.<br/>
+                    <b>16. GOVERNING LAW</b><br/>
+                    19.1 This Agreement is to be governed by, and construed in accordance with the laws of
+                    the State of NSW, QLD, VIC, WA, SA and NT.<br/><br/>
+                    <b>17. MAINTENANCE PACKAGES</b><br/>
+                    Standard Business Maintenance: 8:30am to 5:00pm, Monday to Friday excl. Public
+                    Holidays; Major Failure, 4 hours; Minor Failure, 8 hours.<br/>
+                    <b>DEFINITIONS AND INTERPRETATION</b><br/>
+                    <b>Acceptance</b> means: a) in respect of the Installation of the Equipment, successful completion
+                    of the Installation at the Site which demonstrate conformance to the applicable published
+                    specifications. Nexgen Australia agrees to provide and the Customer agrees to accept
+                    maintenance service provided by NEXGEN AUSTRALIA for the equipment ("the Equipment")
+                    described in the “Equipment Schedule” annexed hereto.<br/>
+                    <b>Definitions</b> In this Agreement, unless otherwise indicated by the context or subject
+                    matter, the following terms have the following meanings:<br/>
+                    <b>Additional Equipment</b> means any parts provided by a third party supplier which are
+                    attached to the Equipment and includes but is not limited to; I) headsets; and ii) line
+                    isolation units.<br/>
+                    <b>Business Day</b> means a day other than a Saturday, Sunday or a public holiday in the place
+                    where the Site is located.<br/>
+                    <b>Business Hours</b> means the period between 8am and 6pm on a Business Day.
+                    <b>Delivery</b> means your receipt of the Equipment.<br/>
+                    <b>Equipment</b> means all the equipment for a Site as detailed in Nexgen Australia order
+                    specification, as varied from time to time, including without limitation any software
+                    contained in that equipment. Equipment also and includes Additional Equipment except
+                    where the term Equipment is used, or where otherwise specified.<br/>
+                    <b>Equipment Purchase Price</b> means the GST exclusive price specified on the Nexgen Australia
+                    order specification.<br/>
+                    <b>Installation</b> means the Standard Installation and the Non-Standard Installation or any special
+                    installation request made by you in accordance with clause<br/>
+                    <b>Installation Price</b> means the GST exclusive price specified in Schedule 1 for the installation
+                    for each individual piece of Equipment.<br/>
+                    <b>Main Equipment</b> means the part of the Equipment which centrally controls all the
+                    Equipment.<br/>
+                    <b>Maintenance Period</b> means the working day period during which maintenance service will
+                    be provided being between 8.30am and 5.00pm Monday to Friday inclusive but excluding
+                    Public Holidays observed at the Site where the Equipment is installed or such other period
+                    as provided for in the Schedule;<br/>
+                    <b>Major Failure</b> means The system is completely inoperative; any attendant console cannot
+                    place or receive calls; a minimum of 20% of all telephones, cannot place or receive calls; a
+                    minimum of 20% of all trunks are inoperative.<br/>
+                    <b>Minor Failure</b> means all other issues are defined as Minor Failures.<br/>
+                    <b>Non-Standard</b> Installation means as defined in clause 3.4 clause a) of this Schedule.
+                    <b>Response Time</b> means the period of time elapsing between when a fault is logged with
+                    NEXGEN AUSTRALIA’s Customer Service Centre and the commencement of remote<br/>
+                    diagnosis and rectification or contact by our technical support staff to perform
+                    rudimentary over-the-phone diagnostics or the dispatch of a field technician, at the
+                    election of NEXGEN AUSTRALIA;<br/>
+                    <b>Site</b> means the sites described in order specification.<br/>
+                    <b>Standard Installation</b> means as defined in clause 3.4 of this Schedule.<br/>
+                    <b>Start Date</b> means the date that this Agreement is signed by you.<br/>
+                    <b>Supplier</b> means the person supplying the Equipment to us.<br/>
+                    <b>Supplier’s Specifications</b> means the specifications published by the Supplier for the
+                    Equipment and included with the Equipment upon Delivery.<br/>
+                    <b>Supplier’s Warranties</b> means any express warranties the Supplier gives for Additional
+                    Equipment.<br/>
+                    <b>Term</b> means the Term of this Agreement as specified in the Schedule.<br/>
+                    Minor Failure means all other issues are defined as Minor Failures.<br/></br>
+                    <b>INTERPRETATION:</b><br/>
+                    a) In this agreement, except to the extent that the context otherwise requires:
+                    b) Words importing the singular include the plural and vice versa and words
+                    importing a gender include other genders;<br/>
+                    c) Where a word or phrase is given a particular meaning, other parts of speech or
+                    grammatical forms of that word or phrase have corresponding meanings;<br/>
+                    d) A reference to a party to this Agreement or any other document or Agreement
+                    includes its successor and permitted assigns;<br/>
+                    e) Paragraph headings are for reference purposes only and shall not affect the
+                    interpretation of this Agreement.<br/>
+                 </p>
+             </td>
+         </tr>
+     </table>
+</div>
+<!-- <div ng-if="formData.copierAgreement">
+  <div class="pages pageBreaker">
+    <table width="100%" style="background:#b1adae;margin-bottom:20px">
+      <tr>
+        <td class="logo-td">
+          <img src ="assets/images/logo.png" class="logo-item" />
+        </td>
+        <td class="logo-td">
+          <img src ="assets/images/fuji.png" class="logo-item" />
+        </td>
+         <td class="logo-td">
+          <img src ="assets/images/oki.png" class="logo-item" />
+        </td>
+         <td class="logo-td">
+          <img src ="assets/images/kyocera.png" class="logo-item" />
+        </td>
+      </tr>
+      <tr>
+        <td colspan="4" style="text-align:center;">
+          <h1 class="printer-title">ORDER SPECIFICATION</h1>
+          <h1 class="printer-title">&</h1>
+          <h1 class="printer-title">SERVICE MAINTENANCE</h1>
+          <h1 class="printer-title">AGREEMENT</h1>
+        </td>
+      </tr>
+    </table>
+    <table width="100%" style="margin-bottom:20px">
+      <tr>
+        <td width="45%" style="background:#36a5f7">
+        </td>
+        <td width="55%" style="padding-left:20px">
+          <img width="100%" src ="assets/images/singleSpecPrinter1.png"/>
+        </td>
+      </tr>
+    </table>
+    <table width="100%">
+      <tr>
+        <td rowspan="2"  style="padding-right:20px">
+          <img width="100%" src ="assets/images/singleSpecPrinter2.png"/>
+        </td>
+        <td style="padding-bottom:20px">
+          <img width="100%" src ="assets/images/singleSpecPrinter3.png"/>
+        </td>
+      </tr>
+      <tr>
+        <td style="height:100%;background: #d92531"></td>
+      </tr>
+    </table>
+  </div>
+  <pagebreak>
+  <div class="pages pageBreaker">
+    <table  class="top-40 full-width spec-table cap-plan-table">
+      <tr>
+        <td colspan="6" class="redText spec-center"><h3>CUSTOMER INFORMATION</h3></td>
+      </tr>
+      <tr class="dataRow tall form-data">
+          <td class ="itemTitle">Company Name:</td>
+          <td  colspan="3" id = "cmpyName"><b>{{formData.cName}}</b></td>
+          <td class ="itemTitle" >Contact:</td>
+          <td  id ="witnesName" ><b>{{formData.cContact}}</b></td>
+      </tr>
+      <tr class="dataRow tall form-data">
+        <td class =" itemTitle" >Address:</td>
+        <td colspan="3" id = "name"><b>{{formData.cAddress}}, {{formData.cSuburb}}, {{formData.cState}}, {{formData.cPostCode}}</b></td>
+        <td class ="itemTitle">Representative:</td>
+        <td  ><b>{{formData.wName}}</b></td>
+      </tr>
+      <tr class="dataRow tall form-data">
+        <td class ="spec-itemTitle" style="width:20%" >Telephone:</td>
+        <td style="width:20%"><b>{{formData.cTel}}</b></td>
+        <td class ="spec-itemTitle" style="width:10%">Fax:</td>
+        <td  style="width:20%"><b>{{formData.cFax}}</b></td>
+        <td class="spec-itemTitle"  style="width:10%">Mobile:</td>
+        <td  style="width:20%"><b>{{formData.cMobile}}</b></td>
+      </tr>
+    </table>
+    <table  class="top-40 full-width spec-table cap-plan-table">
+      <tr>
+        <td colspan="3" class="redText spec-center"><h3>INSTALLATION ADDRESS</h3></td>
+      </tr>
+      <tr class="dataRow tall form-data">
+        <th><b>Installation Address</b></th>
+        <th><b>Suburb</b></th>
+        <th><b>Post Code</b></th>
+      </tr>
+      <tr class="dataRow tall form-data" ng-repeat="(index, item) in items['printer'] track by $index">
+        <td><b>{{formData.comLocation['printer'][index]}}</b></td>
+        <td><b>{{formData.comSuburb['printer'][index]}}</b></td>
+        <td><b>{{formData.comZipCode['printer'][index]}}</b></td>
+      </tr>
+    </table>
+    <table  class="top-40 full-width spec-table cap-plan-table">
+      <tr>
+        <td colspan="4" class="redText spec-center"><h3>MAINTENANCE INFORMATION</h3></td>
+      </tr>
+      <tr class="dataRow tall form-data">
+          <th><b>Product Model</b></th>
+          <th><b>Quantity</b></th>
+          <th><b>Cost per A4 Impression Black and White</b></th>
+          <th><b>Cost per A4 Impression Coloured</b></th>
+      </tr>
+      <tr class="dataRow tall form-data" ng-repeat="printer in formData.printers">
+        <td>{{printer.group}} - {{printer.model}}</td>
+        <td>{{printer.qty}}</td>
+        <td>$ {{printer.cpiBwAmt}}</td>
+        <td>$ {{printer.cpiColourAmt}}</td>
+      </tr>
+    </table>
+    <table  class="top-40 full-width spec-table cap-plan-table">
+      <tr class="dataRow tall form-data">
+        <td><b>Minimum Monthly Service Charge </b></td>
+        <td><b>$ 15 (ex. gst)</b></td>
+      </tr>
+      <tr class="dataRow tall form-data">
+        <td colspan="2"><b>* Note that any A3 Prints are charged at the rate of A4 X 2</b></td>
+      </tr>
+    </table>
+    <table class="top-40 full-width spec-table cap-plan-table">
+        <tr class="dataRow">
+          <td class =" itemTitle" >Name:</td>
+          <td class =" place-holder form-data"  id = "name">{{formData.dName}}</td>
+          <td></td>
+          <td class =" itemTitle" >Witness Name:</td>
+          <td class =" place-holder form-data" id ="witnesName">{{formData.wName}}</td>  
+      </tr>
+      <tr class="dataRow">
+          <td class ="itemTitle">Signature:</td>
+          <td class ="signatureImg signItem" id ="voice-std-sg-{{index}}" ng-click='sign("voice-std-sg-" + index)'>
+              <b ng-if="isSigned('voice-std-sg')" class="greenText">{{ getSignedTime('voice-std-sg') }}</b>
+              <b ng-if="!isSigned('voice-std-sg') && (!isDraftMode())" class="greenText">Customer Signature here</b>
+          </td>
+          <td></td>
+          <td class ="itemTitle">Witness Signature:</td>
+          <td class="signatureImg signItem" id="voice-std-wt-{{index}}" ng-click='sign("voice-std-wt-" + index)' >
+              <img class='imported' ng-src="{{userSign}}" ng-if="userSign" height="36" height=36 ></img>
+              <div class='signTimeStamp' style='font-weight:300;font-size:8pt' ng-if="userSign">{{getCurrentDate()}}</div>
+              <span ng-if="!userSign">
+                  <span ng-if='!isSigned("voice-std-wt-" + index) && !isDraftMode()'>Witness Signature here</span>
+              </span>
+          </td>    
+      </tr>
+      <tr class="dataRow tall">
+           <td colspan="6"></td>
+       </tr>
+    </table>
+  </div>
+  <pagebreak>
+  <div class="pages pageBreaker">
+    <table class="termsTable spec-terms">
+     <tr>
+       <td>
+         <p class="details-spec">
+        <b>NEXGEN TERMS AND CONDITIONS OF SALE AND AGREEMENT</b><br />
+        1 DEFINITIONS<br />
+        1.1 In these terms and conditions: <br />
+        (1) “Buyer” means the entity purchasing the goods and services upon these terms and conditions;<br />
+        (2) “EULA” has the meaning given in clause 4.1;<br />
+        (3) “Copy Plan Agreement” means the agreement by that name between the parties relating to the goods and services supplied under these terms and conditions;<br />
+        (4) “Insolvency Event” means any of the following:<br />
+        (a) insolvency;<br />
+        (b) the Buyer indicating that it does not have the resources to perform its obligations under these terms and conditions;<br />
+        (c) an application for winding up is made and not stayed within 14 days, or a resolution for winding up is passed;<br />
+        (d) a winding up order is made;<br />
+        (e) a controller, administrator, receiver and/or manager, statutory manager, provisional liquidator or liquidator is appointed;<br />
+        (f) a mortgagee enters the possession of any of the Buyer’s property;<br />
+        (g) notice is given of a meeting of creditors for the purposes of a deed or scheme of arrangement; or<br />
+        (h) any actions of a similar effect to those set out above are taken;<br />
+        (5) “Lease Agreement” means the agreement by that name between the parties relating to the goods and services supplied under these terms and conditions;<br />
+        (6) “Rental Agreement” means the agreement by that name between the parties relating to the goods and services supplied under these terms and conditions;<br />
+        (7) “Seller” means NEXGEN ABN 96 994 759 728 and any related body corporate of the Seller within the meaning of section 50 of the Corporations Act 2001;<br />
+        (8) “Software” means software or software as a service as described in the table above under the heading of “Description of goods (including software) and services”;<br />
+        (9) “SOW” means the statement of work(s) agreed and signed by the parties’ authorised representatives in relation to these terms and conditions, as amended from time to time in accordance with its terms; and<br />
+        (10) reference to “in writing” includes facsimile, email or any other form of electronic communication agreed to by the parties.<br />
+        2 BINDING TERMS AND CONDITIONS<br />
+        2.1 The only terms which are binding upon the Seller are:<br />
+        (1) those set out in these terms and conditions or otherwise agreed to in writing by the Seller; and<br />
+        (2) those, if any, which are imposed by law and which cannot be excluded.<br />
+        2.2 These terms and conditions apply to each supply of goods and services made by the Seller to the Buyer.<br />
+        2.3 The Buyer and Seller agree that these terms and conditions apply to the goods and services described in the table above and to every order for other goods and services by the Buyer which is accepted by the Seller, to the exclusion of the Buyer’s terms and conditions of purchase or any other document.<br />
+        3 ORDERS<br />
+        3.1 Orders must be submitted by telephone or in writing.<br />
+        3.2 The Seller accepts orders for goods and services by delivery of the goods and services.<br />
+        3.3 The Seller must supply the goods and services at the price agreed between the Buyer and the Seller.<br />
+        3.4 The prices shown in any price list are subject to alteration without notice, unless otherwise set out in this document.<br />
+        3.5 Without the prior approval of the Seller, the Buyer must not allow the balance of its account to exceed any approved credit limit.<br />
+        3.6 The Seller may vary or withdraw the approved credit limit of the Buyer at any time in its absolute discretion.<br />
+        4 GOODS THAT INCLUDE SOFTWARE<br />
+        4.1 Where the goods include Software, the Buyer acknowledges and agrees that the Software is owned by a third party and licensed directly or indirectly to the Buyer under separate terms and conditions which may include an end user licence agreement (together, the “EULA”) and that title in the Software at all times remains with the owner of the Software unless expressly indicated otherwise in the description of the Software.<br />
+        4.2 If requested by the Seller, the Buyer must promptly accept or authorise the acceptance on the Buyer’s behalf of any EULA associated with the acquisition, implementation or use of the Software. To the extent necessary for the Seller to fulfil its obligations under these terms and conditions the Buyer hereby authorises the Seller to act as the Buyer’s agent to acquire the Software and to accept on behalf of the Buyer any EULA associated with the acquisition, implementation and use of the Software.<br />
+        4.3 The Buyer must use the Software strictly in accordance with and comply with the EULA.<br />
+        4.4 The Buyer indemnifies and holds the Seller harmless against all liability, loss, damage and cost and expenses (including legal costs on a full indemnity basis) in relation to any claim arising out of or in connection with any breach of or failure to comply with clause 4.3 or any act or omission of the Buyer in relation to the Software which infringes the intellectual property rights of the owner or head licensor of the Software.<br />
+        5 DELIVERY AND INSTALLATION OF GOODS<br />
+        5.1 Unless otherwise agreed by the parties, the Buyer must pay the Seller’s charge for transportation of the goods to the place of delivery.<br />
+        5.2 If a delivery date is specified, that date is an estimate only and the Seller is not liable for any delay in delivery. The Seller will not be liable for penalties or damages (direct or indirect) or compensation for late delivery.<br />
+        5.3 The Seller is deemed to have delivered the goods when they are made available for unloading at the delivery location specified in an accepted order.<br />
+        5.4 The supply of goods is subject to availability. If the Seller is unable to supply the Buyer’s total order the Seller may accept the order in part or deliver the order in instalments and these terms and conditions continue to apply to the goods supplied.<br />
+        5.5 The Seller must install the goods during normal working hours at the place of delivery or such other times as agreed between the parties. The Buyer must prepare the site to meet the Seller’s installation or other specification.<br />
+        6 CONSULTANCY, INSTALLATION, IMPLEMENTATION AND TRAINING SERVICES<br />
+        6.1 The Seller must provide consultancy, installation, implementation and/or training services generally described above and more specifically detailed and agreed in the SOW.<br />
+        6.2 The Buyer agrees to promptly provide the Seller with all information, instructions and/or access to premises or persons within the Buyer’s control as the Seller reasonably requires to perform the services. The Buyer agrees it is responsible for the completeness and accuracy of all information supplied to the Seller which may be (but not always) referred to or incorporated in the SOW and the Seller may rely on all such information to perform the services including but not limited to making any recommendations in relation to the Software.<br />
+        6.3 The Buyer agrees it is solely responsible for determining the acceptability of the Software (including but not limited to its functionality and operational capability) for its purposes and the Seller relies on the Buyer’s determination to perform the services.<br />
+        6.4 The Buyer agrees to ensure the Seller is permitted to use any third party information or intellectual property rights the Buyer requires the Seller to use to perform any of the services including but not limited to implementation of the Software.<br />
+        6.5 The Seller’s performance depends on the Buyer also performing its obligations. The Buyer agrees the Seller is not liable for any default or loss or damage suffered or likely to be suffered by the Buyer because the Buyer does not fulfil its obligations or because information supplied is inaccurate or incomplete.
+        6.6 The Buyer acknowledges the installation and implementation of any software including the Software is an iterative process which is subject to multiple stages of testing and reconfiguration as may be described in the SOW.<br />
+        6.7 If a delivery date, installation date or other date is specified in these terms and conditions or the SOW, that date is an estimate only and the Seller is not liable for any delay. The Seller will not be liable for penalties or damages (direct or indirect) or compensation for the delay.<br />
+        6.8 The Seller is deemed to have completed the services when the services are provided in accordance with the phases or steps set out in the SOW.<br />
+        </p>
+        </td>
+        <td>
+         <p class="details-spec">
+        6.9 The Seller may, at its discretion, require the Buyer to approve each phase or step upon completion of the services for a phase or step. Where the Buyer has approved a phase or step, such approval will be considered by the Seller as irrevocable acceptance by the Buyer of the completion of that phase or step.<br />
+        6.10 After acceptance of a phase or step, if the Buyer requires any further work including any changes to be undertaken in relation to a completed phase or step, such work will be treated, at the discretion of the Seller, as additional services and charged in accordance with the rates given in the table above or the SOW or as otherwise agreed in writing by the parties, or as a variation of these terms and conditions.<br />
+        6.11 The supply of services is subject to availability of resources. If the unavailability of resources will adversely impact any of the phases or steps, the Seller will advise the Buyer of any such impact and the phases or steps in the SOW will deemed to be amended in accordance with any such advice.<br />
+        6.12 The Seller must provide the services during normal working hours or such other times as agreed between the parties. The Buyer must provide adequate and safe facilities for the Seller if the Seller is to provide any of the services at the Buyer’s premises.<br />
+        6.13 The Seller may use subcontractors to perform or assist the Seller to perform any part of the services.<br />
+      7 NOTIFICATION OF CLAIMS<br />
+      7.1 The Buyer must inspect the goods immediately upon delivery and/or conduct such tests necessary to check or verify the functionality or operability of the goods upon completion of the installation and implementation services.<br />
+      7.2 Any claim that the goods or services are not in accordance with these terms and conditions or the SOWs (including if they are damaged during delivery, short delivered or not working, functioning or operable) must be made in writing to the Buyer within 7 days of delivery, installation, implementation or provision of the goods and/or the services (as applicable).<br />
+      7.3 If the Buyer fails to make such claim within 7 days of delivery of the goods and/or the services (as applicable), then to the extent permitted by law, the goods and/or services are deemed to have been accepted by the Buyer and the Buyer must pay for the goods and/or services in accordance with the provisions of these terms and conditions.<br />
+      8 PAYMENT<br />
+      8.1 Subject to clauses 8.2 to 8.4, payment for goods sold by the Seller to the Buyer must be cash on delivery (“COD”).<br />
+      8.2 If the Seller has accepted and approved an application for commercial credit made by the Buyer and granted the Buyer an approved credit limit, the Buyer must make each payment for the goods and services within 30 days of the date of invoice (or such other period as agreed by the parties in writing).<br />
+      8.3 If the Seller has accepted and approved an application for finance from the Buyer, the Buyer must make payment for the goods and services in accordance with the terms and conditions applicable to the financing arrangement in the form of a Rental Agreement, Lease Agreement or Copy Plan Agreement.<br />
+      8.4 If the Seller has agreed to payment by credit card, the Buyer must make payment for the goods and services immediately upon receipt of invoice.<br />
+      8.5 Invoices must be paid in full without set-off or deduction.<br />
+      8.6 Time is of the essence in respect of the Buyer’s obligation to make payment for the goods and services.<br />
+      8.7 Notwithstanding that the Seller may have granted the Buyer an approved credit limit or finance, upon the occurrence of any of the following events, all amounts owing by the Buyer (including any amounts owing but not yet due) will become immediately due and payable:<br />
+      (1) a breach of these terms and conditions by the Buyer;<br />
+      (2) an Insolvency Event occurs in relation to the Buyer; or<br />
+      (3) any event occurs which in the reasonable opinion of the Seller is likely to adversely affect the ability of the Buyer to perform its obligations under these terms and conditions.<br />
+      8.8 Upon the occurrence of any of the events in clause 8.7, the Seller may also in its absolute discretion:<br />
+      (1) vary or withdraw any approved credit limit;<br />
+      (2) cancel any unfilled orders; and<br />
+      (3) require the Buyer to reimburse the Seller for all collection costs including legal costs incurred by the Seller on a full indemnity basis in connection with the default and/or to institute such recovery process as the Seller in its discretion decides.<br />
+      8.9 Any payment by the Buyer to the Seller may be applied by the Seller against monies owing by the Buyer in such manner as the Seller sees fit.<br />
+      9 GOODS AND SERVICES TAX<br />
+      9.1 In these terms and conditions “GST” means GST as defined in the A New Tax System (Goods and Services Tax) Act 1999 as amended from time to time (“GST Act”) or any replacement or other relevant legislation and regulations.<br />
+      9.2 Unless GST is expressly included, the price payable for any supply made under or in connection with these terms and conditions does not include GST.<br />
+      9.3 To the extent that any supply is a taxable supply, the GST exclusive consideration otherwise payable for that supply is increased by the amount of any GST payable in respect of that taxable supply, and that amount is payable at the same time as the GST exclusive consideration.<br />
+      9.4 Each party agrees to do all things, including providing tax invoices and other documentation, that may be necessary to enable the other party to claim any input tax credit, adjustment or refund in relation to any amount of GST paid or payable.<br />
+      10 INTEREST<br />
+      10.1 The Seller may charge the Buyer interest on overdue accounts issued under these terms and conditions at the reference rate for its Australian trading bank on unsecured overdraft facilities.
+      10.2 Interest is charged from the date the payment was due until the date payment is made.<br />
+      11 RISK AND INSURANCE<br />
+      11.1 Goods supplied by the Seller to the Buyer are at the Buyer’s risk immediately on delivery to the Buyer.<br />
+      11.2 The Buyer must insure the goods at its cost from the time of delivery of the goods until they are paid for in full against such risks as it reasonably thinks appropriate and must note the interest of the Seller on the policy and produce a certificate to this effect to the Seller on request.<br />
+      12 RETENTION OF TITLE <br />
+      The following provisions do not apply to the goods to the extent a Rental Agreement, Lease Agreement or Copy Plan Agreement also applies to those goods. Relevant provisions pertaining to the PPSA in relation to those goods are contained within each of those agreements.<br />
+      12.1 In this clause 12:<br />
+      (1) PPSA means Personal Property Securities Act 2009 (Cth); and<br />
+      (2) a term that is used in italics in this clause 12 has the same meaning as in the PPSA.<br />
+      12.2 Subject to clause 4.1 and the preservation of the Seller’s rights under the PPSA in respect of the Software, property in the goods supplied by the Seller to the Buyer under these terms and conditions does not pass to the Buyer until those goods, and any goods previously supplied, have been paid for in full. The Buyer in the meantime takes custody of the goods and retains them as the fiduciary agent and bailee of the Seller. 12.3 Until the goods have been paid for in full, the Buyer must:<br />
+      (1) store the goods in such manner as to show clearly that they are the property of the Seller;<br />
+      (2) keep the goods fully insured at the Buyer’s cost and hold the proceeds of any insurance claim in respect of the goods (to the extent of the Buyer’s debt to the Seller) in trust for the Seller;<br />
+      (3) not sell or sub-licence the goods other than in the ordinary course of its business, in which case the Buyer grants to the Seller a security interest in every payment to the Buyer for the goods (both as proceeds of the goods and as original collateral); and<br />
+      (4) not sell, sub-licence, assign, charge or otherwise encumber the goods or grant any interest over any debts and other obligations which any third party may owe to the Buyer as a result of the use or resale of the goods.<br />
+      12.4 The Buyer irrevocably authorises the Seller at any time, to enter any premises:<br />
+      (1) upon which the Seller’s goods are stored to enable the Seller:<br />
+      (a) to inspect the goods; and/or<br />
+      (b) if the Buyer has breached these terms and conditions or suffered an Insolvency Event, to reclaim possession of the goods (even if mixed with other goods); and<br />
+      (2) upon which the Buyer’s records pertaining to the goods are held, to inspect and copy the records.<br />
+      12.5 The Buyer indemnifies the Seller against any liability to any person in connection with the entry or reclamation.<br />
+      </p>
+      </td>
+      </tr>
+    </table>
+  </div>
+  <div class="pages pageBreaker">
+    <table class="termsTable spec-terms">
+     <tr>
+       <td>
+      <p class="details-spec">
+      12.6 The Seller may commence legal action against the Buyer if the goods are not paid for within the applicable credit terms or any separate arrangement for credit made by the Seller with the Buyer although property in the goods has not passed to the Buyer.<br />
+      12.7 The Buyer acknowledges and agrees that:<br />
+      (1) this clause 12 creates a security interest in all present and after acquired goods (including any Software, for the avoidance of doubt) and any proceeds as security for the Buyer’s obligations to the Seller;<br />
+      (2) the Seller is a secured party in relation to the goods and any proceeds of the goods, and is entitled to register its interest on the register as:
+      (a) a security interest; and<br />
+      (b) if applicable, a purchase money security interest ;<br />
+      (3) the Seller may, by notice to the Buyer, require the Buyer to take all steps requested by the Seller to ensure its security interest in the goods and the proceeds is enforceable, and to perfect, or better secure the position of the Seller and the Buyer must comply with that notice; and<br />
+      (4) the Seller is not obliged to give any notice, document or information under the PPSA, unless the provision of the notice, document or information is required by the PPSA and cannot be excluded.<br />
+      12.8 Until the goods have been paid for in full and any other money owing by the Buyer to the Seller has been repaid, every payment by the Buyer to the Seller must be taken to be a payment:
+      (1) firstly, of any amount owed by the Buyer to the Seller that is not subject to a security interest ;<br />
+      (2) secondly, of any amount owed by the Buyer to the Seller that is subject to a security interest , to the extent that the security interest is not a purchase money security interest ; and
+      (3) thirdly, of any amount owned by the Buyer to the Seller that is subject to a security interest , to the extent that it is a purchase money security interest.<br />
+      12.9 An ordinary acknowledgement by the Seller to the Buyer that an invoice has been paid is not, and must not be treated as, an agreement by the Seller to amend the order of priority set out in this clause.<br />
+      12.10 The parties may not disclose any information of a kind referred to in section 275(1) of the PPSA that is not in the public domain.<br />
+      12.11 The Seller is not obliged to give any notice or provide copies of any documents or information under the PPSA, including, but not limited to under sections 95, 118, 130, 132(3)(d), 132(4), 135 or 157 of the PPSA, unless the notice, document or information is required by the PPSA and cannot be excluded.<br />
+      12.12 The Buyer consents to the waiver of the right to receive notice, copies of documents or information under clause 12.11.<br />
+      12.13 To the extent that Chapter 4 of the PPSA would otherwise apply to enforcement by the Seller of any security interest in the goods, the parties agree that the following provisions of the PPSA are excluded;<br />
+      (1) To the extent section 115(1) of the PPSA allows them to be excluded; sections 125, 132(3)(d), 132(4), 135, 142 and 143 of the PPSA; and<br />
+      (2) To the extent section 115(7) of the PPSA allows them to be excluded: sections 129(2) and (3), 132, 133(1)(b) (as it relates to the Seller’s security interest ), 134(2), 135, 136(3)(4) and (5) of the PPSA.<br />
+      12.14 The Buyer consents to the waiver of the requirement for notice under any other provision of the PPSA that the Seller may notify to the Buyer after the date of this document and the Buyer waives any right it has to receive that notice.<br />
+      13 MAINTENANCE SERVICES AND COPY COSTS<br />
+      13.1 The provision of any agreed maintenance services by the Seller to the Buyer is to be in accordance with this clause 13.<br />
+      13.2 The Seller will provide maintenance services for the goods to ensure the goods are in proper working order within a reasonable period of receiving a request for services from the Buyer. Services will be provided at the Buyer’s premises during normal business hours (being 8:30am -5:00 pm Monday to Friday, excluding local and public holidays) or such other times as agreed between the parties.<br />
+      13.3 The provision of maintenance services by the Seller to the Buyer is for a term of 5 years unless terminated sooner by either party on 30 days’ written notice expiring on each anniversary of the commencement date of the maintenance services.<br />
+      13.4 Maintenance services will be subject to maintenance charges specified by the Seller from time to time. The Seller reserves the right to alter maintenance charges without notice. The Buyer will pay the minimum monthly service fee of $38.00 exclusive of GST for the maintenance services.<br />
+      13.5 The Buyer must pay the copycost calculated initially on the basis of the applicable rates set out as B&W Copycost and Colour copycost respectively under the heading Maintenance Agreement above, or as varied by the Seller from time to time in accordance with these terms and conditions, or as otherwise agreed in any applicable Copy Plan Agreement.<br />
+      13.6 The Seller may at any time without notice to the Buyer increase the copy cost to an amount which the Seller at its discretion considers appropriate to cover any increase costs or expenses, in which case these terms and conditions are deemed to be varied.<br />
+      13.7 The Buyer must continue to pay the copy costs notwithstanding any defect in, breakdown of, or accident or damage to, or seizure or loss of the goods, and allow the Seller access during normal business hours to the goods for the purpose of reading the meters on the goods.<br />
+      13.8 Copy charges and payment for maintenance services must be made by the Buyer in the manner that the Seller may from time to time nominate, and otherwise in accordance with clause 8. The Seller may require that payments be made by direct debit or other electronic means.<br />
+      13.9 The Buyer must only use paper and such other consumable items in the goods that have received the prior approval of the Seller.<br />
+      13.10 Subject to clause 13.9, the Seller will provide at its cost all parts required to maintain the goods.<br />
+      13.11 The Seller will not be responsible for providing maintenance services or parts where they are required as a consequence of the misuse or negligence of the Buyer.<br />
+      13.12 The Buyer must, if required by the Seller, appoint an operator to be responsible for the use and routine care of the goods, who will be trained by the Seller.<br />
+      13.13 The Seller may terminate the provision of maintenance services immediately upon written notice to the Buyer, if:<br />
+      (1) the Buyer breaches these terms and conditions;<br />
+      (2) the goods are sold or located at premises not approved by the Buyer;<br />
+      (3) the goods are serviced by persons other than the Seller or its appointed agent; or<br />
+      (4) non-approved consumable items or parts are used in the goods.<br />
+      14 WARRANTIES, EXCLUSIONS AND LIMITATIONS<br />
+      14.1 The Seller warrants in accordance with the provisions of any warranty card issued by the Seller in relation to specific goods excluding the Software.<br />
+      14.2 The Seller warrants it is an authorised reseller of the Software and to the best of its knowledge, the licensor of the relevant Software is the owner or authorised licensee of the Software.<br />
+      14.3 Subject to clauses 14.1, 14.2 and 14.4 and to the maximum extent permitted by law, these terms and conditions exclude all other conditions, warranties, liabilities or representations in relation to the goods and services.<br />
+      14.4 Where legislation implies in these terms and conditions any condition or guarantee which cannot be excluded or modified, the condition or guarantee is deemed to be included in these terms and conditions.<br />
+      14.5 To the maximum extent permitted under the Competition and Consumer Act 2010 (Cth), the liability of the Seller for a breach of any non-excludable condition or guarantee about the goods or services is, at the option of the Seller, limited to any one or more of the following:<br />
+      (1) in the case of the goods:<br />
+      (a) the replacement of the goods or the supply of equivalent goods;<br />
+      (b) the payment of the cost of replacing the goods or of acquiring equivalent goods, by credit to the Buyer’s account, in cash or by cheque at the Seller’s discretion;<br />
+      (c) repayment of any part of the purchase price of the goods which has been paid by the Buyer, by credit to the Buyer’s account, in cash or by cheque at the Seller’s absolute discretion; and<br />
+      (2) in the case of the services, the supply of the services again or the payment for the cost of supply of the services again by credit to the Buyer’s account, in cash or by cheque at the Seller’s discretion.<br />
+      14.6 To the maximum extent permitted by law, the Seller has no liability for any loss or damage of any kind whatsoever, including without limitation, for any indirect or consequential loss (including, without limitation, loss of profits, income, business opportunity, goodwill, anticipated savings or benefits, economic loss or loss or corruption of data), even if due to the negligence of the Seller arising out of or in connection with the supply of the goods or services.<br />
+      14.7 Where the Seller is unable to limit its liability as set out above, to the maximum extent permitted by law, the Seller’s aggregate liability for all claims connected directly or indirectly with the goods and services (including claims of negligence) is limited to an amount equal to the amount paid by the Buyer for the goods and services.
+      15 INDEMNITY<br />
+      15.1 To the maximum extent permitted by law, the Buyer indemnifies the Seller, regardless of any negligence on the part of the Seller, against:<br />
+      (1) all losses incurred by the Seller;<br /><br />
+      (2) all liabilities incurred by the Seller; and<br />
+      (3) all costs actually payable to its legal representatives and other expenses in connection with a demand, action, arbitration or other proceeding, arising directly or indirectly as a result of or in connection with:<br />
+      (a) the supply of goods or services by the Seller to the Buyer;<br />
+      (b) the trade-in or storage of equipment or used goods by the Seller for the Buyer (including in connection with any third party claims arising from such trade-in or storage); and<br />
+      (c) any breach of these terms and conditions by the Buyer, unless caused by wilful misconduct on the part of the Seller.<br />
+         </p>
+     </td>
+     <td>
+      <p class="details-spec">
+      16 TERMINATION OF SOFTWARE LICENCE<br />
+      16.1 The Seller may suspend or terminate, or cause to be suspended or terminated, any Software licence without any liability by written notice with immediate effect if the Buyer fails to perform any of its obligations under these terms and conditions, including but not limited to failure to make any payments by the due date or failure to comply with a EULA.<br />
+      16.2 Upon the suspension or termination of any Software licence, the Buyer must immediately cease using the Software and do all such things requested by the Seller to uninstall or otherwise remove the Software from the Buyer’s computer systems or network. The Buyer irrevocably authorises the Seller to enter any premises owned or controlled by the Buyer at any time to enable the Seller to verify or audit the Buyer’s compliance with its obligations under this clause. If required by the Seller, the Buyer must provide all such evidence required by the Seller to prove to the satisfaction of the Seller the Buyer’s compliance with its obligations under this clause.<br />
+      17 SUSPENSION OR RECALL<br />
+      17.1 If the Buyer is directed to assist in any suspension of supply or recall of goods for any reason by the Seller or any government authority, the Buyer must co-operate and comply with all such reasonable directions to ensure the most effective response to the suspension or recall.<br />
+      17.2 The sole cost and expense of such suspension or recall will be borne by:<br />
+      (1) the Seller to the extent the costs and expenses are reasonable and necessary, where the reason for the suspension or recall is fault in the manufacture of the goods; and<br />
+      (2) the Buyer for any other reason.<br />
+      18 PRIVACY<br />
+      18.1 Where goods are supplied to the Buyer on credit the Buyer agrees that any Buyer who is an individual or any individual who will be a guarantor of the credit provided to the Buyer (whether or not an individual) are subject to the Seller’s Privacy Policy and Credit Reporting Policy and the individual Buyer or individual guarantor will be required by the Seller to provide the relevant consents for compliance with the Privacy Act 1988 (Cth). The Buyer acknowledges that the Seller’s Privacy Policy and Credit Reporting Policy are available on the Seller’s website at www.sharpcolour.com.au.<br />
+      19 NOTICES<br />
+      19.1 A notice or other communication connected with these terms and conditions has no legal effect unless it is in writing.<br />
+      20 FORCE MAJEURE<br />
+      20.1 If a party is prevented from or delayed in complying with an obligation (other than to pay money) by an event beyond its reasonable control, performance by it of that obligation is suspended during the time, but only to the extent that compliance is prevented or delayed.<br />
+      21 WAIVER<br />
+      21.1 A party’s failure or delay to exercise a power or right does not operate as a waiver of that power or right.<br />
+      21.2 A waiver is not effective unless it is in writing.<br />
+      22 ENTIRE UNDERSTANDING<br />
+      22.1 These terms and conditions and any ancillary agreements including but not limited to the SOWs and financing agreement entered into in writing and signed by the parties in relation to the goods and services:<br />
+      (1) are the entire agreement and understanding between the Seller and the Buyer on everything connected with the supply of the goods and services; and<br />
+      (2) supersede any prior agreement or understanding on anything connected with that subject matter.<br />
+      22.2 Unless expressly provided otherwise, where there is any inconsistency in the terms between these terms and conditions and any ancillary agreements, to the extent of the inconsistency, the order of priority in applying the terms will be as follows, commencing from the highest order of priority:<br />
+      (1) these terms and conditions;<br />
+      (2) the financing agreement, being either the Rental Agreement, Copy Plan Agreement or Lease Agreement;<br />
+      (3) the Guarantee and Indemnity;<br />
+      (4) the SOW; and<br />
+      (5) other ancillary agreements.<br />
+      22.3 In the event of any inconsistency the Buyer and the Seller undertakes to each other to do all things within their control to make the ancillary agreements consistent with these terms and conditions applying the order of priority stated in clause 22.2.<br />
+      22.4 The Seller and the Buyer have entered into these terms and conditions without relying on any representation by the other or any person purporting to represent the other.<br />
+      23 INTERDEPENDENCE<br />
+      23.1 These terms and conditions and all agreements relating to it are mutually interdependent and a breach of any covenant, term or condition of any of these terms and conditions or of any one (1) or more of those agreements will constitute a default under these terms and conditions and under each of those agreements.<br />
+      24 SEVERABILITY<br />
+      24.1 Any term of these terms and conditions which is wholly or partially void or unenforceable is severed to the extent that it is void or unenforceable. The validity or enforceability of the remainder of these terms and conditions is not affected.<br />
+      25 VARIATION OF TERMS AND CONDITIONS<br />
+      25.1 Any amendment or variation to these terms and conditions is not effective unless it is in writing and signed by the parties.<br />
+      26 GOVERNING LAW AND JURISDICTION<br />
+      26.1 The law of New South Wales governs these terms and conditions.<br />
+      26.2 The parties submit to the non-exclusive jurisdiction of the courts of New South Wales and of the Commonwealth of Australia.<br />
+    </p>
+    </td>
+    </tr>
+    </table>
+  </div>
+</div> -->

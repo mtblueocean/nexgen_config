@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://www.aapt.com.au/FrontierLink/xsd"
+            xmlns="http://www.w3.org/2001/XMLSchema"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:wsg="http://www.aapt.com.au/FrontierLink/xsd"
+            elementFormDefault="qualified">
+
+    <xsd:include schemaLocation="TaskActionList.xsd" />
+    <xsd:include schemaLocation="elements/CaseID.xsd" />        
+
+    <xsd:complexType name="OrderTask">
+        <xsd:sequence>
+            <xsd:element name="taskId" type="wsg:CaseID" >
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en">Identifier for order exception</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="taskCreateDate" type="xsd:dateTime" >
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en">Date task was created</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="title" type="xsd:string" >
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en">Title of exception</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>              
+            <xsd:element name="description" type="xsd:string" >
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en">Exception details</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>              
+            <xsd:element name="actions" type="wsg:TaskActionList" minOccurs="0" >
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en">Available actions for exception</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>              
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>

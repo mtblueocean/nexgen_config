@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://www.aapt.com.au/FrontierLink/xsd"
+            xmlns="http://www.w3.org/2001/XMLSchema"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:wsg="http://www.aapt.com.au/FrontierLink/xsd"
+            elementFormDefault="qualified">
+
+    <xsd:include schemaLocation="elements/ServiceID.xsd" />
+    <xsd:include schemaLocation="elements/ServiceOrderType.xsd" />
+    <xsd:include schemaLocation="elements/ServiceStatus.xsd" />
+    <xsd:include schemaLocation="ProductOrderDetails.xsd" />
+    <xsd:include schemaLocation="VoiceProductOrderDetails.xsd" />
+    <xsd:include schemaLocation="CtsProductOrderDetails.xsd" />
+    <xsd:include schemaLocation="RezLineProductOrderDetails.xsd" />
+    <xsd:include schemaLocation="HomeBroadbandBundleProductOrderDetails.xsd" />
+    <xsd:include schemaLocation="NBNPhoneProductOrderDetails.xsd" />
+
+    <xsd:complexType name="ServiceOrderDetail">
+        <xsd:sequence>
+            <xsd:element name="serviceOrderID" type="wsg:ServiceID">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en">An AAPT assigned unique identifier for each service order</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="serviceOrderType" type="wsg:ServiceOrderType" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en">An AAPT assigned unique identifier for each service order type</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="serviceStatus" type="wsg:ServiceStatus">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en">A AAPT specific indicator of Status of the Service</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:choice>
+                <xsd:element name="ProductOrderDetails" type="wsg:ProductOrderDetails" maxOccurs="unbounded">
+                    <xsd:annotation>
+                        <xsd:documentation xml:lang="en">A complex definition of AAPT workflow events and information and the orders contact</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
+                <xsd:element name="VoiceProductOrderDetails" type="wsg:VoiceProductOrderDetails">
+                    <xsd:annotation>
+                        <xsd:documentation xml:lang="en">A complex definition of Rebill records and Products</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
+                <xsd:element name="CtsProductOrderDetails" type="wsg:CtsProductOrderDetails">
+                    <xsd:annotation>
+                        <xsd:documentation xml:lang="en">A complex definition of CTS service details</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
+                <xsd:element name="RezLineProductOrderDetails" type="wsg:RezLineProductOrderDetails">
+                    <xsd:annotation>
+                        <xsd:documentation xml:lang="en">A complex definition of RezLine service details</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
+                <xsd:element name="HomeBroadbandBundleProductOrderDetails" type="wsg:HomeBroadbandBundleProductOrderDetails">
+                    <xsd:annotation>
+                        <xsd:documentation xml:lang="en">A complex definition of Home Broadband Bundle service details</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
+                <xsd:element name="NBNPhoneProductOrderDetails" type="wsg:NBNPhoneProductOrderDetails">
+                    <xsd:annotation>
+                        <xsd:documentation xml:lang="en">A complex definition of NBNPhone service details</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
+            </xsd:choice>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,83 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>Users</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="index.html">Home</a>
+            </li>
+            <li>
+                <a ui-sref="products">Basic Configuration</a>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-2">
+
+    </div>
+</div>
+
+    <flash-message></flash-message>
+
+<div class="wrapper wrapper-content animated fadeInRight">
+
+<div class="row">
+<div class="col-lg-12">
+<div class="ibox float-e-margins">
+<div class="ibox-title">
+    <h5>Basic Configuration</h5>
+</div>
+<div class="ibox-content">
+    <form method="get" class="form-horizontal" id="config_form" data-validate="parsley">
+
+
+        <div class="form-group"><label class="col-sm-2 control-label">Stamp Duty Coefficient</label>
+
+            <div class="col-sm-3">
+                <input type="text" class="form-control" ng-model="config.stamp_duty_coefficient" data-required="true">
+            </div>
+        </div>
+        <div class="hr-line-dashed"></div>
+
+        <div class="form-group"><label class="col-sm-2 control-label">GST Coefficient</label>
+
+            <div class="col-sm-3">
+                <input type="text" class="form-control" ng-model="config.gst_coefficient" data-required="true" >
+            </div>
+        </div>
+        <div class="hr-line-dashed"></div>
+
+        <div class="form-group"><label class="col-sm-2 control-label">Gst & Stamp Duty</label>
+
+            <div class="col-sm-3">
+                <input type="text" id="password" class="form-control" ng-model="config.gst_stamp_duty"  data-required="true" data-parsley-equalto="password">
+            </div>
+        </div>
+        <div class="hr-line-dashed"></div>
+
+
+        <div class="form-group"><label class="col-sm-2 control-label">Monthly Rental</label>
+
+            <div class="col-sm-3">
+                <input type="text" class="form-control" id="cpassword"  ng-model="config.monthly_rental" data-parsley-trigger="keyup"  data-required="true" data-parsley-equalto="#password">
+            </div>
+        </div>
+        <div class="hr-line-dashed"></div>
+
+
+        <div class="form-group"><label class="col-sm-2 control-label"></label>
+
+            <div class="col-sm-3">
+                <a  class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Save"  ng-click="save()">
+                    <i class="fa fa-new"></i> Save
+                </a>
+                <a  class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Save">
+                    <i class="fa fa-new"></i> Cancel
+                </a>
+            </div>
+        </div>
+
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>

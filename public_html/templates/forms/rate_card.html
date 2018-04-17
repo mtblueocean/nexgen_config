@@ -1,0 +1,170 @@
+<script src="assets/js/jSignature.min.js"></script>
+<script>
+    $(function() {    
+       $("#testDi").dialog({
+            autoOpen: false,
+            hide: { effect: "fadeout", duration: 200 },
+            width: 400,
+            height: 200,
+            modal:true
+       });
+       $(".sign-navigatior").draggable({
+            containment: "#wrapper"
+       });
+       
+       $("#closeSignNav").click(function() {
+           $(".sign-navigatior").hide();
+       })
+    });
+        
+    function useSign() {       
+        var id = $('#iAccept').attr('data-id');
+        var sign = $("<img class='imported' height=36 ></img>")
+                            .attr("src",$('#signatureBox').jSignature('getData'));                   
+                  $('#'+id).html(sign); 
+                  $("#testDi").dialog("close");
+    }
+   
+    function sign(id) {         
+        $("#testDi").dialog("open");
+        $('#iAccept').attr('data-id', id);
+        if (!$('#'+id).find('canvas').length) { 
+             $('#signatureBox').html("<span>Sign here!</span>&nbsp;&nbsp;<i class='fa fa-refresh'onclick=clearSg('signatureBox')></i>");
+         
+             $('#signatureBox').jSignature({color:"#000000",lineWidth:1,
+                                    width :300, height :70,
+                                   'background-color': '#d3cfcf',
+                                   'decor-color': 'transparent',
+                                   'border': 'black 1px solid'});
+            clicked = true;
+        }
+    }
+   
+   function clearSg(id) {      
+      $("#"+id).jSignature("reset");
+   }
+   
+   $("#clearSignature").on("click",function() {
+       $(".signatureImg").each(function() {
+           $(this).jSignature("reset");
+       });
+     
+   });
+  
+</script>
+<link href = "assets/css/form.css" rel='stylesheet' type='text/css'>
+<style>
+    input[type="number"]::-webkit-outer-spin-button,
+    input[type="number"]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+    input[type="number"] {
+        -moz-appearance: textfield;
+    }
+     td {
+       // border : none  !important;
+    }
+    table tr td {
+                border : none  !important;
+            }
+  
+</style>
+
+<div id ="testDi">
+    <div id ="signatureBox"></div>   
+    <button class="btn btn-primary" onclick="useSign()" id="iAccept"> I accept the terms and conditions</button>   
+</div>
+
+<div id="loading"><img src ="assets/images/loading2.gif" alt="loading">
+    <div id="loadingStatus"></div>        
+</div>
+
+ <div class ="col-md-4">
+        <button class="btn btn-success" type ="submit" id="save"  ng-click="downloadPdf()">Load</button>   
+        <button class="btn btn-info" id ="clearSignature">Clear Signature</button>      
+ </div>        
+
+<div class="sign-navigatior">
+    <div class="row"><div class="col-md-6"><h4>Signature</h4></div>
+        <div class="col-md-6"><i class="fa fa-times pull-right" id="closeSignNav"></i></div></div>
+    <div class="row">
+        <div class="col-md-12">
+            <button class="btn btn-warning" ng-click="signNavigate('next')">Next</button>
+            <button class="btn btn-warning" ng-click="signNavigate('previous')">Previous</button>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="space30"></div>
+<div class="row">
+    <div class="col-md-1">
+   <!--     <button class ='btn btn-success' id ="downloadPdfBn" ng-click='downloadPdf()'>Download pdf</button> -->
+    </div>
+    
+    
+     
+  </div>
+<div class="space30"></div>
+<div  class="row" style="width:800px; padding-left: 55px; padding-right:55px; background : white">   
+<div class ="row" id='pdfData'>
+    <div class="row" id="voiceCap" ng-if="formData.type.voiceCap == true" ng-include='voiceCap.template'>          
+    </div>
+    <div class="row" id="focusStandard" ng-if="formData.type.focusStandard == true" ng-include='voiceStd.template'>           
+    </div>
+    <div class="row" id="completeOffice" ng-if="formData.type.completeOffice == true" ng-include='voiceComp.template'>   
+    </div>   
+    <div class="row" id="voiceUt" ng-if="formData.type.voiceUt == true" ng-include="voiceUt.template">        
+    </div>
+    <div class="row" id="voiceSolution" ng-if="formData.type.voiceSolution == true" ng-include="voiceSolution.template">        
+    </div>  
+    <div class="row" id="adsl2" ng-if="formData.type.adsl2 == true" ng-include="dataAdsl.template">        
+    </div>
+    <div class="row" id="ipMidband" ng-if="formData.type.ipMidband == true" ng-include="ipMidband.template">        
+    </div>
+    <div class="row" id="nbnMonthly" ng-if="formData.type.nbnMonthly == true" ng-include="nbn.template">        
+    </div>
+    <div class="row" id="singleOrder" ng-if="formData.type.singleOrder == true" ng-include="singleOrder.template">        
+    </div>
+    <div class="row" id="rental" ng-if="formData.type.rental == true" ng-include="rental.template" on-finish-render>        
+    </div>
+     <div class="row" id="chattle" ng-if="formData.type.chattle == true" ng-include="chattle.template" on-finish-render>        
+    </div>
+    <div class="row" id="rate131300" ng-if="formData.type.rate131300 == true" ng-include="rate131300.template" on-finish-render>        
+    </div>
+    <div class="row" id="rateDis131300" ng-if="formData.type.rateDis131300 == true" ng-include="rateDis131300.template" on-finish-render>        
+    </div>
+    <div class="row" id="mobileCap" ng-if="formData.type.mobileCap == true" ng-include="mobileCap.template" on-finish-render>        
+    </div>
+    <div class="row" id="mobileUt" ng-if="formData.type.mobileUt == true" ng-include="mobileUt.template" on-finish-render>        
+    </div>
+    <div class="row" id="mobileWireless" ng-if="formData.type.mobileWireless == true" ng-include="mobileWireless.template" on-finish-render>        
+    </div>
+     <div class="row" id="configApp" ng-if="formData.type.configApp == true" ng-include="configApp.template" on-finish-render>        
+    </div>
+    <div class="row" id="leasing" ng-if="formData.type.leasing == true" ng-include="leasing.template" on-finish-render>        
+    </div>
+    <div class="row" id="voiceEssential" ng-if="formData.type.voiceEssential == true" ng-include="voiceEssential.template" on-finish-render>        
+    </div>
+
+  <!--new form --> 
+    
+</div>
+    
+
+
+</div>
+<br>
+    <br>
+     <div class ="col-md-4">
+        <button class="btn btn-success" type ="submit" id="save"  ng-click="downloadPdf()">Load</button>   
+        <button class="btn btn-info" id ="clearSignature">Clear Signature</button>      
+    </div>        
+  <br>
+    <br>
+<br>
+    <br><br>
+    <br><br>
+    <br>

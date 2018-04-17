@@ -1,0 +1,66 @@
+<style>
+    @page {
+        sheet-size : A4;
+        margin: 4%;   
+        odd-footer-name: html_pagesFooter;
+    }           
+    
+    div.pages {
+        page: pages;
+    } 
+</style> 
+<link href = "assets/css/form.css" rel='stylesheet' type='text/css'>
+<div class="preview-{{index}}" ng-repeat="(index, item) in items['ip_midbandunli'] track by $index">
+    <div class ="pageBreaker">
+        <table style="width:100%">
+            <tr>
+                <td colspan="2"><img  width = 250 height = 70 src ="assets/images/logo.png" ></td>
+                <td colspan="3" class="cardTitle">NEXGEN DATA RATE CARD</td>
+            </tr>
+            <tr>
+                <td colspan="5"> </td>
+            </tr>
+            <tr>
+                <td colspan="5" class="planTitle">Mid-band Unlimited Plan</td>  
+            </tr>
+            <tr class="plan-row">
+                <td colspan="5" class="planCategory">{{formData.comLocation['ip_midbandunli'][index]}},{{formData.comSuburb['ip_midbandunli'][index]}},{{postcode=formData.comZipCode['ip_midbandunli'][index]}}</td>
+            </tr>
+            <tr class="plan-row">
+                <td colspan="4" class="planItem"><b>{{formData.ipMidbandUnliPlans[index].description}}</b></td>
+                <td colspan="1" class="planItem"><b>${{roundVal(formData.ipMidbandUnliPlans[index].price)}}</b></td>
+            </tr>   
+            <tr>
+                <td colspan="5" class="planTitle">Minimum Monthly Charges / Discounts</td>  
+            </tr>
+            <tr>
+                <td class="discountField">Midband Unlimited</td>
+                <td class="discountItem"><b>${{roundVal(formData.ipMidbandUnliPlans[index].price)}}</b></td>
+                <td class="discountField">Plan Discount</td>
+                <td class="discountItem"><b>${{roundVal(formData.ipMidbandUnliDis[index])}}</b></td>
+                <td class="discountField"></td>
+            </tr> 
+            <tr>
+                <td class="discountField"></td>
+                <td class="discountItem"></td>
+                <td class="discountField"></td>
+                <td class="discountItem"></td>
+                <td class="discountField" style="text-align:center;border : 1px solid white;border-bottom: 1px solid black">Term</td>
+            </tr>   
+            <tr>
+                <td class="discountField">Total Plan Fees</td>
+                <td class="discountItem"><b>${{roundVal(ipMidbandUnli.totalFee[index])}}</b></td>
+                <td class="discountField">Total Discount</td>
+                <td class="discountItem"><b>${{roundVal(ipMidbandUnli.discount[index])}}</b></td>
+                <td class="discountField" style="text-align:center;border : 1px solid white;border-top: 1px solid black">{{formData.aBillingTerm}} months</td>
+            </tr>        
+        </table>
+        <p class="TAC">
+            <b>Mid-band Ethernet Terms and Conditions.</b><br />
+            All Prices exclude GST. <b>Minimum term on all Midband plans listed above is 36months.  Discounts  above will expire at the term of the  agreement.</b> Relocation of service(s) is dependent on coverage availability. Ethernet is available in selected coverage areas only and is dependent on the access technology. <b>Speeds advertised above are an  Up to speed.</b> These speeds may vary due to a number of factors;  Eg: distance from the local telephone exchange. Nexgen provides 5 emails at $0. Any additional emails supplied can be purchased at $10 per month per 5 users. This can only be purchased in 5 user blocks. Nexgen Australia will provide a Mail box space of a 100MB. Nexgen static IP defaults at one per client. Additional static IP's are charged at $8 per IP per month. Nexgen  Australia will deliver the service to the site only. Your IT person is required to complete the connection of the service at your site, and the customer is liable for all and any charges associated with the use of their IT person. The supply of Modems, Routers or switches will incur additional charges. Nexgen are not responsible for the management of the modem/router on site and is the customers responsibility. Delivery of all the above services is dependent on available copper pairs on your lead in. It is the customer’s responsibility to have enough copper pairs from your MDF to your comms room.  A maximum of 8 copper pairs are required for our Ethernet products. The delivery of the above services is subject to capacity and infrastructure.  Early Termination Fees apply. Please refer to clause 15.5 of the Nexgen Application and  www.nexgen.com.au for full Terms and Conditions. 
+        </p>
+        <htmlpagefooter name='pagesFooter'>   
+            <ng-include src="'templates/forms/card_footer.html'" ng-init="location=formData.comLocation['ip_midbandunli'][index];suburb=formData.comSuburb['ip_midbandunli'][index];postcode=formData.comZipCode['ip_midbandunli'][index]"></ng-include>
+        </htmlpagefooter>
+    </div>
+</div>

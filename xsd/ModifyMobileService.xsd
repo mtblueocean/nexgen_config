@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" 
+        xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+        xmlns:wsg="http://www.aapt.com.au/FrontierLink/xsd" 
+        targetNamespace="http://www.aapt.com.au/FrontierLink/xsd" 
+        elementFormDefault="qualified">
+    
+    <xsd:include schemaLocation="MobileBarringOptions.xsd" />
+    <xsd:include schemaLocation="ReplaceMobileSim.xsd" />
+    <xsd:include schemaLocation="InternationalRoamingVoice.xsd" />
+    
+    <xsd:include schemaLocation="elements/MobileOffer.xsd" />
+    <xsd:include schemaLocation="elements/MobileTelephoneNumber.xsd" />
+    <xsd:include schemaLocation="elements/ReplaceSim.xsd" />
+    <xsd:include schemaLocation="elements/EnableDisable.xsd" />
+    <xsd:include schemaLocation="elements/InternationalRoamingAction.xsd" />
+    <xsd:include schemaLocation="elements/ServiceID.xsd" />
+    
+
+    <xsd:complexType name="ModifyMobileService">
+        <xsd:sequence>
+            <xsd:element name="serviceOrderID" type="wsg:ServiceID">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en">An AAPT assigned unique identifier for each service order</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="replaceSim" type="wsg:ReplaceMobileSim" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en">Details for ordering a replacement sim card</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="barOptions" type="wsg:MobileBarringOptions" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en">A list of services to bar or unbar</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="changeOffer" type="wsg:MobileOffer" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en">Update service to be associated with specified offer</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="changeNumber" type="wsg:MobileTelephoneNumber" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en">Request change of number for service</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+             <xsd:element name="incomingCallerID" type="wsg:EnableDisable" minOccurs="0"> 
+                <xsd:annotation> 
+                    <xsd:documentation xml:lang="en">Specify if incoming calls present caller id on handset</xsd:documentation> 
+                </xsd:annotation> 
+            </xsd:element> 
+            <xsd:element name="outgoingCallerID" type="wsg:EnableDisable" minOccurs="0"> 
+                <xsd:annotation> 
+                    <xsd:documentation xml:lang="en">Specify if caller ID is sent on outgoing calls</xsd:documentation> 
+                </xsd:annotation> 
+            </xsd:element> 
+            <xsd:element name="internationalRoamingVoice" type="wsg:InternationalRoamingVoice" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en">Specify if international roaming for voice is required on this service</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="internationalRoamingData" type="wsg:InternationalRoamingAction" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en">Modify settings for data international roaming on this service</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>  
+    </xsd:complexType>
+</xsd:schema>

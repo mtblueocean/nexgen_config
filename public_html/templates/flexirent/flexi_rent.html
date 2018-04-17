@@ -1,0 +1,464 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>Users</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="index.html">Home</a>
+            </li>
+            <li>
+                <a ui-sref="finance_rates">Flexi Rent</a>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-2">
+
+    </div>
+</div>
+
+    <flash-message></flash-message>
+
+<div class="wrapper wrapper-content animated fadeInRight">
+
+<div class="row">
+<div class="col-lg-12">
+<div class="ibox float-e-margins">
+<div class="ibox-title">
+    <h5>Flexi Rent</h5>
+</div>
+<div class="ibox-content">
+<div class="panel-body">
+            <tabset>
+                <tab heading="Flexi Rent - (E. GST )">
+                    <form method="get" class="form-horizontal" id="config_form" data-validate="parsley">
+
+                            <div class="form-group">
+
+                                <label class="col-sm-2 control-label" style=""></label>
+                                <label class="col-sm-2 control-label" style="text-align:center ">From</label>
+                                <label class="col-sm-2 control-label" style="text-align:center ">To</label>
+                                <label class="col-sm-1 control-label" style="text-align:center ">24</label>
+                                <label class="col-sm-1 control-label" style="text-align:center ">36</label>
+                                <label class="col-sm-1 control-label" style="text-align:center ">48</label>
+                                <label class="col-sm-1 control-label" style="text-align:center ">60</label>
+
+                            </div>
+
+                            <div class="hr-line-dashed"></div>
+
+                            <div class="form-group"  ng-repeat="item in fr.fr_egst track by $index">
+                                <label class="col-sm-2 control-label" style="text-align:center "></label>
+                                <div class="col-sm-2">
+                                    <input type="text" class="form-control"     ng-model="item.from" data-required="true">
+                                </div>
+                                <div class="col-sm-2">
+                                    <input type="text" class="form-control"     ng-model="item.to" data-required="true">
+                                </div>
+                                <div class="col-sm-1">
+                                        <input type="text" class="form-control" ng-model="item.m1" data-required="true">
+                                </div>
+                                <div class="col-sm-1">
+                                        <input type="text" class="form-control" ng-model="item.m2" data-required="true">
+                                </div>
+                                <div class="col-sm-1">
+                                        <input type="text" class="form-control" ng-model="item.m3" data-required="true">
+                                </div>
+                                <div class="col-sm-1">
+                                        <input type="text" class="form-control" ng-model="item.m4" data-required="true">
+                                </div>
+                                <div class="col-sm-1">
+                                        <a class="col-sm-1 control-label  font-red" style="text-align:center"  ng-click="remRow($index,'egst')"><i class="fa fa-remove"></i> </a>
+                                </div>
+                            </div>
+
+
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label" style="text-align:center "></label>
+                                <div class="col-sm-3" class="right">
+                                    <a  class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Save"  ng-click="addRow('egst')">
+                                        <i class="fa fa-new"></i> + New Row
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+
+
+                            <div class="form-group">
+                               <label class="col-sm-2 control-label" style="text-align:center "></label>
+
+                                <div class="col-sm-3" class="right">
+                                    <a  class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Save"  ng-click="saveFREGST()">
+                                        <i class="fa fa-new"></i> Save
+                                    </a>
+                                    <a  class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="">
+                                        <i class="fa fa-new"></i> Cancel
+                                    </a>
+                                </div>
+                            </div>
+
+                    </form>
+
+                </tab>
+                <tab heading="6  Month Promo (E. GST)">
+                    <form method="get" class="form-horizontal" id="config_form" data-validate="parsley">
+
+                            <div class="form-group">
+
+                                <label class="col-sm-2 control-label" style=""></label>
+                                <label class="col-sm-2 control-label" style="text-align:center ">From</label>
+                                <label class="col-sm-2 control-label" style="text-align:center ">To</label>
+                                <label class="col-sm-1 control-label" style="text-align:center ">24</label>
+                                <label class="col-sm-1 control-label" style="text-align:center ">30</label>
+                                <label class="col-sm-1 control-label" style="text-align:center ">48</label>
+                                <label class="col-sm-1 control-label" style="text-align:center ">60</label>
+
+                            </div>
+                            <div class="hr-line-dashed"></div>
+
+                            <div class="form-group"  ng-repeat="item in fr.fr_promo_egst_6 track by $index">
+                                <label class="col-sm-2 control-label" style="text-align:center "></label>
+                                <div class="col-sm-2">
+                                    <input type="text" class="form-control"     ng-model="item.from" data-required="true">
+                                </div>
+                                <div class="col-sm-2">
+                                    <input type="text" class="form-control"     ng-model="item.to" data-required="true">
+                                </div>
+                                <div class="col-sm-1">
+                                        <input type="text" class="form-control" ng-model="item.m1" data-required="true">
+                                </div>
+                                <div class="col-sm-1">
+                                        <input type="text" class="form-control" ng-model="item.m2" data-required="true">
+                                </div>
+                                <div class="col-sm-1">
+                                        <input type="text" class="form-control" ng-model="item.m3" data-required="true">
+                                </div>
+                                <div class="col-sm-1">
+                                        <input type="text" class="form-control" ng-model="item.m4" data-required="true">
+                                </div>
+                                <div class="col-sm-1">
+                                        <a class="col-sm-1 control-label  font-red" style="text-align:center"  ng-click="remRow($index,'promo_egst_6')"><i class="fa fa-remove"></i> </a>
+                                </div>
+
+                            </div>
+
+
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label" style="text-align:center "></label>
+                                <div class="col-sm-3" class="right">
+                                    <a  class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Save"  ng-click="addRow('promo_egst_6')">
+                                        <i class="fa fa-new"></i> + New Row
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+
+
+                            <div class="form-group">
+                               <label class="col-sm-2 control-label" style="text-align:center "></label>
+
+                                <div class="col-sm-3" class="right">
+                                    <a  class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Save"  ng-click="saveFREGST()">
+                                        <i class="fa fa-new"></i> Save
+                                    </a>
+                                    <a  class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="">
+                                        <i class="fa fa-new"></i> Cancel
+                                    </a>
+                                </div>
+                            </div>
+
+                    </form>
+
+                </tab>
+                <tab heading="Lease (E. GST)">
+                    <form method="get" class="form-horizontal" id="config_form" data-validate="parsley">
+
+                            <div class="form-group">
+
+                                <label class="col-sm-2 control-label" style=""></label>
+                                <label class="col-sm-2 control-label" style="text-align:center ">From</label>
+                                <label class="col-sm-2 control-label" style="text-align:center ">To</label>
+                                <label class="col-sm-1 control-label" style="text-align:center ">24</label>
+                                <label class="col-sm-1 control-label" style="text-align:center ">30</label>
+                                <label class="col-sm-1 control-label" style="text-align:center ">48</label>
+                                <label class="col-sm-1 control-label" style="text-align:center ">60</label>
+
+                            </div>
+                            <div class="hr-line-dashed"></div>
+
+                            <div class="form-group"  ng-repeat="item in fr.fr_fl_egst track by $index">
+                                <label class="col-sm-2 control-label" style="text-align:center "></label>
+                                <div class="col-sm-2">
+                                    <input type="text" class="form-control"     ng-model="item.from" data-required="true">
+                                </div>
+                                <div class="col-sm-2">
+                                    <input type="text" class="form-control"     ng-model="item.to" data-required="true">
+                                </div>
+                                <div class="col-sm-1">
+                                        <input type="text" class="form-control" ng-model="item.m1" data-required="true">
+                                </div>
+                                <div class="col-sm-1">
+                                        <input type="text" class="form-control" ng-model="item.m2" data-required="true">
+                                </div>
+                                <div class="col-sm-1">
+                                        <input type="text" class="form-control" ng-model="item.m3" data-required="true">
+                                </div>
+                                <div class="col-sm-1">
+                                        <input type="text" class="form-control" ng-model="item.m4" data-required="true">
+                                </div>
+                                <div class="col-sm-1">
+                                        <a class="col-sm-1 control-label  font-red" style="text-align:center"  ng-click="remRow($index,'fl_egst')"><i class="fa fa-remove"></i> </a>
+                                </div>
+
+                            </div>
+
+
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label" style="text-align:center "></label>
+                                <div class="col-sm-3" class="right">
+                                    <a  class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Save"  ng-click="addRow('fl_egst')">
+                                        <i class="fa fa-new"></i> + New Row
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+
+
+                            <div class="form-group">
+                               <label class="col-sm-2 control-label" style="text-align:center "></label>
+
+                                <div class="col-sm-3" class="right">
+                                    <a  class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Save"  ng-click="saveFREGST()">
+                                        <i class="fa fa-new"></i> Save
+                                    </a>
+                                    <a  class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="">
+                                        <i class="fa fa-new"></i> Cancel
+                                    </a>
+                                </div>
+                            </div>
+
+                    </form>
+
+                </tab>
+                <tab heading="3 Month Promo (E. GST)">
+                    <form method="get" class="form-horizontal" id="config_form" data-validate="parsley">
+
+                            <div class="form-group">
+
+                                <label class="col-sm-2 control-label" style=""></label>
+                                <label class="col-sm-2 control-label" style="text-align:center ">From</label>
+                                <label class="col-sm-2 control-label" style="text-align:center ">To</label>
+                                <label class="col-sm-1 control-label" style="text-align:center ">24</label>
+                                <label class="col-sm-1 control-label" style="text-align:center ">36</label>
+                                <label class="col-sm-1 control-label" style="text-align:center ">48</label>
+                                <label class="col-sm-1 control-label" style="text-align:center ">60</label>
+
+                            </div>
+                            <div class="hr-line-dashed"></div>
+
+                            <div class="form-group"  ng-repeat="item in fr.fr_promo_egst_3 track by $index">
+                                <label class="col-sm-2 control-label" style="text-align:center "></label>
+                                <div class="col-sm-2">
+                                    <input type="text" class="form-control"     ng-model="item.from" data-required="true">
+                                </div>
+                                <div class="col-sm-2">
+                                    <input type="text" class="form-control"     ng-model="item.to" data-required="true">
+                                </div>
+                                <div class="col-sm-1">
+                                        <input type="text" class="form-control" ng-model="item.m1" data-required="true">
+                                </div>
+                                <div class="col-sm-1">
+                                        <input type="text" class="form-control" ng-model="item.m2" data-required="true">
+                                </div>
+                                <div class="col-sm-1">
+                                        <input type="text" class="form-control" ng-model="item.m3" data-required="true">
+                                </div>
+                                <div class="col-sm-1">
+                                        <input type="text" class="form-control" ng-model="item.m4" data-required="true">
+                                </div>
+                                <div class="col-sm-1">
+                                        <a class="col-sm-1 control-label  font-red" style="text-align:center"  ng-click="remRow($index,'promo_egst_3')"><i class="fa fa-remove"></i> </a>
+                                </div>
+
+                            </div>
+
+
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label" style="text-align:center "></label>
+                                <div class="col-sm-3" class="right">
+                                    <a  class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Save"  ng-click="addRow('promo_egst_3')">
+                                        <i class="fa fa-new"></i> + New Row
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+
+
+                            <div class="form-group">
+                               <label class="col-sm-2 control-label" style="text-align:center "></label>
+
+                                <div class="col-sm-3" class="right">
+                                    <a  class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Save"  ng-click="saveFREGST()">
+                                        <i class="fa fa-new"></i> Save
+                                    </a>
+                                    <a  class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="">
+                                        <i class="fa fa-new"></i> Cancel
+                                    </a>
+                                </div>
+                            </div>
+
+                    </form>
+
+                </tab>
+                <tab heading="Thorn Equip. Fin. (E. GST)">
+                    <form method="get" class="form-horizontal" id="config_form" data-validate="parsley">
+
+                            <div class="form-group">
+
+                                <label class="col-sm-2 control-label" style=""></label>
+                                <label class="col-sm-2 control-label" style="text-align:center ">From</label>
+                                <label class="col-sm-2 control-label" style="text-align:center ">To</label>
+                                <label class="col-sm-1 control-label" style="text-align:center ">24</label>
+                                <label class="col-sm-1 control-label" style="text-align:center ">36</label>
+                                <label class="col-sm-1 control-label" style="text-align:center ">48</label>
+                                <label class="col-sm-1 control-label" style="text-align:center ">60</label>
+
+                            </div>
+                            <div class="hr-line-dashed"></div>
+
+                            <div class="form-group"  ng-repeat="item in fr.fr_tef track by $index">
+                                <label class="col-sm-2 control-label" style="text-align:center "></label>
+                                <div class="col-sm-2">
+                                    <input type="text" class="form-control"     ng-model="item.from" data-required="true">
+                                </div>
+                                <div class="col-sm-2">
+                                    <input type="text" class="form-control"     ng-model="item.to" data-required="true">
+                                </div>
+                                <div class="col-sm-1">
+                                        <input type="text" class="form-control" ng-model="item.m1" data-required="true">
+                                </div>
+                                <div class="col-sm-1">
+                                        <input type="text" class="form-control" ng-model="item.m2" data-required="true">
+                                </div>
+                                <div class="col-sm-1">
+                                        <input type="text" class="form-control" ng-model="item.m3" data-required="true">
+                                </div>
+                                <div class="col-sm-1">
+                                        <input type="text" class="form-control" ng-model="item.m4" data-required="true">
+                                </div>
+                                <div class="col-sm-1">
+                                        <a class="col-sm-1 control-label  font-red" style="text-align:center"  ng-click="remRow($index,'tef')"><i class="fa fa-remove"></i> </a>
+                                </div>
+
+                            </div>
+
+
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label" style="text-align:center "></label>
+                                <div class="col-sm-3" class="right">
+                                    <a  class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Save"  ng-click="addRow('tef')">
+                                        <i class="fa fa-new"></i> + New Row
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+
+
+                            <div class="form-group">
+                               <label class="col-sm-2 control-label" style="text-align:center "></label>
+
+                                <div class="col-sm-3" class="right">
+                                    <a  class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Save"  ng-click="saveFREGST()">
+                                        <i class="fa fa-new"></i> Save
+                                    </a>
+                                    <a  class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="">
+                                        <i class="fa fa-new"></i> Cancel
+                                    </a>
+                                </div>
+                            </div>
+
+                    </form>
+
+                </tab>
+                <tab heading="ICT - SPECIAL (E. GST)">
+                    <form method="get" class="form-horizontal" id="config_form" data-validate="parsley">
+
+                            <div class="form-group">
+
+                                <label class="col-sm-2 control-label" style=""></label>
+                                <label class="col-sm-2 control-label" style="text-align:center ">From</label>
+                                <label class="col-sm-2 control-label" style="text-align:center ">To</label>
+                                <label class="col-sm-1 control-label" style="text-align:center ">24</label>
+                                <label class="col-sm-1 control-label" style="text-align:center ">36</label>
+                                <label class="col-sm-1 control-label" style="text-align:center ">48</label>
+                                <label class="col-sm-1 control-label" style="text-align:center ">60</label>
+
+                            </div>
+                            <div class="hr-line-dashed"></div>
+
+                            <div class="form-group"  ng-repeat="item in fr.fr_ict track by $index">
+                                <label class="col-sm-2 control-label" style="text-align:center "></label>
+                                <div class="col-sm-2">
+                                    <input type="text" class="form-control"     ng-model="item.from" data-required="true">
+                                </div>
+                                <div class="col-sm-2">
+                                    <input type="text" class="form-control"     ng-model="item.to" data-required="true">
+                                </div>
+                                <div class="col-sm-1">
+                                        <input type="text" class="form-control" ng-model="item.m1" data-required="true">
+                                </div>
+                                <div class="col-sm-1">
+                                        <input type="text" class="form-control" ng-model="item.m2" data-required="true">
+                                </div>
+                                <div class="col-sm-1">
+                                        <input type="text" class="form-control" ng-model="item.m3" data-required="true">
+                                </div>
+                                <div class="col-sm-1">
+                                        <input type="text" class="form-control" ng-model="item.m4" data-required="true">
+                                </div>
+                                <div class="col-sm-1">
+                                        <a class="col-sm-1 control-label  font-red" style="text-align:center"  ng-click="remRow($index,'ict')"><i class="fa fa-remove"></i> </a>
+                                </div>
+
+                            </div>
+
+
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label" style="text-align:center "></label>
+                                <div class="col-sm-3" class="right">
+                                    <a  class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Save"  ng-click="addRow('ict')">
+                                        <i class="fa fa-new"></i> + New Row
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+
+
+                            <div class="form-group">
+                               <label class="col-sm-2 control-label" style="text-align:center "></label>
+
+                                <div class="col-sm-3" class="right">
+                                    <a  class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Save"  ng-click="saveFREGST()">
+                                        <i class="fa fa-new"></i> Save
+                                    </a>
+                                    <a  class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="">
+                                        <i class="fa fa-new"></i> Cancel
+                                    </a>
+                                </div>
+                            </div>
+
+                    </form>
+
+                </tab>
+            </tabset>
+ </div>
+
+</div>
+</div>
+</div>
+</div>
+</div>

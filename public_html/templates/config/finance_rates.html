@@ -1,0 +1,317 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>Users</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="index.html">Home</a>
+            </li>
+            <li>
+                <a ui-sref="finance_rates">Sell & Rental Price Configuration</a>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-2">
+
+    </div>
+</div>
+
+    <flash-message></flash-message>
+
+<div class="wrapper wrapper-content animated fadeInRight">
+
+<div class="row">
+<div class="col-lg-12">
+<div class="ibox float-e-margins">
+<div class="ibox-title">
+    <h5>Sell & Rental Price Configuration</h5>
+</div>
+<div class="ibox-content">
+<div class="panel-body">
+            <tabset>
+                <tab heading="Sell Price">
+                    <form method="get" class="form-horizontal" id="config_form" data-validate="parsley">
+
+                            <div class="form-group">
+
+                                <label class="col-sm-2 control-label"></label>
+                                <label class="col-sm-2 control-label" style="text-align:center ">RRP of Telephone System</label>
+                                <label class="col-sm-2 control-label" style="text-align:center ">RRP of Equipment</label>
+                                <label class="col-sm-2 control-label" style="text-align:center ">AVG</label>
+                                <label class="col-sm-2 control-label" style="text-align:center ">Diff Between RRP & Sell</label>
+
+
+                            </div>
+                            <div class="hr-line-dashed"></div>
+
+
+
+                            <div class="form-group"><label class="col-sm-2 control-label">200$</label>
+
+                                <div class="col-sm-2">
+                                    <input type="text" class="form-control" ng-model="sellprice.rs.trrp" data-required="true">
+                                </div>
+                                <div class="col-sm-2">
+                                    <input type="text" class="form-control" ng-model="sellprice.rs.errp" data-required="true">
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+
+                            <div class="form-group"><label class="col-sm-2 control-label">Flexi Rent</label>
+
+                                <div class="col-sm-2">
+                                    <input type="text" class="form-control" ng-model="sellprice.fr.trrp" data-required="true" >
+                                </div>
+                                <div class="col-sm-2">
+                                    <input type="text" class="form-control" ng-model="sellprice.fr.errp" data-required="true" >
+                                </div>
+
+                            </div>
+                            <div class="hr-line-dashed"></div>
+
+                            <div class="form-group"><label class="col-sm-2 control-label">Flexi Lease</label>
+
+                                <div class="col-sm-2">
+                                    <input type="text" id="password" class="form-control" ng-model="sellprice.fl.trrp"  data-required="true" >
+                                </div>
+                               <div class="col-sm-2">
+                                    <input type="text" id="password" class="form-control" ng-model="sellprice.fl.errp"  data-required="true" >
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+
+
+                            <div class="form-group"><label class="col-sm-2 control-label">FlexiRent - 3 month promo</label>
+
+                                <div class="col-sm-2">
+                                    <input type="text" class="form-control" id="cpassword"  ng-model="sellprice.fr3.trrp"  data-required="true" >
+                                </div>
+                               <div class="col-sm-2">
+                                    <input type="text" class="form-control" id="cpassword"  ng-model="sellprice.fr3.monthly_rental"  data-required="true" >
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+
+                            <div class="form-group"><label class="col-sm-2 control-label">Northern Managed Finance</label>
+
+                                <div class="col-sm-2">
+                                    <input type="text" class="form-control" id="cpassword"  ng-model="sellprice.nmf.trrp"  data-required="true" >
+                                </div>
+                               <div class="col-sm-2">
+                                    <input type="text" class="form-control" id="cpassword"  ng-model="sellprice.nmf.errp" data-required="true">
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+
+
+                            <div class="form-group"><label class="col-sm-2 control-label">FlexiRent - 6 Month promo</label>
+
+                                <div class="col-sm-2">
+                                    <input type="text" class="form-control" id="cpassword"  ng-model="sellprice.fr6.trrp"  data-required="true" >
+                                </div>
+                               <div class="col-sm-2">
+                                    <input type="text" class="form-control" id="cpassword"  ng-model="sellprice.fr6.errp"  data-required="true" >
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+
+
+                            <div class="form-group"><label class="col-sm-2 control-label">ICT - Special</label>
+
+                                <div class="col-sm-2">
+                                    <input type="text" class="form-control" id="cpassword"  ng-model="sellprice.ict.trrp"  data-required="true">
+                                </div>
+                                <div class="col-sm-2">
+                                    <input type="text" class="form-control" id="cpassword"  ng-model="sellprice.ict.errp" data-required="true" >
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+
+
+                            <div class="form-group"><label class="col-sm-2 control-label">NER RENTAL</label>
+
+                                <div class="col-sm-2">
+                                    <input type="text" class="form-control" id="cpassword"  ng-model="sellprice.nr.trrp" data-required="true" >
+                                </div>
+                                 <div class="col-sm-2">
+                                    <input type="text" class="form-control" id="cpassword"  ng-model="sellprice.nr.errp" d data-required="true" d>
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+
+
+
+                            <div class="form-group"><label class="col-sm-2 control-label">NER LEASE</label>
+
+                                <div class="col-sm-2">
+                                    <input type="text" class="form-control" id="cpassword"  ng-model="sellprice.nl.trrp"   data-required="true" >
+                                </div>
+                              <div class="col-sm-2">
+                                    <input type="text" class="form-control" id="cpassword"  ng-model="sellprice.nl.errp"   data-required="true" >
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+
+
+
+                            <div class="form-group"><label class="col-sm-2 control-label"></label>
+
+                                <div class="col-sm-3">
+                                    <a  class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Save"  ng-click="saveSellPrice()">
+                                        <i class="fa fa-new"></i> Save
+                                    </a>
+                                    <a  class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="">
+                                        <i class="fa fa-new"></i> Cancel
+                                    </a>
+                                </div>
+                            </div>
+
+                    </form>
+
+                </tab>
+                <tab heading="Rental Price">
+                    <form method="get" class="form-horizontal" id="config_form" data-validate="parsley">
+
+                        <div class="form-group">
+
+                            <label class="col-sm-2 control-label"></label>
+                            <label class="col-sm-2 control-label" style="text-align:center ">RRP of Telephone System</label>
+                            <label class="col-sm-2 control-label" style="text-align:center ">RRP of Equipment</label>
+                            <label class="col-sm-2 control-label" style="text-align:center ">AVG</label>
+                            <label class="col-sm-2 control-label" style="text-align:center ">Diff Between RRP & Sell</label>
+
+
+                        </div>
+                        <div class="hr-line-dashed"></div>
+
+
+
+                        <div class="form-group"><label class="col-sm-2 control-label">200$</label>
+
+                            <div class="col-sm-2">
+                                <input type="text" class="form-control" ng-model="rentalprice.rs.trrp" data-required="true">
+                            </div>
+                            <div class="col-sm-2">
+                                <input type="text" class="form-control" ng-model="rentalprice.rs.errp" data-required="true">
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+
+                        <div class="form-group"><label class="col-sm-2 control-label">Flexi Rent</label>
+
+                            <div class="col-sm-2">
+                                <input type="text" class="form-control" ng-model="rentalprice.fr.trrp" data-required="true" >
+                            </div>
+                            <div class="col-sm-2">
+                                <input type="text" class="form-control" ng-model="rentalprice.fr.errp" data-required="true" >
+                            </div>
+
+                        </div>
+                        <div class="hr-line-dashed"></div>
+
+                        <div class="form-group"><label class="col-sm-2 control-label">Flexi Lease</label>
+
+                            <div class="col-sm-2">
+                                <input type="text" id="password" class="form-control" ng-model="rentalprice.fl.trrp"  data-required="true" >
+                            </div>
+                           <div class="col-sm-2">
+                                <input type="text" id="password" class="form-control" ng-model="rentalprice.fl.errp"  data-required="true" >
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+
+
+                        <div class="form-group"><label class="col-sm-2 control-label">FlexiRent - 3 month promo</label>
+
+                            <div class="col-sm-2">
+                                <input type="text" class="form-control" id="cpassword"  ng-model="rentalprice.fr3.trrp"  data-required="true" >
+                            </div>
+                           <div class="col-sm-2">
+                                <input type="text" class="form-control" id="cpassword"  ng-model="rentalprice.fr3.monthly_rental"  data-required="true" >
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+
+                        <div class="form-group"><label class="col-sm-2 control-label">Northern Managed Finance</label>
+
+                            <div class="col-sm-2">
+                                <input type="text" class="form-control" id="cpassword"  ng-model="rentalprice.nmf.trrp"  data-required="true" >
+                            </div>
+                           <div class="col-sm-2">
+                                <input type="text" class="form-control" id="cpassword"  ng-model="rentalprice.nmf.errp" data-required="true">
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+
+
+                        <div class="form-group"><label class="col-sm-2 control-label">FlexiRent - 6 Month promo</label>
+
+                            <div class="col-sm-2">
+                                <input type="text" class="form-control" id="cpassword"  ng-model="rentalprice.fr6.trrp"  data-required="true" >
+                            </div>
+                           <div class="col-sm-2">
+                                <input type="text" class="form-control" id="cpassword"  ng-model="rentalprice.fr6.errp"  data-required="true" >
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+
+
+                        <div class="form-group"><label class="col-sm-2 control-label">ICT - Special</label>
+
+                            <div class="col-sm-2">
+                                <input type="text" class="form-control" id="cpassword"  ng-model="rentalprice.ict.trrp"  data-required="true">
+                            </div>
+                            <div class="col-sm-2">
+                                <input type="text" class="form-control" id="cpassword"  ng-model="rentalprice.ict.errp" data-required="true" >
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+
+
+                        <div class="form-group"><label class="col-sm-2 control-label">NER RENTAL</label>
+
+                            <div class="col-sm-2">
+                                <input type="text" class="form-control" id="cpassword"  ng-model="rentalprice.nr.trrp" data-required="true" >
+                            </div>
+                             <div class="col-sm-2">
+                                <input type="text" class="form-control" id="cpassword"  ng-model="rentalprice.nr.errp" d data-required="true" d>
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+
+
+
+                        <div class="form-group"><label class="col-sm-2 control-label">NER LEASE</label>
+
+                            <div class="col-sm-2">
+                                <input type="text" class="form-control" id="cpassword"  ng-model="rentalprice.nl.trrp"   data-required="true" >
+                            </div>
+                          <div class="col-sm-2">
+                                <input type="text" class="form-control" id="cpassword"  ng-model="rentalprice.nl.errp"   data-required="true" >
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+
+
+
+                        <div class="form-group"><label class="col-sm-2 control-label"></label>
+
+                            <div class="col-sm-3">
+                                <a  class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Save"  ng-click="saveRentalPrice()">
+                                    <i class="fa fa-new"></i> Save
+                                </a>
+                                <a  class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Save">
+                                    <i class="fa fa-new"></i> Cancel
+                                </a>
+                            </div>
+                        </div>
+
+                </form>
+                </tab>
+            </tabset>
+ </div>
+
+</div>
+</div>
+</div>
+</div>
+</div>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://www.aapt.com.au/FrontierLink/xsd"
+            xmlns="http://www.w3.org/2001/XMLSchema"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:wsg="http://www.aapt.com.au/FrontierLink/xsd"
+            elementFormDefault="qualified">
+
+    <xsd:include schemaLocation="elements/ServiceID.xsd" />
+
+    <xsd:element name="ActivateSimResponse" type="wsg:ActivateSimResponse" />
+
+    <xsd:complexType name="ActivateSimResponse">
+        <xsd:sequence>
+            <xsd:element name="productOrderID" type="wsg:ServiceID" />
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>

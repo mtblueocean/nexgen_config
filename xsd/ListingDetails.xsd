@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://www.aapt.com.au/FrontierLink/xsd"
+            xmlns="http://www.w3.org/2001/XMLSchema"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:wsg="http://www.aapt.com.au/FrontierLink/xsd"
+            elementFormDefault="qualified">
+
+    <xsd:include schemaLocation="AssignedNumber.xsd" />
+    <xsd:include schemaLocation="IndividualContact.xsd" />
+    
+    <xsd:include schemaLocation="elements/DirectoryListingCode.xsd" />
+    <xsd:include schemaLocation="elements/OrganisationName.xsd" />
+    <xsd:include schemaLocation="elements/SiteSequenceNumber.xsd" />
+
+    <xsd:complexType name="ListingDetails">
+         <xsd:sequence>
+             <xsd:element name="directoryListingCode" type="wsg:DirectoryListingCode" />
+             <xsd:choice minOccurs="0">
+             	 <xsd:annotation> 
+        	 		<xsd:documentation xml:lang="en">Following details should only be provided when the directoryListingCode is 'Listed directory entry' or 'Listed but address suppressed'"</xsd:documentation>
+             	 </xsd:annotation>
+	             <xsd:element name="directoryListingName" type="wsg:IndividualContact"/>
+	             <xsd:element name="businessName" type="wsg:OrganisationName"/>
+             </xsd:choice>
+             <xsd:element name="siteSequenceNumber" type="wsg:SiteSequenceNumber" />
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>

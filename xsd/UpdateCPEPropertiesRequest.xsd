@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://www.aapt.com.au/FrontierLink/xsd"
+            xmlns="http://www.w3.org/2001/XMLSchema"
+	        xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	        xmlns:wsg="http://www.aapt.com.au/FrontierLink/xsd"
+	        elementFormDefault="qualified">
+
+    <xsd:include schemaLocation="elements/ConsignmentNumber.xsd" />
+    <xsd:include schemaLocation="elements/MACAddress.xsd" />
+    <xsd:include schemaLocation="elements/ServiceID.xsd" />
+    <xsd:include schemaLocation="elements/SerialNumber.xsd" />
+
+    <xsd:element name="UpdateCPEPropertiesRequest" type="wsg:UpdateCPEPropertiesRequest" />
+
+    <xsd:complexType name="UpdateCPEPropertiesRequest">
+        <xsd:sequence>
+  			<xsd:element name="accessPsi" type="wsg:ServiceID" />
+  			<xsd:element name="serialNumber" type="wsg:SerialNumber" />
+  			<xsd:element name="consignmentNumber" type="wsg:ConsignmentNumber" minOccurs="0" />
+  			<xsd:element name="macAddress" type="wsg:MACAddress" minOccurs="0" />
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>

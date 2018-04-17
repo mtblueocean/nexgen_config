@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://www.aapt.com.au/FrontierLink/xsd"
+            xmlns="http://www.w3.org/2001/XMLSchema"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:wsg="http://www.aapt.com.au/FrontierLink/xsd"
+            elementFormDefault="qualified">
+
+
+    <xsd:include schemaLocation="NumberRangeList.xsd" />
+    <xsd:include schemaLocation="EquipmentDelivery.xsd" />
+    <xsd:include schemaLocation="VpbxAutoAttendantList.xsd" />
+    <xsd:include schemaLocation="VpbxUserList.xsd" />
+    <xsd:include schemaLocation="VpbxHuntGroupList.xsd" />
+    <xsd:include schemaLocation="VpbxQueueList.xsd" />
+    <xsd:include schemaLocation="SiteDetailsList.xsd" />
+
+    <xsd:include schemaLocation="elements/AccountNumber.xsd" />
+    <xsd:include schemaLocation="elements/ContractTermMonths.xsd" />
+    <xsd:include schemaLocation="elements/DependsOnInternetOrder.xsd" />
+    <xsd:include schemaLocation="elements/DirectoryUsageCode.xsd" />
+    <xsd:include schemaLocation="elements/OnSiteInstallationAndTraining.xsd" />
+	
+    <xsd:complexType name="VpbxService">
+        <xsd:sequence>
+             <xsd:element name="accountNumber" type="wsg:AccountNumber">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en">An AAPT assigned unique identifier for each customer</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="contractTerm" type="wsg:ContractTermMonths">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en">The AAPT contract term for the service</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="siteDetailsList" type="wsg:SiteDetailsList" >
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en">Unique ID for the customer site</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="numberRangeList" type="wsg:NumberRangeList" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en">Add number ranges</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="vpbxUsersList" type="wsg:VpbxUserList">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en">Add multiple VpxUsers</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="vpbxHuntGroupList" type="wsg:VpbxHuntGroupList" minOccurs="0">
+            <xsd:annotation>
+                   <xsd:documentation xml:lang="en">List of Hunt Groups. The first one is complementary and the others will be charged.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="vpbxAutoAttendantList" type="wsg:VpbxAutoAttendantList" minOccurs="0">
+              	<xsd:annotation>
+                    <xsd:documentation xml:lang="en">List of Auto Attendants. The first one is complementary and the others will be charged.</xsd:documentation>
+              	</xsd:annotation>
+            </xsd:element>
+            <xsd:element name="vpbxQueueList" type="wsg:VpbxQueueList" minOccurs="0" >
+              	<xsd:annotation>
+                    <xsd:documentation xml:lang="en">vpx Queue</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="directoryUsageCode" type="wsg:DirectoryUsageCode" />
+            <xsd:element name="equipmentDelivery" type="wsg:EquipmentDelivery" minOccurs="0">
+              	<xsd:annotation>
+                    <xsd:documentation xml:lang="en">Equipment delivery options</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="dependsOnInternetOrder" type="wsg:DependsOnInternetOrder" minOccurs="0" >
+	            <xsd:annotation>
+	                    <xsd:documentation xml:lang="en">Your vPbx order depends on the delivery of a Internet Service that has been ordered separately.</xsd:documentation>
+	            </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="onSiteInstallationAndTraining" type="wsg:OnSiteInstallationAndTraining" />
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://www.aapt.com.au/FrontierLink/xsd"
+            xmlns="http://www.w3.org/2001/XMLSchema"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:wsg="http://www.aapt.com.au/FrontierLink/xsd"
+            elementFormDefault="qualified">
+
+    <xsd:include schemaLocation="elements/PlanType.xsd" />
+    <xsd:include schemaLocation="elements/Password.xsd" />
+    <xsd:include schemaLocation="elements/UserName.xsd" />
+
+    <xsd:complexType name="NBNPhoneProductOrderDetails">
+        <xsd:sequence>
+        	<xsd:element name="planType" type="wsg:PlanType" >
+				<xsd:annotation>
+                	<xsd:documentation xml:lang="en">PlanType</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+           	<xsd:element name="username" type="wsg:UserName" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en">UserName</xsd:documentation>
+                </xsd:annotation>
+        	</xsd:element>
+            <xsd:element name="password" type="wsg:Password" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en">Password</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>

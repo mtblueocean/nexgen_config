@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://www.aapt.com.au/FrontierLink/xsd"
+            xmlns="http://www.w3.org/2001/XMLSchema"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:wsg="http://www.aapt.com.au/FrontierLink/xsd"
+            elementFormDefault="qualified">
+
+    <xsd:include schemaLocation="elements/CustomerAuthorisedDate.xsd" />
+    <xsd:include schemaLocation="elements/MobileTelephoneNumber.xsd" />
+    <xsd:include schemaLocation="elements/DateOfBirth.xsd" />
+    
+    <xsd:complexType name="PortInNumberMobile">
+        <xsd:sequence>
+            <xsd:element name="mobileTelephoneNumber" type="wsg:MobileTelephoneNumber">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en">A telephone number that has been ported</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="carrierAccountNumber" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en">An account number for the losing provider</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="customerAuthorisedDate" type="wsg:CustomerAuthorisedDate">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en">This is the date when port in is authorised by customer</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="dateOfBirth" type="wsg:DateOfBirth">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en">Date of birth of customer</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>

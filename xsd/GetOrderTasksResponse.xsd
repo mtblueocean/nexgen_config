@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://www.aapt.com.au/FrontierLink/xsd"
+            xmlns="http://www.w3.org/2001/XMLSchema"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:wsg="http://www.aapt.com.au/FrontierLink/xsd"
+            elementFormDefault="qualified">
+
+    <xsd:include schemaLocation="OrderTaskList.xsd" />
+
+    <xsd:element name="GetOrderTasksResponse" type="wsg:GetOrderTasksResponse" />
+
+    <xsd:complexType name="GetOrderTasksResponse">
+        <xsd:sequence>
+            <xsd:element name="orderTasks" type="wsg:OrderTaskList" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en">A list of exceptions for an order</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>

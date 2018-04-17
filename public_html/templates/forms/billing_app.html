@@ -1,0 +1,995 @@
+<style>
+    @page {
+        sheet-size : A4;
+        margin: 0%;
+    }
+    @page cover {
+         margin-header:0mm;
+
+    }
+    div.cover {
+        page-break-before: right;
+        page: cover;
+    }
+    @page pages {
+        odd-footer-name: html_pagesFooter;
+        even-footer-name: html_pagesFooter;
+        margin-top: 1%;
+        margin-bottom: 2%;
+        margin-right: 3%;
+        margin-left: 3%;
+        margin-footer: 3mm;
+        font-family: san-serif;
+
+    }
+    div.pages {
+        page: pages;
+         font-family: sans-serif;
+    }
+</style>
+<link href = "assets/css/form.css" rel='stylesheet' type='text/css'>
+<link href = "/assets/angular/font-awesome/css/font-awesome.css" rel='stylesheet' type='text/css'>
+<div class="cover configapp-front pageBreaker" style="height:100%">
+    <div id="anchor" class="blank-div" style="height:783px;"></div>
+    <table style="width:100%">
+        <tr>
+            <td style="width:48%">
+            </td>
+            <td>
+                <table class="config-table text-grey" style="width:100%">
+                    <tr>
+                        <td colspan="3" class="config-large-text">BUSINESS CUSTOMER DETAILS</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="config-large-text" >Customer Account ID:</td>
+                        <td colspan="2" class="form-data"><b>{{formData.configAccId}}</b></td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="1" class="form-field">Company Name</td>
+                        <td colspan="3" class="form-data"><b>{{formData.cName}}</b></td>
+                    </tr>
+                    <tr>
+                        <td class="form-field">Address</td>
+                        <td colspan="3" class="form-data"><b>{{formData.cAddress}}, {{formData.cSuburb}}</b></td>
+                    </tr>
+                    <tr>
+                        <td class="form-field">Billing Address</td>
+                        <td colspan="3" class="form-data"><b>{{formData.cAddress}}, {{formData.cSuburb}}</b></td>
+                    </tr>
+                    <tr>
+                        <td class="info-name form-field">Contact Name</td>
+                        <td class="form-data info-value"><b>{{formData.cContact}}</b></td>
+                        <td class="form-field">Mobile</td>
+                        <td class="form-data"><b>{{formData.cMobile}}</b></td>
+                    </tr>
+                    <tr>
+                        <td class="info-name form-field">Trading Name</td>
+                        <td class="form-data info-value"><b>{{formData.cTrading}}</b></td>
+                        <td class="form-field">ABN</td>
+                        <td class="form-data"><b>{{formData.cAbn}}</b></td>
+                    </tr>
+                    <tr>
+                        <td class="info-name form-field">Phone</td>
+                        <td class="form-data info-value"><b>{{formData.cTel}}</b></td>
+                        <td class="form-field">Fax</td>
+                        <td class="form-data"><b>{{formData.cFax}}</b></td>
+                    </tr>
+                    <tr>
+                         <td class="info-name form-field">State</td>
+                         <td class="form-data info-value"><b>{{formData.cState}}</b></td>
+                        <td class="form-field">Postcode</td>
+                        <td class="form-data"><b>{{formData.cPostCode}}</b></td>
+                    </tr>
+                    <tr>
+                        <td class="info-name form-field">State</td>
+                        <td class="form-data info-value"><b>{{formData.cState}}</b></td>
+                        <td class="form-field">Postcode</td>
+                        <td class="form-data"><b>{{formData.cPostCode}}</b></td>
+                    </tr>
+                    <tr>
+                        <td class="info-name form-field">Email</td>
+                        <td class="form-data info-value"><b>{{formData.cEmail}}</b></td>
+                        <td class="form-field">DOB</td>
+                        <td class="form-data"><b>{{formData.pBirth}}</b></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<div class="pages text-grey">
+    <div class ="pageBreaker">
+        <table class="full-width config-table">
+            <tr>
+                <td  class="redText spec-center"><h3>APPLICATION FOR TELECOMMUNICATIONS SERVICES</h3></td>
+            </tr>
+            <tr>
+                <td class="info-text-small">
+                    By executing this Application for Telecommunications Services ("Application"),
+                    you agree to the terms and conditions by which NEXGEN AUSTRALIA PTY LTD ABN 24 606 252 484 of L2, 71 York Street , Sydney CBD, NSW 2000
+                    ("Nexgen") will provide you with services. Please complete the Application if you
+                    wish  to transfer the telephone line rental and/or other charges from existing Service Provider
+                    to your account with Nexgen Australia Pty Ltd.
+                </td>
+            </tr>
+        </table>
+        <div ng-if="telRow">
+            <h4 class="redText">TELECOMMUNICATIONS DETAILS</h4>
+            <div>
+                <table class="full-width config-table text-grey table-bordered" id="telTable">
+                    <tr>
+                        <td class="config-title form-data" style="width:50%">Carrier: <blah style="text-align:right"> {{formData.configCarrier}}</blah></td>
+                        <td class="config-title form-data" style="width:50%">A/C No. <blah style="text-align:right"> {{formData.configAccno}}</blah> </td>
+                    </tr>
+                </table>
+                <table class="full-width config-table text-grey table-bordered form-data">
+                    <tr ng-repeat="item in telRow">
+                        <td>{{item[0]}}</td>
+                        <td>{{item[1]}}</td>
+                        <td>{{item[2]}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div ng-if="formData.mobilePortingOptions">
+            <h3 class="redText">MOBILE PORTING AUTHORITY</h3>
+            <table class="full-width config-table text-grey table-bordered">
+                <tr>
+                    <td>Account Holder</td>
+                    <td>Mobile no</td>
+                    <td>Current Provider</td>
+                    <td>Account No</td>
+                    <td>Rate Plan</td>
+                    <td>Rate Price</td>
+                    <td>Data Bolt-On</td>
+                    <!-- <td>Dob</td>
+                    <td>DLicence</td>
+                    <td>Acc Signature</td> -->
+                </tr>
+
+                <tr ng-repeat="item in formData.configMobPort" class="form-data">
+                    <td>{{item.confAccHolder}}</td>
+                    <td>{{item.confMobNo}}</td>
+                    <td>{{item.confProvider}}</td>
+                    <td>{{item.confAccNo}}</td>
+                    <td>{{item.confPatPlan.plan}} {{item.confPatPlan.inclusions}}</td>
+                    <td align="right">$ {{item.confPatPlan.price.toFixed(2)}}</td>
+                    <td ng-if="!item.boltOn.price">N/A</td>
+                    <td ng-if="item.boltOn.price">{{item.boltOn.memory}} - ${{item.boltOn.price.toFixed(2)}}</td>
+                    <!-- <td>{{item.confDob}}</td>
+                    <td>{{item.confDLicence}}</td>
+                    <td id ="configMobPort{{$index}}" class="signature signatureImg  signItem greenText" ng-click="sign('configMobPort'+$index)">
+                        <div ng-if="!isDraftMode()">
+                            <span ng-if="isSigned('configMobPort'+$index')">{{ getSignedTime('configMobPort'+$index) }}</span>
+                            <span ng-if="!isSigned('configMobPort'+$index') && (!isDraftMode())">Sign Here</span>
+                        </div>
+                    </td> -->
+                </tr>
+            </table>
+        </div>
+        <div ng-if='formData.additionalServices'>
+            <h3 class="redText">ADDITIONAL SERVICES REQUIRED</h3>
+             <table class="full-width config-table text-grey table-bordered ">
+                <tr>
+                    <td>New Installation Address <b class="form-data">{{formData.pIAddress}}</b></td>
+                    <td>Suburb <b class="form-data">{{formData.pISuburb}}</b></td>
+                    <td>Postcode <b class="form-data">{{formData.pIPostcode}}</b></td>
+                </tr>
+                <tr>
+                    <td>Contact Number:<span class="form-data"> {{formData.cMobile}} </span></td>
+                    <td> Site Contact <span class="form-data"> {{formData.cContact}}</span></td>
+                    <td>Date Required <span class="form-data"> {{formData.dateRequired}} </span> </td>
+                </tr>
+                <tr>
+                    <td>
+                        PSTN Required -
+                        <b>
+                           <span ng-if="formData.config.pstn">Yes</span>
+                           <span ng-if="!formData.config.pstn">No</span>
+                           <span ng-show="formData.config.pstn">QTY: {{formData.config.pstn_qty ? formData.config.pstn_qty : '1'}}</span>
+                        </b>
+                    </td>
+                    <td>Line Hunt Required -
+                        <b>
+                           <span ng-if="formData.config.lineHunt">Yes</span>
+                           <span ng-if="!formData.config.lineHunt">No</span>
+                        </b>
+
+                    </td>
+                    <td>Prime # <span class="form-data">{{formData.config.prime}}</span></td>
+                </tr>
+                <tr>
+                    <td>ISDN 2 Lines Required -
+                        <b>
+                           <span ng-if="formData.config.ISDN">Yes</span>
+                           <span ng-if="!formData.config.ISDN">No</span>
+                           <span ng-show="formData.config.ISDN">QTY: {{formData.config.Isdn_qty ? formData.config.Isdn_qty : '1'}}</span>
+                        </b>
+                    </td>
+                    <td>Indial Numbers(100) -
+                        <b>
+                           <span ng-if="formData.config.indial">Yes</span>
+                           <span ng-if="!formData.config.indial">No</span>
+                        </b>
+                    </td>
+                    <td>
+                        <b>
+                           <span ng-if="formData.config.port">New</span>
+                           <span ng-if="!formData.config.port">Port</span>
+                        </b>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <table class="full-width config-table text-grey">
+            <tr>
+                <td colspan=3><h3 class="redText">CONTRACT TERM</h3></td>
+                <td style="text-align:right"><span class="form-data">{{formData.aBillingTerm}}</span> Months</td>
+            </tr>
+            <tr>
+                <td colspan="4" class="info-text-xs-small">Please note: Any addition, move and changes to PSTN services and line hunt configuration will incur a connection and/or setup charges. These charges can cost from $299* plus GST per connection. Any
+                new connection does not include any new cabling to the building and or lead in. If you wish to discuss these charges further, please contact Nexgen on 1300 721 100.
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4"><b>ACKNOWLEDGE, CONSENT & SIGNING</b></td>
+            </tr>
+            <tr>
+                <td colspan="4" class="info-text-s-small">By signing this application for Nexgen service, You acknowledge and authorise that 1. You have the authority
+                    to change your current Service Provider; 2. You request the porting and churn of the telephone number(s) indicated in this form to Nexgen; 3.
+                    You authorise Nexgen to provide the services; 4.by porting your telephone number(s), their associated services may be disconnected from your
+                    existing service provider, and there may be consequences from cancelling your existing
+                    agreements, and you are responsible for checking the terms and conditions of existing contracts; 5. The telephone number listed, the identity
+                    of your new service provider and type of network used may be disclosed to other parties for the purpose of routing calls and messages, complaint
+                    handing and fault management after the port is completed; 6. Nexgen may exchange your call charging information and your telecommunications details
+                    for the purposes of providing the service(s); (i) Nexgen may select and change Service Provider(s) to provide the services; 7. Calling Number Display
+                    will automatically be activated upon commencement of your mobile service(s) and You will contact us to deactivate this function if not required; 8. There
+                    may be delays or downtime during the porting process, and we will not be liable to You if we cannot successfully port your mobile number(s); 9. You will
+                    be liable for any charges raising out of this Agreement even if part of this Agreement does not continue to apply; 10. Nexgen discounts are applied to Local calls,
+                    National calls, International calls and calls to mobiles from landline services; (I) Mobile plan discounts are applied If noted and applied to Local calls, National
+                    calls and calls to mobiles; 11. You understand that payment is by Direct Debit only; 12. You acknowledge reading a copy of the Nexgen Terms and Conditions for telephone
+                    services and agree to its terms (available on request); (I) You have received a copy of the Tariff Schedule or Rate Card and understand and accept those to be the rates
+                    and plans to be charged and applied; (II) The services will be provided in accordance with the Telecommunications Act 1997 and the Terms and Conditions for Telephone
+                    Service; 13. If requesting us to provide you with new services, Nexgen will provide these services at our standard rate for the above services; connection and Rental
+                    charges will apply, please refer to the rate card for more details.
+                </td>
+            </tr>
+        </table>
+        <table class="full-width fixed-width config-table text-grey">
+            <tr>
+                <td >Name of Applicant</td>
+                <td> <b class="form-data">{{formData.dName}}</b></td>
+                <td>Name of Witness</td>
+                <td><b class="form-data">{{formData.wName}}</b></td>
+
+            </tr>
+            <tr>
+                <td >Applicant's Signature</td>
+
+                <td id ="configApplicantSd" class="greenText signature signatureImg signItem" ng-click="sign('configApplicantSd')">
+                    <b ng-if="isSigned('configApplicantSd')" class="greenText">{{ getSignedTime('configApplicantSd') }}</b>
+                    <b ng-if="!isSigned('configApplicantSd') && (!isDraftMode())">Applicant Sign Here</b>
+                </td>
+
+                 <td >Witness Signature</td>
+                 <td id="configWitnessSd" class="greenText signature signatureImg signItem" ng-click="sign('configWitnessSd')">
+                    <img class='imported' ng-src="{{userSign}}" ng-if="userSign" height="36" height=36 ></img>
+                    <div class='signTimeStamp' style='font-weight:300;font-size:8pt' ng-if="userSign">{{getCurrentDate()}}</div>
+                    <span ng-if="!userSign">
+                        <span ng-if="!isSigned('configWitnessSd') && !isDraftMode()">Witness Signature here</span>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td >Date</td>
+                <td class="form-data">{{formData.dateVal}}</td>
+                <td>Date</td>
+                <td class="form-data">{{formData.dateVal}}</td>
+            </tr>
+        </table>
+    </div>
+</div>
+<pagebreak>
+<div class="pages text-grey pageBreaker">
+    <table class="full-width config-table">
+        <tr>
+            <td colspan="2"><img src="assets/images/forms/config_header_logo.png"></td>
+        </tr>
+        <tr>
+            <td style="width:60%" class="config-med-text">REQUEST TO DEBIT THE ACCOUNT NAMED BELOW TO PAY</br>
+                <span class="config-med-small-text red">NEXGEN AUSTRALIA GROUP PTY LTD ABN 54 606 253 418</span>
+            </td>
+            <td class="config-large-text red" style="text-align: right">DIRECT DEBIT REQUEST</td>
+        </tr>
+    </table>
+    <table class="full-width config-table text-grey table-border-outside">
+        <tr>
+            <td>Company Name</td><td class="border-cell form-data" colspan="3">{{formData.cName}}</td>
+        </tr>
+        <tr>
+            <td>ABN</td><td class="border-cell form-data " colspan="3">{{formData.cAbn}}</td>
+        </tr>
+        <tr>
+            <td>Address</td><td class="border-cell form-data" colspan="3">{{formData.cAddress}}, {{formData.cSuburb}}, {{formData.cState}}, {{formData.cPostCode}}</td>
+        </tr>
+        <tr>
+            <td>Contact Name</td><td class="border-cell form-data">{{formData.cContact}}</td>
+            <td>Telephone No.</td ><td class="border-cell form-data">{{formData.cTel}}</td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td colspan="3" class="border-cell form-data">{{formData.cEmail}}</td>
+        </tr>
+        <tr>
+            <td colspan="4">
+                <p class="config-medium-small-normal">
+                    I/We request that moneys due in terms of the payment arrangements covered by this document be drawn by Nexgen Australia
+                    Pty Ltd under the direct Debiting Systems for my/our account detailed now.
+                </p>
+                <br/>
+                <p class="config-medium-small-normal">
+                    By signing this Direct Debit, request you acknowledge having read and understood the terms and conditions governing the debit
+                    arrangements between you and Nexgen Australia Pty Ltd as set out in this request and in your Direct Request Service Agreement.
+                </p>
+            </td>
+        </tr>
+    </table>
+    <table class="full-width config-table text-grey table-border-outside">
+        <tr>
+            <td>
+                <img alt="tick image" src="/assets/images/forms/check-sign.png" height="20">
+                <span ng-if="formData.requestType" class="form-data">{{formData.requestType}}</span>
+                <span ng-if="!formData.requestType" class="form-data">New</span> Request</td>
+            <td>Client Number: <b class="form-data">{{formData.aClientNumber}}</b></td>
+        </tr>
+    </table>
+    <h4 class="redText font-class">Proceeds to be dispersed to the following Biller</h4>
+    <table class="full-width config-table table-border-outside">
+        <tr><td><h4>NAME OF BILLER: NEXGEN AUSTRALIA GROUP PTY LTD Pty Ltd ABN 54 606 253 418</h3></td>
+        </tr>
+    </table>
+    <h4 class="redText">Regular Deductions</h4>
+    <table class="full-width config-table table-border-outside">
+
+        <tr class="details-small text-grey">
+            <td>Deductions under this authority relate to the application for Telephone Service between Nexgen Australia Pty Ltd and the
+                party authorising the Direct Debit Request.
+                </br>
+                <br/>
+                Details under this authority will be drawn as follows:</br>
+                <h3>14 days from issue date of your invoice</h3>
+            </td>
+        </tr>
+    </table>
+   <div ng-if ="formData.aPaymentMethod=='Direct Debit'">
+    <h4 class="redText">DIRECT DEBIT FROM BANK, BUILDING SOCIETY OR CREDIT UNION ACCOUNT</h4>
+    <table class="table-border-outside  text-grey full-width config-table">
+        <tr><td style="width:30%">Financial Institution name</td><td class="border-cell form-data" colspan="3">{{formData.aFinInst}}</td></tr>
+        <tr><td>Address</td><td class="border-cell form-data" colspan="3">{{formData.cAddress}}, {{formData.cSuburb}}, {{formData.cState}}, {{formData.cPostCode}}</td></tr>
+        <tr><td>Name of Account</td><td class="border-cell form-data" colspan="3">{{formData.aAccName}}</td></tr>
+        <tr><td>BSB</td><td class="border-cell form-data">{{formData.aBsb}}</td><td>Account Number</td>
+            <td class="border-cell form-data">{{formData.aAccDetails}}</td></tr>
+        <tr>
+            <td>Account Holder Signature</td><td class="border-cell signature signatureImg greenText signItem" colspan="2" ng-click="sign('confDDSign')" id="confDDSign">
+                <div ng-if="!isDraftMode()">
+                    <span ng-if="isSigned('confDDSign')">{{getSignedTime('confDDSign')}}</span>
+                    <span ng-if="!isSigned('confDDSign') && (!isDraftMode())">Sign Here</span>
+                </div>
+            </td>
+            <td style="width:15%">{{formData.dateVal}}</td></tr>
+    </table>
+   </div>
+   <div ng-if ="formData.aPaymentMethod=='Credit Card'">
+    <h4 class="redText">PLEASE DEBIT MY CREDIT CARD INDICATED BELOW</h4>
+    <table class="table-border-outside text-grey full-width config-table">
+        <tr><td style="width:30%">Card Type</td><td class="border-cell form-data" colspan="3">{{formData.aCardType}}</td></tr>
+        <tr><td>Card Number</td><td class="border-cell form-data" colspan="3">{{formData.aCardNumber}}</td></tr>
+        <tr><td>Name of Card holder</td><td class="border-cell form-data">{{formData.aCardName}}</td><td style='text-align:right'>Expiry Date</td><td class="border-cell">{{formData.aCardExpiry}}</td></tr>
+        <tr>
+            <td>Card holder Signature</td><td class="border-cell greenText signature signatureImg signItem" colspan="2" ng-click="sign('confCCSign')" id="confCCSign">
+                <div ng-if="!isDraftMode()">
+                    <span ng-if="isSigned('confCCSign')">{{ getSignedTime('confCCSign') }}</span>
+                    <span ng-if="!isSigned('confCCSign') && (!isDraftMode())">Sign Here</span>
+                </div>
+            </td>
+            <td style="width:15%">{{formData.dateVal}}</td></tr>
+    </table>
+   </div>
+    <table class="table-border-outside full-width text-grey config-table">
+        <tr><td rowspan="2" width="35%">IDENTIFICATION QUESTION</td><td class="border-cell">QUESTION: {{formData.aIdenQuestion}}</td></tr>
+        <tr><td class="border-cell form-data">ANSWER: {{formData.aIdenAnswer}}</td></tr>
+
+    </table>
+</div>
+<pagebreak>
+<div class="pages text-grey pageBreaker">
+    <table class="full-width">
+        <tr>
+            <td style="width:70%"><img src="assets/images/forms/config_header_logo.png"></td>
+            <td class="config-large-text">NEXGEN AUSTRALIA PTY LTD TERMS AND CONDITIONS</td>
+        </tr>
+    </table>
+    <table class="termsTable config-details">
+        <tr>
+            <td>
+                <p class="details-small">NEXGEN AUSTRALIA GROUP PTY LTD ABN 24 606 252 484 of L2, 71 York Street , Sydney CBD, NSW 2000 “Nexgen Australia” will provide you with services in <br />
+                                        accordance with these terms and conditions and other provisions of the Agreement.
+                </p>
+                <p class="details-small">
+                    </br>
+                    <span class="red">  1. DEFINITIONS</span></br>
+                    Undefined or un-interpreted words used in this Agreement shall have the same meaning as
+                    in the Telecommunications Act 1997 (Cth).
+                    </br>
+                    </br>
+                </p>
+                <p class="details-small">
+                    <span class="red>">1.1. Definitions</span></br>
+                    Account Application means the account and telephone application forms headed `Applica-
+                    tion for Telecommunications Services’ and ‘Application for Telephone Account’ respectively,
+                    either or both of which are completed by you and to which these terms and conditions are
+                    attached. <b>Acceptable Use Policy</b> means our policy about the acceptable levels and methods
+                    of use of the Broadband Service, <b>Airtime Services</b> means the services we provide to you.
+                    The services include long distance national and international calls, calls from fixed lines
+                    to mobile phones and local calls. <b>Agreement</b> means the agreement between us and you
+                    for the provision of Services comprising these terms and conditions, the Account Applica--
+                    tion once accepted by us and our current Tariff Schedule, also referred to as a “Rate--card”.
+                    <b>Broadband Service</b> means the broadband service we provide from the equipment to the
+                    internet. <b>Confidential Information</b> of a party includes all information of a party marked as
+                    confidential or which the other party knows or ought reasonably to be aware is confidential
+                    (regardless of its form and whether the other party becomes aware of it before, on or after
+                    the date of this Agreement) but excludes information that is publicly known other than as
+                    a result of a breach of the obligations of confidentiality under this Agreement. <b>Discount</b>
+                    means the deduction of a payment made by us for services provided to your Credit Reporting
+                    Agency means a credit reporting business as defined in the Privacy Act 1988 (Cth). <b>Current
+                    Supplier</b> means a Carrier or Service Provider who supplies Telecommunications Services to
+                    you at the time of you signing the Agreement. <b>Customer</b> means the customer identified in
+                    the Account Application, also referred to as `you’. <b>Data Calls</b> are calls made from modem(s)
+                    to modem(s) on voice lines. <b>Data Speed</b> means the speed at which data bits, comprising
+                    both protocol headers and data payload, are carried. E<b>ligible Calls</b> are L<b>ocal Ca</b>lls, Nat<b>ional
+                    Call</b>s, In<b>ternational Calls</b> and Calls to Mobile Telephones. GST has the same meaning as
+                    in the GST Act. <b>GST Act</b> means A New Tax System (Goods and Services Tax) Act 1999 (Cth).
+                    <b>Included Calls</b> means eligible calls included within a Plan. M<b>onthly Plan Discou</b>nt means
+                    the maximum deduction of a required payment for Plan Fees provided to you by us in each
+                    month during the term of the Agreement. <b>Monthly Plan Fees</b> means the Fee payable by You
+                    each month for particular services provided to you by us in each month during the term of
+                    the agreement and thereafter. M<b>onthly Included Call</b>s means the maximum amount of call
+                    usage provided to you under your particular call plan by us in each month during the term of
+                    the agreement. <b>Other Supplier</b> means a Carrier other than Nexgen Australia, who supplies
+                    Telecommunications Services. <b>Person</b> means “entity” as that term is defined in section 64A
+                    of the Corporations Act 2001. <b>Rate Card</b> has the same meaning as in the Tariff Schedule.
+                    <b>Rental Agreement</b> means the agreement between us or our related body corporate (as de-
+                    fined in the Corporations Act) (as introducer, agent or principal) and you for the rental of
+                    telephony or other equipment dated on or about the date of this Agreement. Settlement Date means the date of commencement of the Rental Agreement or otherwise
+                    the date of commencement of the Services. <b>Tariff Schedule</b> means our tariff schedule </br>
+                    (ex-cluding GST) as at the date of the Agreement accompanying these terms and conditions as
+                    replaced from time to time in accordance with Clause 4.4. <b>Transferred Services</b> means the
+                    Telecommunications Services transferred to us from your Current Supplier. <b>Voice Services</b>
+                    means a telephone call made from one person(s) to another person(s) and specifically ex-
+                    cludes data calls from modem(s) to modem(s). <b>Telecommunications Services</b> means te-
+                    lephony services as agreed between you and us from time to time.</br>
+
+                    <p class="details-small">
+                        <span class="red">1.2 Interpretation</span></br>
+
+                    (a) The expressions “we”, “our” and “us” refer to Nexgen Australia; and (b) the expressions
+                    “you” and “your” refer to the Customer. (c) The singular includes the plural and conversely.
+                    (d) A reference to a gender includes all genders. (e) A reference to dollars or $ is to </br>
+                    Austral-ian currency (f) All representations, warranties and indemnities are continuing and survive
+                    termination or expiry of this agreement.</br>
+                    <span class="red">1.3 Inconsistency</span></br>
+                    If these terms and conditions are inconsistent with any other document forming part of the
+                    Agreement, then these terms and conditions shall prevail to the extent of any inconsistency.
+                    <span class="red">2. PERIOD OF AGREEMENT</span></br>
+                    2.1 Commencement and Term: The Agreement commences on the date the Account</br>
+                    Ap-plication is signed by both parties, and, unless the term is specified elsewhere in the Agree-
+                    ment, continues until terminated in accordance with this agreement.<br/>
+                    2.2 Commencement of Service: The provision of Services commences when the Transferred
+                    Service accounts are transferred from your Current Supplier to our nominated Carrier by
+                    your Current Supplier and upon completion of installment of any necessary equipment and
+                    any other arrangements with any other Supplier for the provision of the Services.</br>
+                    <span class="red">3. PROVISION OF SERVICES</span></br>
+                    3.1 We will provide you with our Services within a reasonable time after commencement
+                    of the Agreement. You will use the Services in accordance with this Agreement and all </br>
+                    ap-plicable laws.</br>
+                    3.2 Local calls may be provided through override dialling codes nominated by Nexgen </br>
+                    Aus-tralia. Your telephone system must be programmed with the override codes, or you agree to
+                    Nexgen Australia providing override dialling boxes for each line.</br>
+                    3.3 Nexgen Australia may change the technical specification of the services without notice
+                    to you. Nexgen Australia may change the manner in which the Services are provided to you,
+                    including changing the service provider, without notice to you.</br>
+                    3.4 Nexgen Australia may provide the Services by: (a) programming your telephone system equipment for the override code nominated by us; (b) preselecting your pre-selectable
+                    services to a service provider nominated by Nexgen Australia; or (c) by any other method
+                    available to Nexgen Australia.</br>
+                    3.5 You agree to transfer the Services to Nexgen Australia by use of any method nominated
+                    by Nexgen Australia including but not limited to pre-selection or override.</br>
+                    3.6 Where Nexgen Australia determines that override is the method of transfer of the ser-
+                    vices, you agree that the service is only available through override dialling where you are
+                    responsible for programming the override code nominated by Nexgen Australia into your
+                    telephone system or subsequent to your acceptance of our override diallers on each of your
+                    lines.</br>
+                    3.7 Where Nexgen Australia provides equipment including but not limited to dialler boxes in
+                    conjunction with the provision of the services, then (a) title in the equipment remains with
+                    Nexgen Australia; (b) you will not attempt to sell, rent, remove or otherwise interfere with,
+                    create an interest in or dispose of that equipment; (c) you will provide us with reasonable
+                    access to that equipment and provide basic amenities for the equipment such as electricity;
+                    (d) we may change the equipment at any time; and (e) on termination of this agreement, you
+                    authorise us to enter your premises and remove such equipment.
+
+                </p>
+            </td>
+            <td>
+                <p class="details-small">
+                    3.8 You warrant that you do not have a contractual obligation with another Carrier or Service
+                    Provider relating to these services.</br>
+                    3.9 If you subsequently wish to port your services from Nexgen Australia to another</br>
+                    supplier, you must contact that other supplier and organise for them to port your services.</br>
+                    3.10 With regards to the Broadband Service, you must not use, attempt to use or allow </br>
+                    others to use the Service in a way that, in our reasonable opinion, significantly interferes with
+                    other customers’ use or enjoyment of the Service or interferes with our efficient or proper
+                    operation of the Service</br>
+                    3.11 Whilst Nexgen will provide their best efforts in providing the best possible service, the
+                    availability of the services is dependent upon a number of factors including the telephone
+                    line which is connected to your location, the geographical location in respective to the </br>
+                    distance of the exchange, technical capability of your premises and provision of the services
+                    from our wholesale supplier.</br>
+                    3.12 The service will not be provided without further notice if we notify you that we are </br>
+                    un-able to provide the services to you including where Nexgen determines that your premises
+                    does not quality under clause.</br>
+                    3.13 Nexgen will have no liability to you for inability to supply the services.</br>
+                    3.14 You must cooperate with us in connecting and supplying Services to you safely and ef-
+                    ficiently, including, if required, access to your premises.</br>
+                    3.15 You must make sure you keep your account information, password, data and </br>
+                    equip-ment secure</br>
+                    3.16 (a) We will use reasonable care and skill in providing the Service and will provide the
+                    Service in accordance with this Agreement. However, given the nature of telecommunica-
+                    tions systems, we cannot promise that the Service will be continuous, accessible at all times
+                    or fault free. We cannot guarantee the speed of the service (b) we may not be able to meet
+                    a request from you to provide detailed information about your usage of your Service (e.g.,
+                    information about what sites you visited and when). (c) We do not have to monitor use of the
+                    Service, whether by you or anyone else. We may monitor use of the Service to see whether
+                    you are complying with the Acceptable Use Policy. However, we are not under any obliga-
+                    tion to enforce the Acceptable Use Policy or any other policy that applies to anyone using
+                    services that we provide to them. (d) Where you provide your own wireless PC connection
+                    device, you are responsible for any loss caused by an unauthorised interception of your </br>
+                    ser-vice. (e) We are not responsible for any loss caused by equipment provided by someone
+                    other than us.</br>
+                    3.17 (a) We do not provide technical support services for configuring your local area network
+                    or to connect it to your Service, and do not provide assistance with local area network-</br>
+                    re-lated difficulties; we do not provide technical support for Domain, Web or Email Hosting. </br>
+                    (b) You are responsible for all charges in respect to usage and the use of your service whether
+                    or not such usage was authorised by you. (c) Nexgen is not responsible for any usage incurred from an infection on your computer or network. (d) We may, but are not obligated to,
+                    monitor your usage of the Service to ensure that such usage is not excessive or unusual and
+                    otherwise to ensure that you are not misusing the Service. (e) Nexgen does not allow a third
+                    party to use your service without direct authorisation by us. (f) You are solely responsible for
+                    the following: Sites and content assessed, Content and software downloaded and the result
+                    it may have on your service, the products and services purchased, the modification of any
+                    settings or data on your service, the lawfulness of your activities when using the service.
+                    3.18 Nexgen will provide the service to you on the basis that it will be used for appropriate purposes. Specifically, you must: (a) Not use the service for any illegal or misleading
+                    activities (b) Not breach any standards or codes set out by relevant authorities and industry
+                    bodies. (c) Not use the service which may affect, upset or offend any person using the same
+                    service. (d) Obey all laws and regulations. (e) provide all information we may need in relation
+                    to your service. (f) Advise Nexgen of any changes in your account such as personal informa-
+                    tion, debit/credit card details and addresses relevant to your service.</br>
+                    <span class="red">4. BILLING</span></br>
+                    4.1 Invoicing: We issue bills for charges for your services regularly. We will usually invoice
+                    you monthly for the Services in accordance with the Tariff Schedule, plus GST, which may
+                    change from time to time in accordance with the Agreement. We reserve the right to defer
+                    billing in respect of any billing period and to add the charges incurred to any subsequent
+                    billing period. We try to include all charges relating to a billing period on that bill. Where
+                    that does not happen, bills may include charges from previous billing periods as long as we
+                    comply with the Australian Communications Forum Industry Code – Billing (C542).</br>
+                    4.2 Method of Billing: We will bill you in arrears for all telephone usage charges and in </br>
+                    ad-vance for all periodic charges, equipment rental, connections and service fees and all other
+                    charges. The bill shall be calculated in accordance with data recorded and supplied to us by
+                    the Carrier and shall not be calculated by reference to any data recorded by the Customer.
+                    4.3 Method of Invoice: The Nexgen invoice is electronically billed as an attachment to an email. If you
+                    choose another method, you may incur fees and charges.</br>
+                    4.4 Time for Payment: All bills must be paid within 14 days of the issue date of invoice. If
+                    your bill is paid by credit card, we can charge you a payment processing fee. Refer to your
+                    bill for the fee.</br>
+                    4.5 Method of payment: Direct debit is available for all accounts. If you select an alternative
+                    method of payment, you may incur additional fees monthly.</br>
+                    4.6 Changes to Charges: Subject to Clause 4.5, we may from time to time increase our charge
+                    for any Service (including decreasing the rate of any discounts associated with Services) by
+                    giving one month’s notice in writing to you of the new Tariff Schedule.</br>
+                    4.7 Other Suppliers’ Charges: Our charges to you may include charges which Other </br>
+                    Sup-pliers’ charge to us in relation to your account (including increases or special or one-off
+                    charges) from time to time without notice.</br>
+                    4.8 Other Charges: (a) You will pay to us in accordance with Clause 4 any charges which any
+                    Other Supplier charges to us because you approach that Other Supplier directly, or, other-
+                    wise than through us. (b) You will pay to us in accordance with Clause 4 any charges which
+                    any Other Supplier or other Person charges to us for connection or initiation of any Service
+                    or for cancellation of any Service.</br>
+                    4.9 Overdue Amounts: If you do not pay your bill by its due date, we can charge you an
+                    administration fee of up to $35.00. If you do not pay a bill by its due date and we notify you
+                    through an overdue notice, we may bar, suspend or cancel the services, and we can charge
+                    you an administrative fee (told to you on your bill or by other written notification) to unbar
+                    or reconnect your services.</br>
+                    4.10 Disputed Amounts: We are required by various industry codes to ensure that our bills
+                    are accurate and verifiable, and we are committed to complying with these requirements.
+                    Our records are sufficient proof that a charge is payable unless they are shown to be incorrect. In the event that a bill is disputed by you, you agree to pay to us all amounts payable
+                    pursuant to the disputed bill without deduction or set-off and we agree to refund any monies
+                    found to be charged incorrectly after reasonable and proper investigation.</br>
+                    4.11 Your obligations under this Agreement, including the obligation to pay the charges </br>
+                    re-ferred to in this Clause 4, are several and independent from your or our obligations under
+                    any other agreement you may have with us or other related bodies corporate, including any
+                    Rental Agreements dated on or about the date of this Agreement.</br>
+                </p>
+            </td>
+        </tr>
+    </table>
+</div>
+<pagebreak>
+<div class="pages text-grey pageBreaker">
+    <table class="full-width">
+        <tr>
+            <td style="width:70%"><img src="assets/images/forms/config_header_logo.png"></td>
+            <td class="config-large-text">NEXGEN AUSTRALIA PTY LTD TERMS AND CONDITIONS</td>
+        </tr>
+    </table>
+    <table class="termsTable config-details">
+        <tr>
+            <td>
+                <p class="details-small">
+                    5. Nexgen Australia BUSINESS RATE PLANS provide Monthly Plan Discounts up to an
+                    agreed Maximum Monthly Plan Discount according to the particular agreement between
+                    you and Nexgen Australia.</br>
+                    5.1. Included calls are forfeited if not used in the month that they occur.</br>
+                    5.2 Nexgen Australia Business Rate Plans include Monthly Business Plan Fees, Monthly
+                    Business Discounts, Monthly Included Business Calls and Plan Fees. Refer to the Tariff
+                    schedule for your plan(s).</br>
+                    5.3 We reserve the right to reduce any available plan discounts immediately if you are found
+                    in breach of this agreement or otherwise by giving one month’s notice in writing to you.</br>
+                    5.4 If arrangements between our nominated carrier and Nexgen Australia are terminated,
+                    the nominated carrier may arrange to supply the Customer directly. The Customer acknowledges that the rate plan applicable to the provision of services to the Customer may be
+                    altered to the nearest applicable Carrier rate plan in the event that the rights and obligations
+                    of Nexgen Australia under the Customer Contract are assigned or novated to the Carrier so
+                    that the Carrier provides the services directly to the Customer.</br></br>
+                    <span class="red"> 6. A MINIMUM TERM AS SPECIFIED IN THIS AGREEMENT APPLIES TO Nexgen Australia
+                        PLANS.</span></br></br>
+                    <span class="red">
+                        7. FLAGFALL CHARGES APPLY TO NATIONAL CALLS, INTERNATIONAL CALLS AND CALLS
+                    TO MOBILE PHONES.</span></br></br>
+                    <span class="red">8. TRANSFER OF YOUR ACCOUNT FROM YOUR CURRENT SUPPLIER</span></br></br>
+                    8.1 Transfer to us: By signing the Agreement: (a) You authorise us to sign on your behalf and
+                    in your name forms of authority to your Current Supplier as are necessary to transfer the
+                    Transferred Services accounts as we direct. (b) If we request, you will yourself give written
+                    instructions to your Current Supplier to transfer the Transferred Services accounts from
+                    your name to ours. (c) You will immediately pay your Current Supplier all amounts owing to
+                    it for the Transferred Services up to the time of transfer of those accounts. (d) If we, in our
+                    absolute discretion, make any payment on your behalf to your Current Supplier, then you
+                    will reimburse us for that amount.</br>
+                    8.2 Re-Issued Bills: We reserve the right to re-issue any bill in order to correct any error,
+                    omission or miscalculation, subsequently discovered. The re-issued bill will then take </br>
+                    prec-edence over any prior bill.</br></br>
+                    <span class="red">9. TRANSFER OF YOUR ACCOUNT FROM US TO OTHER SUPPLIER</span></br>
+                    9.1 Transfer of Services: If, in the future, you request us to transfer any of the Services to any
+                    Other Supplier, you will remain responsible to us for the amount payable for the Services up
+                    to the time when we transfer those accounts to the Other Supplier, and you will pay us that
+                    amount in accordance with Clause 4.</br>
+                    9.2 Termination of Services: Our obligations to provide the Services cease when we transfer
+                    those accounts to any Other Supplier. We will bill you for the Services up to and including the
+                    date they are transferred to the Other Supplier and for all other charges you are liable for
+                    under the Agreement in accordance with Clause 4.</br>
+                    <span class="red">10. VARIATIONS TO THE AGREEMENT</span></br>
+                    10.1 Without Notice: We may from time to time vary the Agreement without notice: (a) by
+                    changing the Carrier we use to carry your call traffic; or (b) by reducing your obligations
+                    under the Agreement (including all charges).</br>
+                    10.2 With Notice: We may otherwise vary the Agreement by one month's notice in writing
+                    to you.</br>
+                    <span class="red">11. CREDIT CHECKS & OTHER CHECKS</span></br>
+                    11.1 Terms used in this Clause 11, which may have a defined meaning under the Privacy Act,
+                    1988 (Cth) have the same meaning in this Clause 11.</br>
+                    11.2 Personal information in our possession that relates to you may be disclosed by us to a
+                    Credit Reporting Agency, and you hereby consent to such disclosure.</br>
+                    11.3 You agree that we may obtain a credit report relating to you from a Credit Reporting
+                    Agency for the purpose of either processing your application with us for commercial credit,
+                    or for collecting over due payments in respect of commercial credit provided to you by us.</br>
+                    11.4 You agree that we may disclose a credit report or other report relating to you or any
+                    other personal information derived from that credit report or other report to any other credit
+                    provider for any of the following purposes: (a) the assessment by us or the other credit
+                    provider of your creditworthiness. (b) The collection by us or the other credit provider of pay-
+                    ments that are overdue, or (c) the exchange of information between us and the other credit
+                    provider for the purposes referred to in sub paragraphs (a) and (b).</br></br>
+                    <span class="red">12. YOUR COMPLIANCE</span></br>
+                    12.1 You will ensure that you comply at all times with all laws and obligations, including
+                    licence conditions applicable to the Services and their use.</br>
+                    12.2 The Customer may not resell or resupply the Services provided by Nexgen Australia.</br></br>
+                    <span class="red">13. YOUR ASSISTANCE</span></br>
+                    13.1 Installation and Programming of Equipment: You will assist us in ensuring that any
+                    equipment necessary for you to receive the Services and access our network is installed and
+                    programmed so that calls to destinations nominated by us from time to time are, as far as
+                    possible, carried by our preferred Services Network.</br></br>
+                    <span class="red">14. RELATIONSHIPS</span></br>
+                    14.1 By signing the Agreement, you are entering into a direct relationship with us. You are not
+                    entering into a relationship with your Current Supplier.</br>
+                    14.2 If you currently have a discount plan with a Carrier, it will cease to apply when you switch
+                    your services to Nexgen Australia.</br>
+                    14.3 Nexgen Australia shall have the right to assign or novate all or part of its rights and
+                    obligations under the Customer Contract to the nominated Carrier without the consent of
+                    the Customer. The Customer cannot assign or novate all or part of its rights and obligations
+                    under the Customer Contract other than in accordance with paragraph 16.3 and 16.4</br>
+                    14.4 For the purpose of novation, the Customer agrees to novate the Customer Contract to
+                    the nominated Carrier on receipt of a notice from either Nexgen Australia or the nominated
+                    Carrier, such novation to be on terms no less favourable than the terms of the Customer
+                    Contract in existence immediately prior to the novation.</br></br>
+                    <span class="red">15. TERMINATION</span></br>
+                    15.1 Termination: Either party may terminate this Agreement by giving 30 days written</br>
+                    no-tice unless the agreement is a term agreement.</br>
+                    15.2 Immediate Termination: We may terminate the Agreement immediately at any time by
+                    notice, if (a) you have breached the Agreement or our Acceptable Use Policy, or (b) a </br>
+                    liqui-dator, receiver, receiver and manager, official manager, trustee, administrator or similar
+                    official of your business or association is appointed or you enter into any composition with
+                    your creditors or (c) payment is not received 30 days after the due date. Nexgen will </br>
+                    termi-nate, with or without notice, if it is to our opinion that your company is directly or </br>indirectly
+                </p>
+            </td>
+            <td>
+                <p class="details-small">
+                    involved in activations which may have disastrous effect to our internet service, affect the
+                    performance for other customers or how the community may perceive Nexgen. Activities
+                    may include: (a) Spamming. (b) Email bombing (c) Use of bulk emails to unsolicited recipients </br>
+                    (d) Commercial advertising (e) Political or religious message which may be of offensive
+                    nature </br>
+                    (f) Misrepresentation and abusive or offensive behaviour in online facilities including social networking sites and forums. (g) Unauthorised access to other Internet services.</br>
+                    15.3 Term Contracts: If we have agreed to provide a Service for a set term, then, apart from
+                    charges for call usage, the amount payable for the whole of that term is a debt owing to us
+                    at the time of entering into the Agreement for which we may bill you even if you cancel the
+                    Service or terminate the Agreement before the term ends.</br>
+
+                    15.4 Removable Discount: If we provide a Service at a discount on payment over a set term
+                    and you cancel the Service or terminate the Agreement before that term ends, then you will
+                    be liable to pay the full undiscounted amount for the Service for the period prior to cancel-
+                    lation and termination. We will bill you for the amount of the discount allowed to you during
+                    the lapsed period on your next bill.</br>
+                    15.5 Early Termination of agreements will incur an early termination fee. The early termina-
+                    tion fee will be calculated as the quantity of service and equipment or line rental charges
+                    initially noted in the “Telecommunications detail” agreed to at the commencement of the
+                    telecommunications service agreement or the plan fees noted on the tariff schedule, </br>
+                    mul-tiplied by the term remaining. You acknowledge that this amount is a genuine </br>
+                    pre-estimate of the loss we are likely to suffer.</br></br>
+                    <span class="red">16 NO TERMINATION OF RENTAL AGREEMENT: IF YOU TERMINATE THIS AGREEMENT UNDER CLAUSE 15, SUCH TERMINATION DOES NOT PERMIT OR RESULT IN THE TERMINATION OR CANCELLATION OF ANY OTHER RENTAL AGREEMENT IF APPLICABLE.</br></br>
+                    17 LIMITATION OF LIABILITY</span></br>
+
+                    17.1 Performance: We do not warrant that the Services will be free of blockages, delays or
+                    other related faults and we will not be responsible for loss or damage to you or your business which may result.</br>
+                    17.2 All terms, conditions, warranties, undertakings, inducements and representations,
+                    whether express or implied, statutory or otherwise, relating to the provision of Services
+                    by us are excluded, and we will not be responsible for any loss or damage (including loss
+                    of income, loss of profit, or consequential loss or damage) however caused (whether by
+                    negligence or otherwise) which may be suffered or incurred or which may arise directly or
+                    indirectly in respect of the Services.</br>
+                    17.3 To the extent permitted by law, where any applicable legislation implies any term, </br>
+                    con-dition, warranty or remedy into the Agreement from our relationship with you which may
+                    not be excluded but which may be limited, our liability for any breach of such implied term,
+                    condition or warranty will be limited, at our option, to: (a) (where the breach is related to
+                    goods): (i) the replacement of the goods or supply of equivalent goods, or (ii) the repair of the
+                    goods, or (iii) the payment of the cost of replacing the goods or acquiring the goods; (iv) the
+                    cost of having those goods repaired; and (b) (where the breach relates to services); (i) supply
+                    of those services again, or (ii) payment of the cost of having those services supplied again.
+                    17.4 We have no liability to you or any other Person for: (a) acts or defaults of Other </br>
+                    Suppli-ers, or (b) faults or defects in Service which are caused to any material extent by your own
+                    conduct or negligent use, or (c) faults or defects that arise in Telecommunications Services
+                    not provided under the Agreement (even if they are connected with the Services provided
+                    under the Agreement) which are due to incompatibility with the Services.</br>
+                    17.5 We have no liability under any Rental Agreement.</br></br>
+                    <span class="red">18. CONFIDENTIALITY</span></br>
+                    18.1 We retain all intellectual property rights in the Confidential Information.</br>
+                    18.2 You will keep the Confidential Information confidential, and will not allow any written or
+                    electronically recorded material Confidential Information to be copied. 18.3 On the termina-
+                    tion of the Agreement for any reason, you will return all physical records of Confidential
+                    Information to us. If have destroyed Confidential Information, you will have to give a written
+                    declaration stating the circumstances in which the Confidential Information was destroyed.
+                    18.4 You will not use Confidential Information, which you acquire from us for any purpose
+                    unless authorised in writing by us.</br>
+                    18.5 You acknowledge that any disclosure of Confidential Information by you which is not
+                    authorised by us in accordance with clause 18.4 may cause us loss, whether by way of </br>
+                    dam-age to our reputation, financial loss, or otherwise.</br></br>
+                    <span class="red">19. FORCE MAJEURE</span>
+                    We will not be responsible for any loss or damage arising from circumstances beyond our
+                    control.</br></br>
+
+                    <span class="red">20. ASSIGNMENT</span></br>
+                    20.1 You will not assign charge or otherwise deal with your rights under this Agreement
+                    except with our prior written consent.</br>
+                    20.2 We may assign the Agreement without requiring your consent.</br>
+                    <span class="red">21. INDEMNITY</span></br>
+                    21.1 You (a) acknowledge that you enter into the Agreement entirely as a result of your own
+                    enquiries and that you do not rely on any statement, representation or promise by us or on
+                    our behalf not expressly set out in the Agreement and these terms; and (b) you accordingly
+                    release us and each of our officers, agents and advisers from all claims and demands of
+                    any kind (including negligence) arising from the relationship of the parties concerning this
+                    Agreement before it was signed, and from the negotiations leading to it.</br></br>
+                    <span class="red">22. REMEDY</span></br>
+                    22.1 The failure by either party to exercise any right or remedy under Agreement in a timely
+                    manner, does not constitute acceptance of the matter which gave rise to the right or </br>
+                    rem-edy, nor that party’s waiver of such right or remedy.</br>
+                    22.2 If a Service is cancelled, suspended or disconnected, you remain liable for any liabilities
+                    incurred before the cancellation, suspension or disconnection.</br>
+                    <span class="red">23. GENERAL INFORMATION</span></br>
+                    23.1 This Agreement is governed by the laws of New South Wales.</br>
+                    23.2 We may give to and receive from Other Suppliers information about your account </br>
+                    in-cluding particulars of calls and call charges.</br>
+                    23.3 The Agreement contains the whole understanding of the parties to the exclusion of any
+                    prior agreement or understanding of any kind relating to the Services.</br>
+                    23.4 The Customer may not transfer legal responsibility for a Service without our written
+                    consent.</br>
+                    23.5 We may vary or cancel the Agreement in accordance with the Telecommunications Act
+                    1997 (Cth).</br>
+                    23.6 If any term (or part of a term) in Our Customer Terms is void or unenforceable, that
+                    term (or part) is taken to be removed from Our Customer.</br>
+
+                </p>
+            </td>
+        </tr>
+    </table>
+</div>
+<pagebreak>
+<div class="pages text-grey pageBreaker">
+    <table class="termsTable">
+        <tr>
+            <td style='width:33%; vertical-align: top'>
+             <h5><b>DIRECT DEBIT REQUEST SERVICE AGREEMENT</b></h5>
+             <p class="details-small">
+
+                 <b>Definitions</b><br><br>
+
+                 <b>account</b> means the account held at your financial institution from which we are authorised to arrange for funds to be debited.
+                 <br><br>
+                 <b>agreement</b> means this Direct Debit Request Service Agreement between you and us. </br>
+                 Business day, means a day other than a Saturday or a Sunday or a public holiday listed throughout Australia.
+                 <br><br>
+                 <b>business day</b> means a <b>doy</b> other than a Saturday or a Sunday or a public holiday listed throughout Australia.<br><br>
+
+                 <b>debit day</b> means the day that payment by you to us is due. <br><br>
+                 <b>debit payment</b> means a particular transaction where a debit is made. <br><br>
+                 <b>direct debit request</b> means the Direct Debit Request between us and you.<br><br>
+                 <b>funds</b> means any amount held on behalf of you by your financial institution from
+                 which Nexgen may debit amounts.<br><br>
+                 <b>payment service</b> means the provision of a payment options facility through Nexgen
+                 via its internet sites, by telephone or mail or its agents.<br><br>
+                 <b>us or we</b> means NEXGEN AUSTRALIA GROUP PTY LTD you have authorised
+                 by <i>signing a direct debit request.</i><br><br>
+
+                 <b>you</b> means the customer who signed the <i>direct debit request</i>.<br><br>
+                 <b>your financial institution</b> is the financial institution where you hold
+                 the account that you have authorised us to arrange to debit.<br><br>
+                 <b>1. Debiting your account</b><br><br>
+                 1.1 By signing a direct debit request, you
+                 have authorised us to arrange for funds to be debited from your account. You should
+                 refer to the direct debit request and this agreement for the terms of the arrangement
+                 between us and you.<br>
+                 1.2 We will only arrange for funds to be debited from your account
+                 as authorised in the direct debit request.<br>
+                 1.3 If the debit day falls on a day that is
+                 not a business day, we may direct your financial institution to debit your account on
+                 the following business day. If you are unsure about which day your account has or will
+                 be debited, you should contact us.<br><br>
+
+                 <b>2. Changes by us</b>
+                    2.1 If you wish to change the arrangements under a direct debit request, you must
+                    notify us in writing at least seven (7) days before the change is to be effective.<br><br>
+
+                    2.2 If you wish to stop or defer a debit payment, you must notify us in writing at
+                    least seven (7) days before the next debit day. This notice should be given to us
+                    in the first instance.<br><br>
+
+                <b>3. Your obligations</b>
+                3.1 It is your responsibility to ensure that:<br><br>
+                (a) to ensure the DOR is signed in terms of account signing authority (it joint accounts);<br><br>
+                (b) to ensure Nexgen is advised if your account is transferred or closed;<br><br>
+                (c) to arrange a suitable alternative payment arrangement if the DDR is cancelled; <br><br>
+                (d) there are sufficient clear funds available in your account to allow a debit payment
+                to be made in accordance with the direct debit request. <br><br>
+
+             </p>
+            </td>
+            <td  style='width:33%;  vertical-align: top'>
+             <p class="details-small">
+                 3.2 If there are insufficient clear funds in your account to meet a debit payment: <br><br>
+                (a) you may be charged a fee and/or interest by your financial institution;<br><br>
+                (b) you may also incur fees or charges imposed or incurred by us; and<br><br>
+                (c) you must arrange for the debit payment to be made by another method or arrange
+                for sufficient clear funds to be in your account by an agreed time so that we can
+                process the debit payment.<br><br>
+                3.3 You should check your account statement to verify that the amounts debited from your
+                account are correct.<br><br>
+                3.4 If <b>Nexgen</b> is liable to pay goods and services tax ("GST") on a supply made in connection
+                with this agreement, then you agree to pay Nexgen on demand an amount equal to the consideration
+                payable for the supply multiplied by the prevailing GST rate.<br><br>
+                <b>4. Cancellation</b><br><br>
+                4.1 You may cartel your authority for us to debit your account at any time by giving us seven 7
+                days notice in writing using the Direct Debit Cancellation Request Form before the next debit day.
+                Please email support@nexgen.com.au your request. Notice should be given to us in the first instance.
+                <br><br>
+                4.2 Nexgen can decide at its discretion to cancel this DDR should the dishonour history
+                warrant.<br><br>
+                4.3 Your Biller can cancel this DDR at any time, and we will advise you if this occurs.<br><br>
+
+                <b>5. Dispute</b><br><br>
+
+                5.1 If you believe that there has been an error in debiting your account,
+                you should notify us directly on 1300 721 100 and confirm that notice in writing
+                with us as soon as possible so that we can resolve your query more quickly.<br><br>
+
+                5.2 If we conclude as a result of our investigations that your account has been
+                incorrectly debited, we will respond to your query by passing an adjustment to your
+                account (inclusive of any interest / charges accrued as a result of the incorrect
+                amount being debited) accordingly. We will also notify you in writing of the amount
+                by which your account has been adjusted.<br><br>
+
+                5.3 If we conclude as a result of our investigations that your account has not been
+                incorrectly debited, we will respond to your query by providing you with reasons and
+                any evidence for this finding.<br><br>
+                5.4 Any queries you may have about an error made in debiting your account should be
+                directed to us in the first instance so that we can attempt to resolve the matter
+                between us and you. If we cannot resolve the matter, you can refer it to your financial
+                institution.<br><br>
+
+                <b>6. Accounts</b>
+                You should check:
+                (a) with your financial institution whether direct debiting is available from your
+                account as direct debiting is not available on all accounts offered by financial
+                institutions.<br><br>
+                (b) your account details which you have provided to us are correct by checking them
+                against a recent account statement; and<br><br>
+                (c) with your financial institution before completing the direct debit request if you
+                have any queries about how to complete the direct debit request.
+             </p>
+            </td>
+            <td  style='width:33%; vertical-align: top'>
+             <p class="details-small">
+                 <b>7. Confidentiality</b>
+                    7.1 We will keep any information (including your account details) in your direct
+                    debit request confidential. We will make reasonable efforts to keep any such
+                    information that we have about you secure and to ensure that any of our employees
+                    or agents who have access to information about you do not make any unauthorised use,
+                    modification, reproduction or disclosure of that information.<br><br>
+
+                    7.2 We will only disclose information that we have about you:<br><br>
+                    (a) to the extent specifically required by law; or<br><br>
+                    (b) for the purposes of this agreement (including disclosing information in
+                    connection with any query or claim).<br><br>
+                    7.3 We will collect, use and disclose any personal information in accordance with
+                    the privacy policy which is available upon request from you to Nexgen.<br><br>
+
+                    <b>8. Notice</b>
+                    8.1 If you wish to notify us in writing about anything relating to this agreement,
+                    you should write to:<br>
+                    Nexgen Australia<br>
+                    PO Box 2267, North Parramatta<br>
+                    NSW 1750<br><br>
+
+                    8.2 We will notify you by sending a notice in the ordinary post to the address you
+                    have given us In the direct debit request.<br><br>
+                    8.3 Any notice will be deemed to have been received two business days after it is
+                    posted.<br><br>
+                    <b>9. Indemnity</b><br><br>
+                    By signing the direct debit request, you hereby indemnify Nexgen and acknowledge that we will not be liable for any loss or damage, whether direct, indirect or consequential
+                    (including legal fees and other costs incurred) arising out of:<br><br>
+                    (a) loss of funds, delay and/or unavailability of payment services by Nexgen;<br><br>
+                    (b) the inaccuracy, inadequacy or incompleteness of the information contained on
+                    the Nexgen internet site or any of its printed material;<br><br>
+                    (c) a breach of this agreement by you including any act, neglect or default by you<br><br>
+                    (d) any successful claim by any third party against Nexgen in respect of any
+                    matter arising from the operation, use, transfer of data or monies to and from
+                    Nexgen by you; or your conduct in general.<br><br>
+                    <b>10. General</b><br><br>
+                    This agreement is governed by Australian law. You may not assign your rights
+                    or obligations under this agreement without the written agreement of Nexgen.
+                    If any part of this agreement is unenforceable, the remainder will not be affected.<br><br>
+
+                    <b>11. Contact Information</b><br><br>
+                    You can contact Nexgen through the following channels:<br><br>
+                    Mail:   Nexgen Australia<br>
+                    PO Box 2267, North Parramatta NSW 1750<br>
+                    Email:  support@nexgen.com.au<br>
+                    Telephone: 1300 020 402<br>
+             </p>
+            </td>
+        </tr>
+    </table>
+</div>

@@ -1,0 +1,2254 @@
+   
+<style>
+    @page {
+        sheet-size : A4;
+        margin: 0%;                               
+    }
+    @page cover {
+         margin-header:0mm;                 
+
+    }
+    div.cover {
+        page-break-before: right;
+        page: cover;
+    }
+    @page pages {
+          odd-footer-name: html_pagesFooter;
+        even-footer-name: html_pagesFooter;
+        margin-top: 1%;
+        margin-bottom: 2%;
+        margin-right: 3%;
+        margin-left: 3%;
+        margin-footer: 3mm;
+    }
+    div.pages {
+        page: pages;
+    }
+
+</style>
+<link href = "assets/css/form.css" rel='stylesheet' type='text/css'>
+    <div class="cover pageBreaker">
+          <div class="row">
+            <img src="assets/images/forms/rental-logo.png">
+         </div>
+        <img src="assets/images/forms/leasing.png" id = "anchor" class="img-to-be-chopped"> 
+         
+         <div class="first-page">  
+            <div class="big-title">Lease agreement</div>
+         </div>
+    </div>
+    <div class='pages leasing'>
+    <div class="pageBreaker">     
+       <table class="full-width">
+           <tr class="details-small">
+               <td>
+                   <h3 class="sub-title leasing-blue"> Lease schedule - tax invoice </h3>
+               </td>
+           </tr>
+           <tr class="details-small">
+               <td> This Lease Schedule is submitted pursuant to the Master Facility Agreement
+                    dated &nbsp;&nbsp;&nbsp; /&nbsp;&nbsp;&nbsp; /&nbsp;&nbsp;&nbsp;  between
+                    Nexgen Capital Pty Limited trading as Nexgen Equipment Rentals ABN 32 606 252 957
+                    ("we" or "us" or "Financier") and the Customer named below ("Customer") (and, where applicable,
+                    each other Customer named in the Master Facility Agreement). The Customer by submitting this Lease
+                    Schedule offer to rent from the Financier the Goods described below.Upon acceptance of this Lease Schedule
+                    in accordance with Master Facility Agreement, a Lease agreement will come into effect between the Financier
+                    and the Customer on the terms set out in this Lease Schedule (including any special conditions set out in this Lease
+                    Schedule) and on the terms of the Master Facility Agreement.
+               </td>
+        </tr>
+       </table>
+        <htmlpagefooter name='pagesFooter' style='display:none'>
+            <div style="padding-left : 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;               
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <img src="assets/images/forms/rental-logo.png" width="145" height="40">
+            </div>
+        </htmlpagefooter>
+        <table class="full-width">
+            <tr>
+                <td colspan="4"> <h3 class="sub-title leasing-blue"> Customer(s) information</h3></td>
+            </tr>
+            <tr class="details-small">
+                <td>Full Name of the Customer:</td>
+                <td class="cus-name item-text">{{formData.cName}}</td>
+                <td id ="abn-label">ABN:</td>
+                <td id ="abn" class="item-text">{{formData.cAbn}}</td>
+            </tr>
+        </table>
+        <table class="full-width">
+            <tr class="details-small">
+                <td style="width:8%">Trading As:</td>
+                <td class="item-text">{{formData.cTrading}}</td>
+            </tr>
+        </table>
+        <table class="full-width">
+            <tr class="details-small">
+                <td  style="width:7%">Address:</td>
+                <td style="width:67%" class="item-text">{{formData.cAddress}} {{formData.cSuburb}} {{formData.cAddressSpace}}</td>
+                <td style="width:4%">State:</td>
+                <td  style="width:8%" class="item-text">{{formData.cState}}</td>
+                <td style="width:6%">Postcode:</td>
+                <td  style="width:8%" class="item-text">{{formData.cPostCode}}</td>
+            </tr>
+        </table>
+       
+        <table class="full-width">
+            <tr class="details-small">
+                <td  style="width:7%">Contact:</td>
+                <td style="width:21%" class="item-text">{{formData.cContact}}</td>
+                <td style="width:8%"> Telephone:</td>
+                <td style="width:18%" class="item-text">{{formData.cTel}}</td>
+                <td style="width:6%">  Mobile:</td>
+                <td  style="width:17%" class="item-text">{{formData.cMobile}}</td>
+                 <td style="width:5%"> Fax:</td>
+                <td style="width:17%" class="item-text">{{formData.cFax}}</td>
+            </tr>
+        </table>
+         <table class="full-width">
+            <tr class="details-small">
+                <td  style="width:6%">Email:</td>
+                <td class="item-text">{{formData.cEmail}}</td>
+                <td style="width:7%"> Website:</td>
+                <td class="item-text">{{formData.cWebsite}}</td>                
+            </tr>
+        </table>
+        <table class="full-width">
+            <tr class="details-small">
+                <td  style="width:8%">Industry:</td>
+                <td class="item-text">{{formData.aIndustry}}</td>
+                <td style="width:14%">Number of Employees:</td>
+                <td class="item-text">{{formData.aNemp}}</td>  
+                <td  style="width:12%">Year Established:</td>
+                <td class="item-text">{{formData.aYear}}</td>                   
+            </tr>                                                                                     
+        </table>   
+         <table class="full-width">
+             <tr class="details-small">
+                <td  style="width:12%">Trade Reference:</td>
+                <td class="item-text">{{formData.aTradeRef}}</td>
+                <td style="width:8%">Telephone:</td>
+                <td class="item-text">{{formData.tTel}}</td> 
+                <td style="width:10%">Contact Person:</td>
+                <td class="item-text">{{formData.tContact}}</td> 
+            </tr>
+        </table>
+        <table class="full-width">
+            <tr class="details-small">
+                <td style="width:12%">Accountant:</td>
+                <td class="item-text">{{formData.aAccountant}}</td>  
+                 <td style="width:8%">Telephone:</td>
+                <td class="item-text">{{formData.aTel}}</td> 
+                <td style="width:10%">Contact Person:</td>
+                <td class="item-text">{{formData.aContact}}</td> 
+            </tr>                                                                                     
+        </table>  
+        <table class="full-width">
+            <tr class="details-small">
+                <td style="width:12%">Accountant:</td>
+                <td class="item-text">{{formData.aAccountant}}</td>  
+                 <td style="width:8%">Telephone:</td>
+                <td class="item-text"></td> 
+                <td style="width:10%">Contact Person:</td>
+                <td class="item-text"></td> 
+            </tr>                                                                                     
+        </table>  
+        <table class="full-width">
+            <tr><td colspan =6><h3 class="sub-title leasing-blue">Guarantor(s) information</h3></td></tr>
+            <tr class="details-small">
+                <td  style="width:10%">Full Name:</td>
+                <td  colspan= 2 class="item-text">{{formData.pName}}</td>
+                <td   style="width:4%">ABN:</td>
+                <td colspan=2 class="item-text">{{formData.cAbn}}</td>               
+            </tr>
+            <tr class="details-small">
+                <td  style="width:10%">Address:</td>
+                <td style="width:57%" class="item-text">{{formData.pAddress}} {{formData.pSuburb}}</td>
+                <td style="width:5%">State:</td>
+                <td style="width:8%" class="item-text">{{formData.pState}}</td>  
+                <td style="width:7%">Postcode:</td>
+                <td style="width:13%" class="item-text">{{formData.pPostcode}}</td>  
+            </tr>           
+        </table> 
+        <table class="full-width">
+             <tr class="details-small">
+                <td  style="width:10%">Date of Birth:</td>
+                <td class="item-text">{{formData.pBirth}}</td>
+                <td style="width:15%">Driving Licence Number:</td>
+                <td class="item-text">{{formData.pLicense}}</td> 
+                <td style="width:9%">Telephone:</td>
+                <td class="item-text">{{formData.pPhone}}</td> 
+            </tr>
+        </table>
+      
+        <table class="full-width">
+            <tr class="details-small">
+                <td style="width:10%">Home</td>
+            <td colspan="6" style="width:6%" class="item-text" ng-if="!formData.pOwned">Renting</td>
+                <td style="width:6%" class="item-text" ng-if="formData.pOwned == true">Owned </td>
+            
+         
+                <td style="width:5%" ng-if="formData.pOwned == true">Value</td>
+                <td class="item-text" ng-if="formData.pOwned == true">{{formData.pValue}}</td>
+                <td style="width:10%" ng-if="formData.pOwned == true"> Mortgaged Value:</td>
+                <td class="item-text" ng-if="formData.pOwned == true">{{formData.pMortgage}}</td> 
+            </tr>
+        </table>  
+        <table class="full-width">
+            <tr><td colspan =6><h3 class="sub-title leasing-blue">Second Guarantor(s) information</h3></td></tr>
+            <tr class="details-small">
+                <td  style="width:10%">Full Name:</td>
+                <td colspan= 2 class="item-text">{{formData.g2Name}}</td>
+                <td   style="width:5%">ABN:</td>
+                <td colspan=2 class="item-text">{{formData.g2ABN}}</td>               
+            </tr>
+            <tr class="details-small">
+                <td  style="width:10%">Address:</td>
+                <td style="width:57%" class="item-text">{{formData.g2Address}} {{formData.g2Suburb}}</td>
+                <td style="width:5%">State:</td>
+                <td style="width:8%" class="item-text">{{formData.g2State}}</td>  
+                <td style="width:7%">Postcode:</td>
+                <td style="width:13%" class="item-text">{{formData.g2Postcode}}</td>  
+            </tr>           
+        </table> 
+        <table class="full-width">
+             <tr class="details-small">
+                <td  style="width:10%">Date of Birth:</td>
+                <td class="item-text">{{formData.g2Birth}}</td>
+                <td style="width:15%">Driving Licence Number:</td>
+                <td class="item-text">{{formData.g2License}}</td> 
+                <td style="width:9%">Telephone:</td>
+                <td class="item-text">{{formData.g2Phone}}</td> 
+            </tr>
+        </table>
+      
+        <table class="full-width">
+            <tr class="details-small">
+                <td style="width:10%">Home</td>
+               <td colspan="6" style="width:6%" class="item-text" ng-if="!formData.g2Owned">Renting</td>
+                    <td style="width:6%" class="item-text" ng-if="formData.g2Owned == true">Owned </td>
+               
+              
+                
+                <td style="width:5%" ng-if="formData.g2Owned == true">Value</td>
+                <td class="item-text" ng-if="formData.g2Owned == true">{{formData.pValue}}</td>
+                <td style="width:14%" ng-if="formData.g2Owned == true"> Mortgaged Value:</td>
+                <td class="item-text" ng-if="formData.g2Owned == true">{{formData.pMortgage}}</td> 
+            </tr>
+        </table>
+        <table class="full-width">
+            <tr><td colspan="4"><h3 class="sub-title leasing-blue">Insurance details</h3></td></tr>
+            <tr class="details-small">
+                <td style="width:15%">Name of the Insurer:</td>
+                <td  class="item-text" >{{formData.aInsurer}}</td>
+                <td style="width:12%">Policy number:</td>
+                <td  class="item-text" >{{formData.aPolicy}}</td>
+            </tr>
+            <tr class="details-small">
+                <td class="details-small" colspan="4">
+                    You must arrange and keep the equipment insured against loss
+                    and all other insured risks for its full 
+                    replacement value during the entire Lease agreement.
+                </td>
+            </tr>
+        </table>
+        <table class="full-width">
+            <tr><td colspan="4"><h3 class="sub-title leasing-blue">Lease payments</h3></td></tr>
+            <tr class="details-small">
+                <td style="width:12%">Term ( <span ng-if="formData.aTerm != 'Outright'">   Months</span>):</td>
+                <td  class="item-text">{{formData.aTerm}}</td>
+                <td style="width:17%">Commencement Date</td>
+                <td style="width:54%" class="item-text" ></td>
+            </tr>           
+        </table>
+        <table class="full-width">
+            <tr class="details-small">
+                <td style="width:12%">Payment period:</td>
+                <td  class="item-text">{{formData.aPeriod}}</td>
+                <td style="width:6%">Lease:</td>
+                <td  class="item-text">{{formData.aPayment}}</td>
+                <td style="width:5%">GST:</td>
+                <td  class="item-text">$ {{formData.aGST}}</td>
+                <td style="width:5%">Total:</td>
+                <td  class="item-text">$ {{formData.aTotal}}</td>
+            </tr>
+        </table>
+        <table class="full-width">
+            <tr class="details-small">
+           	
+                <td style="width:35%">Residual Value (not part of the tax invoice and exlcusive of GST): </td>
+                <td class="item-text">{{formData.aResidual}}</td>
+                <td style="width:14%">Documentation fee:</td>
+                <td class="item-text"></td>
+            </tr>
+            <tr class='details-small'>
+                <td colspan='4'>
+                    Lease Payments are payable at the beginning / end (delete as applicable)
+                    of the Payment Periods. The first Lease Payment is due on the Commencement Date &nbsp;&nbsp;&nbsp; /&nbsp;&nbsp;&nbsp; /&nbsp;&nbsp;&nbsp; at the end of the 
+                    first Payment Interval (delete as applicable). Subsequent Lease Payments are due on the same day of the
+                    Payment Period as the first Instalment Payment (or on such other day as the Financier otherwise agrees in
+                    writing).
+                </td>
+            </tr>
+        </table>
+        <table class="full-width"> 
+            <tr>
+                <td colspan="8">
+                    <h3 class="sub-title leasing-blue">Customer signature</h3>
+                </td>
+           </tr>
+           <tr class="details-small">
+               <td colspan="8">
+                    For and behalf of customer I/We agree to be bound by the terms 
+                    and conditions of the Master Facility Agreement attached.
+               </td>
+           </tr>
+           <tr class="details-small">
+               <td style="width:14%">
+                   Authorised Signature:
+               </td>
+              <td class="item-text signature signatureImg signItem"  style="width:25%" id ="lease-auth-sign1" ng-click='sign("lease-auth-sign1")'>                   
+                   <b ng-if="isSigned('lease-auth-sign1')" class='greenText' ng-bind="getSignedTime('lease-auth-sign1')"></b>
+                   <b ng-if="!isSigned('lease-auth-sign1')" class='greenText'>Authorised Signature</b>
+               </td>
+               <td>
+                   Name:
+               </td>
+               <td class="item-text" style="width:18%">
+                    {{formData.dName}}
+               </td>
+               <td>
+                   Position:
+               </td>
+                <td class="item-text" style="width:13%">
+                   {{formData.cPosition}}
+               </td>
+               <td>
+                   Date:
+               </td>
+               <td class="item-text" style="width:8%">
+                   {{formData.dateVal}}
+               </td>
+           </tr>
+           <tr class="details-small">
+               <td>
+                   Authorised Signature:
+               </td>
+               <td class="item-text" ng-class="{'signature signatureImg signItem': formData.dSName}" 
+                   id ="lease-auth-sign2" >
+                   <b class='greenText' ng-if="formData.dSName" ng-click='sign("lease-auth-sign2")' >
+                       <span ng-if="!isSigned('lease-auth-sign2')">Authorised Signature here</span>
+                       <span ng-if="isSigned('lease-auth-sign2')" ng-bind="getSignedTime('lease-auth-sign2')"></span>
+                    </b>
+               </td>
+               <td>
+                   Name:
+               </td>
+               <td class="item-text">
+                   <span ng-if="formData.dSName"> {{formData.dSName}} </span>
+               </td>
+               <td>
+                   Position:
+               </td>
+                <td class="item-text">
+                    <span ng-if="formData.dSName">{{formData.cSPosition}}</span>
+               </td>
+               <td>
+                   Date:
+               </td>
+               <td class="item-text">
+                   <span ng-if="formData.dSName">{{formData.dateVal}}</span>
+               </td>
+           </tr>
+           <tr class="details-small">
+               <td>
+                   Witness Signature:
+               </td>
+               <td class="item-text signature signatureImg signItem" id ="lease-wt-1" ng-click='sign("lease-wt-1")'> 
+                    <img ng-src="{{userSign}}" ng-if="userSign" height="36">
+                    <b class='greenText' ng-if="!userSign">
+                        <span ng-if="!isSigned('lease-wt-1')">Witness Signature here</span>
+                        <span ng-if="isSigned('lease-wt-1')" ng-bind="getSignedTime('lease-wt-1')"></span>
+                    </b>
+               </td>
+               <td>
+                   Name:
+               </td>
+               <td class="item-text" style="width:25%">
+                   {{formData.wName}}
+               </td>
+               <td>
+                   Position:
+               </td>
+                <td class="item-text">
+                   {{formData.wPosition}}
+               </td>
+               <td>
+                   Date:
+               </td>
+               <td class="item-text">
+                   {{formData.dateVal}}
+               </td>
+           </tr>
+        </table>               
+        <table class="full-width"> 
+            <tr>
+                <td colspan="6">
+                    <h3 class="sub-title leasing-blue">Guarantors signature</h3>
+                </td>
+            </tr>
+            <tr class="details-small">
+               <td style="width:18%">
+                   Guarantors Signature:
+               </td>
+               <td style="width:32%" class="item-text signature signatureImg signItem"
+                   id ="lease-guarn-1">   
+                    <b class='greenText'  ng-click='sign("lease-guarn-1")'>
+                        <span ng-if="!isSigned('lease-guarn-1')">Guarantors Signature here</span>
+                        <span ng-if="isSigned('lease-guarn-1')" ng-bind="getSignedTime('lease-guarn-1')"></span>
+                    </b>
+               </td>
+               <td style="width:5%">
+                   Name:
+               </td>
+               <td class="item-text">
+                   {{formData.pName}}
+               </td>               
+               <td style="width:5%">
+                   Date:
+               </td>
+               <td class="item-text" style="width:8%">
+                   {{formData.dateVal}}
+               </td>
+           </tr>
+           <tr class="details-small">
+               <td>
+                   Second Guarantors Signature:
+               </td>
+               <td class="item-text" ng-class="{'signature signatureImg signItem': formData.g2Name}" id ="lease-guarn-2" >     
+                    <b class='greenText' ng-if="formData.g2Name" 
+                       ng-click='sign("lease-guarn-2")'>
+                       <span ng-if="!isSigned('lease-guarn-2')">Second Guarantors Signature here</span>
+                       <span ng-if="isSigned('lease-guarn-2')" ng-bind="getSignedTime('lease-guarn-2')"></span>
+                    </b>
+               </td>
+               <td>
+                   Name:
+               </td>
+               <td class="item-text">
+                   <span ng-if="formData.g2Name"> {{formData.g2Name}} </span>
+               </td>               
+               <td>
+                   Date:
+               </td>
+               <td class="item-text">
+                   <span ng-if="formData.g2Name">{{formData.dateVal}}</span>
+               </td>
+           </tr>
+           <tr class="details-small">
+               <td>
+                   Witness Signature:
+               </td>
+               <td class="item-text signature signatureImg signItem" id ="lease-guarn-wt" ng-click='sign("lease-guarn-wt")'>     
+                     <img ng-src="{{userSign}}" ng-if="userSign" height="36">
+                            <b class='greenText' ng-if="!userSign">Witness Signature here</b>
+               </td>
+               <td>
+                   Name:
+               </td>
+               <td class="item-text">
+                   {{formData.wName}}
+               </td>               
+               <td>
+                   Date:
+               </td>
+               <td class="item-text">
+                   {{formData.dateVal}}
+               </td>
+           </tr> 
+           <tr class="details-small">
+               <td colspan="6">
+                    I confirm I have read the Master Facility Agreement and agree to
+                    guarantee the obligations of the Customer. (Where the Guarantor is 
+                    an incorporated entity, authorised signature signing for and on 
+                    behalf of guarantor)
+               </td>
+           </tr>
+        </table>
+    </div>
+        <pagebreak />
+     <div class="pageBreaker">   
+         <table class="full-width">
+             <tr class="details-small">
+                 <td colspan="3"><h3 class="sub-title leasing-blue">Acceptance by financier – authorised signatory </h3></td>
+             </tr>
+             <tr>
+                <td colspan=3 class="details-small">Nexgen Capital Pty Ltd Trading as Nexgen Equipment Rentals ABN
+                     32 606 252 957,
+                     hereby accepts the offer by the Customer on &nbsp;&nbsp;&nbsp; /&nbsp;&nbsp;&nbsp; /&nbsp;&nbsp;&nbsp
+                 </td>
+             </tr>
+             <tr>
+                 <td colspan="3" class="details-small">
+                     For and on behalf of Nexgen Capital Pty Ltd Trading as Nexgen Equipment Rentals ABN
+                     32 606 252 957
+                 </td>
+             </tr>
+             <tr>
+                 <td class="details-small" style="width:17%">Authorised Signatory</td>
+                 <td class="item-text" id ="lease-auth-sg"  style="width:30%; height: 40px;">
+                      <b class='greenText'></b>
+                 </td><td style="width:53%"></td>
+                
+             </tr>
+         </table>    
+         <table class="full-width">
+             <tr class="details-small">
+                 <td colspan="6"><h3 class="sub-title leasing-blue">Driver licence verification</h3></td>
+             </tr>
+             <tr class="details-small">
+                 <td style="width:18%">Customer Driver Licence:</td>
+                 <td style="width:38%" class="item-text">{{formData.pLicense}}</td>
+                 <td style="width:12%">State of Issue:</td>
+                 <td style="width:8%" class="item-text">{{formData.pLicState}}</td>
+                 <td style="width:10%">Expiry Date:</td>
+                 <td style="width:13%" class="item-text">{{formData.pExpiry}}</td>
+             </tr>
+             <tr class="details-small">
+                 <td style="width:18%">Name:</td>
+                 <td colspan="3" class="item-text">{{formData.pName}}</td>               
+                 <td>Date of Birth:</td>
+                 <td class="item-text">{{formData.pBirth}}</td>
+             </tr>
+             <tr class="details-small">
+                 <td style="width:18%">Address:</td>
+                 <td colspan="3" class="item-text">{{formData.pAddress}} {{formData.pSuburb}} {{formData.pState}}</td>               
+                 <td>Postcode:</td>
+                 <td class="item-text">{{formData.pPostcode}}</td>
+             </tr>
+             
+         </table>    
+         <table class="full-width">
+            <tr class="details-small">
+                <td colspan="6">As the Vendor Account Manager I certify that 
+                    I have identified and verified the signature of the above mentioned 
+                    to the Driver Licence and have attached a true and correct copy of
+                    the Driver Licence as sighted by me: 
+                </td>
+            </tr>
+            <tr class="details-small">
+                <td style="width:10%">Signature</td>
+                <td class="item-text signature signatureImg signItem" id ="lease-driver-sg" ng-click='sign("lease-driver-sg")'>
+                     <img ng-src="{{userSign}}" ng-if="userSign" height="36">
+                            <b class='greenText' ng-if="!userSign">Vendor Account Manager Signature here</b>
+                </td>
+                <td style="width:5%">Name</td>
+                <td class="item-text" style="width:20%">{{formData.wName}}</td>
+                <td style="width:5%" >Date</td>
+                <td class="item-text">{{formData.dateVal}}</td>
+            </tr>
+            <tr>
+                <td colspan="6"> <h3 class="sub-title leasing-blue">Business use declaration</h3></td>
+            </tr>
+             <tr>
+                 <td colspan="6">
+                     <p class="details-small">(If the customer is not an incorporated entity) 
+                                I / We declare that the goods to be hired by me/us from the lessor are
+                                to be hired wholly or predominantly for business purposes. 
+                    </p>
+                 </td>
+            </tr>
+         </table>      
+        
+         <br>
+         
+         <div class='info-box'>
+             <p>WARNING</p>
+            <p>
+                 You should only sign this declaration if the goods are hired 
+                 wholly or predominantly for business purposes. 
+             </p>
+             <p>
+                 By signing this declaration you may lose your protection 
+                 under the National Credit Code. 
+             </p>
+         </div>
+         <br>
+         <table class="full-width">
+             <tr class="details-small" >
+                <td style="width:15%">
+                    Customer Signature:
+                </td>
+                <td style="width:30%" class="item-text signature signatureImg signItem" id ="lease-cus-sg" ng-click='sign("lease-cus-sg")'>
+                    <b ng-if="isSigned('lease-cus-sg')" class="greenText" ng-bind="getSignedTime('lease-cus-sg')"></b>
+                    <b ng-if="!isSigned('lease-cus-sg')" class='greenText'>Customer Signature here</b>
+                </td>
+                <td style="width:5%">
+                    Name:
+                </td>
+                <td class="item-text">
+                    {{formData.dName}}
+                </td>
+                <td style="width:5%">
+                    Date:
+                </td>
+                <td class="item-text">
+                    {{formData.dateVal}}
+                </td>
+             </tr>
+              <tr class="details-small">
+                <td>
+                    Customer Signature:
+                </td>
+                <td class="item-text" ng-class="{'signature signatureImg signItem': formData.dSName}" id ="lease-cus-sg1" >   
+                    <b class='greenText' ng-if="formData.dSName" ng-click='sign("lease-cus-sg1")'>
+                        <span ng-if="!isSigned('lease-cus-sg1')">Customer Signature here</span>
+                        <span ng-if="isSigned('lease-cus-sg1')" ng-bind="getSignedTime('lease-cus-sg1')"></span>
+                    </b>
+                </td>
+                <td>
+                    Name:
+                </td>
+                <td class="item-text">
+                    <span ng-if="formData.dSName"> {{formData.dSName}} </span>
+                </td>
+                <td>
+                    Date:
+                </td>
+                <td class="item-text">
+                    <span ng-if="formData.dSName"> {{formData.dateVal}} </span>
+                </td>
+             </tr>
+         </table>
+     
+           <table class='scheduleTable'>     
+               <tr><td style="border:none;" colspan="4"><h3 class="sub-title leasing-blue">Schedule of goods</h3></td></tr>
+                <tr class="details-small">
+                     <td>Quantity:</td>
+                     <td>Description:</td>
+                     <td>Item no:</td>
+                     <td>Serial no:</td>
+                </tr>
+                
+                    <tr ng-repeat="scheduleOption in formData.scheduleOptions"  class="details-small">
+                    <td>{{scheduleOption.qty}}</td>
+                    <td>{{scheduleOption.desc}}</td>
+                    <td>{{scheduleOption.itemNo}}</td>
+                    <td>{{scheduleOption.serNo}}</td>
+                </tr>   
+          
+          
+                <tr ng-repeat="schedule in formData.schedule" class="details-small">
+                    <td>{{schedule.qty}}</td>
+                    <td>{{schedule.desc}}</td>
+                    <td>{{schedule.itemNo}}</td>
+                    <td>{{schedule.serNo}}</td>
+                </tr>               
+           </table>   
+     </div>
+           <pagebreak />
+    <div class="pageBreaker">   
+      <h3 class="sub-title leasing-blue">Privacy consent & acknowledgement</h3>
+      <p class='details-small bigger'>
+          <b><i>Privacy Act 1988 (as amended, effective 12 March 2014)</i></b>
+      <p class='details-small bigger'>
+        The clauses below describe how Nexgen Equipment Rentals ABN 24147357962 
+        (“we”/“us”) may collect, use, handle and disclose your personal 
+        information. They also describe the privacy‐related matters to which you
+        give your consent in applying for a Lease, lease facility from us. Your
+        personal information will be treated in accordance with the Privacy Act 1988
+        (“Privacy Act”) as well as the Credit Reporting Privacy Code. <br/>
+        (a) The clauses below set out: <br />
+        (i) Consents that you give us in relation to your personal information 
+        by applying for finance from us or otherwise in connection with credit that we <br/>
+        offer; and <br/>
+        (ii) Important information about our collection, use, disclosure and management 
+        of your personal information. <br/><br/>
+        <b>Collection of your personal information</b><br/><br/>
+        (b) We will ordinarily collect your personal information about you for the following purposes, and to the extent not already authorised by law, you 
+        agree to us using and disclosing that information for these purposes. This is dependent on the circumstances and the nature and products and 
+        services you are obtaining from us.<br/>
+        (i) assessing and processing existing or future application(s) for credit and, where applicable, insurance or extended warranty products, managing 
+        your account or other products, responding to your questions and performing our obligations in relation to credit and insurance products provided 
+        to you; <br/>
+        (ii) protecting us and our assets (including against fraud) and selling
+        our assets (including by assigning any debts); <br/>
+        (iii) enforcing our rights (including undertaking debt collection) in connection
+        with any credit provided to you; <br/>
+        (iv) considering any variation requests; <br/>
+        (v) managing, changing and improving our systems and processes; <br/>
+        (vi) complying with laws. Various Australian laws may require us to collect
+        your personal information, or we may need to do so to be able to 
+        comply with other obligations under those laws. These laws include: the Anti‐Money Laundering and Counter‐Terrorism Financing Act and other 
+        anti‐money laundering legislation (for example, for identity verification), the National Consumer Credit Protection Act (for example, for responsible 
+        lending), the Financial Sector (Collection of Data) Act, the Corporations Act (Cth) and other regulatory legislation (for example, requiring us to 
+        maintain client and transaction records, to provide information relating to loans to APRA and to make reports and provide other information to 
+        regulators such as ASIC) and the Taxation Administration Act, the Income Tax Assessment Act and other taxation laws (for example, to comply with 
+        information requests issued by the Commissioner of Taxation); <br/>
+        (vii) marketing products and services provided by us and our related entities; <br/>
+        (viii) developing an understanding of goods and services you may be
+        interested in receiving from us and related entities; <br/>
+        (ix) compiling statistical data e.g. credit scoring information. <br/>
+        (c ) We collect your personal information primarily from you. However, sometimes we may collect personal information about you from third 
+        parties for the purposes described above where it is unreasonable or impracticable to collect it directly from you. For example, even though your 
+        application is for Commercial credit, we may collect information about you from a business which provides information about consumer credit 
+        worthiness for the purpose of assessing your application. Other third parties that we may collect your information from include the supplier of the 
+        Equipment; our agents; other credit providers; insurers, any of your employers, former employers, referees, banks, landlords, guarantors, 
+        accountants, lawyers and financial advisers; your executor, administrator or attorney; service providers to us (including debt collection agencies, 
+        introducers, private investigators, professional advisers); professional organisations; internet sources; public and subscriber only databases; credit 
+        reporting bodies, any person considering purchasing the business or any credit facility (or any part of the business or credit facility) the subject of 
+        any of our products or to any person to whom we may assign your credit contract/s (and their advisors and representatives); any person 
+        considered necessary in our view to execute your instructions; and government authorities. The circumstances in which we may do so include, for 
+        example, where we need information from a third party to assist us to deal with any application or request made by you (such as to verify 
+        information you have provided or to assess your circumstances) or to
+        assist us to locate or communicate with you. <br/>
+        (d) The consequences of you not providing to us the personal information that we require can include that we will not be able to approve your 
+        application for credit or a related product, or that we will not be able to deal with future requests or queries from you in connection with credit we 
+        provide. <br/>
+        (e) You agree that we can disclose your personal information (including, where permitted to do so under the Privacy Act, your credit information 
+        and credit eligibility information) for the purposes described above to: <br/>
+        (i) your co‐applicant (if any); any of our related bodies corporate; our assignees or potential assignees; the supplier of any goods or services 
+        financed with credit we provide; any other supplier appointed by us, credit reporting bodies or any business providing information about 
+        commercial credit worthiness; other credit providers; card issuers; your assignees or proposed assignees; debt collection agencies; banks and 
+        financial advisers; lawyers, accountants and other professional advisers; any suppliers or contractors to us who need to have access to our 
+        personal information for the purpose of providing services to us or you (including, without limitation, velures, physical and electronic file storage 
+        suppliers, receivables management suppliers and data warehouses); 
+        any person specifically authorised by you in writing: <br/>
+        (ii) any person as permitted or required by law.<br/> <br/>
+        <b>We may disclose your personal information to overseas recipients</b><br/><br/>
+        (f) Some of the organisations to whom we may disclose your personal information (including your credit information or credit eligibility 
+        information) will be located overseas and may not have an Australian link. The countries in which overseas recipients are likely to be located 
+        currently include the Philippines and New Zealand (for an updated list of countries from time to time please see our Privacy Policy and Credit 
+        Reporting Policy available on our website).You acknowledge that by consenting to us disclosing your personal information to overseas recipients, 
+        Australian Privacy Principle (“APP”) <br/>
+        8.1 will not apply to the disclosure (which means that we will not be obliged under the Privacy Act to take reasonable steps to ensure that an 
+        overseas recipient does not breach the APPs and we may not be liable under the Privacy Act if the recipient does not act consistently with the 
+        APPs). By applying for this product you consent to disclosures to overseas recipients. <br/>
+      </p>
+    </div>
+       <pagebreak />
+   <div class="pageBreaker">   
+       <p class="details-small bigger">
+        <b>Important information about credit reporting </b><br/><br/>
+        (g) Our website at <a href="www.nexgenequipmentrentals.com.au">www.nexgenequipmentrentals.com.au</a> contains important information about credit reporting, including the credit reporting 
+        bodies that we deal with, credit information that we may give them about you (such as about defaults and serious credit infringements) and details 
+        regarding how those credit reporting bodies use and disclose that information to credit providers and their policies about managing the
+        information. You have important rights regarding access, correction and complaints relating to your credit reporting information, as well as certain 
+      rights to prevent its use for direct marketing or where you have been a victim of fraud. You will also find details about these rights on the same 
+      page. You can also ask us to provide you with a copy of this important information. <br/>
+      (h) You also agree that we or any credit provider we choose can obtain, 
+      from any business providing information about commercial credit 
+      worthiness, consumer and or commercial credit reports about you for the purposes of 
+      assessing applications for commercial credit <br/>
+      (i) You agree that we can disclose your name, residential address and date of birth
+      to a credit reporting body so that the credit reporting body can 
+      provide an assessment to us of whether the information provided by you matches (in whole or in part) the information in the credit reporting 
+      body’s possession or control (which may include personal information held by the credit reporting body about you or other individuals). This will 
+      be done for the purpose of verifying your identity as required under Australia’s anti‐money laundering and counter‐terrorism laws where 
+      applicable. If you would prefer us to use another form of verification, such as your passport or driver’s licence, you must notify us and provide us 
+      with any information that we request. <br/><br/>
+      <b>Marketing products and services to you </b></br><br/>
+      (j) You agree to us using and disclosing your personal information (including your telephone number, regardless of whether it is listed on the Do 
+      Not Call Register and your email or other electronic addresses) to provide you with information about our other products and services and the 
+      products and services offered by our dealers, insurers (such as insurers who provide credit‐related insurance), our related companies or suppliers. 
+      This includes, without limitation, communicating with you via emails, text messages or other electronic messages (without an unsubscribe facility). 
+      This agreement operates indefinitely. However, you can tell us that you no longer wish us to use or disclose your personal information for these 
+      purposes by contacting us on 1300 763 738 <br/><br/>
+      <b>Information about other persons </b><br/><br/>
+      (k) If you provide information about any other person, such as a referee, you agree
+      to tell them: <br/>
+      (i) that you are providing this information to us; (ii) of our contact details on 
+      this form; <br/>
+      (ii) the reason you are providing their information; <br/><br/>
+      <b>Electronic communication </b><br/><br/>
+      (l) To protect your privacy, we recommend that any email address you provide to us be your personal email address rather than, for example, an 
+      email address accessible by your work colleagues or family members. </br>
+      <b>Your access to personal Information correction and complaints </b><br/>
+      (m) You have rights to request access to, or correction of, personal information that we hold about you, including credit‐related information. You 
+      also have rights to make a complaint if you consider that we have not complied with the Privacy Act or Credit Reporting Privacy Code in relation to 
+      our information. Our Privacy Policy and Credit Reporting Policy  <a href="www.nexgenequipmentrentals.com.au">www.nexgenequipmentrentals.com.au</a>
+      sets out how you can make such requests or complaints and how we will deal with them. For details about our management of credit‐related personal information (including credit 
+      reporting information) that we hold about you, please see our Privacy Policy and Credit Reporting Policy available at 
+      <a href="www.nexgenequipmentrentals.com.au">www.nexgenequipmentrentals.com.au</a> or by 
+      call us on 1300 763 738 <br /><br/>
+      <b>ACKNOWLEDGMENTS AND CONSENTS AND AUTHORISATION </b><br/><br/>
+      By signing below: <br />
+      (a) You acknowledge that this application contains: <br />
+      (i) important information about privacy (including about credit reporting) that 
+      you should read before signing; and<br /> 
+      (ii) important privacy‐related consents and authorisations (including relating to
+      uses, disclosures and overseas transfers of your personal 
+      information), <br />
+      (b) that you agree to by signing; you acknowledge that various credit checks will
+      be undertaken by us as part of this application as described; <br />
+      (c) you agree that each consent and authorisation remains in effect until cancelled
+      in writing by you or otherwise relied on by us as permitted by law. <br />
+    </p>
+    <table class="dirTable" style="width:100%">
+        <tr>
+            <td colspan="2" style='width:49%'><b>First Director/Partner</b></td>
+            <td></td>
+            <td colspan="2" style='width:49%'><b>Second Director/Partner</b></td>
+        </tr>
+        <tr>
+            <td>Signed:</td>
+             <td class="item-text signatureImg signItem" id ="lease-dir-1" ng-click='sign("lease-dir-1")'> <b class='greenText'>First Director Sign here</b></td>
+             <td style="width:2%"></td>
+            <td>Signed:</td>
+            <td class="item-text" ng-class="{'signature signatureImg signItem': formData.dSName}" id ="lease-dir-2">
+                <b class='greenText' ng-if="formData.dSName" ng-click='sign("lease-dir-2")'>
+                    <span ng-if="!isSigned('lease-dir-2')">Second Director here</span>
+                    <span ng-if="isSigned('lease-dir-2')" ng-bind="getSignedTime('lease-dir-2')"></span>
+                </b>
+            </td>
+        </tr>
+        <tr>
+            <td>Title: </td><td class="item-text">
+                {{formData.cPosition}}</td>
+            <td></td>
+            <td >Title: </td>
+            <td class="item-text">
+                <span ng-if="formData.dSName">{{formData.cSPosition}}</span>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:10%">Print Name:</td><td class="item-text">{{formData.dName}}</td>
+            <td ></td>
+            <td  style="width:10%">Print Name: </td>
+            <td class="item-text">
+                <span ng-if="formData.dSName">{{formData.dSName}}</span>
+            </td>
+        <tr>
+            <td>Date: </td>
+            <td class="item-text">{{formData.dateVal}}</td>
+            <td></td>
+            <td>Date: </td>
+            <td class="item-text">
+                <span ng-if="formData.dSName">{{formData.dateVal}}</span>
+            </td>
+        </tr>
+    </table>
+   </div>
+    <pagebreak />
+  <div class="pageBreaker">  
+    <div>
+    <h3 class="sub-title leasing-blue">Direct debit form</h3>
+    <p class="details-small">You authorise and requestNexgen Capital Pty Ltd trading as Nexgen Equipment Rentals
+        Pty Ltd (user ID No. 314011) to debit your nominated account shown below: 
+    </p>
+    <table class="full-width height-20">
+            <tr class="details-small">
+                <td style="width:8%">Full Name:</td>
+                <td class="item-text"><span ng-if="formData.aPaymentMethod=='Direct Debit'">{{formData.cName}}</span></td>  
+            </tr>
+        </table>
+        <table class="full-width height-20">
+            <tr class="details-small">
+                <td  style="width:7%">Address:</td>
+                <td class="item-text">
+                    <span ng-if="formData.aPaymentMethod=='Direct Debit'">
+                        {{formData.cAddress}} {{formData.cSuburb}} 
+                    </span>
+                </td>
+                <td  style="width:4%">State</td>
+                <td  style="width:9%" class="item-text">
+                    <span ng-if="formData.aPaymentMethod=='Direct Debit'">{{formData.cState}}
+                    </span>
+                </td>
+                <td  style="width:6%">Postcode</td>
+                <td style="width:9%" class="item-text">
+                    <span ng-if="formData.aPaymentMethod=='Direct Debit'">{{formData.cPostCode}}
+                    </span></td>
+
+            </tr>
+        </table>
+        <table class="full-width height-20">
+            <tr class="details-small">
+                <td style="width:22%">Name of Financial Institution:</td>
+                <td class="item-text"><span ng-if="formData.aPaymentMethod=='Direct Debit'">
+                        {{formData.aFinInst}}</span></td>
+                <td style="width:6%">Branch:</td>
+                <td class="item-text" style="width:20%">
+                    <span ng-if="formData.aPaymentMethod=='Direct Debit'">{{formData.aFinBranch}}
+                    </span>
+                </td> 
+            </tr>
+        </table>
+        <table class="full-width height-20">
+            <tr class="details-small">
+                <td style="width:16%">Account Name:</td>
+                <td colspan="3" class="item-text">
+                    <span ng-if="formData.aPaymentMethod=='Direct Debit'">
+                        {{formData.aAccName}}
+                    </span>
+                </td>
+            </tr>
+            <tr class="details-small height-20">
+                <td >BSB Number:</td>
+                <td class="item-text" style="width:32%">
+                    <span ng-if="formData.aPaymentMethod=='Direct Debit'">
+                        {{formData.aBsb}}</span>
+                </td>
+                <td style="width:10%"> Account Number:</td>
+                <td style="width:32%" class="item-text">
+                    <span ng-if="formData.aPaymentMethod=='Direct Debit'">
+                        {{formData.aAccDetails}}
+                    </span>
+                </td> 
+            </tr>
+             <tr class="details-small">
+                <td >Date of first payment :</td>
+                <td class="item-text"><span ng-if="formData.aPaymentMethod=='Direct Debit'">{{formData.aCommenceDate}}
+                    </span></td>
+                <td> Frequency:</td>
+                <td  class="item-text"><span ng-if="formData.aPaymentMethod=='Direct Debit'">{{formData.aPeriod}}
+                    </span>
+                </td> 
+            </tr>
+        </table> 
+        <table class="full-width">
+          <tr class="details-small">
+                    <td style="width:9%">
+                        Signature(1)
+                    </td>
+                    <td style="width:30%" class="item-text" id ="rental-sg1" ng-class="{'signature signatureImg signItem':formData.aPaymentMethod=='Direct Debit'}">  
+                        
+                        <b class='greenText' ng-click='sign("rental-sg1")'
+                             ng-if="formData.aPaymentMethod=='Direct Debit'"  >
+                             <span ng-if="!isSigned('rental-sg1')">Touch to Sign here</span>
+                             <span ng-if="isSigned('rental-sg1')" ng-bind="getSignedTime('rental-sg1')"></span>
+                        </b>
+                    </td>
+                    <td style="width:5%">
+                        Name:
+                    </td>
+                    <td class="item-text">
+                       <span ng-if="formData.aPaymentMethod=='Direct Debit'"> {{formData.dName}}</span>
+                    </td>
+                    <td style="width:5%">
+                        Date:
+                    </td>
+                    <td class="item-text">
+                        <span ng-if="formData.aPaymentMethod=='Direct Debit'">{{formData.dateVal}}</span>
+                    </td>
+           </tr>
+           <tr class="details-small">
+                    <td>
+                        Signature(2)
+                    </td>
+                    <td class="item-text" ng-class="{'signature signatureImg signItem':formData.aPaymentMethod=='Direct Debit' && formData.dSName }"id ="rental-sg2" >     
+                        <b class='greenText' ng-click='sign("rental-sg2")' ng-if="formData.aPaymentMethod=='Direct Debit' && formData.dSName">
+                            <span ng-if="!isSigned('rental-sg2')">Touch to Sign here</span>
+                            <span ng-if="isSigned('rental-sg2')" ng-bind="getSignedTime('rental-sg2')"></span>
+                        </b> 
+                    </td>
+
+                    <td>
+                        Name:
+                    </td>
+                    <td class="item-text">
+                       <span ng-if="formData.aPaymentMethod=='Direct Debit' && formData.dSName"> {{formData.dSName}}</span>
+                    </td>
+                    <td>
+                        Date:
+                    </td>
+                    <td class="item-text">
+                       <span ng-if="formData.aPaymentMethod=='Direct Debit' && formData.dSName"> {{formData.dateVal}}</span>
+                    </td>
+
+           </tr>
+
+        </table>    
+    
+    <p class="details-small">
+        Flexi’s direct debit User ID No. 005221
+    </p> 
+    </div>
+     <div>
+    <h3 class="sub-title">
+        Credit card payment authority
+    </h3>
+     <table class="full-width height-20">
+            <tr class="details-small">
+                <td style="width:10%">
+                    Card Type :
+                </td>
+                <td class="item-text">
+                    <div ng-if="formData.aPaymentMethod=='Credit Card'">   {{formData.aCardType}} </div>
+                </td>
+            </tr>    
+            <tr class="details-small">
+                <td>
+                    Card Number :
+                </td>
+                <td class="item-text">
+                    <span ng-if="formData.aPaymentMethod=='Credit Card'"> {{formData.aCardNumber}}</span>
+                </td>
+            </tr>
+            <tr class="details-small">
+                <td>
+                    Expiry Date:
+                </td>
+                <td class="item-text">
+                    <span ng-if="formData.aPaymentMethod=='Credit Card'">{{formData.aCardExpiry}} </span>
+                </td>
+            </tr>
+     </table> 
+     <p class="details-small">Note: Visa and Mastercard only.
+     </p>
+      <table class="full-width">
+            <tr class="details-small double-height">
+                <td style="width:8%">
+                    Signature:
+                </td>
+                <td style="width:35%;" class="item-text" 
+                    ng-class="{'signature signatureImg signItem':formData.aPaymentMethod=='Credit Card'}" 
+                    id ="rental-card-sg" >  
+                    <b class='greenText' ng-click='sign("rental-card-sg")' ng-if="formData.aPaymentMethod=='Credit Card'">
+                        <span ng-if="!isSigned('rental-card-sg')">Touch to Sign here</span>
+                        <span ng-if="isSigned('rental-card-sg')" ng-bind="getSignedTime('rental-card-sg')"></span>                        
+                    </b>
+                </td>
+                <td style="width:5%">
+                    Name:
+                </td>
+                <td class="item-text" style="width:25%">
+                    <span ng-if="formData.aPaymentMethod=='Credit Card'">  {{formData.aCardName}} </span>
+                </td>
+                <td style="width:5%">
+                    Date:
+                </td>
+                <td class="item-text">
+                    <span ng-if="formData.aPaymentMethod=='Credit Card'"> {{formData.dateVal}} </span>
+                </td>
+            </tr>
+           
+           
+      </table>   
+     </div>s
+     <br/>
+     <h3 class="sub-title leasing-blue">
+        Customer direct debit request (DDR) service agreement 
+    </h3>
+    <p class="details-small">
+        This is your Direct Debit Service Agreement with Nexgen Capital Pty Ltd trading as  Nexgen Equipment 
+        Rentals (314011). It explains what your obligations are when 
+        undertaking a Direct Debit arrangement with us. It also details what our obligations are to you as your Direct Debit provider.  
+        Please keep this agreement for future reference. It forms part of the terms and conditions of your Direct Debit Request (DDR) and should 
+        be read in conjunction with your DDR authorisation. 
+     </p>
+     <h3 class="sub-title leasing-blue">
+        How to contact us  
+    </h3>
+     <p class="details-small leasing-blue"><b>Enquiries</b></p>
+    <p class="details-small">
+        You can contact us directly or alternatively contact your financial institution. These should be made at least 7 working days prior to the 
+        next scheduled drawing date. You may contact us as follows:‐ <br />
+        Phone:1300 763 738 <br />
+        Email: support@nexgenequipmentrentals.com.au <br />
+        Mail: PO Box 2267 North Parramatta, NSW 1750 <br />
+        All communication addressed to us should include your Customer Number. 
+     </p>
+      <h3 class="sub-title leasing-blue">
+       Definitions  
+    </h3>
+     <p class="details-small">
+         <b><i> account</i></b> means the account held at your financial institution from
+                which we are authorised to arrange for funds to be debited. <br />
+          <b><i>agreement</i></b> means this Direct Debit Request Service Agreement between you and us. <br />
+          <b><i>banking day</i></b> means a day other than a Saturday or a Sunday or a public holiday 
+                listed throughout Australia. <br />
+           <b><i>      debit day</i></b> means the day that payment by you to us is due. <br />
+            <b><i>debit payment</i></b> means a particular transaction where a debit is made. <br />
+            <b><i>direct debit request</i></b> means the Direct Debit Request between us and your debit 
+                day means the day that payment by you to us is due. <br />
+            <b><i>us</i></b> or <b><i>we</i></b> means Nexgen Equipment Rentals Pty Limited ABN 24 147 357 962 in and,
+                where the context permits, includes any of our related 
+                bodies corporate or if notified, Flexirent Capital Pty Ltd <br />
+                <b><i>you</i></b> means the customer who has signed or authorised by other means the Direct 
+                Debit Request. <br />
+                <b><i>your financial institution</i></b> means the financial institution nominated by
+                you on the DDR at which the account is maintained. <br />
+                <b><i>PPSA</i></b> means the Personal Property Securities Act 2009 (Cth). <br />
+                <b><i>PPS Register</i></b> means the Personal Property Securities Register established 
+                under Part 5.2 of the PPSA. <br />
+                <b><i>PPS Regulations</i></b> means the Personal Property Securities Regulations 2010 (Cth).<br /> 
+                <b><i>PPS Security Interest</i></b> means a security interest under the PPSA. <br />
+               
+     </p>
+    </div>
+     <pagebreak />
+    <div class="pageBreaker">   
+     <p class="details-small">
+          <b><i>Serial Numbered Property</i></b> means any Goods which may or must be described by
+                serial number in a registration under the PPSA. 
+     </p>
+     <h3 class="sub-title leasing-blue">
+      Debiting your account   
+    </h3>
+     <p class="details-small">By signing a Direct Debit Request or by providing us with a valid instruction, you have authorised us to arrange for funds to be debited from your 
+account. You should refer to the Direct Debit Request and this agreement for the terms of the arrangement between us and you. 
+We will only arrange for funds to be debited from your account as authorised in the
+Direct Debit Request. <br />
+or <br />
+We will only arrange for funds to be debited from your account if we have sent to the address nominated by you in the Direct Debit Request, a 
+billing advice which specifies the amount payable by you to us and when it is due. If the debit day falls on a day that is not a banking day, we may 
+direct your financial institution to debit your account on the following banking day. If you are unsure about which day your account has or will be 
+debited you should ask your financial institution. </p>
+     <h3 class="sub-title leasing-blue">
+       Amendments by us 
+    </h3>
+     <p class="details-small">We may vary any details of this agreement or a Direct Debit Request at any time by giving you at least fourteen (14) days written notice. </p>
+     <h3 class="sub-title leasing-blue">
+       Amendments by you   
+    </h3>
+     <p class="details-small">You may change, stop or defer a debit payment, 
+         or terminate this agreement by providing us with at least 7 days notification
+         by writing to: </br>
+         PO Box 2267 North Parramatta, NSW 1750 <br/>
+or <br /> 
+by telephoning us on 1300 763 738 during business hours; <br /> 
+or <br /> 
+arranging it through your financial institution, which is required to act promptly
+on your instructions. </p>
+     <h3 class="sub-title leasing-blue">
+       Your obligations   
+    </h3>
+     <p class="details-small">
+         It is your responsibility to ensure that there are sufficient clear funds available in your account to allow a debit payment to be made in accordance 
+        with the Direct Debit Request. <br />
+        If there are insufficient clear funds in your account to meet a debit payment: <br />
+        • you may be charged a fee and/or interest by your financial institution; <br />
+        • you may also incur fees or charges imposed or incurred by us; and <br />
+        • you must arrange for the debit payment to be made by another method or arrange for sufficient clear funds to be in your account by an agreed 
+        time so that we can process the debit payment. <br />
+        You should check your account statement to verify that the amounts debited from your account are correct.
+     </p>
+     <h3 class="sub-title leasing-blue">
+       Dispute  
+    </h3>
+     <p class="details-small">
+         If you believe that there has been an error in debiting your account, you should notify us directly on1300 763 738  and confirm that notice in 
+writing with us as soon as possible so that we can resolve your query more quickly. Alternatively you can take it up directly with your financial 
+institution.  <br />
+If we conclude as a result of our investigations that your account has been incorrectly debited we will respond to your query by arranging for your 
+financial institution to adjust your account (including interest and charges) accordingly. We will also notify you in writing of the amount by which 
+your account has been adjusted. If we conclude as a result of our investigations that your account has not been incorrectly debited we will respond 
+to your query by providing you with reasons and any evidence for this finding in writing. 
+     </p>
+     <h3 class="sub-title leasing-blue">
+       Accounts  
+    </h3>
+     <p class="details-small">
+         You should check: <br />
+            • with your financial institution whether direct debiting is available from your account as direct debiting is not available on all accounts offered by 
+            financial institutions. <br />
+            • your account details which you have provided to us are correct by checking them
+            against a recent account statement; <br />
+            • with your financial institution before completing the Direct Debit Request if 
+            you have any queries about how to complete the Direct Debit Request. <br />
+     </p>
+     <h3 class="sub-title leasing-blue">
+       Confidentiality  
+    </h3>
+     <p class="details-small">
+         We will keep any information (including your account details) in your Direct Debit Request confidential. We will make reasonable efforts to keep 
+any such information that we have about you secure and to ensure that any of our employees or agents who have access to information about you 
+do not make any unauthorised use, modification, reproduction or disclosure of that information. <br />
+We will only disclose information that we have about you: <br />
+• to the extent specifically required by law; or <br />
+• for the purposes of this agreement (including disclosing information in connection with any query or claim). 
+     </p>
+     <h3 class="sub-title leasing-blue">
+       Notice  
+    </h3>
+     <p class="details-small">
+         If you wish to notify us in writing about anything relating to this agreement, 
+         you should write to <br />
+        NEXGEN EQUIPMENT RENTALS<br /> 
+        PO Box 2267 North Parramatta, NSW 1750<br /> 
+        We will notify you by sending a notice in the ordinary post to the address you have given us in the Direct Debit Request. Any notice will be deemed 
+        to have been received on the third banking day after posting. 
+     </p>
+  </div>
+     <pagebreak />
+    <div class="pageBreaker">     
+      <h3 class="sub-title leasing-blue">
+      Master Lease Agreement Terms and Conditions
+    </h3>
+     <table class="termsTable">
+         <tr>
+             <td>
+                 <p class="details-small"><b>A 1. Offers</b> <br />
+                    1.1 If a Customer wishes to obtain Lease finance from the Financier in 
+                    relation to any goods (“Goods”) that Customer may submit to the 
+                    Financier a completed Lease Schedule in the form of the Schedule or 
+                    in such other form as the Financier may require (a “Lease Schedule”) 
+                    in respect of a Lease transaction.<br /> 
+                    1.2 The submission of a Schedule by a Customer will constitute an 
+                    irrevocable offer from that Customer to Lease (an “Offer”), for the 
+                    term and for the payments set out in that Schedule and on the terms 
+                    and conditions of this Agreement. <br /><br />
+
+                    <b>B 2. Acceptance of Offers</b> <br />
+                    2.1 The Financier may accept or reject an Offer in its discretion. The 
+                    Financier may impose conditions on acceptance, and need not give 
+                    reasons for its decision. <br />
+                    2.2 The Financier may only accept an Offer, and become bound to the 
+                    Offer, by signing the relevant Schedule, even if the Customer has 
+                    prepaid any amount. The Customer is bound to rent once the 
+                    Financier signs that Schedule. <br />
+                    2.3 The Lease (the “Agreement”), constituted by the Financier signing 
+                    a Schedule comprises the terms set out in that Schedule, any Special 
+                    Conditions set out or referred to in it, and the applicable provisions of 
+                    this Agreement. <br />
+                    2.4 If the Customer takes delivery of any item of Goods from the 
+                    supplier before the date the Financier signs a Schedule, then the 
+                    Customer must comply with its obligations under this Agreement, 
+                    without binding the Financier to an Agreement, from the time that the 
+                    Customer takes delivery of the Goods, as if the Agreement had 
+                    commenced at that time. <br /><br />
+
+                    <b> C 3. Authorised Signatories</b> <br />
+                    3.1 The Customer authorises any of the authorised signatories in the 
+                    Customer Schedule to do the following on the Customer’s behalf: 
+                    (a) sign Schedules; <br />
+                    (b) agree to any Special Conditions which the Financier requires; <br />
+                    (c) make declarations or sign acknowledgments or other documents 
+                    (including any direct debit authority) that the Financier requires in 
+                    relation to this document; and <br />
+                    (d) anything else in relation to this document or any transaction under 
+                    this document. <br /><br />
+
+                    <b>D 4. Warranties</b> <br />
+                    4.1 When the Customer submits a Schedule, the Customer warrants 
+                    that: <br />
+                    (a) all information referred to in that Schedule and each document 
+                    which the Customer provides to the Financier in relation to that 
+                    Schedule is complete, correct and up to date; and <br />
+                    (b) the execution and performance of this document and each 
+                    transaction under it will not constitute a breach of or a default under 
+                    any agreement binding on the Customer. <br /><br />
+
+                    <b class="leasing-blue">GENERAL TERMS</b> <br />
+                    1. Definitions <br />
+                    1.1 In this Agreement, unless the context otherwise requires: <br />
+                    <b>Acceptance Date</b> means the date that the Schedule is signed for and 
+                    on behalf of the Financier by an authorised officer. <br />
+                    <b>Authorised Signatory </b>means each authorised signatory referred to in 
+                    the Customer Schedule on the first page of this document, as may be 
+                    varied by written notice to the Financier. <br />
+                    <b>Break Costs</b> means any cost, loss or expense arising by reason of the 
+                    cancellation, termination or alteration of any funding arrangements 
+                    entered into by the Financier in order to fund (whether in whole or in 
+                    part) under this Agreement or arising by reason of the inability of the 
+                    Financier to obtain, on reinvestment of the funds used to acquire the 
+                    Goods or otherwise provided by the Financier in connection with this 
+                    Agreement, that return which the Financier would have received had 
+                    this Agreement terminated by expiration of time. <br />
+                    <b>Business Day </b>means a day on which the Financier is open for business 
+                    in New South Wales. <br />
+                     <b>Commencement Date</b> means the Commencement Date referred to in 
+                    the Schedule. <br />
+                      <b>Costs of Repossession</b> means all costs and expenses incurred by the 
+                    Financier in effecting, or attempting, repossession of the Goods, 
+                    satisfying any third party claim, and in storing, repairing to good 
+                    working order and condition, insuring, valuing and disposing of the 
+                    Goods after repossession and any costs which are incidental to any of 
+                    these matters, including legal costs on a solicitor and client basis. 
+                    <b>Discount Rate</b> means the rate determined by the Financier equal to 
+                    the implicit rate of interest used by the Financier to calculate the 
+                    Payments less 400 basis points. <br />
+                    
+                 </p>
+             </td>
+             <td>
+                 <p class="details-small">
+                  
+                    <b>Early Termination Amount</b> means the sum of: <br />
+                    (i) the Payments (net of GST) which, but for the termination, would 
+                    have been payable by the Customer under this Agreement as from the 
+                    date of early termination to the end of the Term (inclusive of any 
+                    unamortised brokerage or commission), reduced to a present value as 
+                    at the date of termination by applying the Discount Rate to such 
+                    Payments; <br />
+                    (ii) any Break Costs; <br />
+                    (iii) an administrative fee of an amount of not less than one Payment 
+                    (or such other amount as may be charged by the Financier from time 
+                    to time); <br />
+                    (iv) at our option, any other amounts due, owing or payable by the 
+                    Customer to the Financier on any account under any other agreement 
+                    or document between the Customer and the Financier;  <br />
+                    <b>Goods</b> means the goods described in the Schedule and includes any 
+                    other items that are deemed to be or form part of the “Goods” under 
+                    this Agreement. <br />
+                    <b>GST</b> means goods and services tax levied under A New Tax System 
+                    (Goods and Services Tax) Act 1999 (Commonwealth) and related 
+                    legislation. <br />
+                    <b>Payments</b> means the payments as set out in the Schedule. 
+                    <b>person</b> includes anybody corporate, association, authority and any 
+                    other body or entity. <br />
+                    <b>Residual Value</b> means (where this Agreement is a Lease agreement) 
+                    the residual value referred to in the Schedule.<br /> 
+                    <b>Schedule</b> means a Lease Schedule submitted and accepted in 
+                    accordance with this Agreement.<br />
+                    <b>Term</b> means the term referred to in the Schedule. This Agreement 
+                    means the Lease  agreement arising on the Financier’s acceptance of 
+                    the Schedule. <br />
+                    <b>we or us</b> means Nexgen Equipment Rentals Pty Limited ABN 24 147 
+                    357 962 and, where the context permits, includes any of our related 
+                    bodies corporate. <br />
+                    you means the customer referred to in the Schedule <br /><br />
+
+                    <b>2. Interpretation </b><br />
+                    2.1 In this document, unless the context otherwise requires: <br />
+                    (a) a reference to any party (including you or us) includes that party’s 
+                    successors, personal legal representatives and permitted assigns; <br />
+                    (b) if any party is comprised of more than one person, those persons’ 
+                    obligations are joint and several; <br />
+                    (c) the singular includes the plural and vice versa; <br />
+                    (d) If there is any inconsistency between any special conditions set out 
+                    or referred to in a Schedule and this Agreement, the special conditions 
+                    shall prevail; <br />
+                    (e) A reference to this Agreement includes a reference to each 
+                    Schedule submitted and accepted in accordance with this Agreement. <br />
+                        <br />
+                        <b>3. Customer Acknowledgments</b><br />
+                    3.1 The Customer acknowledges and agrees:<br /> 
+                    (a) The Customer has satisfied itself as to the condition of the Goods 
+                    and their suitability for the Customer’s purposes and the Customer 
+                    has not relied on the Financier in deciding to enter into this 
+                    Agreement and has selected the Goods based upon the Customer’s 
+                    own skill and judgment; <br />
+                    (b) The Customer will, at its own cost, obtain delivery of the Goods 
+                    and the Financier will not be liable for any delay in that delivery; <br />
+                    (c) The Customer is responsible for having the Goods delivered and 
+                    installed and putting them in good working order; <br />
+                        (d) to the full extent permitted by law: <br>
+                   (i) all express and implied terms, conditions and warranties (other 
+                   than the ones set out in this Agreement) are excluded; <br>
+                   (ii) the Financier makes no representation or warranty as to the 
+                   condition, specifications, quality, fitness for purpose, suitability or 
+                   safety of the Goods or as to the taxation treatment or accounting 
+                   classification of any transaction evidenced by this Agreement; and 
+                   (iii) the Financier is not liable for any damage, injury or loss to any 
+                   person or property arising from the possession, operation or use of 
+                   the Goods; <br>
+                   (e) whether or not Schedule 2 of the <i>Competition and Consumer Act 
+                       2010 (Cth)</i> or any law to a similar effect applies, the Financier’s liability 
+                   for anything in relation to the Goods or their use, including damage or 
+                   economic loss to anyone, is limited to the maximum extent permitted 
+                   by law. In any event, the Financier’s liability is limited, at the option of 
+                   the Financier: <br>
+                   (i) in the case of Goods, to the replacement of the Goods (or the 
+                   supply of equivalent goods), the repair of the Goods, the payment of 
+                   the cost of replacing the Goods (or of acquiring equivalent goods) or 
+                   the payment of the cost of having the Goods repaired; or <br/>
+                   (ii) in the case of services, to the supplying of the services again or the 
+                   payment of the cost of having the services supplied again; <br/>
+                   (f) in no event will the Financier be liable for any indirect, 
+                   consequential or economic loss or damage arising under or in 
+                   connection with this Agreement; <br/>
+                   (g) the Financier has not made any representation, warranty or 
+                   undertaking in relation to the Goods. <br/></br>
+                 </p>
+             </td>
+         </tr>
+     </table>
+    </div>
+      <pagebreak />
+     <div class="pageBreaker">   
+      <table class="termsTable">
+         <tr>
+             <td>
+                 <p class="details-small">
+                    
+                   <b>4. Payment Obligations</b> <br/>
+                   4.1 The Customer must pay to the Financier the Payments at the times 
+                   referred to in the Schedule. The Customer’s obligations are absolute 
+                   and unconditional and (without limitation) continue even if the Goods 
+                   break down, are defective, damaged, lost, stolen or destroyed and the 
+                   Customer agrees not to exercise or seek to exercise any right or claim 
+                   to withhold payment or claim any deduction or set‐off.”. <br/>
+                   4.2 The Customer must make any payments under this Agreement by 
+                   way of direct debit or in such other manner as the Financier may from 
+                   time to time direct in writing. <br/>
+                   4.3 The Customer must pay or bear and indemnify the Financier 
+                   against all stamp duties, taxes (other than income tax), other duties, 
+                   fees and fiscal imposts payable on or in respect of this Agreement, any 
+                   amounts payable under this Agreement, the purchase or sale of the 
+                   Goods and any other transaction evidenced by this Agreement. Should 
+                   the amount actually payable to the relevant authority for any such 
+                   duties, fees or imposts differ from the amount (if any) disclosed in the 
+                   Schedule, the Customer must pay to the Financier the amount of the 
+                   deficiency. <br/>
+                   4.4 The Customer must pay or reimburse the Financier on demand for 
+                   the amount of any GST payable on any supply made by the Financier 
+                   under or in connection with this Agreement (including, without 
+                   limitation, any GST payable in connection with any Early Termination 
+                   Amount). The Customer must also pay or reimburse the Financier on 
+                   demand for the amount of any GST payable by the Financier on the 
+                   acquisition of the Goods (to the extent that the Financier is unable to 
+                   claim an input tax credit in respect of such GST). <br/>
+                   4.5 The Customer must pay the Financier any fees or charges that it 
+                   may reasonably request: <br/>
+                   (a) to recover any transaction fees or costs incurred by the Financier, 
+                   including, but not limited to, any costs incurred in seeking to recover 
+                   any payments owed by the Customer to the Financier; <br/>
+                   (b) for the provision of information; <br/>
+                   (c) for acting on any assignment or variation of this Agreement; <br/>
+                   (d) as a result of the Customer not paying the Financier in accordance 
+                   with clause 4.1 of the General Terms; <br/>
+                   (e) to recover security registration, account maintenance and update 
+                   fees. <br/>
+                   The Customer authorises the Financier to debit the Customer’s 
+                   account for these fees at the time charged (f) to recover any losses 
+                   arising from and any costs incurred in connection with any action 
+                   taken by us under or in relation to the PPSA, including any 
+                   registration, or any response to an amendment demand or a request 
+                   under section 275 of the PPSA, or any search of the PPS Register.” 
+                     4.6 Subject to clause 4.2 of the General Terms, all payments by the 
+                    Customer must be paid on demand or as provided for in the Schedule 
+                    in funds that are immediately available. If a date for payment: <br/>
+                    (a) is not a Business Day, the payment must be made on the preceding 
+                    Business Day; or <br/>
+                    (b) falls on a day not contained in a month, the payment must be 
+                    made on the last day of that month. <br/>
+                    4.7 Without limiting any other clause, the Customer must pay for all 
+                    registration fees, compulsory third party insurance and purchase 
+                    stamp duty in relation to the Goods and consents to the Financier 
+                    making payment of such amounts on behalf of the Customer. <br />
+                    4.8 The obligations of the Customer are absolute and unconditional 
+                    and(without limitation) continue even if the Goods break down, are 
+                    defective, damaged, lost, stolen or destroyed. The Customer agrees 
+                    not to exercise or seek to exercise any right or claim to withhold 
+                    payment or claim any deduction or set‐off.<br/> <br/>
+                    <b> 5. Use and Care Of The Goods </b><br />
+                    5.1 The Customer: <br />
+                    (a) must keep the Goods in the Customer’s personal control  <br />
+                    (b) ensure the Goods are used only in the Customer’s general business 
+                    operations and only for the purposes for which they were designed;<br /> 
+                    (c) ensure the Goods are used only by qualified personnel complying 
+                    at all times with all laws relating to the Goods and their use and with 
+                    all instructions and recommendations issued by their supplier or 
+                    manufacturer; <br />
+                    (d) acknowledges that if the law requires the Goods to be registered, 
+                    the Customer must attend to this and ensure they remain registered 
+                    at all times; <br />
+                    (e) must, at the cost of the Customer, ensure the Goods are 
+                    maintained by qualified personnel in accordance with all instructions 
+                    and recommendations issued by the supplier or manufacturer of the 
+                    Goods and, if necessary, repaired by qualified personnel, so the Goods 
+                    remain at all times in good working order and condition and subject to 
+                    any applicable warranty; <br />
+                    (f) must not represent or imply that the Financier will pay for any cost 
+                    in connection with repair or maintenance of the Goods; <br />
+                    (g) irrevocably authorise, and must use its best endeavours to have 
+                    others authorise, the Financier to enter upon any premises where it 
+                    reasonably believes the Goods are located to examine their state of 
+                    repair and operation or, if this Agreement has been terminated, to 
+                    repossess the Goods ; <br />
+                    (h) agree that any replacement of, alteration or addition to, including 
+                    any accessories, tools or other goods supplied with, installed in, or 
+                    attached to, the Goods during the Term will become the property of 
+                    the Financier and will be considered part of the Goods for the 
+                    purposes of this Agreement; <br />
+                    (i) must not sell, dispose of, encumber, part with possession of or 
+                    otherwise deal with the Goods or agree or attempt to do any of these 
+                    things without
+                 </p>
+             </td>
+             <td>
+                 <p class="details-small">                   
+                     the written consent of the Financier which may be 
+                    given or withheld in the discretion of the Financier; <br />
+                    (j) has no authority to pledge the credit of the Financier or create any 
+                    interest or right in, or over, the Goods (including any lien) and the 
+                    Customer must notify all third parties of this provision before they 
+                    work on the Goods; and <br />
+                    (k) must notify the Financier of the usual location of the Goods from 
+                    time to time and agree not to use them outside the State or Territory 
+                    in which they are first delivered to the Customer without the consent 
+                    of the Financier. <br />
+                    (l) must not permit any Goods: <br />
+                    (i) to become a fixture or an accession to; or <br />
+                    (ii) to be manufactured, processed, assembled or commingled with, 
+                    anything that the Financier does not own or is not subject to a 
+                    perfected PPS Security Interest in favour of the Financier, and even 
+                    then only if the priority of that PPS Security Interest is no less 
+                    favourable than the priority of the Financier’s PPS Security Interest in 
+                    those Goods.” <br /><br />
+
+                    <b>6. Insurance</b> <br />
+                    6.1 The Customer must, at the Customer’s own cost, effect and keep 
+                    current throughout the Term (and during any period in which it has 
+                     possession or control of the Goods) with a reputable and solvent 
+                    insurer: <br/>
+                    (a) insurance in respect of the Goods for their full insurable value 
+                    against all loss or damage of any kind; <br />
+                    (b) insurance for such amount of cover as is reasonably required by 
+                    the Financier (or if not specified by the Financier, for an amount a 
+                    prudent owner of the Goods would obtain cover and in any event not 
+                    less than $10,000,000.00) having regard to the nature and intended 
+                    use of the Goods, against any loss, damage or injury of any kind 
+                    caused to any person or property arising out of the Goods or their use, 
+                    under a policy covering all such risks, including claims by third parties; 
+                    and <br />
+                    (c) insurance against any other loss, damage, injury or risk which the 
+                    Financier may reasonably require from time to time. <br />
+                    6.2 The Customer must ensure that the interest of the Financier as 
+                    owner of the Goods is noted on all insurances. The Customer must 
+                    provide to the Financier on demand a certificate of currency in 
+                    relation to the insurances which is satisfactory to the Financier and 
+                    must ensure nothing is done or occurs which might prejudice or 
+                    invalidate any insurances. The Financier may in its discretion, at any 
+                    time, at the expense of the Customer, effect any insurances 
+                    contemplated by this Agreement in its own name and on its own 
+                    behalf including as an addition to the acquisition cost of the Goods. <br />
+                    6.3 The Financier is entitled to receive all amounts payable under any 
+                    relevant insurance of the Goods or by any other person in respect of 
+                    damage to, or loss of, the Goods and the Customer irrevocably 
+                    appoints the Financier and each of its authorised representatives, as 
+                    attorney for the Customer to recover or compromise in the respective 
+                    names of the Financier and the Customer any claim for loss or damage 
+                    under any of the insurances, and to give effectual rerentals and 
+                    receipts. The Customer also irrevocably authorises the Financier to 
+                    apply any insurance or other moneys received (less any GST) in 
+                    respect of any loss of, or damage to, the Goods towards any debt or 
+                    liability, present or future, actual or contingent, of the Customer to 
+                    the Financier or, in the discretion of the Financier, to repairing such 
+                    damage or replacing the Goods. <br />
+                    To the extent that those insurance moneys may be insufficient to 
+                    affect such repairs, the Customer must apply its own moneys for this 
+                    purpose. <br />
+                    6.4 The Customer must promptly notify the Financier if the Goods are 
+                    lost, stolen or damaged. <br /><br />
+                    <b>7. Indemnities & Releases</b> <br />
+                    7.1 The Customer indemnifies the Financier, its agents, contractors 
+                    and employees against all loss (including loss of bargain or profit), 
+                    damage, liabilities, costs, taxes, charges and expenses (including legal 
+                    expenses on a full indemnity basis) of whatever kind or nature, arising 
+                    directly or indirectly from, or in respect of: <br />
+                    (a) the Goods’ delivery, installation, use or change of use, location, 
+                    condition, operation, seizure, forfeiture or other confiscation, or on 
+                    account of the Goods’ loss, destruction, theft or damage however 
+                    caused including loss of value resulting from insufficient, inadequate 
+                    or faulty repair; <br />
+                    (b) any claim or demand made by any third party in relation to the 
+                    Goods including without limitation any claim for the infringement of a 
+                    patent, trademark, copyright or other intellectual property right; 
+                    (c) any damage to property or death of, or injury to, any person <br />
+                    suffered or sustained in connection with the Goods; <br />
+                    (d) any failure by the Customer to comply with its obligations under 
+                    this Agreement or arising from any untrue or misleading 
+                    representation, warranty or statement (including on tax matters) 
+                    made by the Customer in, or in connection with, this Agreement (and 
+                    which are not otherwise recoverable under this Agreement); <br />
+                    (e) any steps taken by the Financier to administer, exercise, enforce or 
+                    preserve any of its rights under this Agreement; <br />
+                    (f) any loss, reduction or disallowance of any depreciation allowance 
+                    or of any tax deduction or rebate of any income or other tax upon 
+                    which the Financier has relied in calculating the Payments; <br />
+                    (g) any new legislation or change in any legislation (including 
+                    government revenue raising legislation) or subordinate legislation, or 
+                    any change in any ruling, guideline, directive or requirement issued by 
+                 </p>
+             </td>
+         </tr>
+       </table>
+     </div>
+      <pagebreak />
+     <div class="pageBreaker">   
+      <table class="termsTable">
+         <tr>
+             <td>
+                 <p class="details-small">
+                   any government authority or any change in the interpretation of any 
+                    legislation, subordinate legislation, ruling, guideline, directive or 
+                    requirement that affects this Agreement, the transactions evidenced 
+                    by this Agreement, the obligations of the Financier under this 
+                    Agreement or the financial return of the Financier under this 
+                    Agreement; or (h) the early termination of this Agreement (to the 
+                    extent not otherwise recoverable under this Agreement). <br/>
+                    7.2 The Customer releases the Financier, to the full extent permitted 
+                    by law, from all claims and demands of every kind arising out of the 
+                    delivery, installation, location or use of the Goods, including any 
+                    liability which may arise in respect of any accident or damage to 
+                    property or death of, or injury to, the Customer or any other person of 
+                    whatever nature or kind or arising out of any steps taken by the 
+                    Financier to exercise, enforce or preserve its rights under this 
+                    Agreement. <br />
+                    7.3 The indemnities and releases set out in this Agreement continue in 
+                    full force and effect notwithstanding the termination (however 
+                    occurring) of this Agreement. <br/><br/>
+
+                    <b>8. Termination</b><br />
+                    8.1 The Financier may terminate this Agreement if any of the 
+                    following events occur: <br />
+                    (a) (failure to pay Payments) The Customer fails to pay a Payment 
+                    when due; or <br />
+                    (b) (repudiation) The Customer breaches any other essential provision 
+                    of this Agreement or otherwise repudiate its obligations under this 
+                    Agreement; or <br />
+                    (c) (non‐compliance with rectification notice) The Customer fails to 
+                    observe any other obligation under this Agreement; <br />
+                    (d) (misrepresentation) any representation, warranty or statement 
+                    made by the Customer in, or in connection with, this Agreement is 
+                    untrue or misleading (whether by omission or otherwise) in any 
+                    respect; <br />
+                    (e) (material change) There is, in the Financier’s reasonable opinion, a 
+                    material adverse change in the Customer’s business, assets or 
+                    financial condition or a material change in the ownership of the 
+                    Customer without the Financier’s prior consent; <br />
+                    (f) (insolvency) The Customer enters into, or any steps are taken to 
+                    have the Customer enter into, liquidation, provisional liquidation, 
+                    receivership, receivership and management, administration, 
+                    bankruptcy or any <br />
+                    arrangement, reconstruction or composition with the Customer’s 
+                    creditors or any of them, or a controller is appointed with respect to 
+                    any of the Customer’s assets or the Customer fails to pay its debts as 
+                    they fall due or the Customer otherwise become insolvent; <br />
+                    (g) (insurance) Any insurance required under this Agreement is 
+                    cancelled or any insurer disclaims liability, or the Financier receives 
+                    notice that any insurance will be cancelled or materially adversely 
+                    modified; <br />
+                    (h) (cross default) The Customer fails, or a related body corporate of 
+                    the Customer fails, to comply with any of its obligations under any 
+                    other agreement or arrangement with the Financier or any related 
+                    body corporate of the Financier, or under any guarantee, indemnity or 
+                    undertaking given to the Financier or any related body corporate of 
+                    the Financier; or <br />
+                    (i) (jeopardy) The Financier determines in its reasonable opinion that 
+                    there is a serious risk of loss or damage to the Goods for any reason. <br />
+                    8.2 Without limiting the essentiality of any other term of this 
+                    Agreement, the obligations to pay the Payments on time, to maintain 
+                    and insure the Goods and to keep the Goods under the personal 
+                    control of the Customer free of any third party interest are essential 
+                    terms of this Agreement. The Customer will be taken to have 
+                    repudiated its obligations under this Agreement if it does not comply 
+                    with any of the essential terms of this Agreement. <br />
+                    8.3 If an event referred to in clause 8.1 of the General Terms occurs 
+                    entitling the Financier to terminate this Agreement, then the 
+                    occurrence of that event shall: <br />
+                    (a) constitute an event of default under; and <br />
+                    (b) be taken to be a repudiation of the Customer’s obligations under, 
+                    any other agreement or arrangement with the Financier or any 
+                    related body corporate of the Financier, thereby entitling the 
+                       Financier to terminate that leasing, renting, term purchase, chattel 
+                    mortgage or other agree mentor arrangement. <br /><br />
+
+                    <b>9. Title To The Goods</b> <br />
+                    9.1 The Customer: <br />
+                    (a) acknowledges that the Goods remain the property of the Financier 
+                    and its PPS Security Interest in and at all times and that the 
+                    Customer’s rights under this Agreement are personal and that the 
+                    Customer has no authority to deal with, and agrees not to purport to 
+                    deal with, or share or transfer possession of, the Goods and PPS 
+                    Security Interest. The Financier may at any time affix identifying plates 
+                    or marks on the Goods and the Customer agrees to provide the 
+                    Financier with access to the Goods to enable this to be done; <br />
+                    (b) must do everything necessary to protect the title of the Financier 
+                    to the Goods, including assuring third parties of our ownership of the 
+                    Goods. The Customer must refrain from doing anything which could 
+                    give rise to any claim adverse to the Financier’s ownership of, and PPS 
+                    Security Interest in the Goods. The Customer must notify the Financier 
+                    immediately a third party makes any claim; <br />
+                   
+                    (c) if the Financier becomes entitled to repossess the Goods, 
+                    irrevocably authorises the Financier to enter upon any land or 
+                    premises where the Goods are located and to repossess the Goods.<br /> 
+                   
+                    
+                 </p>
+             </td>
+             <td>
+                 <p class="details-small">
+                    
+                    (d) The Customer declares that it has provided the Financier with the 
+                    serial numbers that it would require to make an effective registration 
+                    (with the priority required by the Financier) against all Serial 
+                    Numbered Property in accordance with the PPSA and the PPS 
+                    Regulations. The Customer must notify the Financier immediately in 
+                    writing if a new or different serial number is allocated to any Serial 
+                    Numbered Property. The Customer must not change or remove the 
+                    serial number of any Serial Numbered Property after it has disclosed 
+                    the number to the Financier. <br /><br />
+
+                    <b>10. Ancillary matters</b> <br />
+                    10.1 If any Payments include amounts payable for the maintenance of 
+                    the Goods or for the provision of other services (or for recovery by the 
+                    Financier of funding of maintenance and other services), whether or 
+                    not these amounts are separately identified in the Schedule, the 
+                    Customer agrees and acknowledges that: <br />
+                    (a) the charges have been included at the request of the Customer; <br />
+                    (b) the Customer has directed the Financier to pay those charges to 
+                    the person providing the services (“Service Provider”) or to retain 
+                    those amounts if the Financier has already paid the relevant 
+                    maintenance or service charges to the Service Provider; <br />
+                    (c) the Financier is not responsible for the maintenance of the Goods 
+                    or the provision of any services; <br />
+                    (d) the obligation of the Customer to: <br />
+                    (i) pay the Payments and other amounts payable under this 
+                    Agreement free of any deduction, withholding or set‐off on any 
+                    account; <br />
+                    (ii) perform its other obligations under this Agreement and, <br />
+                    (iii) is absolute and unconditional and, without limitation, will not be 
+                    affected by: <br />
+                    A. any failure of the Service Provider to perform the services;<br /> 
+                    B. the insolvency of the Service Provider; or <br />
+                    C. the termination of any agreement or arrangement for the provision 
+                    of any services. <br />
+                    <br />
+                    <b>11. Where The Goods Include Software</b> <br />
+                    11.1 If the Goods include software or the licensing of any software is 
+                    funded by the Financier under or in connection with this Agreement: <br />
+                    (a) where the Financier has been granted a licence to use the 
+                    software: <br />
+                    (i) to the extent permitted by the relevant licence, it is acknowledged 
+                    that the Customer will be entitled to the benefit of the licence during 
+                    the Term (and any applicable extended term or holding over period); 
+                    and <br />
+                    (ii) upon the expiration or earlier termination of this Agreement, if 
+                    title does not vest in the Customer pursuant to the terms of this 
+                    Agreement, the Customer will do all things reasonably required by the 
+                    Financier to ensure that it obtains the benefit of the licence or the 
+                     grant of an equivalent licence to enable the continued use of the 
+                   software; <br />
+                   (b) where the Financier has been granted a licence to use the software 
+                   the Customer may enjoy the benefit of the licence during the Term 
+                   (and any applicable extended term or holding over period) to the 
+                   extent that the licence permits; <br />
+                   (c) the Financier makes no representation about the software and the 
+                   Customer cannot refuse to pay the Payments or make any other 
+                   claims should the software be defective or unsuitable; <br />
+                   (d) the Financier makes no representation about the terms of any 
+                   licence relating to the software and the Customer must rely on its own 
+                   enquiries in this regard; and <br />
+                   (e) where the Customer is required to return the Goods to the 
+                   Financier at the expiration or earlier termination of this Agreement, 
+                   the Customer must also return the software to the Financier and 
+                   assigns to the Financier all rights it may have under any licence to use 
+                   the software. <br /><br />
+                   <b>12. Loss or Damage</b>  <br />
+                   12.1 If the Goods or any item or items of the Goods (the “Affected 
+                   Goods”) are lost, stolen or damaged beyond economic repair, the 
+                   Customer must immediately notify the Financier and within five (5) 
+                   Business Days of notification the Customer must either: <br />
+                   (a) replace the Affected Goods at the cost of the Customer with goods 
+                   approved by the Financier being at least equivalent in type, 
+                   functionality and value; or <br />
+                   (b) pay to the Financier by way of indemnity: <br />
+                   (i) the amount which the Financier notifies the Customer is the 
+                   amount of the Payments (if any) then due and payable by the 
+                   Customer to the Financier in respect of the Affected Goods; plus <br />
+                   (ii) the Early Termination Amount referable to the Affected Goods, 
+                   calculated as at the date of the Financier’s notice under clause 12.1(b)<br /> 
+                   (i) of the General Terms; plus <br />
+                   (iii) where this Agreement is a Lease agreement, the amount which 
+                   the Financier notifies the Customer is, as at the date of the Financier’s 
+                   notice under clause 12.1(b)(i) of the General Terms, the gross residual 
+                   value referable to the Affected Goods (being the residual value 
+                   assumed by the Financier in calculating the Payments, adjusted in 
+                   accordance with the Financier’s usual procedures to include its 
+                   required investment return on the relevant residual value up to that 
+                   date). The Customer must pay the aggregate of the amounts referred 
+                   to in this clause <br />
+                   12.1(b) within two (2) Business Days of the date of the Financier’s 
+                   notice under clause 12.1(b). 
+
+                 </p>
+             </td>
+         </tr>
+    </table>
+    </div>
+      <pagebreak />
+    <div class="pageBreaker">   
+      <table class="termsTable">
+         <tr>
+             <td>
+                 <p class="details-small">
+                  
+                   
+                   12.2 If the Customer replaces the Affected Goods in accordance with 
+                   clause <br />
+                   12.1(a) of the General Terms, then the Customer must ensure that the 
+                   financier obtains clear title to the replacement goods and ensure that 
+                   the priority of the Financier’s PPS Security Interest is no less 
+                   favourable that the priority of its PPS Security Interest in the Affected 
+                   Goods.”. The replacement goods shall be taken to be the Goods (or 
+                   the relevant item or items of the Goods as the case may be) for the 
+                   purposes of this Agreement. <br />
+                   12.3 If clause 12.1(b) of the General Terms applies, then, upon our 
+                   receipt of the amount payable by the Customer under clause 12.1(b) 
+                   in respect of the Affected Goods: <br />
+                   (a) this Agreement will terminate in relation to the Affected Goods; <br />
+                   (b) this Agreement will continue with respect to any remaining item or 
+                   items of the Goods, with new Payments applying as from the next due 
+                   date for a Payment, being the Payments otherwise payable less the 
+                   proportion of the Payments which the Financier calculates was 
+                   payable in respect of the Affected Goods; and <br />
+                   (c) the Financier will make a pro rata adjustment (where applicable) to 
+                   any Payments already paid in respect of the Affected Goods for the 
+                   period from receipt of the payment referred to in clause 12.1(b) to the 
+                   next date on which a Payment falls due. <br />
+                   12.4 If the Financier receives any insurance proceeds in respect of the 
+                   Affected Goods: <br />
+                   (a) where the Customer has replaced the Goods in accordance with 
+                   clause
+                    12.1(a) of the General Terms, such proceeds (net of GST) will be 
+                    credited to the Customer; and <br />
+                    (b) where clause 12.1(b) of the General Terms applies, such proceeds 
+                    (net of GST) will be credited to the Customer to the extent of the 
+                    payment received from the Customer under clause 12.1(b)(ii) and 
+                    clause 12.1(b)(iii) of the General Terms. <br /><br />
+                    <b>13. Occupational Health and Safety</b> <br />
+                    13.1 (Acknowledgements) The Customer acknowledges that during 
+                    the term of this Agreement the Customer will have sole possession 
+                    and control of the Goods. <br />
+                    13.2 (Undertakings) For the purposes of enabling the Financier to 
+                    comply with its obligations under any applicable occupational health 
+                    and safety law (“Occupational Health & Safety Law”), the Customer 
+                    undertakes: <br />
+                    (a) before taking possession, using or dealing with the Goods, to: <br />
+                    (i) obtain all available information concerning health and safety about 
+                    the Goods from the designer or manufacturer of such Goods, <br />
+                    including, without limitation, (where applicable) obtaining all records 
+                    kept by any previous owner of the Goods and obtaining any <br />
+                    information, data or certificates provided or kept in accordance with 
+                    the Occupational Health & Safety Law; and <br />
+                    (ii) ensure that the Goods are inspected and tested in accordance with 
+                    the requirements set out in the Occupational Health & Safety Law and 
+                    that the Customer obtains written notification of any faults detected 
+                    in respect of the Goods and (if applicable) receive written notification 
+                    that the Goods are not to be used until the faults are rectified;<br /> 
+                    (b) before the date upon which any Goods are returned or 
+                    repossessed, to: <br />
+                    (i) do all things necessary to ascertain whether or not the Goods are 
+                    suitable only for use as scrap or for spare parts; and <br />
+                    (ii) provide to the Financier upon demand any information required to 
+                    be obtained Or collected by the Customer pursuant to this clause 
+                    13.2. <br />
+                    13.3 (Indemnity) The Customer indemnifies the Financier against any 
+                    loss or liability arising from the Customer’s failure to comply with its 
+                    obligations under this clause 13.2. <br /><br />
+                    <b>14. General Provisions</b> <br />
+                    14.1 Assignment The Financier may assign, transfer or otherwise deal 
+                    with its interest in the Goods (subject only to the rights of the 
+                    Customer under this Agreement) or all or any part of the Financier’s 
+                    rights or obligations under this Agreement without the consent of the 
+                    Customer. The Customer must not assign, transfer or otherwise deal 
+                    with any of its rights under this Agreement without the Financier’s 
+                    prior written consent. <br />
+                    14.2 Rights Termination of this Agreement by the Financier will be 
+                    without prejudice to its rights, powers and remedies with respect to 
+                    any antecedent breach by the Customer under this Agreement. All 
+                    rights of the Financier under this Agreement are in addition to its 
+                    rights under the general law. <br />
+                    14.3 Evidence A certificate signed by any officer or manager of the 
+                    Financier containing statements as to an amount due by the Customer 
+                    under this Agreement, the occurrence of any event or the existence of 
+                    any fact, will be sufficient evidence of the amount, event or fact, 
+                    unless they are manifestly untrue. Customer agrees that in enforcing 
+                    any PPS Security Interest provided for by this Agreement, the 
+                    Financier has recourse to and may satisfy any of the Customer’s 
+                    liability out of the Trust assets. <br />
+                    14.4 Product Information The Customer requests the Financier to 
+                    provide it from time to time with information on its other products or 
+                    services. <br />
+                 </p>
+             </td>
+             <td>
+                 <p class="details-small">
+                   
+                   
+                  
+                    14.5 Financial Information The Customer must provide on demand the 
+                    Financier with any financial or other information relating to its 
+                    financial condition, business, assets and affairs. <br />
+                    14.6 Notices Any notice or demand to be given by the Financier under 
+                    this Agreement may be served on the Customer by being left at or 
+                    sent by prepaid mail or transmitted by facsimile to its address set out 
+                    in the Schedule or otherwise as notified in writing to the Financier. 
+                    The notice or demand will be treated as having been given and 
+                    received: <br />
+                    (a) if delivered, on the day of delivery; <br />
+                     (b) if sent by pre‐paid mail, on the next delivery day; and <br />
+                    (c) if transmitted by facsimile, on the day of transmission if a Business 
+                    Day, or otherwise on the next Business Day. <br />
+                    14.7 Overdue Payments The Customer must pay to the Financier on 
+                    demand interest calculated by reference to the lesser of it’s then 
+                    current overdue interest rate for similar transactions and the 
+                    maximum rate allowed by law on any amounts payable under this 
+                    Agreement which are overdue on a daily basis for the respective 
+                    periods from the date the amounts became due to the date of 
+                    payment and such amount shall compound monthly. If a liability 
+                    under this Agreement becomes merged in a judgment order, the 
+                    Customer, as an independent obligation, must pay interest on the 
+                    amount of that liability from the date the liability becomes payable 
+                    both before and after the judgment order, or winding up until it is 
+                    paid, also at that rate. <br />
+                    14.8 No Waiver No waiver by the Financier in relation to any breach of 
+                    this Agreement by the Customer will be deemed a waiver of any 
+                    continuing or recurring breach. <br />
+                    14.9 Commission The Customer consents to the Financier paying a 
+                    commission to any third party in relation to this Agreement. The 
+                    Customer acknowledges that any third party which submitted this 
+                    Agreement to the Financier is not and was not the Financier’s agent 
+                    for any purpose and is the Customer’s agent. Commission may be 
+                    included in the cost of the Goods. <br />
+                    14.10 Authority To Complete Schedule The Customer authorises the 
+                    Financier to complete and amend any blank, incomplete or inaccurate 
+                    particular appearing in the Schedule and to otherwise complete all 
+                    necessary formalities to render this Agreement complete and 
+                    enforceable. <br />
+                    14.11 Financier May Act On Omissions If the Customer neglects to pay 
+                    any amount or take any other action required by this Agreement, the 
+                    Financier may pay that amount or take that other action and recover 
+                    such costs from the Customer. The Financier may enter and remain 
+                    upon any land or premises for this purpose. <br />
+                    14.12 Set‐Off The Customer irrevocably authorises the Financier to 
+                    set‐off without notice any amount held by the Financier on any 
+                    account of the Customer against any amount owing by the Customer 
+                    to the Financier or any related body corporate of the Financier. The 
+                    Customer must not exercise any right of set‐off on any account.<br /> 
+                    14.13 Trust Provisions If the Customer enters into this Agreement as a 
+                    trustee, the Customer acknowledges and agrees that it enters into this 
+                    Agreement for a proper purpose of the trust, with full power and 
+                    authority under the trust  to enter into this Agreement and that it has 
+                    the right to be indemnified fully out of the trust property before the 
+                    beneficiaries of the trust for all liabilities incurred by the Customer 
+                    under this Agreement. The Customer will be liable in its own capacity 
+                    for all of the obligations under this Agreement as well as in its capacity 
+                    as trustee of any trust. <br />
+                    14.14 Governing Law This Agreement is governed by the law of the 
+                    State or Territory referred to in the Schedule or if none is referred to 
+                    in the Schedule, then the laws of New South Wales. 
+                    14.15 Sever Invalid Provisions If any provision of this Agreement is 
+                    found to be invalid or unenforceable in any jurisdiction, it will have no 
+                    force or effect in that jurisdiction and will be severed from this 
+                    Agreement in that jurisdiction without affecting the remaining 
+                    provisions and without affecting the operation of this Agreement in 
+                    any other jurisdiction. <br />
+                    14.16 Conditions Of Consent The Financier may or may not grant any 
+                    consent or approval under this Agreement in its absolute discretion 
+                    and upon such conditions as it may determine. 
+                    14.17 Agency The Financier may enter into this Agreement as agent 
+                    for another person (whether disclosed or not). <br />
+                    14.18 Authority To Sign The person or persons who have executed the 
+                    Schedule warrant that they have the authority and delegated power 
+                    to execute this Agreement on behalf of the Customer. <br />
+                    14.19 PPSA: <br />
+                    (a) the Customer acknowledges and agrees that where the Goods 
+                    include serial numbered property, it has provided the Financier with 
+                    the serial numbers that the Financier would require to make an 
+                    effective registration (with the priority required by the Financier) 
+                    against all such serial numbered property in accordance with the PPSA
+                      and the PPS Regulations. The Customer must notify the Financier 
+                        immediately in writing if a new or different serial number is allocated 
+                        to any such serial numbered property. The Customer must not change 
+                        or remove the serial number of any serial numbered property after it 
+                        has disclosed the relevant number to the Financier; <br />
+                 </p>
+             </td>
+         </tr>
+    </table>
+    </div>
+             <pagebreak />
+    <div class="pageBreaker">   
+      <table class="termsTable">
+         <tr>
+             <td>
+                 <p class="details-small">
+                      
+                        (b) the Customer acknowledges and agrees that the Financier may 
+                        register one or more financing statements in relation to any PPS 
+                        Security Interest provided for by this Agreement or any Schedule. If 
+                        permitted by the PPSA, the Customer waives its right under section 
+                        157 of the PPSA to receive notice of any verification statement 
+                        relating to the registration of any such financing statement or any 
+                        related financing change statement; <br />
+                        (c) the Financier and the Customer agree with each other not to 
+                        disclose information of the kind mentioned in section 275(1) of the 
+                        PPSA, except in circumstances required by sections 275(7)(b) to (e) of 
+                        the PPSA. The Customer agrees that it will only authorise the 
+                        disclosure of information under section 275(7)(c) or request 
+                        information under section 275(7)(d) if we approve. Nothing in this 
+                        clause 14.19(c) will prevent any disclosure by the Financier if it 
+                        believes it is necessary to comply with its other obligations under the 
+                        PPSA; <br />
+                        (d) to the extent that it is not inconsistent with clause 14.19(c) 
+                        constituting a “confidentiality agreement” for the purposes of section 
+                        275(6)(a) of the PPSA, you agree that we may disclose information of 
+                        the kind mentioned in section 275(1) of the PPSA to the extent that 
+                        we are not doing so in response to a request made by an “interested 
+                        person” (as defined in section 275(9) of the PPSA) pursuant to section 
+                        275(1) of the PPSA; <br />
+                        (e) to the extent that Chapter 4 of the PPSA would otherwise apply to 
+                        an enforcement by the Financier of any PPS Security Interest provided 
+                        for by this Agreement or any Schedule, the Financier and the 
+                        Customer agree with each other that the following provisions of the 
+                        PPSA do not apply: <br />
+                        (i) to the extent that section 115(1) of the PPSA allows them to be 
+                        excluded: sections 95, 118, 121(4), 125, 130, 132(3)(d), 132(4), 135, 
+                        138B(4), 142 and 143; and <br />
+                        (ii) in addition, to the extent that section 115(7) of the PPSA allows 
+                        them to be excluded: sections 127, 129(2) and (3), 132, 134(2), 135, 
+                        136(3), 136(4), 136(5) and 137; and (f) if section 115(1) of the PPSA 
+                        does not allow section 125 of the PPSA to be excluded, the Customer 
+                        agrees that at any time after any PPS Security Interest provided for by 
+                        this Agreement or any Schedule has become enforceable, the <br />
+                        Financier may delay disposing of, or taking action to retain, the whole 
+                        or part of the collateral to the extent permitted by law. <br />
+                          <br />
+                          <br />
+                          <b class='leasing-blue'>ADDITIONAL RENTAL TERMS </b><br /><br />
+                          <b> 15. Interim Period</b> <br />
+                        15.1 In addition to the Customer’s payment obligations under clause 4 
+                        of the General Terms, if the Commencement Date occurs after the 
+                        Acceptance Date, then the Customer also agrees to rent the Goods 
+                        from the Financier during the period from the Acceptance Date to the 
+                        Commencement Date (the “Interim Period”) and to pay to the <br />
+                        Financier on demand an additional amount equal to the Payment for 
+                        the first payment interval multiplied by the number of days in the 
+                        Interim Period and divided by the number of days in that payment 
+                        interval. Payment of this additional amount is in addition to all other 
+                        obligations to pay the Payments throughout the Term. <br /><br />
+                        <b>16. Repossession Of Goods</b> <br />
+                        16.1 In addition to the Financier’s right to terminate, the Financier 
+                        may also repossess the Goods if any of the events under clause 8.1 of 
+                        the General Terms occur. If no prior notice of termination is given 
+                        repossession of the Goods under this clause will itself terminate this 
+                        Agreement. <br /><br />
+                        <b>17. Procedure On Termination</b> <br />
+                        17.1 If the Financier terminates this Agreement under clause 8.1 of 
+                        the General Terms, the Customer must: <br />
+                        (a) immediately on receiving notice of termination, deliver up the 
+                        Goods in good working order and condition to the Financier at a place 
+                        directed by the Financier together with any duly executed transfer of 
+                        certificate of registration and such records regarding the Goods as 
+                         required by the Financier, failing which the Financier may repossess 
+                        the Goods; <br />
+                        (b) pay the Financier on demand all amounts which fell due prior to 
+                        termination and which remain outstanding; <br />
+                        (c) pay the Financier on demand, by way of indemnity for its loss 
+                        arising from the termination, the Early Termination Amount; 
+                        (d) pay the Financier on demand the Financier’s Costs of 
+                        Repossession. <br /><br /><br />
+                        <b>18. Procedure On Expiry</b> <br />
+                        18.1 On expiry of the Term (or on expiry of any Extended Term or 
+                        Holding Over Period, as applicable, under clauses 18.3 or 18.4), the 
+                        Customer must:  <br />
+                        (a) at its cost, immediately deliver up the Goods in the condition and 
+                        manner required under clause 18.1(a) to the Financier at a place 
+                        directed by the Financier together with a duly executed transfer or 
+                        certificate of registration (where applicable) and such records 
+                        regarding the Goods as are required by the Financier, and if the 
+                        Customer does not do so, the Financier may repossess the Goods; <br />
+                        (b) pay the Financier on demand all other amounts then due and 
+                        payable under this Agreement; <br />
+                 </p>
+             </td>
+             <td>
+                 <p class="details-small">
+                       
+                        (c) pay the Financier on demand, by way of liquidated damages, an 
+                        amount equal to the average daily Payment payable by the Customer 
+                        during the Term for each day the Customer fails to deliver up the 
+                        Goods in accordance with clause 18.1(a) or until the Financier retakes 
+                        possession of the Goods; <br />
+                        (d) pay the Financier on demand its Costs of Repossession. <br />
+                        18.2 The Customer undertakes to give the Financier no more than 180 
+                        days and no less than 90 days prior written notice of its intention to 
+                        terminate the Lease <br />
+                        of the Goods at the end of the Term and any extension of the Term. <br />
+                        18.3 If the Customer fails to give the notice required under clause 18.2 
+                        or if the Customer gives that notice and it does not return the Goods 
+                        to the Financier in the condition required under clause 18.1(a) at the 
+                        expiration of the Term and the Financier has not terminated this 
+                        Agreement, then the term of this Agreement will be automatically 
+                        extended for a further period of 180 days (“Extended Term”) during 
+                        which period the Lease of the Goods will continue at a Lease 
+                        equivalent to the periodic Lease payable by the Customer 
+                        immediately before the expiry of the Term and otherwise on the same 
+                        terms and conditions as set out in this Agreement. <br />
+                        18.4 If the Term is extended under clause 18.3 and the Customer fails 
+                        to return the Goods at the expiration of the Extended Term in the 
+                        manner required under clause 18.1(a), then the Term of this 
+                        Agreement shall be extended from month to month (the “Holding 
+                        Over Period”) during which period the Lease of the Goods will 
+                        continue at the same periodic Lease and otherwise on the same 
+                        terms and conditions as set out in this Agreement. <br />
+                        18.5 The Holding Over Period may be terminated by the Financier 
+                        demanding possession of the Goods at any time or by the Customer 
+                        giving the Financier one month’s notice and delivering the Goods to 
+                        the Financier in the manner required under clause 18.1(a). <br />
+                        18.6 Payment of additional Lease instalments by the Customer under 
+                        clauses 18.3 and 18.4 will not affect the Financier’s ownership of the 
+                        Goods or any of its rights under this Agreement. <br />
+                            <br />        
+                            <b class="leasing-blue">GUARANTEE AND INDEMNITY </b><br/>
+                        19.1 The Guarantor acknowledges and agrees that the Financier is 
+                        entering into this Agreement in reliance on this Guarantee and 
+                        Indemnity from the Guarantor. <br />
+                        19.2 In consideration of the Financier agreeing to enter into this 
+                        Agreement with the Customer the Guarantor guarantees that the 
+                        Customer will pay the Financier all amounts payable by the Customer 
+                        under this Agreement from time to time (which includes without 
+                        limitation each Schedule accepted by the Financier). This Guarantee 
+                        and Indemnity continues until all these amounts have been paid in 
+                        full. Without limiting any other provision of this Agreement, the 
+                        Guarantor acknowledges and agrees that this Guarantee and 
+                        Indemnity extends to each Schedule accepted by the Financier and all 
+                        obligations and liabilities of the Customer arising in connection with 
+                        those Schedules (Regardless of whether or not the Guarantor was 
+                        aware of such Schedules or otherwise). <br />
+                        19.3 If the Financier asks, the Guarantor must pay the Financier any 
+                        amount which the Customer does not pay the Customer when it is 
+                        due under this Agreement. The Financier does not need to first ask 
+                        the Customer to pay the Financier. <br />
+                        19.4 The Guarantor indemnifies the Financier against, and the 
+                        Guarantor must pay the Financier for, all losses or costs the Financier 
+                        suffers or incurs if: <br />
+                        (a) the Customer does not, is not obliged to, or is unable to, pay the 
+                        Financier in accordance with this Agreement; or <br />
+                        (b) the Guarantor is not obliged to pay the Financier an amount under 
+                        clauses 19.2 and 19.3; or <br />
+                        (c) the Financier is obliged, or the Financier agrees to pay an amount 
+                        to a trustee in bankruptcy or liquidator in connection with a payment 
+                        by the Guarantor or the Customer. <br />
+                        19.5 The indemnity in clause 19.4 is a continuing obligation, separate 
+                        and independent from the Guarantor’s other obligations under this 
+                        Guarantee and Indemnity. It continues after those other obligations 
+                        end. <br />
+                        19.6 The Guarantor must pay the Financier for <br />
+                        (a) the Financier’s reasonable costs in arranging, administering 
+                        (including enforcing or taking any other action in connection with our 
+                        rights) and terminating this Guarantee and Indemnity; and 
+                        (b) all stamp and other duties, fees, taxes and charges payable in 
+                        connection with this Guarantee and Indemnity and any transaction 
+                        (such as a payment or receipt) under it and any interest, penalties, 
+                        fines and expenses in connection with them. <br />
+                        19.7 The indemnity in clause 19.6 for taxes includes any amount which 
+                        the Financier is obliged to pay to another person to enable that other 
+                        person to pay a tax. <br />
+                        19.8 The Guarantor must pay interest calculated on daily balances on 
+                        any amount the Guarantor owes under clauses 19.2, 19.3, 19.4 and 
+                        19.5 from the date the Financier asks the Guarantor for the amount 
+                        until the Guarantor pays it. This interest is to be calculated and is 
+                        payable in accordance with clause 14.7.  <br />
+                        19.9 The Guarantor acknowledges that a trustee in bankruptcy, 
+                        liquidator or similar person may ask the Financier to refund a payment 
+                        that the Financier has received in connection with this Agreement or 
+                        this Guarantee and Indemnity. To the extent the Financier is obliged 
+                        to, or the Financier agrees 
+                     
+                 </p>
+             </td>
+         </tr>
+      </table>
+    </div>
+        <pagebreak />
+     <div class="pageBreaker">   
+      <table class="termsTable">
+         <tr>
+             <td>
+                 <p class="details-small">
+                     
+                       to, make a refund, the Financier may treat 
+                        the original payment as if it had not been made. The Financier is then 
+                        entitled to its rights against the Guarantor under this Guarantee and 
+                        Indemnity as if the payment had never been made.  <br />
+                        19.10 Rights given to the Financier under the Guarantee and 
+                        Indemnity and the Guarantor’s liabilities under it are not affected by 
+                        any act or omission by the Financier or by anything else that might 
+                        otherwise affect them under law relating to guarantees and 
+                        indemnities including that the Guarantor may not be aware of the 
+                        terms of this Agreement. <br />
+                        19.11The Guarantee and Indemnity does not merge with or adversely 
+                        affect:
+                     
+                           (a) any other guarantee or indemnity, or mortgage, charge or other 
+                    security, or right or remedy to which the Financier is entitled at any 
+                    time; or<br />
+                    (b) a judgment or order which the Financier obtains against the 
+                    Guarantor in respect of an amount payable under the Guarantee and 
+                    Indemnity in respect of this Agreement. The Financier can still exercise 
+                    its rights under the Guarantee and Indemnity as well as under the 
+                    judgment order, other guarantee or security. <br />
+                    19.12 As long as an amount payable under the Agreement remains 
+                    unpaid, the Guarantor may not, without the Financier’s prior written 
+                    consent: <br />
+                    (a) reduce the Guarantor’s liability under the Guarantee and 
+                    Indemnity by claiming that the Guarantor or the Customer or any 
+                    other person has a right of setͲoff or counterclaim against the 
+                    Financier; or <br />
+                    (b) exercise any legal rights to claim to be entitled to the benefit of 
+                    another guarantee or mortgage, charge or other security given in 
+                    connection with an amount payable under this Agreement or an 
+                    amount payable under this Guarantee and Indemnity; or <br />
+                    (c) claim an amount from the Customer or another Guarantor of the 
+                    Customer’s obligations under a right of indemnity; or <br />
+                    (d) claim an amount in the insolvency of the Customer or another 
+                    Guarantor of the Customer’s obligations under this Agreement 
+                    (including a person who has signed this Guarantee and Indemnity). <br />
+                    19.13 The Guarantor acknowledges that the Guarantor is responsible 
+                    for making itself aware of the financial position of the Customer and 
+                    any other person who guarantees the Customer’s obligations under 
+                    the Guarantee and Indemnity. 19.14 The Guarantor declares that it 
+                    does not enter into the
+                 </p>
+             </td>        
+             <td>
+                 <p class="details-small">
+                      Agreement as a trustee, unless the Guarantor 
+                    has provided the Financier with prior written notice in respect of such 
+                    trust capacity. If the Guarantor is a trustee, clause 14.13 applies 
+                    equally to the Guarantor and each reference to “Customer” in those 
+                    clauses is taken to be a reference to the Guarantor. <br />
+                    19.15 The Guarantor must pay any amount payable to the Financier 
+                    under this Guarantee and Indemnity on the date the Financier so 
+                    specifies and otherwise on demand by the Financier. <br />
+                    19.16 The Guarantor must promptly do anything the Financier asks 
+                    (such as obtaining consents, signing and producing documents and 
+                    getting documents completed and signed) to bind itself under the 
+                    Guarantee and Indemnity. <br />
+                  
+                    19.17 The Financier may claim against this Guarantor under this 
+                    Guarantee and Indemnity before the Financier enforces any of its 
+                    rights: <br />
+                    (a) against the Customer or any other person; or <br />
+                    (b) under another document such as a guarantee or mortgage, charge 
+                    or other security. <br />
+                    19.18 The Financier may use any money paid by or for the Customer 
+                    towards meeting any part the Financier chooses of the amounts the 
+                    Customer owes the Financier (including meeting any amount the 
+                    Guarantor does not guarantee). The Financier may use any money 
+                    paid by the Guarantor under this Guarantee and Indemnity towards 
+                    paying any part the Financier chooses of the amounts the Guarantor 
+                    owes the Financier under this Guarantee and Indemnity. <br />
+                    19.19 The Telecommunications equipment being supplied to you is 
+                    owned by Nexgen Equipment Rentals. Nexgen Equipment Rentals is 
+                    an equipment financier only. It does not supply telecommunications 
+                    services. The payments you must make to Nexgen Equipment Rentals 
+                    under your agreement with Nexgen Equipment Rentals do not include 
+                    payments for any telecommunications services. If you are Renting or 
+                    Leasing the Telecommunications equipment as part of an 
+                    arrangement with a telecommunications equipment as part of an 
+                    arrangement with a telecommunications services provider, that 
+                    provider is responsible for any telecommunications services. You must 
+                    continue to make any payments due to Nexgen Equipment Rentals 
+                    even if the telecommunications services are not provided or are 
+                    defective.   
+                 </p>
+         </tr>
+      </table>
+                    </div>
+    
+</div>

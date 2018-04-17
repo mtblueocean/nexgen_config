@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://www.aapt.com.au/FrontierLink/xsd"
+            xmlns="http://www.w3.org/2001/XMLSchema"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:wsg="http://www.aapt.com.au/FrontierLink/xsd"
+            elementFormDefault="qualified">
+
+    <xsd:include schemaLocation="elements/DeliveryInstructions.xsd" />
+    <xsd:include schemaLocation="NBNDeliveryContact.xsd" />
+    <xsd:include schemaLocation="SiteAddress.xsd" />
+    
+    <xsd:complexType name="NBNDelivery">
+        <xsd:sequence>
+	        <xsd:element name="contact" type="wsg:NBNDeliveryContact" />
+	        <xsd:element name="location" type="wsg:SiteAddress" />
+	        <xsd:element name="authorityToLeave" type="xsd:boolean" />
+	        <xsd:element name="deliveryInstructions" type="wsg:DeliveryInstructions" />
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,106 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>Products</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="index.html">Home</a>
+            </li>
+            <li>
+                <a ui-sref="products">Categories</a>
+            </li>
+            <li class="active">
+                <strong>New Category</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-2">
+
+    </div>
+</div>
+    <flash-message></flash-message>
+
+<div class="wrapper wrapper-content animated fadeInRight">
+
+<div class="row">
+<div class="col-lg-12">
+<div class="ibox float-e-margins">
+<div class="ibox-title">
+    <h5>Add a New Category</h5>
+</div>
+<div class="ibox-content">
+    <form method="get" class="form-horizontal" id="cat_form">
+
+
+        <div class="form-group"><label class="col-sm-2 control-label">Category Name</label>
+
+            <div class="col-sm-3">
+                <input type="text" class="form-control" ng-model="category.name" data-required="true">
+            </div>
+        </div>
+        <div class="hr-line-dashed"></div>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Select a Parent</label>
+
+            <div class="col-sm-5">
+                <select  ng-if="category.id" class="form-control m-b" name="account" ng-model="category.parent" ng-options="category.id as category.name for category in categories | filter:{id:'!'+category.id}" data-required="true">
+                    <option>-Select Parent Category-</option>
+                </select>
+
+                <select  ng-if="!category.id" class="form-control m-b" name="account" ng-model="category.parent" ng-options="category.id as category.name for category in categories " data-required="true">
+                    <option>-Select Parent Category-</option>
+                </select>
+
+            </div>
+        </div>
+		
+		<div class="form-group">
+            <label class="col-sm-2 control-label">Select Finance Type</label>
+
+            <div class="col-sm-5">
+                <select  ng-if="category.finance" class="form-control m-b" name="account" ng-model="category.finance" ng-options="financetype.id as financetype.name for financetype in financetypes " data-required="true">
+                    <option>-Select Finance Type-</option>
+                </select>
+				
+				<select  ng-if="!category.finance" class="form-control m-b" name="account" ng-model="category.finance" ng-options="financetype.id as financetype.name for financetype in financetypes " data-required="true">
+                    <option>-Select Finance Type-</option>
+                </select>
+            </div>
+        </div>
+		
+		<div class="form-group">
+            <label class="col-sm-2 control-label">Type</label>
+
+            <div class="col-sm-5">
+                <select  ng-if="category.typet" class="form-control m-b" name="account" ng-model="category.typet" ng-options="typet.id as typet.name for typet in typets " data-required="true">
+                    <option>-Select Type-</option>
+                </select>
+				
+				<select  ng-if="!category.typet" class="form-control m-b" name="account" ng-model="category.typet" ng-options="typet.id as typet.name for typet in typets " data-required="true">
+                    <option>-Select Type-</option>
+                </select>
+            </div>
+        </div>
+		
+        <div class="hr-line-dashed"></div>
+
+
+
+        <div class="form-group"><label class="col-sm-2 control-label"></label>
+
+            <div class="col-sm-3">
+                <a  class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Save"  ng-click="save()">
+                    <i class="fa fa-new"></i> Save
+                </a>
+                <a  class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Save">
+                    <i class="fa fa-new"></i> Cancel
+                </a>
+            </div>
+        </div>
+
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://www.aapt.com.au/FrontierLink/xsd"
+            xmlns="http://www.w3.org/2001/XMLSchema"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+    <xsd:simpleType name="AdditionalFeatures">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="Desktop App" />
+            <xsd:enumeration value="Mobile App" />
+            <xsd:enumeration value="Receptionist Basic" >
+            <xsd:annotation>
+                    <xsd:documentation xml:lang="en">Enables a Receptionist to monitor up to 29 static phone users.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration> 
+            <xsd:enumeration value="Receptionist Advanced" >
+            <xsd:annotation>
+                    <xsd:documentation xml:lang="en">Enables a Receptionist to monitor up to 200 static phone users, and an enhanced interface.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration> 
+            <xsd:enumeration value="Call Queuing" />
+            <xsd:enumeration value="Admin User" />
+            <xsd:enumeration value="Headset" />
+        </xsd:restriction>
+    </xsd:simpleType>
+</xsd:schema>
